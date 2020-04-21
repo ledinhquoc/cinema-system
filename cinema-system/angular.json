@@ -121,5 +121,8 @@
       }
     }
   },
-  "defaultProject": "cinema-system"
+  "defaultProject": "cinema-system",
+  "cli": {
+    "analytics": false
+  }
 }
