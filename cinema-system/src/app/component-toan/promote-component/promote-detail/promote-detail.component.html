@@ -1,0 +1,30 @@
+
+<h2 style="padding-left: 4%;">Chi Tiết Khuyến Mãi</h2>
+<div  class="container pt-2">
+    <div class="row">
+        <div class="col-5" style="margin: 0;padding: 0;">
+            <img src="{{promote?.img}}" alt="" style="width:100%;max-height: 350px; ">
+        </div>
+           
+        <div class="col-7">
+            <h3>{{promote?.title}}</h3>
+            <hr>
+            <div>
+                <label style="padding-right: 1%;">Thời gian:</label>từ<span class="change-size">{{promote?.startime}}</span>đến<span class="change-size">{{promote?.endtime}}</span>
+            </div>
+            <hr>
+            <div>
+                <label>Giảm giá vé:</label><span class="change-size">{{promote?.saleoff}}đ</span>
+            </div>
+        
+      </div>
+
+    </div>
+    <div class="row">
+        <h4 style="padding-top: 1%;">Nội dung</h4>
+    </div>
+    <div class="row">
+        <p>{{promote?.description}}</p>
+    </div>
+    
+</div>

@@ -1,0 +1,16 @@
+
+<h2>Khuyến Mãi</h2>
+<div>
+    <div class="row d-flex justify-content-start border" >
+        <div class="col-sm-3 change-cart" *ngFor="let promote of promotes" >
+                <div style="border: 1.1px ridge #000066;border-radius: 5px;"  >
+
+                    <img src="{{promote.img}}"  alt="{{promote.img}}" [routerLink]="['/promote-detail/'+ promote.id]">
+    
+                    <p ><i class="far fa-calendar-alt"></i><span>{{promote.startime}}-{{promote.endtime}}</span><br><br></p>
+                </div>       
+        </div>
+        
+    </div>
+</div>
+

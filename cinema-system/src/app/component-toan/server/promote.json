@@ -1,0 +1,52 @@
+{
+    "promote": [
+      { "id": 1, 
+        "title": "Khuyến Mãi Mùa Xuân", 
+        "img": "../../../assets/img/qc1.jpg",
+        "saleoff":20000,
+        "startime": "31-10-2020",
+        "endtime": "31-11-2020",
+        "description": "typicode" 
+    },
+    { "id": 2, 
+        "title": "Khuyến Mãi Mùa Hạ", 
+        "img": "../../../assets/img/qc1.jpg",
+        "saleoff":20000,
+        "startime": "08-07-2020",
+        "endtime": "08-08-2020",
+        "description": "typicode" 
+    },
+    { "id": 3, 
+        "title": "Khuyến Mãi Mùa Thu", 
+        "img": "../../../assets/img/qc1.jpg",
+        "saleoff":20000,
+        "startime": "08-9-2020",
+        "endtime": "08-10-2020",
+        "description": "typicode" 
+    },
+    { "id": 4, 
+      "title": "Khuyến Mãi Mùa Đông", 
+      "img": "../../../assets/img/qc1.jpg",
+      "saleoff":20000,
+      "startime": "02-10-2020",
+      "endtime": "08-10-2020",
+      "description": "typicode" 
+  },
+  { "id": 5, 
+    "title": "json-server", 
+    "img": "../../../assets/img/qc1.jpg",
+    "saleoff":20000,
+    "startime": "08-10-2020",
+    "endtime": "08-11-2020",
+    "description": "typicode" 
+},
+{ "id": 6, 
+  "title": "json-server", 
+  "img": "../../../assets/img/qc1.jpg",
+  "saleoff":20000,
+  "startime": "08-10-2020",
+  "endtime": "08-11-2020",
+  "description": "typicode" 
+}
+    ]
+  }

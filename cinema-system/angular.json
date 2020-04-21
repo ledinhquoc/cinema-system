@@ -90,7 +90,10 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/jquery/dist/jquery.min.js",
+              "./node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ]
           }
         },
         "lint": {
@@ -121,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "cinema-system"
+  "defaultProject": "cinema-system",
+  "cli": {
+    "analytics": "f8713b59-cac7-41df-82a2-9679dbb8656f"
+  }
 }

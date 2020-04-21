@@ -1,0 +1,17 @@
+* { /* reset lại margin và padding cho các tag */
+    margin: 0;
+    padding: 0;
+}
+
+.change-cart{
+    width: 100%;
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-top: 2%;
+}
+.change-cart img{
+   max-height:250px;
+   width: 100%;
+}
+
+
