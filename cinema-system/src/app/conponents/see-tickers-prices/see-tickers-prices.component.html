@@ -1,0 +1,24 @@
+<div class="container">
+  <div><button [ngStyle]="{'background': isBK1 }"  (click)="clickTab1()"  class="btn btn-light">2D</button>
+    <button [ngStyle]="{'background': isBK2 }" (click)="clickTab2()"  class="btn btn-light">3D</button></div>
+  <div>
+    <div   id="tabs-1">
+      <table  class="table">
+        <tr>
+          <th></th>
+          <th> Thứ 2,4,6</th>
+          <th> Thứ 3</th>
+          <th> Thứ 6,7,CN </th>
+        </tr>
+        <tr  *ngFor="let item of ticker" >
+
+          <th *ngIf="item.name == checkticker" >{{item.time}}</th>
+          <td *ngIf="item.name == checkticker">{{item.thu246}}</td>
+          <td *ngIf="item.name == checkticker">{{item.thu3}}</td>
+          <td *ngIf="item.name == checkticker">{{item.thu67CN}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
