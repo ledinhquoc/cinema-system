@@ -24,6 +24,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -88,6 +89,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
             "scripts": [
@@ -125,7 +127,9 @@
     }
   },
   "defaultProject": "cinema-system",
-  "cli": {
-    "analytics": "f8713b59-cac7-41df-82a2-9679dbb8656f"
+  "cli": { 
+    "analytics": false
   }
 }
+
+
