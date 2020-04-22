@@ -1,5 +1,5 @@
-import { TicketBookingInformationComponent } from './ticket-booking-information/ticket-booking-information.component';
-import { PositionSelectorComponent } from './position-selector/position-selector.component';
+import { TicketBookingInformationComponent } from './Components/component-toantr/ticket-booking-information/ticket-booking-information.component';
+import { PositionSelectorComponent } from './Components/component-toantr/position-selector/position-selector.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {AuthService, AuthServiceConfig, FacebookLoginProvider} from 'angularx-social-login';
@@ -8,12 +8,8 @@ import {AuthService, AuthServiceConfig, FacebookLoginProvider} from 'angularx-so
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
-
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { HttpClientModule} from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,   

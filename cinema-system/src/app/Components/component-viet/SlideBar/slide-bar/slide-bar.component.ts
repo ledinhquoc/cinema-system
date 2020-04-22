@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MemberInformationModule} from '../../Models/memberInformation.module';
-import {FormBuilder, FormGroup} from '@angular/forms';
-import {InformationAccountService} from '../../../Services/information-account.service';
+import {InformationAccountService} from '../../../../services/information-account.service';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
