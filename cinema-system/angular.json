@@ -125,9 +125,6 @@
   },
   "defaultProject": "cinema-system",
   "cli": {
-
-   
-    "analytics": false
+    "analytics": "d6569e57-1731-4582-8b02-7c8e860484eb"
   }
 }
-

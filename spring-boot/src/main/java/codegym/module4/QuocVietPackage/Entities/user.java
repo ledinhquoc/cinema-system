@@ -1,5 +1,7 @@
-package codegym.module4.entityTest;
+package codegym.module4.QuocVietPackage.Entities;
 
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -7,7 +9,7 @@ import java.util.Date;
 
 
 @Entity
-@Table(name = "users12")
+@Table(name = "users")
 public class user implements Serializable {
 
 
@@ -32,6 +34,7 @@ public class user implements Serializable {
     @Column(name = "fullName")
     private String fullName;
 
+    @JsonFormat(pattern="yyyy-MM-dd")
     @Column(name = "birthday")
     private Date birthday;
 
