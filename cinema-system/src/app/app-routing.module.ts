@@ -1,7 +1,13 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
+
+import {LoginComponent} from './component-vu/login/login.component';
+import {ResetPasswordComponent} from './component-vu/reset-password/reset-password.component';
+
 import {TopBarComponent} from './Components/TopBar/top-bar/top-bar.component';
 import {SlideBarComponent} from './Components/SlideBar/slide-bar/slide-bar.component';
+import { ErrorDisplayComponent } from './component-vu/error-display/error-display.component';
+
 
 import {InfomationComponent} from './Components/InformationAccount/infomation/infomation.component';
 import {HomeAccountComponent} from './Components/home-account/home-account.component';
@@ -35,6 +41,8 @@ const routes: Routes = [
         path: 'ticket-canceled', component: TicketCanceledComponent,
       }]
   },
+  {path: 'resetPassword', component: ResetPasswordComponent}
+
 
 ];
 
@@ -42,7 +50,8 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes), ReactiveFormsModule, FormsModule, CommonModule,MatDialogModule,MatButtonModule,MatIconModule,MatSnackBarModule],
   exports: [RouterModule, TopBarComponent, SlideBarComponent,],
   declarations: [TopBarComponent, SlideBarComponent, InfomationComponent, HomeAccountComponent
-    , HistoryTicketComponent, TicketCanceledComponent, TicketBookingComponent, MatConfirmDialogComponent,],
+    , HistoryTicketComponent,ErrorDisplayComponent,LoginComponent,
+    ResetPasswordComponent, TicketCanceledComponent, TicketBookingComponent, MatConfirmDialogComponent,],
   entryComponents:[MatConfirmDialogComponent]
 })
 export class AppRoutingModule {

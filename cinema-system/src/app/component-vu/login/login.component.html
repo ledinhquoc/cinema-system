@@ -1,0 +1,46 @@
+<div class="login">
+
+
+  <div class="d-flex justify-content-center h-100">
+    <div class="card">
+      <form [formGroup]="formLogin">
+        <div class="card-header">
+          <h3>Đăng nhập</h3>
+          <div class="d-flex justify-content-end social_icon">
+            <span><i class="fab fa-facebook-square" (click)="Login()"></i></span>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="input-group form-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-user"></i></span>
+            </div>
+            <input type="text" class="form-control" placeholder="Tài khoản đăng nhập" formControlName="username1">
+          </div>
+          <app-error-display [displayError]="isFieldValidUser('username1') || check" errorMsg="username is invalid"></app-error-display>
+          <div class="input-group form-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-key"></i></span>
+            </div>
+            <input type="password" class="form-control" placeholder="Mật khẩu" formControlName="password1">
+          </div>
+          <app-error-display [displayError]="isFieldValidPassword('password1')" errorMsg="password is invalid"></app-error-display>
+          <div class="row align-items-center remember">
+            <input type="checkbox">Ghi nhớ tài khoản
+          </div>
+          <div class="form-group">
+            <input type="submit" value="Đăng nhập" (click)="submitLogin()" class="btn float-right login_btn">
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="d-flex justify-content-center links">
+            Chưa có tài khoản ?<a href="#">Đăng ký</a>
+          </div>
+          <div class="d-flex justify-content-center">
+            <a [routerLink]="['/resetPassword']" >Quên mật khẩu</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
