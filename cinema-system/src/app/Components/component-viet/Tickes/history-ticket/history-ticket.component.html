@@ -1,33 +1,33 @@
 <div class="history-ticket">
   <div id="heading-loginInfo">History</div>
-  <form>
+  <form  (ngSubmit)="onSubmit()">
     <div class="d-flex" style="margin-top: 15px">
       <span style="margin-left: 30px">Form Date: </span>
-      <input id="input-dateStart" class="form-control" type="date">
+      <input id="input-dateStart" class="form-control" type="date"  required [(ngModel)]="from" name="from">
     </div>
     <div class="d-flex" style="margin-top: 15px">
       <span style="margin-left: 30px">To Date: </span>
-      <input id="input-dateEnd" class="form-control" type="date">
+      <input id="input-dateEnd" class="form-control" type="date"  required  [(ngModel)]="to" name="to">
     </div>
 
-    <div class=" d-flex" style="margin-top: 15px">
-      <span style="margin-left: 30px">Type: </span>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="checkPoint" id="exampleRadios1" value="PointPlus" checked>
-        <label id="checkboxPointPlus" class="form-check-label" for="exampleRadios1">
-          History Plus Point
-        </label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="checkPoint" id="exampleRadios2" value="PointUse">
-        <label id="checkboxPointUse" class="form-check-label" for="exampleRadios2">
-          History Use Point
-        </label>
-      </div>
-    </div>
+<!--    <div class=" d-flex" style="margin-top: 15px">-->
+<!--      <span style="margin-left: 30px">Type: </span>-->
+<!--      <div class="form-check">-->
+<!--        <input class="form-check-input" type="radio" name="checkPoint" id="exampleRadios1" value="PointPlus" checked>-->
+<!--        <label id="checkboxPointPlus" class="form-check-label" for="exampleRadios1">-->
+<!--          History Plus Point-->
+<!--        </label>-->
+<!--      </div>-->
+<!--      <div class="form-check">-->
+<!--            <input class="form-check-input" type="radio" name="checkPoint" id="exampleRadios2" value="PointUse">-->
+<!--            <label id="checkboxPointUse" class="form-check-label" for="exampleRadios2">-->
+<!--              History Use Point-->
+<!--            </label>-->
+<!--</div>-->
+<!--    </div>-->
 
     <div class="d-flex" id="btn-changPassWord">
-      <button class="btn btn-success" id="btn-watchPoint">Watch Point
+      <button class="btn btn-success" id="btn-watchPoint" type="submit">Watch Point
       </button>
     </div>
 
@@ -37,31 +37,20 @@
     <table id="tablePoint" class="table table-bordered table-hover">
       <thead>
       <tr style="text-align: center">
-        <th>Index</th>
         <th>Date Creat</th>
         <th>Name Movie</th>
         <th>Point Plus</th>
       </tr>
       </thead>
       <tbody style="text-align: center">
-      <tr>
-        <td>1</td>
-        <td>31-03-1997</td>
-        <td>Iron man 1</td>
-        <td style="color: rgba(34,167,26,0.87)">9000</td>
+      <tr *ngFor="let pointUser of history">
+        <td>{{pointUser.dateCreat| date:"dd-MM-yyyy"}}</td>
+        <td>{{pointUser.nameMovie}}</td>
+        <td>{{pointUser.point}}</td>
+
+
       </tr>
-      <tr>
-        <td>2</td>
-        <td>31-03-1997</td>
-        <td>Iron man 1</td>
-        <td style="color: rgba(34,167,26,0.87)">1000</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>31-03-1997</td>
-        <td>Iron man 1</td>
-        <td style="color: rgba(34,167,26,0.87)">1000</td>
-      </tr>
+
       </tbody>
     </table>
 </div>

@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MemberInformationModule} from '../../Models/memberInformation.module';
-import {InformationAccountService} from '../../../Services/information-account.service';
+import {InformationAccountService} from '../../../../Services/information-account.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {MaterialService} from '../../../Services/material.service';
-import {NotificationService} from '../../../Services/notification.service';
+import {MaterialService} from '../../../../Services/material.service';
+import {NotificationService} from '../../../../Services/notification.service';
 
 @Component({
   selector: 'app-infomation',

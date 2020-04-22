@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 
 @Entity
@@ -15,7 +16,7 @@ public class user implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
+    @Column(name = "id")
     private long id;
 
 
@@ -53,6 +54,8 @@ public class user implements Serializable {
     @Column(name = "address")
     private String address;
 
+    @OneToMany(targetEntity = point.class)
+    private List<point> points;
 
     public user(long id, String img, String idAccount, String userName, String password,
                 String fullName, Date birthday, String gender, String idCard, String email, String phone, String address) {
