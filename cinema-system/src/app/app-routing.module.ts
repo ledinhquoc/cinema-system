@@ -14,6 +14,9 @@ import {HomeAccountComponent} from './Components/component-viet/home-account/hom
 import {HistoryTicketComponent} from './Components/component-viet/Tickes/history-ticket/history-ticket.component';
 import {TicketCanceledComponent} from './Components/component-viet/Tickes/ticket-canceled/ticket-canceled.component';
 import {TicketBookingComponent} from './Components/component-viet/Tickes/ticket-booking/ticket-booking.component';
+import { TicketBookingInformationComponent } from './Components/component-toantr/ticket-booking-information/ticket-booking-information.component';
+import { PositionSelectorComponent } from './Components/component-toantr/position-selector/position-selector.component';
+
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
 import {MatDialogModule} from '@angular/material/dialog';
@@ -21,6 +24,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import { MatConfirmDialogComponent } from './Components/component-viet/mat-confirm-dialog/mat-confirm-dialog.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+
 
 
 const routes: Routes = [
@@ -51,7 +55,8 @@ const routes: Routes = [
   exports: [RouterModule, TopBarComponent, SlideBarComponent,],
   declarations: [TopBarComponent, SlideBarComponent, InfomationComponent, HomeAccountComponent
     , HistoryTicketComponent,ErrorDisplayComponent,LoginComponent,
-    ResetPasswordComponent, TicketCanceledComponent, TicketBookingComponent, MatConfirmDialogComponent,],
+    ResetPasswordComponent, TicketCanceledComponent, TicketBookingComponent, MatConfirmDialogComponent,PositionSelectorComponent,
+    TicketBookingInformationComponent,],
   entryComponents:[MatConfirmDialogComponent]
 })
 export class AppRoutingModule {
