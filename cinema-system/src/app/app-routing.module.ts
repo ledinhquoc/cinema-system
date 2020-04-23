@@ -51,12 +51,14 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes), ReactiveFormsModule, FormsModule, CommonModule,MatDialogModule,MatButtonModule,MatIconModule,MatSnackBarModule],
+  imports: [RouterModule.forRoot(routes),
+     ReactiveFormsModule, FormsModule, CommonModule,MatDialogModule,
+     MatButtonModule,MatIconModule,MatSnackBarModule],
   exports: [RouterModule, TopBarComponent, SlideBarComponent,],
   declarations: [TopBarComponent, SlideBarComponent, InfomationComponent, HomeAccountComponent
     , HistoryTicketComponent,ErrorDisplayComponent,LoginComponent,
     ResetPasswordComponent, TicketCanceledComponent, TicketBookingComponent, MatConfirmDialogComponent,PositionSelectorComponent,
-    TicketBookingInformationComponent,],
+    TicketBookingInformationComponent],
   entryComponents:[MatConfirmDialogComponent]
 })
 export class AppRoutingModule {
