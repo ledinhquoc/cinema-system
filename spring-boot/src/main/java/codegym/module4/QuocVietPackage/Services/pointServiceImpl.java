@@ -27,8 +27,8 @@ public class pointServiceImpl implements pointService {
     }
 
     @Override
-    public List<point> findPointByDate2(Date form, Date to,user idUser) {
-        return pointRepository.findByDateCreatBetweenAndIdUser(form, to, idUser);
+    public List<point> findPointByDate2(Date form, Date to,user idUser,String status) {
+        return pointRepository.findByDateCreatBetweenAndIdUserAndAndPointStatus(form, to, idUser, status);
     }
 
     @Override

@@ -23,29 +23,33 @@ public class point {
     private user idUser;
 
 
-    @JsonFormat(pattern = "yyyy-MM-dd")
+
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @Temporal(TemporalType.DATE)
+    @Temporal(value=TemporalType.DATE)
     @Column(name = "dateCreat")
     private Date dateCreat;
 
     @Column(name = "nameMovie")
     private String nameMovie;
 
-
     @Column(name = "pointValue")
     private String point;
+
+
+    @Column(name = "pointStatus")
+    private String pointStatus;
 
 
     public point() {
     }
 
-    public point(long id, user idUser, Date dateCreat, String nameMovie, String point) {
+    public point(long id, user idUser, Date dateCreat, String nameMovie, String point, String pointStatus) {
         this.id = id;
         this.dateCreat = dateCreat;
         this.nameMovie = nameMovie;
         this.point = point;
         this.idUser = idUser;
+       this.pointStatus=pointStatus;
     }
 
 
@@ -87,5 +91,13 @@ public class point {
 
     public void setPoint(String point) {
         this.point = point;
+    }
+
+    public String getPointStatus() {
+        return pointStatus;
+    }
+
+    public void setPointStatus(String pointStatus) {
+        this.pointStatus = pointStatus;
     }
 }

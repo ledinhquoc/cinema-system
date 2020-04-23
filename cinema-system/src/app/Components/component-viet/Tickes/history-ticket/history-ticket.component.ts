@@ -15,6 +15,8 @@ public history: PointHistoryModule [];
 
 public from:string;
 public to:string;
+public checkPoint:string;
+ public p: number = 1;
   constructor(public historyUsePointService: HistoryUsePointService,
               public router: Router,
               public activatedRouteService: ActivatedRoute,) { }
@@ -41,7 +43,8 @@ public to:string;
       let id = data['id'];
      let from=this.from;
      let to=this.to;
-      this.historyUsePointService.getSearchPointAccount(id,from,to).subscribe((point: PointHistoryModule[]) => {
+     let checkPoint=this.checkPoint;
+      this.historyUsePointService.getSearchPointAccount(id,from,to,checkPoint).subscribe((point: PointHistoryModule[]) => {
         this.history = point;
         console.log(this.history);
 

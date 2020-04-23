@@ -37,12 +37,10 @@ public class PointController {
     }
 
 
-    @GetMapping("{id}/{from}/{to}")
-    public List<point> getPointDetailsDate(@PathVariable user id,@PathVariable("from") @DateTimeFormat(pattern="yyyy-MM-dd") Date from,@PathVariable("to") @DateTimeFormat(pattern="yyyy-MM-dd") Date to) {
+    @GetMapping("{id}/{from}/{to}/{status}")
+    public List<point> getPointDetailsDate(@PathVariable user id,@PathVariable("from") @DateTimeFormat(pattern="yyyy-MM-dd") Date from,@PathVariable("to") @DateTimeFormat(pattern="yyyy-MM-dd") Date to
+            ,@PathVariable String status) {
 
-System.out.println(from);
-System.out.println(to);
-
-        return pointService.findPointByDate2(from, to, id);
+        return pointService.findPointByDate2(from, to, id ,status);
     }
 }

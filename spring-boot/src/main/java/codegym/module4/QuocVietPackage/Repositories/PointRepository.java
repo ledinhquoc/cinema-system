@@ -12,5 +12,7 @@ public interface PointRepository extends JpaRepository<point, Long> {
     List<point> findByIdUser(user idUser);
 
 
-    List<point> findByDateCreatBetweenAndIdUser( Date from,Date to, user idUser);
+    List<point> findByDateCreatBetweenAndIdUserAndAndPointStatus( Date from,Date to, user idUser, String status);
+
+
 }

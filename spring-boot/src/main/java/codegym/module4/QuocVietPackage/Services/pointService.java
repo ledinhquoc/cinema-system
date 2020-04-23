@@ -10,7 +10,7 @@ public interface pointService {
 
 
     List<point> findPointByDate(user idUser);
-    List<point> findPointByDate2(Date form, Date to,user idUser);
+    List<point> findPointByDate2(Date form, Date to,user idUser,String status);
     List<point> findAllPoint();
 
 }

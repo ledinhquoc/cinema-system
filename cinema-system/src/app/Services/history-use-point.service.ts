@@ -16,8 +16,8 @@ export class HistoryUsePointService {
     return this.http.get(`${this.API}/${id}`);
   }
 
-  getSearchPointAccount(id:number,from:string,to:string):Observable<any>{
-    return this.http.get(`${this.API}/${id}/${from}/${to}`);
+  getSearchPointAccount(id:number,from:string,to:string,checkPoint:string):Observable<any>{
+    return this.http.get(`${this.API}/${id}/${from}/${to}/${checkPoint}`);
   }
 
 }
