@@ -24,6 +24,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import { MatConfirmDialogComponent } from './Components/component-viet/mat-confirm-dialog/mat-confirm-dialog.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { SeeTickerPricesComponent } from './Components/component-quy/see-ticker-prices/see-ticker-prices.component';
 
 
 
@@ -45,9 +46,8 @@ const routes: Routes = [
         path: 'ticket-canceled', component: TicketCanceledComponent,
       }]
   },
-  {path: 'resetPassword', component: ResetPasswordComponent}
-
-
+  {path: 'resetPassword', component: ResetPasswordComponent},
+  {path: 'see-ticker-prices', component: SeeTickerPricesComponent}
 ];
 
 @NgModule({
@@ -58,7 +58,12 @@ const routes: Routes = [
   declarations: [TopBarComponent, SlideBarComponent, InfomationComponent, HomeAccountComponent
     , HistoryTicketComponent,ErrorDisplayComponent,LoginComponent,
     ResetPasswordComponent, TicketCanceledComponent, TicketBookingComponent, MatConfirmDialogComponent,PositionSelectorComponent,
+<<<<<<< HEAD
     TicketBookingInformationComponent],
+=======
+    TicketBookingInformationComponent,
+    SeeTickerPricesComponent,],
+>>>>>>> 2514f1469ef79fdc37b2bfa9df6ca018dc980559
   entryComponents:[MatConfirmDialogComponent]
 })
 export class AppRoutingModule {
