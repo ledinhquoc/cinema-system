@@ -57,13 +57,12 @@ const routes: Routes = [
   exports: [RouterModule, TopBarComponent, SlideBarComponent,],
   declarations: [TopBarComponent, SlideBarComponent, InfomationComponent, HomeAccountComponent
     , HistoryTicketComponent,ErrorDisplayComponent,LoginComponent,
-    ResetPasswordComponent, TicketCanceledComponent, TicketBookingComponent, MatConfirmDialogComponent,PositionSelectorComponent,
-<<<<<<< HEAD
-    TicketBookingInformationComponent],
-=======
-    TicketBookingInformationComponent,
-    SeeTickerPricesComponent,],
->>>>>>> 2514f1469ef79fdc37b2bfa9df6ca018dc980559
+    ResetPasswordComponent, TicketCanceledComponent, TicketBookingComponent,
+     MatConfirmDialogComponent,PositionSelectorComponent,
+
+    TicketBookingInformationComponent,SeeTickerPricesComponent],
+
+
   entryComponents:[MatConfirmDialogComponent]
 })
 export class AppRoutingModule {
