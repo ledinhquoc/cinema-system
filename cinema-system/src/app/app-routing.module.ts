@@ -25,6 +25,10 @@ import {MatButtonModule} from '@angular/material/button';
 import { MatConfirmDialogComponent } from './Components/component-viet/mat-confirm-dialog/mat-confirm-dialog.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { SeeTickerPricesComponent } from './Components/component-quy/see-ticker-prices/see-ticker-prices.component';
+import {DetailFilmComponent} from './Components/component-tuan/detail-film/detail-film.component';
+import {ListFilmComponent} from './Components/component-tuan/list-film/list-film.component';
+import {NgxPaginationModule} from 'ngx-pagination';
+import {Ng2SearchPipeModule} from 'ng2-search-filter';
 
 
 
@@ -51,14 +55,14 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes), ReactiveFormsModule, FormsModule, CommonModule,MatDialogModule,MatButtonModule,MatIconModule,MatSnackBarModule],
-  exports: [RouterModule, TopBarComponent, SlideBarComponent,],
   declarations: [TopBarComponent, SlideBarComponent, InfomationComponent, HomeAccountComponent
     , HistoryTicketComponent,ErrorDisplayComponent,LoginComponent,
     ResetPasswordComponent, TicketCanceledComponent, TicketBookingComponent, MatConfirmDialogComponent,PositionSelectorComponent,
-    TicketBookingInformationComponent,
+    TicketBookingInformationComponent, DetailFilmComponent, ListFilmComponent,
     SeeTickerPricesComponent,],
+  imports: [RouterModule.forRoot(routes), ReactiveFormsModule, FormsModule,
+    CommonModule, MatDialogModule, MatButtonModule, MatIconModule, MatSnackBarModule, NgxPaginationModule, Ng2SearchPipeModule],
+  exports: [RouterModule, TopBarComponent, SlideBarComponent],
   entryComponents:[MatConfirmDialogComponent]
 })
-export class AppRoutingModule {
-}
+export class AppRoutingModule {}
