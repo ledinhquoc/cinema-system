@@ -7,7 +7,7 @@ import {Observable} from 'rxjs';
 })
 export class InformationAccountService {
 
-  public API: string = ' http://localhost:3000/memberInformation';
+  public API: string = 'http://localhost:8433/api/v1/users';
 
   constructor(public http: HttpClient) {
   }

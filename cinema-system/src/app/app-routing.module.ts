@@ -25,6 +25,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { MatConfirmDialogComponent } from './Components/component-viet/mat-confirm-dialog/mat-confirm-dialog.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { SeeTickerPricesComponent } from './Components/component-quy/see-ticker-prices/see-ticker-prices.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 
@@ -37,7 +38,7 @@ const routes: Routes = [
       path: ':id/information', component: InfomationComponent,
     },
       {
-        path: 'history-ticket', component: HistoryTicketComponent,
+        path: ':id/history-ticket', component: HistoryTicketComponent,
       },
       {
         path: 'ticket-booking', component: TicketBookingComponent,
@@ -53,7 +54,7 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes),
      ReactiveFormsModule, FormsModule, CommonModule,MatDialogModule,
-     MatButtonModule,MatIconModule,MatSnackBarModule],
+     MatButtonModule,MatIconModule,MatSnackBarModule,NgxPaginationModule],
   exports: [RouterModule, TopBarComponent, SlideBarComponent,],
   declarations: [TopBarComponent, SlideBarComponent, InfomationComponent, HomeAccountComponent
     , HistoryTicketComponent,ErrorDisplayComponent,LoginComponent,
