@@ -10,23 +10,16 @@ import java.util.List;
 
 
 @Entity
-@Table(name = "users")
+@Table(name = "customers")
 public class user implements Serializable {
 
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
+    @Column(name = "customer_id")
     private long id;
 
-
-    @Column(name = "img")
-    private String img;
-
-    @Column(name = "idAccount")
-    private String idAccount;
-
-    @Column(name = "userName")
+    @Column(name = "name_account")
     private String userName;
 
     @Column(name = "password")
@@ -36,7 +29,7 @@ public class user implements Serializable {
     private String fullName;
 
     @JsonFormat(pattern="yyyy-MM-dd")
-    @Column(name = "birthday")
+    @Column(name = "data_of_birth")
     private Date birthday;
 
     @Column(name = "gender")
@@ -57,11 +50,14 @@ public class user implements Serializable {
     @OneToMany(targetEntity = point.class)
     private List<point> points;
 
-    public user(long id, String img, String idAccount, String userName, String password,
+    @OneToMany(targetEntity = ticket.class)
+    private List<ticket> ticket;
+
+
+    public user(long id, String userName, String password,
                 String fullName, Date birthday, String gender, String idCard, String email, String phone, String address) {
         this.id = id;
-        this.img = img;
-        this.idAccount = idAccount;
+
         this.userName = userName;
         this.password = password;
         this.fullName = fullName;
@@ -81,21 +77,6 @@ public class user implements Serializable {
         this.id = id;
     }
 
-    public String getImg() {
-        return img;
-    }
-
-    public void setImg(String img) {
-        this.img = img;
-    }
-
-    public String getIdAccount() {
-        return idAccount;
-    }
-
-    public void setIdAccount(String idAccount) {
-        this.idAccount = idAccount;
-    }
 
     public String getUserName() {
         return userName;

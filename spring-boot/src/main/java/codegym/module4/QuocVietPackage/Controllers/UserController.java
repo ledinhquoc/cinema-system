@@ -37,7 +37,7 @@ public class UserController {
     public user updateUser(@PathVariable Long id, @RequestBody user userUpdate){
         user userDetails= userService.findUserById(id);
 
-        userDetails.setIdAccount(userUpdate.getIdAccount());
+
         userDetails.setAddress(userUpdate.getAddress());
         userDetails.setBirthday(userUpdate.getBirthday());
         userDetails.setEmail(userUpdate.getEmail());

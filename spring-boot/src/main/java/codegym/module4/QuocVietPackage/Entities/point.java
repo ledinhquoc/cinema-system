@@ -8,20 +8,18 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name="Point")
+@Table(name="points")
 public class point {
 
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "idPoint")
+    @Column(name = "id_point")
     private long id;
 
-
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "customer_id")
     private user idUser;
-
 
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")

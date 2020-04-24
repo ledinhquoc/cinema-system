@@ -1,7 +1,5 @@
 export class MemberInformationModule {
   id:number;
-  idAccount:string;
-  img:string;
   userName:string;
   password:string;
   fullName:string;
