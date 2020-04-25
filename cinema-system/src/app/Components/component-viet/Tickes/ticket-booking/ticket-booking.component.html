@@ -1,0 +1,32 @@
+<div id="ticket-booking">
+  <h2 id="listTicketBooking" style="margin-left: 30px">Tickets Booking List</h2>
+  <div class="d-flex" id="search">
+    <input class="form-control " type="text" placeholder="Search Ticket " style="width:400px">
+    <button class="btn btn-success" type="submit" style="height: 46px" id="btnSearch">Search</button>
+  </div>
+
+
+
+  <div class="row">
+    <table id="tableEmployee" class="table table-bordered table-hover">
+      <thead>
+      <tr style="text-align: center">
+        <th>Movie Name</th>
+        <th>Date Order</th>
+        <th>Total Money</th>
+        <th>Status</th>
+      </tr>
+      </thead>
+      <tbody style="text-align: center">
+      <tr *ngFor="let status of statusTickets3  |paginate: { itemsPerPage: 3, currentPage: page }">
+        <td>{{status.nameMovie}}</td>
+        <td>{{status.dateOfOrder | date:"dd-MM-yyyy"}}</td>
+        <td>{{status.totalMoney}}</td>
+        <td>{{status.status}}</td>
+      </tr>
+
+      </tbody>
+    </table>
+    <div id="page"> <pagination-controls (pageChange)="page = $event"></pagination-controls></div>
+  </div>
+</div>
