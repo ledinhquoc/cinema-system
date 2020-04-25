@@ -1,38 +1,29 @@
-package codegym.module4.entityTest;
+package codegym.module4.User_Customer_MangePoint.Entities;
 
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 
 @Entity
-@Table(name = "users12")
-public class user implements Serializable {
+@Table(name = "customers")
+public class customer implements Serializable {
 
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
-    private long id;
-
-
-    @Column(name = "img")
-    private String img;
-
-    @Column(name = "idAccount")
-    private String idAccount;
-
-    @Column(name = "userName")
-    private String userName;
-
-    @Column(name = "password")
-    private String password;
+    @Column(name = "customer_id")
+    private int id;
 
     @Column(name = "fullName")
     private String fullName;
 
-    @Column(name = "birthday")
+    @JsonFormat(pattern="yyyy-MM-dd")
+    @Column(name = "data_of_birth")
     private Date birthday;
 
     @Column(name = "gender")
@@ -50,14 +41,25 @@ public class user implements Serializable {
     @Column(name = "address")
     private String address;
 
+    @OneToMany(targetEntity = point.class)
+    private List<point> points;
 
-    public user(long id, String img, String idAccount, String userName, String password,
-                String fullName, Date birthday, String gender, String idCard, String email, String phone, String address) {
+
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private user idUser;
+
+
+
+//    @OneToMany(targetEntity = ticket.class)
+//    private List<ticket> ticket;
+
+
+    public customer(int id, String userName, String password,user idUser,
+                    String fullName, Date birthday, String gender, String idCard, String email, String phone, String address) {
         this.id = id;
-        this.img = img;
-        this.idAccount = idAccount;
-        this.userName = userName;
-        this.password = password;
+this.idUser=idUser;
+
         this.fullName = fullName;
         this.birthday = birthday;
         this.gender = gender;
@@ -71,40 +73,16 @@ public class user implements Serializable {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public String getImg() {
-        return img;
+    public user getIdUser() {
+        return idUser;
     }
 
-    public void setImg(String img) {
-        this.img = img;
-    }
-
-    public String getIdAccount() {
-        return idAccount;
-    }
-
-    public void setIdAccount(String idAccount) {
-        this.idAccount = idAccount;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public void setIdUser(user idUser) {
+        this.idUser = idUser;
     }
 
     public String getFullName() {
@@ -163,6 +141,6 @@ public class user implements Serializable {
         this.address = address;
     }
 
-    public user() {
+    public customer() {
     }
 }

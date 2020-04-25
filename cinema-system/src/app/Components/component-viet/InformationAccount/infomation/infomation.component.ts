@@ -5,6 +5,8 @@ import {InformationAccountService} from '../../../../services/information-accoun
 import {ActivatedRoute, Router} from '@angular/router';
 import {MaterialService} from '../../../../services/material.service';
 import {NotificationService} from '../../../../services/notification.service';
+import {UserServiceService} from '../../../../Services/user-service.service';
+import {UserModule} from '../../Models/user.module';
 
 @Component({
   selector: 'app-infomation',
@@ -17,9 +19,11 @@ export class InfomationComponent implements OnInit {
   public formMember2: FormGroup;
 
   public member: MemberInformationModule;
+  public user: UserModule;
 
   constructor(public formBuilderStudentEdit: FormBuilder,
               public memberService: InformationAccountService,
+              public userService: UserServiceService,
               public router: Router,
               public activatedRouteService: ActivatedRoute,
               public dialogService: MaterialService,
@@ -57,6 +61,11 @@ export class InfomationComponent implements OnInit {
         console.log(this.member);
         console.log(this.formMember1);
       });
+      this.userService.getUserEdit(id).subscribe((user: UserModule) => {
+        this.user = user;
+        console.log(this.user);
+
+      });
     });
   }
 
@@ -66,18 +75,21 @@ export class InfomationComponent implements OnInit {
       if (data) {
         this.activatedRouteService.params.subscribe(data => {
           let id = data['id'];
-          this.memberService.getAccountEdit(id).subscribe((member: MemberInformationModule) => {
-              this.member = member;
-              if (this.formMember1.value.oldPassWord === this.member.password && this.formMember1.value.newPassWord === this.formMember1.value.confirmPassWord) {
+          this.userService.getUserEdit(id).subscribe((user: UserModule) => {
+              this.user = user;
+              if (this.formMember1.value.oldPassWord === this.user.password && this.formMember1.value.newPassWord === this.formMember1.value.confirmPassWord) {
 // @ts-ignore
-                this.member.password=this.formMember1.value.newPassWord;
-                this.memberService.updateAccount(this.member).subscribe(data => {
+                this.user.password=this.formMember1.value.newPassWord;
+
+                this.userService.updateUser(this.user).subscribe(data => {
                   console.log(data);
                   this.notificationService.warn('Change successfully');
                   this.router.navigateByUrl('');
                 });
               } else {
                 console.log(this.formMember1.value.oldPassWord);
+                console.log(this.user);
+
                 console.log('Không đổi đc ');
                 this.notificationService.warn('Check your old password or new password you have entered');
               }

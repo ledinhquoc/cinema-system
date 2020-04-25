@@ -5,19 +5,21 @@ import {Observable} from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class InformationAccountService {
+export class UserServiceService {
 
-  public API: string = 'http://localhost:8433/api/v1/customers';
+
+  public API: string = 'http://localhost:8433/api/v1/users';
 
   constructor(public http: HttpClient) {
   }
 
-  getAccountEdit(id:number):Observable<any>{
+  getUserEdit(id:number):Observable<any>{
     return this.http.get(`${this.API}/${id}`);
   }
 
 
-  updateAccount(account):Observable<any>{
-    return this.http.put(`${this.API}/${account.id}`,account)
+  updateUser(user):Observable<any>{
+    return this.http.put(`${this.API}/${user.idUser}`,user)
   }
 }
+
