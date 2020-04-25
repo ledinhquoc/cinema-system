@@ -1,7 +1,7 @@
-package codegym.module4.User_Customer_MangePoint.Services;
+package codegym.module4.Services;
 
-import codegym.module4.User_Customer_MangePoint.Entities.point;
-import codegym.module4.User_Customer_MangePoint.Entities.customer;
+import codegym.module4.Entities.point;
+import codegym.module4.Entities.customer;
 
 import java.util.Date;
 import java.util.List;
