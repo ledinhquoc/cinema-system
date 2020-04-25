@@ -1,0 +1,41 @@
+package codegym.module4.toantr.persistence.model;
+
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+@Entity
+@Table(name = "employees")
+public class Employee {
+    public Employee() {
+    }
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    private String fullName;
+    private Date dateOfBirth;
+    private String gender;
+    private String idCard;
+    private String email;
+    private String address;
+    private String phone;
+
+    @OneToMany(mappedBy = "employee")
+    @JsonManagedReference
+    private List<User> users;
+
+    @OneToMany(mappedBy = "employee")
+    @JsonManagedReference
+    private List<Ticket> tickets;
+}
