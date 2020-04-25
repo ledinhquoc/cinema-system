@@ -1,7 +1,9 @@
 import { HttpService } from '../../../services/http.service';
 import { Component, OnInit } from '@angular/core';
+
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-position-selector',
@@ -9,6 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./position-selector.component.css'],
 })
 export class PositionSelectorComponent implements OnInit {
+
   showRoom: any;
   user: any;
   SeatColors: any;
@@ -26,9 +29,11 @@ export class PositionSelectorComponent implements OnInit {
     this.myHttp.getById('showrooms', 1).subscribe((showRoom) => {
       this.showRoom = showRoom;
       console.log(this.showRoom);
+
     });
     this.SeatColors = SeatColors;
   }
+
 
   onSubmit() {
     for (const row of this.showRoom._rows) {
@@ -61,6 +66,7 @@ export class PositionSelectorComponent implements OnInit {
     );
   }
 
+
   // fillEmptySeat(seats: any[]): any[] {
   //   return seats.map((seat, index) => {
   //     if (seat.number === index + 1) return seat;
@@ -91,5 +97,5 @@ export class PositionSelectorComponent implements OnInit {
 enum SeatColors {
   BookedSeat = 'bg-danger',
   SelectingSeat = 'bg-success',
-  VipSeat = 'bg-info',
+  VipSeat = 'bg-info'
 }
