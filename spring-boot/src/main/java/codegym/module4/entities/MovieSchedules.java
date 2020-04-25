@@ -1,9 +1,7 @@
-package codegym.module4.toantr.persistence.model;
+package codegym.module4.entities;
 
 import java.util.Date;
-import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -32,4 +30,60 @@ public class MovieSchedules {
     @ManyToOne
     @JsonBackReference
     private Movie movie;
+
+    /**
+     * @return the id
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    /**
+     * @return the openingDay
+     */
+    public Date getOpeningDay() {
+        return openingDay;
+    }
+
+    /**
+     * @param openingDay the openingDay to set
+     */
+    public void setOpeningDay(Date openingDay) {
+        this.openingDay = openingDay;
+    }
+
+    /**
+     * @return the showTime
+     */
+    public ShowTime getShowTime() {
+        return showTime;
+    }
+
+    /**
+     * @param showTime the showTime to set
+     */
+    public void setShowTime(ShowTime showTime) {
+        this.showTime = showTime;
+    }
+
+    /**
+     * @return the movie
+     */
+    public Movie getMovie() {
+        return movie;
+    }
+
+    /**
+     * @param movie the movie to set
+     */
+    public void setMovie(Movie movie) {
+        this.movie = movie;
+    }
 }

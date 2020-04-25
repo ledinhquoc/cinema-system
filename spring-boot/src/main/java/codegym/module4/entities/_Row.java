@@ -1,8 +1,7 @@
-package codegym.module4.toantr.persistence.model;
+package codegym.module4.entities;
 
 import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
