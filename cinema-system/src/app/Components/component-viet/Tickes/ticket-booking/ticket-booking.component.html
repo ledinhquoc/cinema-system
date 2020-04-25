@@ -11,32 +11,22 @@
     <table id="tableEmployee" class="table table-bordered table-hover">
       <thead>
       <tr style="text-align: center">
-        <th>Index</th>
         <th>Movie Name</th>
+        <th>Date Order</th>
         <th>Total Money</th>
         <th>Status</th>
       </tr>
       </thead>
       <tbody style="text-align: center">
-      <tr>
-        <td>1</td>
-        <td>Iron man 1</td>
-        <td>150000</td>
-        <td style="color: rgba(34,167,26,0.87)">Done</td>
+      <tr *ngFor="let status of statusTickets3  |paginate: { itemsPerPage: 3, currentPage: page }">
+        <td>{{status.nameMovie}}</td>
+        <td>{{status.dateOfOrder | date:"dd-MM-yyyy"}}</td>
+        <td>{{status.totalMoney}}</td>
+        <td>{{status.status}}</td>
       </tr>
-      <tr>
-        <td>2</td>
-        <td>Iron man 2</td>
-        <td>150000</td>
-        <td style="color: #3536ff">Wait</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Iron man 3</td>
-        <td>150000</td>
-        <td style="color: rgba(34,167,26,0.87)">Done</td>
-      </tr>
+
       </tbody>
     </table>
+    <div id="page"> <pagination-controls (pageChange)="page = $event"></pagination-controls></div>
   </div>
 </div>

@@ -1,13 +1,11 @@
 package codegym.module4.QuocVietPackage.Services;
 
 import codegym.module4.QuocVietPackage.Entities.point;
-import codegym.module4.QuocVietPackage.Entities.user;
+import codegym.module4.QuocVietPackage.Entities.customer;
 import codegym.module4.QuocVietPackage.Repositories.PointRepository;
-import codegym.module4.QuocVietPackage.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.awt.*;
 import java.util.Date;
 import java.util.List;
 
@@ -22,13 +20,13 @@ public class pointServiceImpl implements pointService {
     }
 
     @Override
-    public List<point> findPointByDate(user idUser) {
-        return pointRepository.findByIdUser(idUser);
+    public List<point> findPointByDate(customer idCustomer) {
+        return pointRepository.findByIdCustomer(idCustomer);
     }
 
     @Override
-    public List<point> findPointByDate2(Date form, Date to,user idUser,String status) {
-        return pointRepository.findByDateCreatBetweenAndIdUserAndAndPointStatus(form, to, idUser, status);
+    public List<point> findPointByDate2(Date form, Date to, customer idCustomer, String status) {
+        return pointRepository.findByDateCreatBetweenAndIdCustomerAndAndPointStatus(form, to, idCustomer, status);
     }
 
     @Override

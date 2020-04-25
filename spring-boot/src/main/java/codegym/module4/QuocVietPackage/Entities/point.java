@@ -1,7 +1,6 @@
 package codegym.module4.QuocVietPackage.Entities;
 
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -14,12 +13,12 @@ public class point {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id_point")
+    @Column(name = "point_id")
     private long id;
 
     @ManyToOne
     @JoinColumn(name = "customer_id")
-    private user idUser;
+    private customer idCustomer;
 
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -41,12 +40,12 @@ public class point {
     public point() {
     }
 
-    public point(long id, user idUser, Date dateCreat, String nameMovie, String point, String pointStatus) {
+    public point(long id, customer idCustomer, Date dateCreat, String nameMovie, String point, String pointStatus) {
         this.id = id;
         this.dateCreat = dateCreat;
         this.nameMovie = nameMovie;
         this.point = point;
-        this.idUser = idUser;
+        this.idCustomer = idCustomer;
        this.pointStatus=pointStatus;
     }
 
@@ -59,12 +58,12 @@ public class point {
         this.id = id;
     }
 
-    public user getIdUser() {
-        return idUser;
+    public customer getIdCustomer() {
+        return idCustomer;
     }
 
-    public void setIdUser(user idUser) {
-        this.idUser = idUser;
+    public void setIdCustomer(customer idCustomer) {
+        this.idCustomer = idCustomer;
     }
 
     public Date getDateCreat() {

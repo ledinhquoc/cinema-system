@@ -2,7 +2,7 @@ package codegym.module4.QuocVietPackage.Controllers;
 
 
 import codegym.module4.QuocVietPackage.Entities.point;
-import codegym.module4.QuocVietPackage.Entities.user;
+import codegym.module4.QuocVietPackage.Entities.customer;
 import codegym.module4.QuocVietPackage.Services.pointService;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
@@ -29,7 +29,7 @@ public class PointController {
 
 
     @GetMapping("/{id}")
-    public List<point> getPointDetails(@PathVariable user id) {
+    public List<point> getPointDetails(@PathVariable customer id) {
 
 
 
@@ -38,8 +38,8 @@ public class PointController {
 
 
     @GetMapping("{id}/{from}/{to}/{status}")
-    public List<point> getPointDetailsDate(@PathVariable user id,@PathVariable("from") @DateTimeFormat(pattern="yyyy-MM-dd") Date from,@PathVariable("to") @DateTimeFormat(pattern="yyyy-MM-dd") Date to
-            ,@PathVariable String status) {
+    public List<point> getPointDetailsDate(@PathVariable customer id, @PathVariable("from") @DateTimeFormat(pattern="yyyy-MM-dd") Date from, @PathVariable("to") @DateTimeFormat(pattern="yyyy-MM-dd") Date to
+            , @PathVariable String status) {
 
         return pointService.findPointByDate2(from, to, id ,status);
     }

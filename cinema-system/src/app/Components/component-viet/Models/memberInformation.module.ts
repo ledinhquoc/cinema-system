@@ -1,7 +1,5 @@
 export class MemberInformationModule {
   id:number;
-  userName:string;
-  password:string;
   fullName:string;
   birthday:string;
   gender:string;
@@ -9,4 +7,5 @@ export class MemberInformationModule {
   email:string;
   phone:string;
   address:string;
+  idUser:any[];
 }
