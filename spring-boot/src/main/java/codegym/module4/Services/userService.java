@@ -1,6 +1,6 @@
-package codegym.module4.User_Customer_MangePoint.Services;
+package codegym.module4.Services;
 
-import codegym.module4.User_Customer_MangePoint.Entities.user;
+import codegym.module4.Entities.user;
 
 import java.util.List;
 

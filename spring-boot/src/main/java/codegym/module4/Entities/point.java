@@ -1,4 +1,4 @@
-package codegym.module4.User_Customer_MangePoint.Entities;
+package codegym.module4.Entities;
 
 
 import org.springframework.format.annotation.DateTimeFormat;

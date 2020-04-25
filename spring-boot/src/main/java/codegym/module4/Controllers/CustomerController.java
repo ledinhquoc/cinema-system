@@ -1,8 +1,8 @@
-package codegym.module4.User_Customer_MangePoint.Controllers;
+package codegym.module4.Controllers;
 
 
-import codegym.module4.User_Customer_MangePoint.Entities.customer;
-import codegym.module4.User_Customer_MangePoint.Services.customerService;
+import codegym.module4.Entities.customer;
+import codegym.module4.Services.customerService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

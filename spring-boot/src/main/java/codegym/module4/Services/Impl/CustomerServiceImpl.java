@@ -1,7 +1,8 @@
-package codegym.module4.User_Customer_MangePoint.Services;
+package codegym.module4.Services.Impl;
 
-import codegym.module4.User_Customer_MangePoint.Entities.customer;
-import codegym.module4.User_Customer_MangePoint.Repositories.CustomerRepository;
+import codegym.module4.Entities.customer;
+import codegym.module4.Repositories.CustomerRepository;
+import codegym.module4.Services.customerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
