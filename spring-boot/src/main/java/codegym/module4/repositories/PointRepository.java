@@ -1,7 +1,7 @@
-package codegym.module4.Repositories;
+package codegym.module4.repositories;
 
-import codegym.module4.Entities.point;
-import codegym.module4.Entities.customer;
+import codegym.module4.entities.point;
+import codegym.module4.entities.customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,6 +1,6 @@
-package codegym.module4.Services;
+package codegym.module4.services;
 
-import codegym.module4.Entities.customer;
+import codegym.module4.entities.customer;
 
 import java.util.List;
 

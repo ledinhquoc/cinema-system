@@ -1,8 +1,8 @@
-package codegym.module4.Controllers;
+package codegym.module4.controllers;
 
 
-import codegym.module4.Entities.user;
-import codegym.module4.Services.userService;
+import codegym.module4.entities.user;
+import codegym.module4.services.userService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,7 +16,7 @@ public class UserController {
     private final userService userService;
 
 
-    public UserController(codegym.module4.Services.userService userService) {
+    public UserController(codegym.module4.services.userService userService) {
         this.userService = userService;
     }
 

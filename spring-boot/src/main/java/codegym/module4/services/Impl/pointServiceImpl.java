@@ -1,9 +1,9 @@
-package codegym.module4.Services.Impl;
+package codegym.module4.services.Impl;
 
-import codegym.module4.Entities.point;
-import codegym.module4.Entities.customer;
-import codegym.module4.Repositories.PointRepository;
-import codegym.module4.Services.pointService;
+import codegym.module4.entities.point;
+import codegym.module4.entities.customer;
+import codegym.module4.repositories.PointRepository;
+import codegym.module4.services.pointService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

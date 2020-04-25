@@ -1,9 +1,9 @@
-package codegym.module4.Controllers;
+package codegym.module4.controllers;
 
 
-import codegym.module4.Entities.point;
-import codegym.module4.Entities.customer;
-import codegym.module4.Services.pointService;
+import codegym.module4.entities.point;
+import codegym.module4.entities.customer;
+import codegym.module4.services.pointService;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 

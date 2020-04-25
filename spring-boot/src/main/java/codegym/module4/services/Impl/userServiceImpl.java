@@ -1,8 +1,8 @@
-package codegym.module4.Services.Impl;
+package codegym.module4.services.Impl;
 
-import codegym.module4.Entities.user;
-import codegym.module4.Repositories.UserRepository;
-import codegym.module4.Services.userService;
+import codegym.module4.entities.user;
+import codegym.module4.repositories.UserRepository;
+import codegym.module4.services.userService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
