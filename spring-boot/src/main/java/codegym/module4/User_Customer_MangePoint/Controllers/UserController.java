@@ -1,8 +1,8 @@
-package codegym.module4.QuocVietPackage.Controllers;
+package codegym.module4.User_Customer_MangePoint.Controllers;
 
 
-import codegym.module4.QuocVietPackage.Entities.user;
-import codegym.module4.QuocVietPackage.Services.userService;
+import codegym.module4.User_Customer_MangePoint.Entities.user;
+import codegym.module4.User_Customer_MangePoint.Services.userService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,7 +16,7 @@ public class UserController {
     private final userService userService;
 
 
-    public UserController(codegym.module4.QuocVietPackage.Services.userService userService) {
+    public UserController(codegym.module4.User_Customer_MangePoint.Services.userService userService) {
         this.userService = userService;
     }
 

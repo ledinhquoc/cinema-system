@@ -1,6 +1,6 @@
-package codegym.module4.QuocVietPackage.Repositories;
+package codegym.module4.User_Customer_MangePoint.Repositories;
 
-import codegym.module4.QuocVietPackage.Entities.user;
+import codegym.module4.User_Customer_MangePoint.Entities.user;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

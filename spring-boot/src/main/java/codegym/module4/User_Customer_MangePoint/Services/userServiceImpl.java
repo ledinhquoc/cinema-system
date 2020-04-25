@@ -1,9 +1,7 @@
-package codegym.module4.QuocVietPackage.Services;
+package codegym.module4.User_Customer_MangePoint.Services;
 
-import codegym.module4.QuocVietPackage.Entities.customer;
-import codegym.module4.QuocVietPackage.Entities.user;
-import codegym.module4.QuocVietPackage.Repositories.PointRepository;
-import codegym.module4.QuocVietPackage.Repositories.UserRepository;
+import codegym.module4.User_Customer_MangePoint.Entities.user;
+import codegym.module4.User_Customer_MangePoint.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

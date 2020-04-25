@@ -1,10 +1,8 @@
-package codegym.module4.QuocVietPackage.Controllers;
+package codegym.module4.User_Customer_MangePoint.Controllers;
 
 
-import codegym.module4.QuocVietPackage.Entities.customer;
-import codegym.module4.QuocVietPackage.Entities.user;
-import codegym.module4.QuocVietPackage.Services.customerService;
-import codegym.module4.QuocVietPackage.Services.userService;
+import codegym.module4.User_Customer_MangePoint.Entities.customer;
+import codegym.module4.User_Customer_MangePoint.Services.customerService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
