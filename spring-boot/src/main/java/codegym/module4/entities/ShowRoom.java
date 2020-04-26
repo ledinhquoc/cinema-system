@@ -26,7 +26,7 @@ public class ShowRoom {
     private String screen;
 
     @OneToMany(mappedBy = "showRoom")
-    @JsonBackReference
+    @JsonManagedReference
     private List<_Row> _rows;
 
     /**

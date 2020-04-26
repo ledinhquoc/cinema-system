@@ -25,11 +25,11 @@ public class MovieSchedule {
     private Date openingDay;
 
     @ManyToOne
-    @JsonManagedReference
+    @JsonBackReference
     private ShowTime showTime;
 
     @ManyToOne
-    @JsonManagedReference
+    @JsonBackReference
     private Movie movie;
 
     /**

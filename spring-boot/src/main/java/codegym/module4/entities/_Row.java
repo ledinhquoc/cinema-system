@@ -24,12 +24,13 @@ public class _Row {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+
     @ManyToOne
-    @JsonManagedReference
+    @JsonBackReference
     private ShowRoom showRoom;
 
     @OneToMany(mappedBy = "_row")
-    @JsonBackReference
+    @JsonManagedReference
     private List<Seat> seats;
 
     /**

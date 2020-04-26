@@ -1,5 +1,6 @@
 package codegym.module4.entities;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -22,9 +23,33 @@ public class Promotion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    private Date promotionDate;
+
+    private String promotionImage;
+
     @OneToMany(mappedBy = "promotion")
-    @JsonBackReference
+    @JsonManagedReference
     private List<Ticket> tickets;
+
+    public Date getPromotionDate()
+    {
+        return this.promotionDate;
+    }
+
+    public void setPromotionDate(Date promotionDate)
+    {
+        this.promotionDate = promotionDate;
+    }
+
+    public String getPromotionImage()
+    {
+        return this.promotionImage;
+    }
+
+    public void setPromotionImage(String promotionImage)
+    {
+        this.promotionImage = promotionImage;
+    }
 
     /**
      * @return the id

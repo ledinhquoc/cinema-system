@@ -28,7 +28,7 @@ public class Point {
     private String pointStatus;
 
     @ManyToOne
-    @JsonManagedReference
+    @JsonBackReference
     private Customer customer;
 
     /**
