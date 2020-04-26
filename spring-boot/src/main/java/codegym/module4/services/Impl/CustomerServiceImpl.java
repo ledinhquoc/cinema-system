@@ -1,16 +1,16 @@
-package codegym.module4.services.Impl;
+package codegym.module4.services.impl;
 
-import codegym.module4.entities.customer;
+import codegym.module4.entities.Customer;
 import codegym.module4.repositories.CustomerRepository;
-import codegym.module4.services.customerService;
+import codegym.module4.services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class CustomerServiceImpl implements customerService {
-@Autowired
+public class CustomerServiceImpl implements CustomerService {
+    @Autowired
     private CustomerRepository customerRepository;
 
     public CustomerServiceImpl(CustomerRepository customerRepository) {
@@ -18,17 +18,17 @@ public class CustomerServiceImpl implements customerService {
     }
 
     @Override
-    public customer findCustomerById(int id) {
+    public Customer findCustomerById(int id) {
         return customerRepository.findById(id).get();
     }
 
     @Override
-    public List<customer> findAllCustomer() {
+    public List<Customer> findAllCustomer() {
         return customerRepository.findAll();
     }
 
     @Override
-    public customer saveCustomer(customer customer) {
+    public Customer saveCustomer(Customer customer) {
         return customerRepository.save(customer);
     }
 }
