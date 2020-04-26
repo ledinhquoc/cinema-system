@@ -10,9 +10,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
-@Table(name = "points")
+@Table(name = "point")
 public class Point {
     public Point() {
     }
@@ -27,7 +28,7 @@ public class Point {
     private String pointStatus;
 
     @ManyToOne
-    @JsonBackReference
+    @JsonManagedReference
     private Customer customer;
 
     /**

@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
-@Table(name = "_rows")
+@Table(name = "_row")
 public class _Row {
 
     public _Row() {
@@ -25,11 +25,11 @@ public class _Row {
     private int id;
 
     @ManyToOne
-    @JsonBackReference
+    @JsonManagedReference
     private ShowRoom showRoom;
 
     @OneToMany(mappedBy = "_row")
-    @JsonManagedReference
+    @JsonBackReference
     private List<Seat> seats;
 
     /**

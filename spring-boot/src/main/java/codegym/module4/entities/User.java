@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
-@Table(name = "users")
+@Table(name = "user")
 public class User {
     public User() {
     }
@@ -30,15 +30,15 @@ public class User {
 
     @ManyToMany
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-    @JsonManagedReference
+    // @JsonManagedReference
     private List<Role> roles;
 
     @ManyToOne
-    @JsonBackReference
+    @JsonManagedReference
     private Customer customer;
 
     @ManyToOne
-    @JsonBackReference
+    @JsonManagedReference
     private Employee employee;
 
     /**

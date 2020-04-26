@@ -12,7 +12,7 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
-@Table(name = "roles")
+@Table(name = "role")
 public class Role {
     public Role() {
     }
@@ -24,7 +24,7 @@ public class Role {
     private String name;
 
     @ManyToMany(mappedBy = "roles")
-    @JsonBackReference
+    // @JsonBackReference
     private List<User> users;
 
     /**

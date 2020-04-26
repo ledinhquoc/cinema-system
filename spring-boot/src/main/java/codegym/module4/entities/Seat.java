@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
-@Table(name = "seats")
+@Table(name = "seat")
 public class Seat {
     public Seat() {
     }
@@ -29,11 +29,11 @@ public class Seat {
     private boolean isVip;
 
     @ManyToOne
-    @JsonBackReference
+    @JsonManagedReference
     private _Row _row;
 
     @OneToMany(mappedBy = "seat")
-    @JsonManagedReference
+    @JsonBackReference
     private List<Ticket> tickets;
 
     /**
