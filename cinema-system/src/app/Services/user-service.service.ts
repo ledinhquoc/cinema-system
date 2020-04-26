@@ -8,7 +8,7 @@ import {Observable} from 'rxjs';
 export class UserServiceService {
 
 
-  public API: string = 'http://localhost:8433/api/v1/users';
+  public API: string = 'http://localhost:8080/api/v1/users';
 
   constructor(public http: HttpClient) {
   }
