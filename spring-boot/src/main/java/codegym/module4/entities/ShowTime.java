@@ -10,10 +10,11 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
-@Table(name = "showtimes")
+@Table(name = "showtime")
 public class ShowTime {
     public ShowTime() {
     }
@@ -22,12 +23,12 @@ public class ShowTime {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private Date hourStart;
-    private Date hourEnd;
+    private String hourStart;
+    private String hourEnd;
 
     @OneToMany(mappedBy = "showTime")
-    @JsonManagedReference
-    private List<MovieSchedules> movieSchedules;
+    @JsonBackReference
+    private List<MovieSchedule> movieSchedules;
 
     /**
      * @return the id
@@ -46,42 +47,42 @@ public class ShowTime {
     /**
      * @return the hourStart
      */
-    public Date getHourStart() {
+    public String getHourStart() {
         return hourStart;
     }
 
     /**
      * @param hourStart the hourStart to set
      */
-    public void setHourStart(Date hourStart) {
+    public void setHourStart(String hourStart) {
         this.hourStart = hourStart;
     }
 
     /**
      * @return the hourEnd
      */
-    public Date getHourEnd() {
+    public String getHourEnd() {
         return hourEnd;
     }
 
     /**
      * @param hourEnd the hourEnd to set
      */
-    public void setHourEnd(Date hourEnd) {
+    public void setHourEnd(String hourEnd) {
         this.hourEnd = hourEnd;
     }
 
     /**
      * @return the movieSchedules
      */
-    public List<MovieSchedules> getMovieSchedules() {
+    public List<MovieSchedule> getMovieSchedules() {
         return movieSchedules;
     }
 
     /**
      * @param movieSchedules the movieSchedules to set
      */
-    public void setMovieSchedules(List<MovieSchedules> movieSchedules) {
+    public void setMovieSchedules(List<MovieSchedule> movieSchedules) {
         this.movieSchedules = movieSchedules;
     }
 }

@@ -10,11 +10,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
-@Table(name = "movie_schedules")
-public class MovieSchedules {
-    public MovieSchedules() {
+@Table(name = "movie_schedule")
+public class MovieSchedule {
+    public MovieSchedule() {
     }
 
     @Id
@@ -24,11 +25,11 @@ public class MovieSchedules {
     private Date openingDay;
 
     @ManyToOne
-    @JsonBackReference
+    @JsonManagedReference
     private ShowTime showTime;
 
     @ManyToOne
-    @JsonBackReference
+    @JsonManagedReference
     private Movie movie;
 
     /**

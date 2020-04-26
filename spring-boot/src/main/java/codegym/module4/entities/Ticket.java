@@ -8,9 +8,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
-@Table(name = "tickets")
+@Table(name = "ticket")
 public class Ticket {
     public Ticket() {
     }
@@ -28,24 +29,24 @@ public class Ticket {
     private Seat seat;
 
     @ManyToOne
-    @JsonBackReference
-    private TicketPrices ticketPrices;
+    @JsonManagedReference
+    private TicketPrice ticketPrice;
 
     @ManyToOne
-    @JsonBackReference
+    @JsonManagedReference
     private Promotion promotion;
 
     @ManyToOne
-    @JsonBackReference
+    @JsonManagedReference
     private Customer customer;
 
     @ManyToOne
-    @JsonBackReference
+    @JsonManagedReference
     private Employee employee;
 
     @ManyToOne
-    @JsonBackReference
-    private MovieSchedules movieSchedules;
+    @JsonManagedReference
+    private MovieSchedule movieSchedule;
 
     /**
      * @return the id
@@ -120,15 +121,15 @@ public class Ticket {
     /**
      * @return the ticketPrices
      */
-    public TicketPrices getTicketPrices() {
-        return ticketPrices;
+    public TicketPrice getTicketPrices() {
+        return ticketPrice;
     }
 
     /**
      * @param ticketPrices the ticketPrices to set
      */
-    public void setTicketPrices(TicketPrices ticketPrices) {
-        this.ticketPrices = ticketPrices;
+    public void setTicketPrices(TicketPrice ticketPrices) {
+        this.ticketPrice = ticketPrices;
     }
 
     /**
@@ -176,14 +177,14 @@ public class Ticket {
     /**
      * @return the movieSchedules
      */
-    public MovieSchedules getMovieSchedules() {
-        return movieSchedules;
+    public MovieSchedule getMovieSchedules() {
+        return movieSchedule;
     }
 
     /**
      * @param movieSchedules the movieSchedules to set
      */
-    public void setMovieSchedules(MovieSchedules movieSchedules) {
-        this.movieSchedules = movieSchedules;
+    public void setMovieSchedules(MovieSchedule movieSchedules) {
+        this.movieSchedule = movieSchedules;
     }
 }

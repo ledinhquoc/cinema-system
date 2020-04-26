@@ -10,12 +10,13 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
-@Table(name = "ticket_prices")
-public class TicketPrices {
-    public TicketPrices() {
+@Table(name = "ticket_price")
+public class TicketPrice {
+    public TicketPrice() {
     }
 
     @Id
@@ -52,8 +53,8 @@ public class TicketPrices {
     @Column(name = "thu67CNgd")
     private double thu67CNgd;
 
-    @OneToMany(mappedBy = "ticketPrices")
-    @JsonManagedReference
+    @OneToMany(mappedBy = "ticketPrice")
+    @JsonBackReference
     private List<Ticket> tickets;
 
     /**

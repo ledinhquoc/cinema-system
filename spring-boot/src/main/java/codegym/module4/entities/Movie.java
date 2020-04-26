@@ -10,10 +10,11 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
-@Table(name = "movies")
+@Table(name = "movie")
 public class Movie {
     public Movie() {
     }
@@ -35,8 +36,8 @@ public class Movie {
     private String srcVideo;
 
     @OneToMany(mappedBy = "movie")
-    @JsonManagedReference
-    private List<MovieSchedules> movieSchedules;
+    @JsonBackReference
+    private List<MovieSchedule> movieSchedules;
 
     /**
      * @return the id
@@ -209,14 +210,14 @@ public class Movie {
     /**
      * @return the movieSchedules
      */
-    public List<MovieSchedules> getMovieSchedules() {
+    public List<MovieSchedule> getMovieSchedules() {
         return movieSchedules;
     }
 
     /**
      * @param movieSchedules the movieSchedules to set
      */
-    public void setMovieSchedules(List<MovieSchedules> movieSchedules) {
+    public void setMovieSchedules(List<MovieSchedule> movieSchedules) {
         this.movieSchedules = movieSchedules;
     }
 

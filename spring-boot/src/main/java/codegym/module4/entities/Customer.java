@@ -10,10 +10,11 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
-@Table(name = "customers")
+@Table(name = "customer")
 public class Customer {
     public Customer() {
     }
@@ -31,15 +32,15 @@ public class Customer {
     private String phone;
 
     @OneToMany(mappedBy = "customer")
-    @JsonManagedReference
+    @JsonBackReference
     private List<User> users;
 
     @OneToMany(mappedBy = "customer")
-    @JsonManagedReference
+    @JsonBackReference
     private List<Ticket> tickets;
 
     @OneToMany(mappedBy = "customer")
-    @JsonManagedReference
+    @JsonBackReference
     private List<Point> points;
 
     /**

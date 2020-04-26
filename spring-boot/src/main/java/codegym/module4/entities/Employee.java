@@ -3,6 +3,7 @@ package codegym.module4.entities;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,10 +11,11 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
-@Table(name = "employees")
+@Table(name = "employee")
 public class Employee {
     public Employee() {
     }
@@ -31,11 +33,11 @@ public class Employee {
     private String phone;
 
     @OneToMany(mappedBy = "employee")
-    @JsonManagedReference
+    @JsonBackReference
     private List<User> users;
 
     @OneToMany(mappedBy = "employee")
-    @JsonManagedReference
+    @JsonBackReference
     private List<Ticket> tickets;
 
     /**
