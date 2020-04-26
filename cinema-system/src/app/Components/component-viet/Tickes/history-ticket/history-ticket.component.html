@@ -43,7 +43,7 @@
       </tr>
       </thead>
       <tbody style="text-align: center">
-      <tr *ngFor="let pointUser of history |paginate: { itemsPerPage: 3, currentPage: p }" style="font-family: 'DM Sans', sans-serif;">
+      <tr *ngFor="let pointUser of history |paginate: { itemsPerPage: 3, currentPage: p } | filter:term" style="font-family: 'DM Sans', sans-serif;">
         <td>{{pointUser.dateCreat| date:"dd-MM-yyyy"}}</td>
         <td>{{pointUser.nameMovie}}</td>
         <td>{{pointUser.point}}</td>

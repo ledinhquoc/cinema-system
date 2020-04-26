@@ -18,6 +18,7 @@ export class TicketBookingComponent implements OnInit {
   public statusTickets2: TicketStatusModule [];
   public statusTickets3: TicketStatusModule [];
   public page: number = 1;
+  term1: any;
   constructor(public statusTicketService: StatusTicketService,
               public router: Router,
               public activatedRouteService: ActivatedRoute,) { }

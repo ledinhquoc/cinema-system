@@ -13,6 +13,7 @@ export class TicketCanceledComponent implements OnInit {
 
   public statusTickets4: TicketStatusModule [];
   public pageCancel: number = 1;
+  term: any;
   constructor(public statusTicketService: StatusTicketService,
               public router: Router,
               public activatedRouteService: ActivatedRoute,) { }

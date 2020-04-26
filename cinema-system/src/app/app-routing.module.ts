@@ -26,6 +26,7 @@ import {MatConfirmDialogComponent} from './Components/component-viet/mat-confirm
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {SeeTickerPricesComponent} from './Components/component-quy/see-ticker-prices/see-ticker-prices.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import {Ng2SearchPipeModule} from 'ng2-search-filter';
 
 
 const routes: Routes = [
@@ -59,7 +60,7 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes),
     ReactiveFormsModule, FormsModule, CommonModule, MatDialogModule,
-    MatButtonModule, MatIconModule, MatSnackBarModule, NgxPaginationModule],
+    MatButtonModule, MatIconModule, MatSnackBarModule, NgxPaginationModule,Ng2SearchPipeModule],
   exports: [RouterModule, TopBarComponent, SlideBarComponent,],
   declarations: [TopBarComponent, SlideBarComponent, InfomationComponent, HomeAccountComponent
     , HistoryTicketComponent, ErrorDisplayComponent, LoginComponent,

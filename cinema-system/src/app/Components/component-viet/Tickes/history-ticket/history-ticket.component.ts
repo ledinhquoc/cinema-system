@@ -18,6 +18,7 @@ export class HistoryTicketComponent implements OnInit {
   public to:string;
   public checkPoint:string;
   public p: number = 1;
+  term: string;
   constructor(public historyUsePointService: HistoryUsePointService,
               public router: Router,
               public activatedRouteService: ActivatedRoute,) { }

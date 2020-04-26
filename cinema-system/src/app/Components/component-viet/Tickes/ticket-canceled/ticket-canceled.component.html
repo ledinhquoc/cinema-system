@@ -1,7 +1,7 @@
 <div id="ticket-cancel">
   <h2 id="listTicketCancel" style="margin-left: 30px">Tickets Cancel List</h2>
   <div class="d-flex" id="search">
-    <input class="form-control " type="text" placeholder="Search Ticket " style="width:400px">
+    <input class="form-control " type="text" placeholder="Search Ticket " style="width:400px" [(ngModel)]="term">
     <button class="btn btn-success" type="submit" style="height: 46px" id="btnSearch">Search</button>
   </div>
 
@@ -18,7 +18,7 @@
       </tr>
       </thead>
       <tbody style="text-align: center">
-      <tr *ngFor="let status of statusTickets4 |paginate: { itemsPerPage: 3, currentPage: pageCancel }" style="font-family: 'DM Sans', sans-serif;">
+      <tr *ngFor="let status of statusTickets4 |paginate: { itemsPerPage: 3, currentPage: pageCancel } | filter:term" style="font-family: 'DM Sans', sans-serif;">
         <td>{{status.movieSchedules["movie"].movieName}}</td>
         <td>{{status.bookedTicketCode}}</td>
         <td>{{status.price}}</td>
