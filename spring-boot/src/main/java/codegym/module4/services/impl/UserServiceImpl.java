@@ -1,25 +1,25 @@
-package codegym.module4.Services.Impl;
+package codegym.module4.services.impl;
 
-import codegym.module4.Entities.user;
-import codegym.module4.Repositories.UserRepository;
-import codegym.module4.Services.userService;
+import codegym.module4.entities.User;
+import codegym.module4.repositories.UserRepository;
+import codegym.module4.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Service
-public class userServiceImpl implements userService {
+public class UserServiceImpl implements UserService {
 
 
     @Autowired
     private UserRepository userRepository;
 
-    public userServiceImpl(UserRepository userRepository) {
+    public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
     @Override
-    public user findUserById(Integer id) {
+    public User findUserById(Integer id) {
 
         return userRepository.findById(id).get();
     }
@@ -27,12 +27,12 @@ public class userServiceImpl implements userService {
 
 
     @Override
-    public List<user> findAllUsers() {
+    public List<User> findAllUsers() {
 
         return userRepository.findAll();
     }
 
     @Override
-    public user save(user user) {        return userRepository.save(user);
+    public User save(User user) {        return userRepository.save(user);
     }
 }

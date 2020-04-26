@@ -19,7 +19,7 @@ export class UserServiceService {
 
 
   updateUser(user):Observable<any>{
-    return this.http.put(`${this.API}/${user.idUser}`,user)
+    return this.http.put(`${this.API}/${user.id}`,user)
   }
 }
 

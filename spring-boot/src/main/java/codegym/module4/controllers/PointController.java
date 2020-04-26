@@ -1,9 +1,9 @@
-package codegym.module4.Controllers;
+package codegym.module4.controllers;
 
 
-import codegym.module4.Entities.point;
-import codegym.module4.Entities.customer;
-import codegym.module4.Services.pointService;
+import codegym.module4.entities.Point;
+import codegym.module4.entities.Customer;
+import codegym.module4.services.PointService;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,20 +16,20 @@ import java.util.List;
 public class PointController {
 
     public static final String BASE_URL = "/api/v1/point";
-    private final pointService pointService;
+    private final PointService pointService;
 
-    public PointController(pointService pointService) {
+    public PointController(PointService pointService) {
         this.pointService = pointService;
     }
 
     @GetMapping
-    public List<point> getAllPoint() {
+    public List<Point> getAllPoint() {
         return pointService.findAllPoint();
     }
 
 
     @GetMapping("/{id}")
-    public List<point> getPointDetails(@PathVariable customer id) {
+    public List<Point> getPointDetails(@PathVariable Customer id) {
 
 
 
@@ -38,7 +38,7 @@ public class PointController {
 
 
     @GetMapping("{id}/{from}/{to}/{status}")
-    public List<point> getPointDetailsDate(@PathVariable customer id, @PathVariable("from") @DateTimeFormat(pattern="yyyy-MM-dd") Date from, @PathVariable("to") @DateTimeFormat(pattern="yyyy-MM-dd") Date to
+    public List<Point> getPointDetailsDate(@PathVariable Customer id, @PathVariable("from") @DateTimeFormat(pattern="yyyy-MM-dd") Date from, @PathVariable("to") @DateTimeFormat(pattern="yyyy-MM-dd") Date to
             , @PathVariable String status) {
 
         return pointService.findPointByDate2(from, to, id ,status);

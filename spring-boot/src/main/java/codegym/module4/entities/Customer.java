@@ -1,7 +1,8 @@
-package codegym.module4.Entities;
+package codegym.module4.entities;
 
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -11,7 +12,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "customers")
-public class customer implements Serializable {
+public class Customer implements Serializable {
 
 
     @Id
@@ -22,9 +23,11 @@ public class customer implements Serializable {
     @Column(name = "fullName")
     private String fullName;
 
-    @JsonFormat(pattern="yyyy-MM-dd")
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+
     @Column(name = "data_of_birth")
-    private Date birthday;
+    private Date dateOfBirth;
 
     @Column(name = "gender")
     private String gender;
@@ -41,27 +44,28 @@ public class customer implements Serializable {
     @Column(name = "address")
     private String address;
 
-    @OneToMany(targetEntity = point.class)
-    private List<point> points;
+    @OneToMany(targetEntity = Point.class)
+
+    private List<Point> Points;
+
 
 
     @OneToOne
     @JoinColumn(name = "user_id")
-    private user idUser;
+    private User user;
 
 
 
-//    @OneToMany(targetEntity = ticket.class)
-//    private List<ticket> ticket;
 
 
-    public customer(int id, String userName, String password,user idUser,
+
+    public Customer(int id, String userName, String password, User idUser,
                     String fullName, Date birthday, String gender, String idCard, String email, String phone, String address) {
         this.id = id;
-this.idUser=idUser;
+this.user=idUser;
 
         this.fullName = fullName;
-        this.birthday = birthday;
+        this.dateOfBirth = birthday;
         this.gender = gender;
         this.idCard = idCard;
         this.email = email;
@@ -77,12 +81,12 @@ this.idUser=idUser;
         this.id = id;
     }
 
-    public user getIdUser() {
-        return idUser;
+    public User getUser() {
+        return user;
     }
 
-    public void setIdUser(user idUser) {
-        this.idUser = idUser;
+    public void setUser(User idUser) {
+        this.user = idUser;
     }
 
     public String getFullName() {
@@ -94,11 +98,11 @@ this.idUser=idUser;
     }
 
     public Date getBirthday() {
-        return birthday;
+        return dateOfBirth;
     }
 
     public void setBirthday(Date birthday) {
-        this.birthday = birthday;
+        this.dateOfBirth = birthday;
     }
 
     public String getGender() {
@@ -141,6 +145,6 @@ this.idUser=idUser;
         this.address = address;
     }
 
-    public customer() {
+    public Customer() {
     }
 }

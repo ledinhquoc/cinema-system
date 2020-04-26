@@ -1,16 +1,16 @@
-package codegym.module4.Services;
+package codegym.module4.services;
 
-import codegym.module4.Entities.point;
-import codegym.module4.Entities.customer;
+import codegym.module4.entities.Point;
+import codegym.module4.entities.Customer;
 
 import java.util.Date;
 import java.util.List;
 
-public interface pointService {
+public interface PointService {
 
 
-    List<point> findPointByDate(customer idCustomer);
-    List<point> findPointByDate2(Date form, Date to, customer idCustomer, String status);
-    List<point> findAllPoint();
+    List<Point> findPointByDate(Customer idCustomer);
+    List<Point> findPointByDate2(Date form, Date to, Customer idCustomer, String status);
+    List<Point> findAllPoint();
 
 }

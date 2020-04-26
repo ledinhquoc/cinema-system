@@ -8,7 +8,7 @@
         <!--      INPUT NAME-->
         <div class="d-flex" style="margin-top: 20px">
           <span style="margin-left: 30px">User Name: </span>
-        <span id="input-Account"   class="form-control">{{member.idUser['name_user']}}</span>
+        <span id="input-Account"   class="form-control">{{member.user['name']}}</span>
         </div>
 
 
@@ -24,7 +24,7 @@
         <!--      INPUT BIRTHDAY-->
         <div class="d-flex" style="margin-top: 15px">
           <span style="margin-left: 30px">Birthday: </span>
-          <span id="input-birthday" class="form-control">{{member.birthday}}</span>
+          <span id="input-birthday" class="form-control">{{member.birthday|date:"dd-MM-yyyy"}}</span>
 
         </div>
 

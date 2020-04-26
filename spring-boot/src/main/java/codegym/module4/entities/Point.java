@@ -1,6 +1,7 @@
-package codegym.module4.Entities;
+package codegym.module4.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -8,7 +9,7 @@ import java.util.Date;
 
 @Entity
 @Table(name="points")
-public class point {
+public class Point {
 
 
     @Id
@@ -16,9 +17,6 @@ public class point {
     @Column(name = "point_id")
     private long id;
 
-    @ManyToOne
-    @JoinColumn(name = "customer_id")
-    private customer idCustomer;
 
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -37,15 +35,21 @@ public class point {
     private String pointStatus;
 
 
-    public point() {
+
+    @ManyToOne
+    @JsonManagedReference
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
+
+    public Point() {
     }
 
-    public point(long id, customer idCustomer, Date dateCreat, String nameMovie, String point, String pointStatus) {
+    public Point(long id, Customer idCustomer, Date dateCreat, String nameMovie, String point, String pointStatus) {
         this.id = id;
         this.dateCreat = dateCreat;
         this.nameMovie = nameMovie;
         this.point = point;
-        this.idCustomer = idCustomer;
+        this.customer = idCustomer;
        this.pointStatus=pointStatus;
     }
 
@@ -58,12 +62,12 @@ public class point {
         this.id = id;
     }
 
-    public customer getIdCustomer() {
-        return idCustomer;
+    public Customer getIdCustomer() {
+        return customer;
     }
 
-    public void setIdCustomer(customer idCustomer) {
-        this.idCustomer = idCustomer;
+    public void setIdCustomer(Customer idCustomer) {
+        this.customer = idCustomer;
     }
 
     public Date getDateCreat() {

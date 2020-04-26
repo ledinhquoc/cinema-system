@@ -1,4 +1,4 @@
-package codegym.module4.Entities;
+package codegym.module4.entities;
 
 import javax.persistence.*;
 
@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="users")
-public class user {
+public class User {
 
 
 
@@ -22,24 +22,24 @@ public class user {
     String password;
 
     @Column(name = "name")
-    String name_user;
+    String name;
 
 
 
-    public user(int idUser, String password, String name_user) {
+    public User(int idUser, String password, String name_user) {
         this.id = idUser;
         this.password = password;
-        this.name_user = name_user;
+        this.name = name_user;
     }
 
-    public user() {
+    public User() {
     }
 
-    public int getIdUser() {
+    public int getId() {
         return id;
     }
 
-    public void setIdUser(int idUser) {
+    public void setId(int idUser) {
         this.id = idUser;
     }
 
@@ -51,11 +51,11 @@ public class user {
         this.password = password;
     }
 
-    public String getName_user() {
-        return name_user;
+    public String getName() {
+        return name;
     }
 
-    public void setName_user(String name_user) {
-        this.name_user = name_user;
+    public void setName(String name_user) {
+        this.name = name;
     }
 }

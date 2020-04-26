@@ -1,8 +1,8 @@
-package codegym.module4.Controllers;
+package codegym.module4.controllers;
 
 
-import codegym.module4.Entities.customer;
-import codegym.module4.Services.customerService;
+import codegym.module4.entities.Customer;
+import codegym.module4.services.CustomerService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,28 +14,28 @@ public class CustomerController {
 
     public static final String BASE_URL = "/api/v1/customers";
 
-    private final customerService customerService;
+    private final CustomerService customerService;
 
 
 
-    public CustomerController(customerService customerService) {
+    public CustomerController(CustomerService customerService) {
         this.customerService = customerService;
     }
 
     @GetMapping
-    public List<customer> getAllUser() {
+    public List<Customer> getAllUser() {
         return customerService.findAllCustomer();
     }
 
     @GetMapping("/{id}")
-    public customer getUserByID(@PathVariable int id){
+    public Customer getUserByID(@PathVariable int id){
         return customerService.findCustomerById(id);
     }
 
 
     @PutMapping("/{id}")
-    public customer updateCustomer(@PathVariable int id, @RequestBody customer customerUpdate){
-        customer customerDetails = customerService.findCustomerById(id);
+    public Customer updateCustomer(@PathVariable int id, @RequestBody Customer customerUpdate){
+        Customer customerDetails = customerService.findCustomerById(id);
         customerDetails.setAddress(customerUpdate.getAddress());
         customerDetails.setBirthday(customerUpdate.getBirthday());
         customerDetails.setEmail(customerUpdate.getEmail());

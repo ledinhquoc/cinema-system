@@ -1,14 +1,14 @@
-package codegym.module4.Services;
+package codegym.module4.services;
 
-import codegym.module4.Entities.customer;
+import codegym.module4.entities.Customer;
 
 import java.util.List;
 
-public interface customerService {
+public interface CustomerService {
 
-    customer findCustomerById(int id);
+    Customer findCustomerById(int id);
 
-    List<customer> findAllCustomer();
+    List<Customer> findAllCustomer();
 
-    customer saveCustomer(customer customer);
+    Customer saveCustomer(Customer customer);
 }

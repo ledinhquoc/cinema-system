@@ -1,19 +1,19 @@
-package codegym.module4.Repositories;
+package codegym.module4.repositories;
 
-import codegym.module4.Entities.point;
-import codegym.module4.Entities.customer;
+import codegym.module4.entities.Point;
+import codegym.module4.entities.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Date;
 import java.util.List;
 @Repository
-public interface PointRepository extends JpaRepository<point, Long> {
+public interface PointRepository extends JpaRepository<Point, Long> {
 
-    List<point> findByIdCustomer(customer idCustomer);
+    List<Point> findByCustomer(Customer idCustomer);
 
 
-    List<point> findByDateCreatBetweenAndIdCustomerAndAndPointStatus(Date from, Date to, customer idCustomer, String status);
+    List<Point> findByDateCreatBetweenAndCustomerAndAndPointStatus(Date from, Date to, Customer idCustomer, String status);
 
 
 }

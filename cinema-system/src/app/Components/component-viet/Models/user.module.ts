@@ -1,5 +1,5 @@
 export class UserModule {
-  idUser:number;
-  name_user:string;
+  id:number;
+  name:string;
   password:string;
 }
