@@ -1,4 +1,4 @@
-package codegym.module4.services.impl;
+package codegym.module4.services.Impl;
 
 import codegym.module4.entities.User;
 import codegym.module4.repositories.UserRepository;
