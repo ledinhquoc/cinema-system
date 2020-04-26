@@ -17,7 +17,7 @@ public class Customer implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "customer_id")
+    @Column(name = "id")
     private int id;
 
     @Column(name = "fullName")
@@ -26,7 +26,7 @@ public class Customer implements Serializable {
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(value=TemporalType.DATE)
-    @Column(name = "data_of_birth")
+    @Column(name = "date_of_birth")
     private Date dateOfBirth;
 
     @Column(name = "gender")

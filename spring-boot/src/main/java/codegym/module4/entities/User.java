@@ -12,7 +12,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "user_id")
+    @Column(name = "id")
     int id;
 
 
@@ -23,6 +23,9 @@ public class User {
     @Column(name = "name")
     String name;
 
+    @Column(name = "status")
+    String status;
+
 
 
     @ManyToMany
@@ -30,10 +33,11 @@ public class User {
     private List<Role> roles;
 
 
-    public User(int idUser, String password, String name_user) {
+    public User(int idUser, String password, String name_user, String status) {
         this.id = idUser;
         this.password = password;
         this.name = name_user;
+        this.status = status;
     }
 
     public User() {
@@ -61,5 +65,12 @@ public class User {
 
     public void setName(String name_user) {
         this.name = name;
+    }
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

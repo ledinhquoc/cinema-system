@@ -16,7 +16,7 @@ public class _Row {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "row_id")
+    @Column(name = "id")
     private int id;
 
     @ManyToOne

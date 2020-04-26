@@ -16,7 +16,7 @@ public class ShowTime {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "showtime_id")
+    @Column(name = "id")
 
     private int id;
     @Column(name = "hour_start")

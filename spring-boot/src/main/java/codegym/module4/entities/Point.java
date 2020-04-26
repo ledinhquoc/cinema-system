@@ -14,7 +14,7 @@ public class Point {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "point_id")
+    @Column(name = "id")
     private long id;
 
 
