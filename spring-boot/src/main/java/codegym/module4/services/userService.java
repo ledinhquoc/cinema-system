@@ -1,17 +1,15 @@
 package codegym.module4.services;
 
-import codegym.module4.entities.user;
+import codegym.module4.entities.User;
 
 import java.util.List;
 
-public interface userService {
+public interface UserService {
 
-    user findUserById(Integer id);
+    User findUserById(Integer id);
 
-    List<user> findAllUsers();
+    List<User> findAllUsers();
 
-    user save(user user);
-
-
+    User save(User user);
 
 }

@@ -1,37 +1,37 @@
-package codegym.module4.services.Impl;
+package codegym.module4.services.impl;
 
-import codegym.module4.entities.point;
-import codegym.module4.entities.customer;
+import codegym.module4.entities.Point;
+import codegym.module4.entities.Customer;
 import codegym.module4.repositories.PointRepository;
-import codegym.module4.services.pointService;
+import codegym.module4.services.PointService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
 
-
 @Service
-public class pointServiceImpl implements pointService {
-  @Autowired
+public class PointServiceImpl implements PointService {
+    @Autowired
     private PointRepository pointRepository;
 
-    public pointServiceImpl(PointRepository pointRepository) {
+    public PointServiceImpl(PointRepository pointRepository) {
         this.pointRepository = pointRepository;
     }
 
     @Override
-    public List<point> findPointByDate(customer idCustomer) {
+    public List<Point> findPointByDate(Customer idCustomer) {
         return pointRepository.findByIdCustomer(idCustomer);
     }
 
     @Override
-    public List<point> findPointByDate2(Date form, Date to, customer idCustomer, String status) {
+    public List<Point> findPointByDate2(Date form, Date to, Customer idCustomer, String status) {
         return pointRepository.findByDateCreatBetweenAndIdCustomerAndAndPointStatus(form, to, idCustomer, status);
     }
 
     @Override
-    public List<point> findAllPoint() {
+    public List<Point> findAllPoint() {
         return pointRepository.findAll();
     }
 }
