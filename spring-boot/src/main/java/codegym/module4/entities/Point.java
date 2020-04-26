@@ -1,4 +1,4 @@
-package codegym.module4.toantr.persistence.model;
+package codegym.module4.entities;
 
 import java.util.Date;
 
