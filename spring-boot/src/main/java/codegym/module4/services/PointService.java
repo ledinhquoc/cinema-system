@@ -9,8 +9,8 @@ import java.util.List;
 public interface PointService {
 
 
-    List<Point> findPointByDate(Customer idCustomer);
-    List<Point> findPointByDate2(Date form, Date to, Customer idCustomer, String status);
+    List<Point> findPointByCustomer(Customer Customer);
+    List<Point> findPointByDateFormDate(Date form, Date to, Customer idCustomer, String status);
     List<Point> findAllPoint();
 
 }

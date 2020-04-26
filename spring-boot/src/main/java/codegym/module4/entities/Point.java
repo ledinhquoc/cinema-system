@@ -37,7 +37,6 @@ public class Point {
 
 
     @ManyToOne
-    @JsonManagedReference
     @JoinColumn(name = "customer_id")
     private Customer customer;
 

@@ -25,7 +25,7 @@ public class Customer implements Serializable {
 
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-
+    @Temporal(value=TemporalType.DATE)
     @Column(name = "data_of_birth")
     private Date dateOfBirth;
 
@@ -45,7 +45,6 @@ public class Customer implements Serializable {
     private String address;
 
     @OneToMany(targetEntity = Point.class)
-
     private List<Point> Points;
 
 
@@ -56,7 +55,8 @@ public class Customer implements Serializable {
 
 
 
-
+    @OneToMany(targetEntity = Ticket.class)
+    private List<Ticket> tickets;
 
 
     public Customer(int id, String userName, String password, User idUser,

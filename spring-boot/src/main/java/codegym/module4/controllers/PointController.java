@@ -33,7 +33,7 @@ public class PointController {
 
 
 
-        return pointService.findPointByDate(id);
+        return pointService.findPointByCustomer(id);
     }
 
 
@@ -41,6 +41,6 @@ public class PointController {
     public List<Point> getPointDetailsDate(@PathVariable Customer id, @PathVariable("from") @DateTimeFormat(pattern="yyyy-MM-dd") Date from, @PathVariable("to") @DateTimeFormat(pattern="yyyy-MM-dd") Date to
             , @PathVariable String status) {
 
-        return pointService.findPointByDate2(from, to, id ,status);
+        return pointService.findPointByDateFormDate(from, to, id ,status);
     }
 }

@@ -12,17 +12,17 @@
       <thead>
       <tr style="text-align: center">
         <th>Movie Name</th>
-        <th>Date Order</th>
+        <th>ID Order</th>
         <th>Total Money</th>
         <th>Status</th>
       </tr>
       </thead>
       <tbody style="text-align: center">
-      <tr *ngFor="let status of statusTickets4 |paginate: { itemsPerPage: 3, currentPage: pageCancel }">
-        <td>{{status.nameMovie}}</td>
-        <td>{{status.dateOfOrder | date:"dd-MM-yyyy"}}</td>
-        <td>{{status.totalMoney}}</td>
-        <td>{{status.status}}</td>
+      <tr *ngFor="let status of statusTickets4 |paginate: { itemsPerPage: 3, currentPage: pageCancel }" style="font-family: 'DM Sans', sans-serif;">
+        <td>{{status.movieSchedules["movie"].movieName}}</td>
+        <td>{{status.bookedTicketCode}}</td>
+        <td>{{status.price}}</td>
+        <td>{{status.orderStatus}}</td>
       </tr>
 
       </tbody>

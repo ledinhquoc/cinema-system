@@ -1,8 +1,7 @@
 package codegym.module4.entities;
 
 import javax.persistence.*;
-
-
+import java.util.List;
 
 
 @Entity
@@ -24,6 +23,11 @@ public class User {
     @Column(name = "name")
     String name;
 
+
+
+    @ManyToMany
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private List<Role> roles;
 
 
     public User(int idUser, String password, String name_user) {
