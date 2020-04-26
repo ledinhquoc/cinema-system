@@ -8,7 +8,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name="points")
+@Table(name="point")
 public class Point {
 
 

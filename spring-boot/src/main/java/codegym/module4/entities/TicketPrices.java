@@ -13,7 +13,7 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
-@Table(name = "ticket_prices")
+@Table(name = "ticket_price")
 public class TicketPrices {
     public TicketPrices() {
     }

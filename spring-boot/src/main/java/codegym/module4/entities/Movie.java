@@ -8,7 +8,7 @@ import javax.persistence.*;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
-@Table(name = "movies")
+@Table(name = "movie")
 public class Movie {
     public Movie() {
     }

@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
-@Table(name = "seats")
+@Table(name = "seat")
 public class Seat {
     public Seat() {
     }

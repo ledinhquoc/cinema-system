@@ -8,7 +8,7 @@ import javax.persistence.*;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
-@Table(name = "employees")
+@Table(name = "employee")
 public class Employee {
     public Employee() {
     }
@@ -22,7 +22,7 @@ public class Employee {
     @Column(name = "full_name")
     private String fullName;
 
-    @Column(name = "date_of_birth")
+    @Column(name = "data_of_birth")
     private Date dateOfBirth;
 
     @Column(name = "gender")

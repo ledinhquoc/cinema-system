@@ -7,7 +7,7 @@ import javax.persistence.*;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
-@Table(name = "movie_schedules")
+@Table(name = "movie_schedule")
 public class MovieSchedules {
     public MovieSchedules() {
     }
@@ -24,7 +24,7 @@ public class MovieSchedules {
 
     @ManyToOne
 
-    @JoinColumn(name = "showtime_id")
+    @JoinColumn(name = "show_time_id")
     private ShowTime showTime;
 
     @ManyToOne

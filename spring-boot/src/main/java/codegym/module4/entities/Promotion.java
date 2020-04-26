@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name = "promotions")
+@Table(name = "promotion")
 public class Promotion {
 
 

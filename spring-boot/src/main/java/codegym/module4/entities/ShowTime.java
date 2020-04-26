@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
-@Table(name = "showtimes")
+@Table(name = "showtime")
 public class ShowTime {
     public ShowTime() {
     }

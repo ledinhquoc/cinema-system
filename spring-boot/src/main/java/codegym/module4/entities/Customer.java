@@ -11,7 +11,7 @@ import java.util.List;
 
 
 @Entity
-@Table(name = "customers")
+@Table(name = "customer")
 public class Customer implements Serializable {
 
 
@@ -20,7 +20,7 @@ public class Customer implements Serializable {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "fullName")
+    @Column(name = "full_name")
     private String fullName;
 
 
