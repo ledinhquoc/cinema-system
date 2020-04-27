@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {HistoryUsePointService} from '../../../../Services/history-use-point.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {StatusTicketService} from '../../../../Services/status-ticket.service';
-import {PointHistoryModule} from '../../Models/pointHistory.module';
+
 import {TicketStatusModule} from '../../Models/ticketStatus.module';
 
 @Component({

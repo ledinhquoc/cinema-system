@@ -4,12 +4,12 @@ import java.util.List;
 
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "show_room")
 public class ShowRoom {
     public ShowRoom() {
+        //do nothing
     }
 
     @Id
@@ -24,8 +24,8 @@ public class ShowRoom {
     @Column(name = "screen")
     private String screen;
 
-    @OneToMany(targetEntity = _Row.class)
-    private List<_Row> _rows;
+    @OneToMany(targetEntity = Row.class)
+    private List<Row> rows;
 
     /**
      * @return the id
@@ -72,15 +72,15 @@ public class ShowRoom {
     /**
      * @return the _rows
      */
-    public List<_Row> get_rows() {
-        return _rows;
+    public List<Row> getRows() {
+        return rows;
     }
 
     /**
-     * @param _rows the _rows to set
+     * @param rows the _rows to set
      */
-    public void set_rows(List<_Row> _rows) {
-        this._rows = _rows;
+    public void setRows(List<Row> rows) {
+        this.rows = rows;
     }
 
 }

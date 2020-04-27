@@ -33,10 +33,10 @@ public class User {
     private List<Role> roles;
 
 
-    public User(int idUser, String password, String name_user, String status) {
+    public User(int idUser, String password, String name, String status) {
         this.id = idUser;
         this.password = password;
-        this.name = name_user;
+        this.name = name;
         this.status = status;
     }
 
@@ -63,7 +63,7 @@ public class User {
         return name;
     }
 
-    public void setName(String name_user) {
+    public void setName(String name) {
         this.name = name;
     }
     public String getStatus() {

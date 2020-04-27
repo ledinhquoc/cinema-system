@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import {MemberInformationModule} from '../../Models/memberInformation.module';
+
 import {ActivatedRoute, Router} from '@angular/router';
 import {HistoryUsePointService} from '../../../../Services/history-use-point.service';
 import {PointHistoryModule} from '../../Models/pointHistory.module';

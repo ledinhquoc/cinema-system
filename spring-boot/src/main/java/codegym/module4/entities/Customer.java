@@ -1,18 +1,17 @@
 package codegym.module4.entities;
 
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.io.Serializable;
+
 import java.util.Date;
 import java.util.List;
 
 
 @Entity
 @Table(name = "customer")
-public class Customer implements Serializable {
+public class Customer {
 
 
     @Id
@@ -25,7 +24,7 @@ public class Customer implements Serializable {
 
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @Temporal(value=TemporalType.DATE)
+    @Temporal(value = TemporalType.DATE)
     @Column(name = "date_of_birth")
     private Date dateOfBirth;
 
@@ -45,8 +44,7 @@ public class Customer implements Serializable {
     private String address;
 
     @OneToMany(targetEntity = Point.class)
-    private List<Point> Points;
-
+    private List<Point> points;
 
 
     @OneToOne
@@ -54,16 +52,15 @@ public class Customer implements Serializable {
     private User user;
 
 
-
     @OneToMany(targetEntity = Ticket.class)
     private List<Ticket> tickets;
 
 
-    public Customer(int id, String userName, String password, User idUser,
-                    String fullName, Date birthday, String gender, String idCard, String email, String phone, String address) {
+    public Customer(int id, User idUser,
+                    String fullName, Date birthday, String gender, String idCard, String email
+            , String phone, String address) {
         this.id = id;
-this.user=idUser;
-
+        this.user = idUser;
         this.fullName = fullName;
         this.dateOfBirth = birthday;
         this.gender = gender;

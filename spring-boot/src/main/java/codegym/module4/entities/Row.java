@@ -4,14 +4,13 @@ import java.util.List;
 
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "_row")
-public class _Row {
+public class Row {
 
-    public _Row() {
+    public Row() {
+        //do Something
     }
 
     @Id

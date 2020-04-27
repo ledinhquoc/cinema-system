@@ -5,7 +5,7 @@ import java.util.List;
 
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -19,6 +19,7 @@ public class Promotion {
     private int id;
 
     public Promotion() {
+        //do nothing
     }
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")

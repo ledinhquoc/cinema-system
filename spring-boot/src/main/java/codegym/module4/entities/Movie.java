@@ -5,12 +5,13 @@ import java.util.List;
 
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 
 @Entity
 @Table(name = "movie")
 public class Movie {
     public Movie() {
+        // Do nothing because of X and Y
     }
 
     @Id

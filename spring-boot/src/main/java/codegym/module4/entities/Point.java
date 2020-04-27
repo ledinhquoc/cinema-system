@@ -1,7 +1,6 @@
 package codegym.module4.entities;
 
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -28,7 +27,7 @@ public class Point {
     private String nameMovie;
 
     @Column(name = "pointValue")
-    private String point;
+    private String pointValue;
 
 
     @Column(name = "pointStatus")
@@ -43,11 +42,11 @@ public class Point {
     public Point() {
     }
 
-    public Point(long id, Customer idCustomer, Date dateCreat, String nameMovie, String point, String pointStatus) {
+    public Point(long id, Customer idCustomer, Date dateCreat, String nameMovie, String pointValue, String pointStatus) {
         this.id = id;
         this.dateCreat = dateCreat;
         this.nameMovie = nameMovie;
-        this.point = point;
+        this.pointValue = pointValue;
         this.customer = idCustomer;
        this.pointStatus=pointStatus;
     }
@@ -85,12 +84,12 @@ public class Point {
         this.nameMovie = nameMovie;
     }
 
-    public String getPoint() {
-        return point;
+    public String getPointValue() {
+        return pointValue;
     }
 
-    public void setPoint(String point) {
-        this.point = point;
+    public void setPointValue(String pointValue) {
+        this.pointValue = pointValue;
     }
 
     public String getPointStatus() {

@@ -4,12 +4,13 @@ import java.util.Date;
 
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+
 
 @Entity
 @Table(name = "movie_schedule")
 public class MovieSchedules {
     public MovieSchedules() {
+        // Do nothing because of X and Y
     }
 
     @Id

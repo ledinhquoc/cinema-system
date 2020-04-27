@@ -2,7 +2,7 @@ package codegym.module4.services.impl;
 
 import codegym.module4.entities.Customer;
 import codegym.module4.entities.Ticket;
-import codegym.module4.repositories.PointRepository;
+
 import codegym.module4.repositories.TicketRepository;
 import codegym.module4.services.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;

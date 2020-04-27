@@ -25,34 +25,32 @@
         </label>
       </div>
     </div>
-
     <div class="d-flex" id="btn-changPassWord">
       <button class="btn btn-success" id="btn-watchPoint" type="submit">Watch Point
       </button>
     </div>
-
-
   </form>
   <div class="row">
     <table id="tablePoint" class="table table-bordered table-hover">
       <thead>
       <tr style="text-align: center">
-        <th>Date Creat</th>
-        <th>Name Movie</th>
-        <th>Point Plus</th>
+        <th id="Date Creat">Date Creat</th>
+        <th id="Name Movie">Name Movie</th>
+        <th id="Point Plus">Point Plus</th>
       </tr>
       </thead>
+
+
       <tbody style="text-align: center">
       <tr *ngFor="let pointUser of history |paginate: { itemsPerPage: 3, currentPage: p } | filter:term" style="font-family: 'DM Sans', sans-serif;">
         <td>{{pointUser.dateCreat| date:"dd-MM-yyyy"}}</td>
         <td>{{pointUser.nameMovie}}</td>
-        <td>{{pointUser.point}}</td>
-
-
+        <td>{{pointUser.pointValue}}</td>
       </tr>
-
       </tbody>
     </table>
+
+
     <div id="page"> <pagination-controls (pageChange)="p = $event"></pagination-controls></div>
   </div>
 </div>

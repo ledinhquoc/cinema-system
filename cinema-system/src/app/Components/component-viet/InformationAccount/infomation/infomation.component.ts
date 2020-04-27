@@ -73,16 +73,16 @@ export class InfomationComponent implements OnInit {
     this.dialogService.openConfirmDialog('Are you sure to change this password?').afterClosed().subscribe(data => {
       console.log(data);
       if (data) {
-        this.activatedRouteService.params.subscribe(data => {
-          let id = data['id'];
+        this.activatedRouteService.params.subscribe(data1 => {
+          let id = data1['id'];
           this.userService.getUserEdit(id).subscribe((user: UserModule) => {
               this.user = user;
               if (this.formMember1.value.oldPassWord === this.user.password && this.formMember1.value.newPassWord === this.formMember1.value.confirmPassWord) {
 // @ts-ignore
                 this.user.password=this.formMember1.value.newPassWord;
 
-                this.userService.updateUser(this.user).subscribe(data => {
-                  console.log(data);
+                this.userService.updateUser(this.user).subscribe(data2 => {
+                  console.log(data2);
                   this.notificationService.warn('Change successfully');
                   this.router.navigateByUrl('');
                 });
@@ -105,8 +105,8 @@ onEditInformartion(){
   this.dialogService.openConfirmDialog('Are you sure to change information account?').afterClosed().subscribe(data => {
     console.log(data);
     if (data) {
-      this.memberService.updateAccount(this.member).subscribe(data => {
-        console.log(data);
+      this.memberService.updateAccount(this.member).subscribe(data3 => {
+        console.log(data3);
         this.notificationService.warn('Change successfully');
       });
     }

@@ -9,7 +9,7 @@ import java.util.List;
 public interface PointService {
 
 
-    List<Point> findPointByCustomer(Customer Customer);
+    List<Point> findPointByCustomer(Customer customer);
     List<Point> findPointByDateFormDate(Date form, Date to, Customer idCustomer, String status);
     List<Point> findAllPoint();
 

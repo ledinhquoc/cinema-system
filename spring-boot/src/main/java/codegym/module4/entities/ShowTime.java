@@ -1,17 +1,17 @@
 package codegym.module4.entities;
 
-import java.util.Date;
+
 import java.util.List;
 
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 
 @Entity
 @Table(name = "showtime")
 public class ShowTime {
     public ShowTime() {
+        //do nothing
     }
 
     @Id
@@ -28,6 +28,10 @@ public class ShowTime {
 
     @OneToMany(targetEntity = MovieSchedules.class)
     private List<MovieSchedules> movieSchedules;
+
+
+
+
 
     /**
      * @return the id

@@ -9,12 +9,13 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+
 
 @Entity
 @Table(name = "role")
 public class Role {
     public Role() {
+        //do nothing
     }
 
     @Id

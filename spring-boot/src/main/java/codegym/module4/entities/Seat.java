@@ -4,13 +4,12 @@ import java.util.List;
 
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "seat")
 public class Seat {
     public Seat() {
+        //do nothing
     }
 
     @Id
@@ -28,7 +27,7 @@ public class Seat {
 
     @ManyToOne
     @JoinColumn(name = "row_id")
-    private _Row _row;
+    private Row row;
 
     @OneToMany(targetEntity = Ticket.class)
     private List<Ticket> tickets;
@@ -106,15 +105,15 @@ public class Seat {
     /**
      * @return the _row
      */
-    public _Row get_row() {
-        return _row;
+    public Row getRow() {
+        return row;
     }
 
     /**
-     * @param _row the _row to set
+     * @param row the _row to set
      */
-    public void set_row(_Row _row) {
-        this._row = _row;
+    public void setRow(Row row) {
+        this.row = row;
     }
 
     /**

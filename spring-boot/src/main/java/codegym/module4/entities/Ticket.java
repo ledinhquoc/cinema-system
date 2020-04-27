@@ -2,12 +2,13 @@ package codegym.module4.entities;
 
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+
 
 @Entity
 @Table(name = "ticket")
 public class Ticket {
     public Ticket() {
+        //do nothing
     }
 
     @Id

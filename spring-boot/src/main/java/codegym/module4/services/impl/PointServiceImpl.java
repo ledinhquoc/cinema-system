@@ -21,8 +21,8 @@ public class PointServiceImpl implements PointService {
     }
 
     @Override
-    public List<Point> findPointByCustomer(Customer Customer) {
-        return pointRepository.findByCustomer(Customer);
+    public List<Point> findPointByCustomer(Customer customer) {
+        return pointRepository.findByCustomer(customer);
     }
 
     @Override
