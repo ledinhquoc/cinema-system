@@ -15,6 +15,7 @@ export class UserRegistrationComponent implements OnInit {
   listUser: Array<User> = [];
   public maxDate = new Date();
   public minDate = new Date(1992, 0, 1);
+  show = true;
   constructor(public formBuilder: FormBuilder,
               public route: Router,
               public userRegistrationService: UserRegistrationService) { }
@@ -51,5 +52,8 @@ export class UserRegistrationComponent implements OnInit {
   }
   exit() {
     this.route.navigateByUrl('/exitPage');
+  }
+  toggleshow() {
+    this.show = !this.show;
   }
 }

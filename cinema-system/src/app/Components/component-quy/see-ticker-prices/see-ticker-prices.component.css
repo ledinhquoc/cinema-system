@@ -1,18 +1,21 @@
-table th,td{
+table th, td {
 
 }
-.date{
+
+.date {
   color: #DF3A01;
   font-family: serif;
   font-size: 32px;
 }
-.chair{
-  color: #DF3A01 ;
+
+.chair {
+  color: #DF3A01;
   font-family: serif;
   font-size: 18px;
 
 }
-.price{
+
+.price {
   color: #EBF4E2;
   font-family: serif;
 }
