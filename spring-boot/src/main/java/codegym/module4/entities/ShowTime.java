@@ -27,7 +27,7 @@ public class ShowTime {
     private String hourEnd;
 
     @OneToMany(mappedBy = "showTime")
-    @JsonBackReference
+    @JsonManagedReference
     private List<MovieSchedule> movieSchedules;
 
     /**

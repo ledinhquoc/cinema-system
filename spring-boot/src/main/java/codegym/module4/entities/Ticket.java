@@ -33,19 +33,19 @@ public class Ticket {
     private TicketPrice ticketPrice;
 
     @ManyToOne
-    @JsonManagedReference
+    @JsonBackReference
     private Promotion promotion;
 
     @ManyToOne
-    @JsonManagedReference
+    @JsonBackReference
     private Customer customer;
 
     @ManyToOne
-    @JsonManagedReference
+    @JsonBackReference
     private Employee employee;
 
     @ManyToOne
-    @JsonManagedReference
+    @JsonBackReference
     private MovieSchedule movieSchedule;
 
     /**

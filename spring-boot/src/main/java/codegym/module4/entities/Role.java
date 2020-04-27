@@ -1,20 +1,16 @@
 package codegym.module4.entities;
 
-import java.util.List;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "role")
-public class Role {
-    public Role() {
+public class Role
+{
+    public Role()
+    {
     }
 
     @Id
@@ -24,48 +20,54 @@ public class Role {
     private String name;
 
     @ManyToMany(mappedBy = "roles")
-    // @JsonBackReference
+    @JsonBackReference
     private List<User> users;
 
     /**
      * @return the id
      */
-    public int getId() {
+    public int getId()
+    {
         return id;
     }
 
     /**
      * @param id the id to set
      */
-    public void setId(int id) {
+    public void setId(int id)
+    {
         this.id = id;
     }
 
     /**
      * @return the name
      */
-    public String getName() {
+    public String getName()
+    {
         return name;
     }
 
     /**
      * @param name the name to set
      */
-    public void setName(String name) {
+    public void setName(String name)
+    {
         this.name = name;
     }
 
     /**
      * @return the users
      */
-    public List<User> getUsers() {
+    public List<User> getUsers()
+    {
         return users;
     }
 
     /**
      * @param users the users to set
      */
-    public void setUsers(List<User> users) {
+    public void setUsers(List<User> users)
+    {
         this.users = users;
     }
 }

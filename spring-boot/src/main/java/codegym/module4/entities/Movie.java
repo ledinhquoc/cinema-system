@@ -36,7 +36,7 @@ public class Movie {
     private String srcVideo;
 
     @OneToMany(mappedBy = "movie")
-    @JsonBackReference
+    @JsonManagedReference
     private List<MovieSchedule> movieSchedules;
 
     /**
@@ -207,18 +207,13 @@ public class Movie {
         this.srcVideo = srcVideo;
     }
 
-    /**
-     * @return the movieSchedules
-     */
-    public List<MovieSchedule> getMovieSchedules() {
-        return movieSchedules;
+    public List<MovieSchedule> getMovieSchedules()
+    {
+        return this.movieSchedules;
     }
 
-    /**
-     * @param movieSchedules the movieSchedules to set
-     */
-    public void setMovieSchedules(List<MovieSchedule> movieSchedules) {
+    public void setMovieSchedules(List<MovieSchedule> movieSchedules)
+    {
         this.movieSchedules = movieSchedules;
     }
-
 }

@@ -29,11 +29,11 @@ public class Seat {
     private boolean isVip;
 
     @ManyToOne
-    @JsonManagedReference
+    @JsonBackReference
     private _Row _row;
 
     @OneToMany(mappedBy = "seat")
-    @JsonBackReference
+    @JsonManagedReference
     private List<Ticket> tickets;
 
     /**
