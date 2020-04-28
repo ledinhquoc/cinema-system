@@ -24,7 +24,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import { MatConfirmDialogComponent } from './Components/component-viet/mat-confirm-dialog/mat-confirm-dialog.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-import { SeeTickerPricesComponent } from './Components/component-quy/see-ticker-prices/see-ticker-prices.component';
+import { SeeTicketPriceComponent } from './Components/component-quy/ticket-price/see-ticket-price/see-ticket-price.component';
 
 
 
@@ -47,7 +47,7 @@ const routes: Routes = [
       }]
   },
   {path: 'resetPassword', component: ResetPasswordComponent},
-  {path: 'see-ticker-prices', component: SeeTickerPricesComponent}
+  {path: 'see-ticket-prices', component: SeeTicketPriceComponent}
 ];
 
 @NgModule({
@@ -60,7 +60,7 @@ const routes: Routes = [
     ResetPasswordComponent, TicketCanceledComponent, TicketBookingComponent,
      MatConfirmDialogComponent,PositionSelectorComponent,
 
-    TicketBookingInformationComponent,SeeTickerPricesComponent],
+    TicketBookingInformationComponent, SeeTicketPriceComponent],
 
 
   entryComponents:[MatConfirmDialogComponent]
