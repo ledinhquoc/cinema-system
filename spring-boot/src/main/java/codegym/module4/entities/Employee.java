@@ -1,37 +1,55 @@
 package codegym.module4.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "employee")
 public class Employee {
     public Employee() {
+
+        // Do nothing
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
 
+
+    @Column(name = "full_name")
     private String fullName;
+
+    @Column(name = "date_of_birth")
     private Date dateOfBirth;
+
+    @Column(name = "gender")
     private String gender;
+
+    @Column(name = "id_card")
     private String idCard;
+
+    @Column(name = "email")
     private String email;
+
+    @Column(name = "address")
     private String address;
+
+    @Column(name = "phone")
     private String phone;
 
-    @ManyToOne
+    @OneToOne
     @JsonBackReference
+    @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToMany(mappedBy = "employee")
-    @JsonManagedReference
+    @OneToMany(targetEntity = Ticket.class)
+    @JsonBackReference
     private List<Ticket> tickets;
 
     /**
@@ -146,14 +164,18 @@ public class Employee {
         this.phone = phone;
     }
 
-    public User getUser()
-    {
-        return this.user;
+    /**
+     * @return the users
+     */
+    public User getUsers() {
+        return user;
     }
 
-    public void setUser(User user)
-    {
-        this.user = user;
+    /**
+     * @param users the users to set
+     */
+    public void setUsers(User users) {
+        this.user = users;
     }
 
     /**

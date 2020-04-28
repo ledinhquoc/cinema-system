@@ -1,53 +1,52 @@
 package codegym.module4.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "promotion")
 public class Promotion {
-    public Promotion() {
-    }
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
     private int id;
 
-    private Date promotionDate;
-
-    private String promotionImage;
-
-    @OneToMany(mappedBy = "promotion")
-    @JsonManagedReference
-    private List<Ticket> tickets;
-
-    public Date getPromotionDate()
-    {
-        return this.promotionDate;
+    public Promotion() {
+        //do nothing
     }
 
-    public void setPromotionDate(Date promotionDate)
-    {
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Temporal(value=TemporalType.DATE)
+  @Column(name = "promotion_date")
+    private Date promotionDate;
+
+    @Column(name = "promotion_image")
+    private String promotionImage;
+
+    @OneToMany(targetEntity = Ticket.class)
+    @JsonBackReference
+    private List<Ticket> tickets;
+
+
+    public Date getPromotionDate() {
+        return promotionDate;
+    }
+
+    public void setPromotionDate(Date promotionDate) {
         this.promotionDate = promotionDate;
     }
 
-    public String getPromotionImage()
-    {
-        return this.promotionImage;
+    public String getPromotionImage() {
+        return promotionImage;
     }
 
-    public void setPromotionImage(String promotionImage)
-    {
+    public void setPromotionImage(String promotionImage) {
         this.promotionImage = promotionImage;
     }
 

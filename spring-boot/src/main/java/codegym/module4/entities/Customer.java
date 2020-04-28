@@ -1,190 +1,147 @@
 package codegym.module4.entities;
 
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.*;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "customer")
 public class Customer {
-    public Customer() {
-    }
+
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private int id;
 
+    @Column(name = "full_name")
     private String fullName;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Temporal(value = TemporalType.DATE)
+    @Column(name = "date_of_birth")
     private Date dateOfBirth;
+
+    @Column(name = "gender")
     private String gender;
+
+    @Column(name = "idCard")
     private String idCard;
+
+    @Column(name = "email")
     private String email;
-    private String address;
+
+    @Column(name = "phone")
     private String phone;
 
-    @ManyToOne
+    @Column(name = "address")
+    private String address;
+
+    @OneToMany(targetEntity = Point.class)
     @JsonBackReference
-    private User user;
-
-    @OneToMany(mappedBy = "customer")
-    @JsonManagedReference
-    private List<Ticket> tickets;
-
-    @OneToMany(mappedBy = "customer")
-    @JsonManagedReference
     private List<Point> points;
 
-    /**
-     * @return the id
-     */
-    public int getId() {
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @OneToMany(targetEntity = Ticket.class)
+    @JsonBackReference
+    private List<Ticket> tickets;
+
+
+    public Customer(int id, User idUser,
+                    String fullName, Date birthday, String gender, String idCard,
+                    String email
+            , String phone, String address) {
+        this.id = id;
+        this.user = idUser;
+        this.fullName = fullName;
+        this.dateOfBirth = birthday;
+        this.gender = gender;
+        this.idCard = idCard;
+        this.email = email;
+        this.phone = phone;
+        this.address = address;
+    }
+
+    public long getId() {
         return id;
     }
 
-    /**
-     * @param id the id to set
-     */
     public void setId(int id) {
         this.id = id;
     }
 
-    /**
-     * @return the fullName
-     */
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User idUser) {
+        this.user = idUser;
+    }
+
     public String getFullName() {
         return fullName;
     }
 
-    /**
-     * @param fullName the fullName to set
-     */
     public void setFullName(String fullName) {
         this.fullName = fullName;
     }
 
-    /**
-     * @return the dateOfBirth
-     */
-    public Date getDateOfBirth() {
+    public Date getBirthday() {
         return dateOfBirth;
     }
 
-    /**
-     * @param dateOfBirth the dateOfBirth to set
-     */
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
+    public void setBirthday(Date birthday) {
+        this.dateOfBirth = birthday;
     }
 
-    /**
-     * @return the gender
-     */
     public String getGender() {
         return gender;
     }
 
-    /**
-     * @param gender the gender to set
-     */
     public void setGender(String gender) {
         this.gender = gender;
     }
 
-    /**
-     * @return the idCard
-     */
     public String getIdCard() {
         return idCard;
     }
 
-    /**
-     * @param idCard the idCard to set
-     */
     public void setIdCard(String idCard) {
         this.idCard = idCard;
     }
 
-    /**
-     * @return the email
-     */
     public String getEmail() {
         return email;
     }
 
-    /**
-     * @param email the email to set
-     */
     public void setEmail(String email) {
         this.email = email;
     }
 
-    /**
-     * @return the address
-     */
-    public String getAddress() {
-        return address;
-    }
-
-    /**
-     * @param address the address to set
-     */
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    /**
-     * @return the phone
-     */
     public String getPhone() {
         return phone;
     }
 
-    /**
-     * @param phone the phone to set
-     */
     public void setPhone(String phone) {
         this.phone = phone;
     }
 
-    public User getUser()
-    {
-        return this.user;
+    public String getAddress() {
+        return address;
     }
 
-    public void setUser(User user)
-    {
-        this.user = user;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    /**
-     * @return the tickets
-     */
-    public List<Ticket> getTickets() {
-        return tickets;
-    }
-
-    /**
-     * @param tickets the tickets to set
-     */
-    public void setTickets(List<Ticket> tickets) {
-        this.tickets = tickets;
-    }
-
-    /**
-     * @return the points
-     */
-    public List<Point> getPoints() {
-        return points;
-    }
-
-    /**
-     * @param points the points to set
-     */
-    public void setPoints(List<Point> points) {
-        this.points = points;
+    public Customer() {
     }
 }

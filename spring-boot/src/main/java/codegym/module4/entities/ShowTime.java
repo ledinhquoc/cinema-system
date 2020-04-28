@@ -1,34 +1,39 @@
 package codegym.module4.entities;
 
-import java.util.Date;
-import java.util.List;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import javax.persistence.*;
+import java.util.List;
+
+
 
 @Entity
 @Table(name = "showtime")
 public class ShowTime {
     public ShowTime() {
+        //do nothing
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+
     private int id;
+    @Column(name = "hour_start")
 
     private String hourStart;
+    @Column(name = "hour_end")
+
     private String hourEnd;
 
-    @OneToMany(mappedBy = "showTime")
-    @JsonManagedReference
-    private List<MovieSchedule> movieSchedules;
+    @OneToMany(targetEntity = MovieSchedules.class)
+    @JsonBackReference
+    private List<MovieSchedules> movieSchedules;
+
+
+
+
 
     /**
      * @return the id
@@ -75,14 +80,14 @@ public class ShowTime {
     /**
      * @return the movieSchedules
      */
-    public List<MovieSchedule> getMovieSchedules() {
+    public List<MovieSchedules> getMovieSchedules() {
         return movieSchedules;
     }
 
     /**
      * @param movieSchedules the movieSchedules to set
      */
-    public void setMovieSchedules(List<MovieSchedule> movieSchedules) {
+    public void setMovieSchedules(List<MovieSchedules> movieSchedules) {
         this.movieSchedules = movieSchedules;
     }
 }

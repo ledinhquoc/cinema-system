@@ -1,43 +1,61 @@
 package codegym.module4.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "movie")
 public class Movie {
     public Movie() {
+        // Do nothing because of X and Y
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
 
+    @Column(name = "movie_name")
     private String movieName;
+
+    @Column(name = "movie_type")
     private String movieType;
+
+    @Column(name = "date_start")
     private Date dateStart;
+
+    @Column(name = "date_end")
     private Date dateEnd;
+
+    @Column(name = "movie_studio")
     private String movieStudio;
+
+    @Column(name = "directors")
     private String directors;
+
+    @Column(name = "actor")
     private String actor;
+
+    @Column(name = "duration")
     private int duration;
+
+    @Column(name = "content")
     private String content;
+
+    @Column(name = "srcImg")
     private String srcImg;
+
+    @Column(name = "srcVideo")
     private String srcVideo;
 
-    @OneToMany(mappedBy = "movie")
-    @JsonManagedReference
-    private List<MovieSchedule> movieSchedules;
+    @OneToMany(targetEntity = MovieSchedules.class)
+    @JsonBackReference
+    private List<MovieSchedules> movieSchedules;
 
     /**
      * @return the id
@@ -207,13 +225,18 @@ public class Movie {
         this.srcVideo = srcVideo;
     }
 
-    public List<MovieSchedule> getMovieSchedules()
-    {
-        return this.movieSchedules;
+    /**
+     * @return the movieSchedules
+     */
+    public List<MovieSchedules> getMovieSchedules() {
+        return movieSchedules;
     }
 
-    public void setMovieSchedules(List<MovieSchedule> movieSchedules)
-    {
+    /**
+     * @param movieSchedules the movieSchedules to set
+     */
+    public void setMovieSchedules(List<MovieSchedules> movieSchedules) {
         this.movieSchedules = movieSchedules;
     }
+
 }

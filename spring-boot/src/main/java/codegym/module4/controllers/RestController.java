@@ -2,17 +2,13 @@ package codegym.module4.controllers;
 
 import codegym.module4.entities.*;
 import codegym.module4.repositories.*;
-import codegym.module4.repositories.ShowTimeRepo;
-import codegym.module4.services.MovieScheduleService;
-import codegym.module4.services.MovieService;
-import codegym.module4.services.TicketService;
+import codegym.module4.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -24,7 +20,7 @@ public class RestController
     private TicketService ticketService;
 
     @Autowired
-    private MovieScheduleService movieScheduleService;
+    private MovieSchedulesService movieSchedulesService;
 
     @Autowired
     private MovieService movieService;
@@ -33,31 +29,35 @@ public class RestController
     private EmployeeRepo employeeRepo;
 
     @Autowired
-    private UserRepo userRepo;
+    private UserService userService;
 
     @Autowired
-    private CustomerRepo customerRepo;
+    private CustomerService customerService;
 
     @Autowired
-    private PointRepo pointRepo;
+    private PointService pointService;
 
     @Autowired
-    private PromotionRepo promotionRepo;
+    private PromotionService promotionService;
 
     @Autowired
-    private RoleRepo roleRepo;
+    private RoleService roleService;
 
     @Autowired
-    private SeatRepo seatRepo;
+    private SeatService seatService;
 
     @Autowired
-    private ShowRoomRepo showRoomRepo;
+    private ShowRoomService showRoomService;
 
     @Autowired
-    private ShowTimeRepo showTimeRepo;
+    private ShowTimeService showTimeService;
 
     @Autowired
-    private TicketPriceRepo ticketPriceRepo;
+    private TicketPricesService ticketPricesService;
+
+    @Autowired
+    private RowService rowService;
+
     @GetMapping(path = "tickets", produces = "application/json")
     public List<Ticket> getAllTickets()
     {
@@ -65,9 +65,9 @@ public class RestController
     }
 
     @GetMapping(path = "movie-schedules", produces = "application/json")
-    public List<MovieSchedule> getAllMovieSchedules()
+    public List<MovieSchedules> getAllMovieSchedules()
     {
-        return movieScheduleService.findAll();
+        return movieSchedulesService.findAll();
     }
 
     @GetMapping(path = "movies", produces = "application/json")
@@ -82,46 +82,51 @@ public class RestController
 
     @GetMapping(path = "users",produces = MediaType.APPLICATION_JSON_VALUE)
     public List<User> getAllUsers(){
-        return userRepo.findAll();
+        return userService.findAll();
     }
 
     @GetMapping(path = "customers",produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Customer> getAllCustomers(){
-        return customerRepo.findAll();
+        return customerService.findAll();
     }
 
     @GetMapping(path = "points",produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Point> getAllPoints(){
-        return pointRepo.findAll();
+        return pointService.findAll();
     }
 
     @GetMapping(path = "promotions",produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Promotion> getAllPromotions(){
-        return promotionRepo.findAll();
+        return promotionService.findAll();
     }
 
     @GetMapping(path = "roles",produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Role> getAllRoles(){
-        return roleRepo.findAll();
+        return roleService.findAll();
     }
 
     @GetMapping(path = "seats",produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Seat> getAllSeats(){
-        return seatRepo.findAll();
+        return seatService.findAll();
     }
 
     @GetMapping(path = "show-rooms",produces = MediaType.APPLICATION_JSON_VALUE)
     public List<ShowRoom> getAllShowRooms(){
-        return showRoomRepo.findAll();
+        return showRoomService.findAll();
     }
 
     @GetMapping(path = "show-times",produces = MediaType.APPLICATION_JSON_VALUE)
     public List<ShowTime> getAllShowTimes(){
-        return showTimeRepo.findAll();
+        return showTimeService.findAll();
     }
 
     @GetMapping(path = "ticket-prices",produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<TicketPrice> getAllTicketPrices(){
-        return ticketPriceRepo.findAll();
+    public List<TicketPrices> getAllTicketPrices(){
+        return ticketPricesService.findAll();
+    }
+
+    @GetMapping(path="rows",produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Row> getAllRows(){
+        return rowService.findAll();
     }
 }

@@ -1,117 +1,104 @@
 package codegym.module4.entities;
 
-import java.util.Date;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.persistence.*;
+import java.util.Date;
 
 @Entity
-@Table(name = "point")
+@Table(name="point")
 public class Point {
-    public Point() {
-    }
+
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    private long id;
 
+
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Temporal(value=TemporalType.DATE)
+    @Column(name = "dateCreate")
     private Date dateCreate;
+
+    @Column(name = "nameMovie")
     private String nameMovie;
+
+    @Column(name = "pointValue")
     private String pointValue;
+
+
+    @Column(name = "pointStatus")
     private String pointStatus;
+
+
 
     @ManyToOne
     @JsonBackReference
+    @JoinColumn(name = "customer_id")
     private Customer customer;
 
-    /**
-     * @return the id
-     */
-    public int getId() {
+    public Point() {
+    }
+
+    public Point(long id, Customer idCustomer, Date dateCreate, String nameMovie, String pointValue, String pointStatus) {
+        this.id = id;
+        this.dateCreate = dateCreate;
+        this.nameMovie = nameMovie;
+        this.pointValue = pointValue;
+        this.customer = idCustomer;
+       this.pointStatus=pointStatus;
+    }
+
+
+    public long getId() {
         return id;
     }
 
-    /**
-     * @param id the id to set
-     */
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    /**
-     * @return the dateCreate
-     */
-    public Date getDateCreate() {
+    public Customer getIdCustomer() {
+        return customer;
+    }
+
+    public void setIdCustomer(Customer idCustomer) {
+        this.customer = idCustomer;
+    }
+
+    public Date getDateCreat() {
         return dateCreate;
     }
 
-    /**
-     * @param dateCreate the dateCreate to set
-     */
-    public void setDateCreate(Date dateCreate) {
+    public void setDateCreat(Date dateCreate) {
         this.dateCreate = dateCreate;
     }
 
-    /**
-     * @return the nameMovie
-     */
     public String getNameMovie() {
         return nameMovie;
     }
 
-    /**
-     * @param nameMovie the nameMovie to set
-     */
     public void setNameMovie(String nameMovie) {
         this.nameMovie = nameMovie;
     }
 
-    /**
-     * @return the pointValue
-     */
     public String getPointValue() {
         return pointValue;
     }
 
-    /**
-     * @param pointValue the pointValue to set
-     */
     public void setPointValue(String pointValue) {
         this.pointValue = pointValue;
     }
 
-    /**
-     * @return the pointStatus
-     */
     public String getPointStatus() {
         return pointStatus;
     }
 
-    /**
-     * @param pointStatus the pointStatus to set
-     */
     public void setPointStatus(String pointStatus) {
         this.pointStatus = pointStatus;
-    }
-
-    /**
-     * @return the customer
-     */
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    /**
-     * @param customer the customer to set
-     */
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
     }
 }
