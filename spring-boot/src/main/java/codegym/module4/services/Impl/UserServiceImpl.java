@@ -15,9 +15,33 @@ public class UserServiceImpl implements UserService
 {
     @Autowired
     private UserRepo userRepo;
+
+    public UserServiceImpl(UserRepo userRepo) {
+        this.userRepo = userRepo;
+    }
+
+
     @Override
     public List<User> findAll()
     {
         return userRepo.findAll();
     }
+
+
+    @Override
+    public User findUserById(Integer id) {
+        return userRepo.findById(id).get();
+    }
+
+
+    @Override
+    public List<User> findAllUsers() {
+
+        return userRepo.findAll();
+    }
+
+    @Override
+    public User save(User user) {   return userRepo.save(user);
+    }
 }
+

@@ -1,5 +1,6 @@
 package codegym.module4.services.Impl;
 
+import codegym.module4.entities.Customer;
 import codegym.module4.entities.Ticket;
 import codegym.module4.repositories.TicketRepo;
 import codegym.module4.services.TicketService;
@@ -18,6 +19,11 @@ public class TicketServiceImpl implements TicketService {
     @Override
     public List<Ticket> findAll() {
         return ticketRepo.findAll();
+    }
+
+    @Override
+    public List<Ticket> findByCustomerAndOrderStatus(Customer customer, String status) {
+        return ticketRepo.findByCustomerAndOrderStatus(customer,status);
     }
 
 }

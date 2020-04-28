@@ -7,5 +7,5 @@ export class MemberInformationModule {
   email:string;
   phone:string;
   address:string;
-  idUser:any[];
+  user:any[];
 }

@@ -1,55 +1,39 @@
 <h4>Chon ghe</h4>
 <div class="row">
     <div class="col">
-
-        <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
-            <label for="seatAmount" class="d-inline">Chon so luong ghe</label>
-            <input type="number" id="seatAmount" class="form-control col-md-2 d-inline" formControlName="seatAmount"
-                (change)="handleSubmission()">
-
-            <h4 style="text-transform: uppercase;">Better call saul</h4>
-            <p style="font-weight: bold;">12:20 - 24-01-2017</p>
+        <form>
+            <label for="seatAmount">Chon so luong ghe</label>
+            <select id="seatAmount" class="form-control col-md-2">
+                <option [value]="i" *ngFor="let v of [].constructor(9);index as i">{{i}}</option>
+            </select>
+            <h5><strong>Ban da chon</strong></h5>
+            <p>Phim: DON'T KNOCK TWICE Ngay chieu: 24-01-2017 Lich chieu phim: 12:20</p>
             <div class="row text-center" *ngIf="SeatColors">
-                <div class="col mr-3">
-                    <span class=" py-2 px-5 mx-2 border border-dark bg-light"></span>
-                    <p>Ghe trong</p>
-                </div>
-                <div class="col">
-                    <span class=" py-2 px-5 mx-2 border border-dark" [class]="SeatColors.BookedSeat">
-                    </span>
-                    <p>Ghe da co nguoi
-                        dat</p>
-                </div>
+                <span class="col"><i class="fas fa-couch fa-lg"></i>: Ghe trong</span>
+                <span class="col"><i class="fas fa-couch fa-lg" [style.color]="SeatColors.BookedSeat"></i>: Ghe da co
+                    nguoi
+                    dat</span>
+                <span class="col"><i class="fas fa-couch fa-lg " [style.color]="SeatColors.SelectingSeat"></i>: Ghe dang
+                    chon</span>
+                <span class="col"><i class="fas fa-couch fa-lg " [style.color]="SeatColors.VipSeat"></i>: Ghe vip</span>
             </div>
-            <div class="row text-center" *ngIf="SeatColors">
-                <div class="col mr-3">
-                    <span class=" py-2 px-5 mx-2 border border-dark " [class]="SeatColors.SelectingSeat"></span>
-                    <p>Ghe dang chon</p>
-                </div>
-                <div class="col">
-                    <span class=" py-2 px-5 mx-2 border border-dark" [class]="SeatColors.VipSeat">
-                    </span>
-                    <p>Ghe vip</p>
-                </div>
-            </div>
-            <div class="positions" *ngIf="showRoom">
-                <div class="row my-5" *ngFor="let row of showRoom._rows">
-                    <span class="col-md-1"><strong class="text-xl">{{row.name}}</strong></span>
-                    <div class="col-md-11" *ngIf="row.seats">
-                        <span *ngFor=" let seat of row.seats" (click)="onSeatSelect(seat)">
-                            <span class="mx-2 px-auto border border-dark px-5 py-3 font-weight-bold"
-                                *ngIf="seat.seatNumber"
-                                [class]="seat.booked?SeatColors.BookedSeat:seat.selecting?SeatColors.SelectingSeat:seat.vip?SeatColors.VipSeat:'bg-light '">
-                                {{seat.seatNumber}}</span>
+            <div class="positions" *ngIf="positions">
+                <div class="row my-3" *ngFor="let position of positions">
+                    <div class="col-md-3 d-inline">
+                        <span><strong>{{position.name}}</strong></span>
+                        <span *ngFor="let seat of position.seats">
+                            <span class="mx-2 px-auto fa-layers fa-fw">
+                                <i class="fas fa-couch fa-lg " *ngIf="seat.number"
+                                    [style.color]="seat.isBooked?SeatColors.BookedSeat:seat.isSelecting?SeatColors.SelectingSeat:seat.isVip?SeatColors.VipSeat:''">
+                                </i>
+                                <span class="fa-layers-text fa-inverse" style="font-weight:700"
+                                    data-fa-transform="right-3" *ngIf="seat.number">{{seat.number}}</span>
+                            </span>
                         </span>
                     </div>
                 </div>
             </div>
-
-            <div class="alert alert-danger" *ngIf="formGroup.errors?.unequalOptions">Ban chon thieu/du ghe</div>
-            <button class="btn btn-primary" type="submit" [disabled]="formGroup.errors?.unequalOptions">Tiep
-                tuc</button>
-
+            <button class="btn btn-primary">Tiep tuc</button>
         </form>
     </div>
 </div>

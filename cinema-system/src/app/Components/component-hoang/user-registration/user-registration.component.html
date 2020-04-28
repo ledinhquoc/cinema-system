@@ -9,56 +9,28 @@
         <form [formGroup]="formAddnewAccount">
           <div class="form-group row">
             <label for="staticTaikhoan" class="col-sm-3 col-form-label d-flex justify-content-end">Tài Khoản<span
-              class="star">(*)</span></label>
+              class="star">*</span></label>
             <div class="col-sm-9">
               <input type="text" class="form-control" id="staticTaikhoan" formControlName="account">
-              <div style="color: red" *ngIf="formAddnewAccount.get('account').invalid&&
-      formAddnewAccount.get('account').touched">
-        <span *ngIf="formAddnewAccount.get('account').invalid&&formAddnewAccount.get('account')
-        .getError('required')">
-          Account is required</span>
-                <span *ngIf="formAddnewAccount.get('account').invalid&&formAddnewAccount.get('account')
-        .getError('minlength')">
-          Account is length > 5</span>
-              </div>
             </div>
           </div>
           <div class="form-group row">
             <label for="inputPassword" class="col-sm-3 col-form-label d-flex justify-content-end">Mật Khẩu<span
-              class="star">(*)</span></label>
+              class="star">*</span></label>
             <div class="col-sm-9">
               <input type="password" class="form-control " id="inputPassword" formControlName="password">
-              <div style="color: red" *ngIf="formAddnewAccount.get('password').invalid&&
-      formAddnewAccount.get('password').touched">
-        <span *ngIf="formAddnewAccount.get('password').invalid&&formAddnewAccount.get('password')
-        .getError('required')">
-          Password is required</span>
-                <span *ngIf="formAddnewAccount.get('password').invalid&&formAddnewAccount.get('password')
-        .getError('minlength')">
-          Password is length > 5</span>
-                <span *ngIf="formAddnewAccount.get('password').invalid&&formAddnewAccount.get('password')
-        .getError('pattern')">
-          Password is not Malformed</span>
-              </div>
             </div>
           </div>
           <div class="form-group row">
-            <label for="inputHoten" class="col-sm-3 col-form-label d-flex justify-content-end">Họ Tên<span
-              class="star">(*)</span></label>
+            <label for="inputHoten" class="col-sm-3 col-form-label d-flex justify-content-end">Họ Tên<span class="star">*</span></label>
             <div class="col-sm-9">
               <input type="text" class="form-control" id="inputHoten" formControlName="fullName">
-              <div style="color: red" *ngIf="formAddnewAccount.get('fullName').invalid&&
-      formAddnewAccount.get('fullName').touched">
-        <span *ngIf="formAddnewAccount.get('fullName').invalid&&formAddnewAccount.get('fullName')
-        .getError('required')">
-          Full name is required</span>
-              </div>
             </div>
           </div>
           <div class="form-group row">
             <label for="inputNgaysinh" class="col-sm-3 col-form-label d-flex justify-content-end mt-4">Ngày Sinh<span
-              class="star">(*)</span></label>
-            <div class="col-sm-4">
+              class="star">*</span></label>
+            <div class="col-sm-3">
               <mat-form-field>
                 <input [min]="minDate" [max]="maxDate" id="inputNgaysinh" class="form-control"
                        formControlName="dateOfBirth" matInput [matDatepicker]="myDatepicker">
@@ -66,8 +38,8 @@
                 <mat-datepicker #myDatepicker></mat-datepicker>
               </mat-form-field>
             </div>
-            <label for="customRadioInline1" class="col-sm-2 col-form-label d-flex justify-content-end mt-4">Giới Tính<span
-              class="star">(*)</span></label>
+            <label for="inputNgaysinh" class="col-sm-3 col-form-label d-flex justify-content-end mt-4">Giới Tính<span
+              class="star">*</span></label>
             <div class="col-sm-3">
               <div class="custom-control custom-radio custom-control-inline mt-4">
                 <input type="radio" id="customRadioInline1" value="Nam" class="custom-control-input"
@@ -83,71 +55,37 @@
           </div>
           <div class="form-group row">
             <label for="inputCmnd" class="col-sm-3 col-form-label d-flex justify-content-end">CMND<span
-              class="star">(*)</span></label>
+              class="star">*</span></label>
             <div class="col-sm-9">
               <input type="text" class="form-control" id="inputCmnd" formControlName="idCard">
-              <div style="color: red" *ngIf="formAddnewAccount.get('idCard').invalid&&
-      formAddnewAccount.get('idCard').touched">
-        <span *ngIf="formAddnewAccount.get('idCard').invalid&&formAddnewAccount.get('idCard')
-        .getError('required')">
-          ID card is required</span>
-                <span *ngIf="formAddnewAccount.get('idCard').invalid&&formAddnewAccount.get('idCard')
-        .getError('pattern')">
-          ID card is not Malformed</span>
-              </div>
             </div>
           </div>
           <div class="form-group row">
             <label for="inputEmail" class="col-sm-3 col-form-label d-flex justify-content-end">Email<span
-              class="star">(*)</span></label>
+              class="star">*</span></label>
             <div class="col-sm-9">
               <input type="text" class="form-control" id="inputEmail" formControlName="email">
-              <div style="color: red" *ngIf="formAddnewAccount.get('email').invalid&&
-      formAddnewAccount.get('email').touched">
-        <span *ngIf="formAddnewAccount.get('email').invalid&&formAddnewAccount.get('email')
-        .getError('required')">
-          Email is required</span>
-                <span *ngIf="formAddnewAccount.get('email').invalid&&formAddnewAccount.get('email')
-        .getError('email')">
-          Email is not Malformed,Email format is peter@gmail.com</span>
-              </div>
             </div>
           </div>
           <div class="form-group row">
-            <label for="inputDiachi" class="col-sm-3 col-form-label d-flex justify-content-end">Địa Chỉ<span class="star">(*)</span></label>
+            <label for="inputDiachi" class="col-sm-3 col-form-label d-flex justify-content-end">Địa Chỉ<span
+              class="star">*</span></label>
             <div class="col-sm-9">
               <input type="text" class="form-control" id="inputDiachi" formControlName="address">
-              <div style="color: red" *ngIf="formAddnewAccount.get('address').invalid&&
-      formAddnewAccount.get('address').touched">
-        <span *ngIf="formAddnewAccount.get('address').invalid&&formAddnewAccount.get('address')
-        .getError('required')">
-          Address is required</span>
-              </div>
             </div>
           </div>
           <div class="form-group row">
             <label for="inputSodienthoai" class="col-sm-3 col-form-label d-flex justify-content-end">Số Điện Thoại<span
-              class="star">(*)</span></label>
+              class="star">*</span></label>
             <div class="col-sm-9">
               <input type="text" class="form-control" id="inputSodienthoai" formControlName="phone">
-              <div style="color: red" *ngIf="formAddnewAccount.get('phone').invalid&&
-      formAddnewAccount.get('phone').touched">
-        <span *ngIf="formAddnewAccount.get('phone').invalid&&formAddnewAccount.get('phone')
-        .getError('required')">
-          Phone is required</span>
-                <span *ngIf="formAddnewAccount.get('phone').invalid&&formAddnewAccount.get('phone')
-        .getError('pattern')">
-          Phone is not Malformed,phone with 10 numbers and phone is format 090|091</span>
-              </div>
             </div>
           </div>
           <div class="form-group row">
             <label class="col-sm-3">
             </label>
             <label class="col-sm-9">
-              <span style="color: red" *ngIf="show">Vui lòng chấp nhận các điểu khoản của thành viên</span>
-              <input type="checkbox" (click)="toggleshow()">
-              <span *ngIf="!show">Tôi đã hiểu tất cả các quy định về thành viên</span>
+              <input type="checkbox">Tôi đã hiểu tất cả các quy định về thành viên
             </label>
 
           </div>
@@ -155,9 +93,7 @@
             <label class="col-sm-3">
             </label>
             <div class="col-sm-9">
-              <button [disabled]="formAddnewAccount.invalid" class="btn btn-primary mr-3" (click)="addNewAccount()">Đăng
-                Ký
-              </button>
+              <button class="btn btn-primary mr-3" (click)="addNewAccount()">Đăng Ký</button>
               <button class="btn btn-primary" (click)="exit()">Hủy Đăng Ký</button>
             </div>
           </div>

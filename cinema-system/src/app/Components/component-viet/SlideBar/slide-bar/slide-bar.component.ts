@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {MemberInformationModule} from '../../Models/memberInformation.module';
 import {InformationAccountService} from '../../../../services/information-account.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {PointHistoryModule} from '../../Models/pointHistory.module';
+import {HistoryUsePointService} from '../../../../Services/history-use-point.service';
 
 @Component({
   selector: 'app-slide-bar',
@@ -11,9 +13,15 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class SlideBarComponent implements OnInit {
 
 
-
+  public point: PointHistoryModule [];
   public  memberAvatar:MemberInformationModule;
+  public pointSum:number =0;
   constructor(
+
+
+    public historyUsePointService: HistoryUsePointService,
+
+
               public memberService:InformationAccountService,
               public router:Router,
               public activatedRouteService: ActivatedRoute,) { }
@@ -22,6 +30,7 @@ export class SlideBarComponent implements OnInit {
 
 
     this.loadDataAvarta();
+    this.loadPointUser();
   }
 
   loadDataAvarta() {
@@ -32,4 +41,21 @@ export class SlideBarComponent implements OnInit {
       });
     });
   }
+
+
+  loadPointUser() {
+    this.activatedRouteService.params.subscribe(data => {
+      let id = data['id'];
+      this.historyUsePointService.getPointAccount(id).subscribe((point: PointHistoryModule[]) => {
+        this.point = point;
+        console.log(this.point);
+        for (let i = 0; i < this.point.length ; i++) {
+          this.pointSum=this.pointSum+(this.point[i].pointValue)*1;
+
+        }
+        console.log(this.pointSum)
+      });
+    });
+  }
+
 }

@@ -15,9 +15,31 @@ public class CustomerServiceImpl implements CustomerService
 {
     @Autowired
     private CustomerRepo customerRepo;
+
+
+    public CustomerServiceImpl(CustomerRepo customerRepo) {
+        this.customerRepo = customerRepo;
+    }
+
+
     @Override
     public List<Customer> findAll()
     {
         return customerRepo.findAll();
+    }
+
+
+    @Override
+    public Customer findCustomerById(int id) {
+        return customerRepo.findById(id).get();
+    }
+    @Override
+    public List<Customer> findAllCustomer() {
+        return customerRepo.findAll();
+    }
+
+    @Override
+    public Customer saveCustomer(Customer customer) {
+        return customerRepo.save(customer);
     }
 }

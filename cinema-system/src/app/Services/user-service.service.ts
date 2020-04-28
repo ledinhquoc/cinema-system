@@ -8,7 +8,7 @@ import {Observable} from 'rxjs';
 export class UserServiceService {
 
 
-  public API: string = 'http://localhost:8433/api/v1/users';
+  public API: string = 'http://localhost:8080/api/v1/users';
 
   constructor(public http: HttpClient) {
   }
@@ -19,7 +19,7 @@ export class UserServiceService {
 
 
   updateUser(user):Observable<any>{
-    return this.http.put(`${this.API}/${user.idUser}`,user)
+    return this.http.put(`${this.API}/${user.id}`,user)
   }
 }
 

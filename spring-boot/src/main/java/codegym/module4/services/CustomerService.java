@@ -7,4 +7,10 @@ import java.util.List;
 public interface CustomerService
 {
     List<Customer> findAll();
+
+    Customer findCustomerById(int id);
+
+    List<Customer> findAllCustomer();
+
+    Customer saveCustomer(Customer customer);
 }
