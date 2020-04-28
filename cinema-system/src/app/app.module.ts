@@ -1,5 +1,4 @@
-import { TicketBookingInformationComponent } from './Components/component-toantr/ticket-booking-information/ticket-booking-information.component';
-import { PositionSelectorComponent } from './Components/component-toantr/position-selector/position-selector.component';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {AuthService, AuthServiceConfig, FacebookLoginProvider} from 'angularx-social-login';
@@ -12,11 +11,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
-    AppComponent,   
+    AppComponent,
   ]
   ,
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule,BrowserAnimationsModule,PositionSelectorComponent,
-    TicketBookingInformationComponent,ReactiveFormsModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule,BrowserAnimationsModule,ReactiveFormsModule,],
   providers: [ AuthService,
     {
       provide: AuthServiceConfig,

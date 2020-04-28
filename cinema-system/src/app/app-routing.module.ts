@@ -21,6 +21,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import { MatConfirmDialogComponent } from './Components/component-viet/mat-confirm-dialog/mat-confirm-dialog.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { PromotionlistComponent } from './Components/component-toanbui/promotionlist/promotionlist.component';
 
 
 const routes: Routes = [
@@ -41,7 +42,8 @@ const routes: Routes = [
         path: 'ticket-canceled', component: TicketCanceledComponent,
       }]
   },
-  {path: 'resetPassword', component: ResetPasswordComponent}
+  {path: 'resetPassword', component: ResetPasswordComponent},
+  {path: 'promotions', component: PromotionlistComponent}
 
 
 ];
@@ -51,7 +53,7 @@ const routes: Routes = [
   exports: [RouterModule, TopBarComponent, SlideBarComponent,],
   declarations: [TopBarComponent, SlideBarComponent, InfomationComponent, HomeAccountComponent
     , HistoryTicketComponent,ErrorDisplayComponent,LoginComponent,
-    ResetPasswordComponent, TicketCanceledComponent, TicketBookingComponent, MatConfirmDialogComponent,],
+    ResetPasswordComponent, TicketCanceledComponent, TicketBookingComponent, MatConfirmDialogComponent, PromotionlistComponent,],
   entryComponents:[MatConfirmDialogComponent]
 })
 export class AppRoutingModule {
