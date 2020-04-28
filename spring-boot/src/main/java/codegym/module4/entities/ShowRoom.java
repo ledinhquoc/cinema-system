@@ -1,33 +1,33 @@
 package codegym.module4.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import javax.persistence.*;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "show_room")
 public class ShowRoom {
     public ShowRoom() {
+        //do nothing
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
 
+    @Column(name = "name")
     private String name;
+
+
+    @Column(name = "screen")
     private String screen;
 
-    @OneToMany(mappedBy = "showRoom")
-    @JsonManagedReference
-    private List<_Row> _rows;
+    @OneToMany(targetEntity = Row.class)
+    @JsonBackReference
+    private List<Row> rows;
 
     /**
      * @return the id
@@ -74,15 +74,15 @@ public class ShowRoom {
     /**
      * @return the _rows
      */
-    public List<_Row> get_rows() {
-        return _rows;
+    public List<Row> getRows() {
+        return rows;
     }
 
     /**
-     * @param _rows the _rows to set
+     * @param rows the _rows to set
      */
-    public void set_rows(List<_Row> _rows) {
-        this._rows = _rows;
+    public void setRows(List<Row> rows) {
+        this.rows = rows;
     }
 
 }

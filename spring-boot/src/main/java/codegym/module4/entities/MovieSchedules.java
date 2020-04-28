@@ -1,35 +1,32 @@
 package codegym.module4.entities;
 
+import javax.persistence.*;
 import java.util.Date;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "movie_schedule")
-public class MovieSchedule {
-    public MovieSchedule() {
+public class MovieSchedules {
+    public MovieSchedules() {
+        // Do nothing because of X and Y
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+
     private int id;
+    @Column(name = "opening_day")
 
     private Date openingDay;
 
     @ManyToOne
-    @JsonBackReference
+    @JoinColumn(name = "show_time_id")
     private ShowTime showTime;
 
     @ManyToOne
-    @JsonBackReference
+    @JoinColumn(name = "movie_id")
     private Movie movie;
 
     /**

@@ -1,14 +1,13 @@
 package codegym.module4.services.Impl;
 
-import java.util.List;
-
+import codegym.module4.entities.Ticket;
+import codegym.module4.repositories.TicketRepo;
+import codegym.module4.services.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import codegym.module4.entities.Ticket;
-import codegym.module4.repositories.TicketRepo;
-import codegym.module4.services.TicketService;
+import java.util.List;
 
 @Service
 @Transactional

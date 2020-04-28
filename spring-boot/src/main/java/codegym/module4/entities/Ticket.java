@@ -1,52 +1,61 @@
 package codegym.module4.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 
 @Entity
 @Table(name = "ticket")
 public class Ticket {
     public Ticket() {
+        //do nothing
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
 
+
+    @Column(name = "booked_ticket_code")
     private String bookedTicketCode;
+
+
+
+    @Column(name = "order_status")
     private String orderStatus;
+
+
+
+    @Column(name = "price")
     private int price;
 
     @ManyToOne
-    @JsonBackReference
+
+    @JoinColumn(name = "seat_id")
     private Seat seat;
 
     @ManyToOne
-    @JsonManagedReference
-    private TicketPrice ticketPrice;
+    @JoinColumn(name = "ticket_price_id")
+    private TicketPrices ticketPrices;
 
     @ManyToOne
-    @JsonBackReference
+
+    @JoinColumn(name = "promotion_id")
     private Promotion promotion;
 
     @ManyToOne
-    @JsonBackReference
+
+    @JoinColumn(name = "customer_id")
     private Customer customer;
 
     @ManyToOne
-    @JsonBackReference
+    @JoinColumn(name = "employee_id")
     private Employee employee;
 
     @ManyToOne
-    @JsonBackReference
-    private MovieSchedule movieSchedule;
+    @JoinColumn(name = "movie_schedule_id")
+    private MovieSchedules movieSchedules;
 
     /**
      * @return the id
@@ -121,15 +130,15 @@ public class Ticket {
     /**
      * @return the ticketPrices
      */
-    public TicketPrice getTicketPrices() {
-        return ticketPrice;
+    public TicketPrices getTicketPrices() {
+        return ticketPrices;
     }
 
     /**
      * @param ticketPrices the ticketPrices to set
      */
-    public void setTicketPrices(TicketPrice ticketPrices) {
-        this.ticketPrice = ticketPrices;
+    public void setTicketPrices(TicketPrices ticketPrices) {
+        this.ticketPrices = ticketPrices;
     }
 
     /**
@@ -177,14 +186,14 @@ public class Ticket {
     /**
      * @return the movieSchedules
      */
-    public MovieSchedule getMovieSchedules() {
-        return movieSchedule;
+    public MovieSchedules getMovieSchedules() {
+        return movieSchedules;
     }
 
     /**
      * @param movieSchedules the movieSchedules to set
      */
-    public void setMovieSchedules(MovieSchedule movieSchedules) {
-        this.movieSchedule = movieSchedules;
+    public void setMovieSchedules(MovieSchedules movieSchedules) {
+        this.movieSchedules = movieSchedules;
     }
 }

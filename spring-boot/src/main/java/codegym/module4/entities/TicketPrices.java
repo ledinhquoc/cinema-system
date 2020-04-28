@@ -1,29 +1,26 @@
 package codegym.module4.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import javax.persistence.*;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "ticket_price")
-public class TicketPrice {
-    public TicketPrice() {
+public class TicketPrices {
+    public TicketPrices() {
+        //do nothing
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
-
+    @Column(name = "ticket_type")
     private String ticketType;
+    @Column(name = "show_time")
     private String showTime;
 
     @Column(name = "thu246gt")
@@ -53,7 +50,7 @@ public class TicketPrice {
     @Column(name = "thu67CNgd")
     private double thu67CNgd;
 
-    @OneToMany(mappedBy = "ticketPrice")
+    @OneToMany(targetEntity = Ticket.class)
     @JsonBackReference
     private List<Ticket> tickets;
 

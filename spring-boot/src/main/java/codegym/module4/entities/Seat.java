@@ -1,39 +1,37 @@
 package codegym.module4.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import javax.persistence.*;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "seat")
 public class Seat {
     public Seat() {
+        //do nothing
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
-
+    @Column(name = "seat_number")
     private int seatNumber;
+    @Column(name = "is_booked")
     private boolean isBooked;
+    @Column(name = "is_selecting")
     private boolean isSelecting;
+    @Column(name = "is_vip")
     private boolean isVip;
 
     @ManyToOne
-    @JsonBackReference
-    private _Row _row;
+    @JoinColumn(name = "_row_id")
+    private Row row;
 
-    @OneToMany(mappedBy = "seat")
-    @JsonManagedReference
+    @OneToMany(targetEntity = Ticket.class)
+    @JsonBackReference
     private List<Ticket> tickets;
 
     /**
@@ -109,15 +107,15 @@ public class Seat {
     /**
      * @return the _row
      */
-    public _Row get_row() {
-        return _row;
+    public Row getRow() {
+        return row;
     }
 
     /**
-     * @param _row the _row to set
+     * @param row the _row to set
      */
-    public void set_row(_Row _row) {
-        this._row = _row;
+    public void setRow(Row row) {
+        this.row = row;
     }
 
     /**

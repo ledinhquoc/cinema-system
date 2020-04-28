@@ -1,36 +1,31 @@
 package codegym.module4.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import javax.persistence.*;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "_row")
-public class _Row {
+public class Row
+{
 
-    public _Row() {
+    public Row() {
+        //do Something
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
 
-
     @ManyToOne
-    @JsonBackReference
+    @JoinColumn(name = "show_room_id")
     private ShowRoom showRoom;
 
-    @OneToMany(mappedBy = "_row")
-    @JsonManagedReference
+    @OneToMany(targetEntity = Seat.class)
+    @JsonBackReference
     private List<Seat> seats;
 
     /**
