@@ -5,6 +5,7 @@ import codegym.module4.repositories.*;
 import codegym.module4.repositories.ShowTimeRepo;
 import codegym.module4.services.MovieScheduleService;
 import codegym.module4.services.MovieService;
+import codegym.module4.services.TicketPriceService;
 import codegym.module4.services.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -57,7 +58,7 @@ public class RestController
     private ShowTimeRepo showTimeRepo;
 
     @Autowired
-    private TicketPriceRepo ticketPriceRepo;
+    private TicketPriceService ticketPriceService;
     @GetMapping(path = "tickets", produces = "application/json")
     public List<Ticket> getAllTickets()
     {
@@ -122,6 +123,6 @@ public class RestController
 
     @GetMapping(path = "ticket-prices",produces = MediaType.APPLICATION_JSON_VALUE)
     public List<TicketPrice> getAllTicketPrices(){
-        return ticketPriceRepo.findAll();
+        return ticketPriceService.findAllTicketPrice();
     }
 }
