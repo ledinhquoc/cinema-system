@@ -29,7 +29,6 @@ export class SlideBarComponent implements OnInit {
       let id = data['id'];
       this.memberService.getAccountEdit(id).subscribe((member:MemberInformationModule) => {
         this.memberAvatar = member;
-console.log(this.memberAvatar.img)
       });
     });
   }

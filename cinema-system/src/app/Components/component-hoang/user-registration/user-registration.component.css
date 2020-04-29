@@ -1,0 +1,22 @@
+.star{
+  color: red;
+}
+.card{
+  background-color: rgba(0,0,0,0) !important;
+  border-radius: 0;
+  border: 0;
+}
+.card-header{
+  /*background-color: rgba(0,0,0,1) !important;*/
+
+  background-color: #ff7b59;
+  border: 0;
+}
+.btn{
+  background-color: #ff7b59;
+  border: 0;
+}
+.btn:hover{
+  color: brown;
+  /*cursor: pointer;*/
+}

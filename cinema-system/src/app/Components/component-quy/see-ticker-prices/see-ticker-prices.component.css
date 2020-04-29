@@ -1,0 +1,22 @@
+table th, td {
+
+}
+
+.date {
+  color: #DF3A01;
+  font-family: serif;
+  font-size: 32px;
+}
+
+.chair {
+  color: #DF3A01;
+  font-family: serif;
+  font-size: 18px;
+
+}
+
+.price {
+  color: #EBF4E2;
+  font-family: serif;
+}
+
