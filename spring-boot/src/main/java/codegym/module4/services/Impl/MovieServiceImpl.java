@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -20,6 +21,11 @@ public class MovieServiceImpl implements MovieService
     public List<Movie> findAll()
     {
         return movieRepo.findAll();
+    }
+
+    @Override
+    public Optional<Movie> findById(int id) {
+        return movieRepo.findById(id);
     }
 
 }
