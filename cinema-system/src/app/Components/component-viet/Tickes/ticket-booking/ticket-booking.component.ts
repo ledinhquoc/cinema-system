@@ -29,11 +29,8 @@ export class TicketBookingComponent implements OnInit {
   loadTickets() {
     this.activatedRouteService.params.subscribe(data => {
       let id = data['id'];
-
       this.statusTicketService.getStatusTickes(id,"done").subscribe((statusTicket: TicketStatusModule[]) => {
        this.statusTickets1 = statusTicket;
-
-
       this.statusTicketService.getStatusTickes(id,"waiting").subscribe((statusTicket1: TicketStatusModule[]) => {
        this.statusTickets2 = statusTicket1;
         console.log(this.statusTickets1);
