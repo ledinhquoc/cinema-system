@@ -1,0 +1,10 @@
+
+/*.change-size{*/
+/*  padding: 0% 1% 0% 1%;*/
+/*  font-size: 20px;*/
+/*}*/
+.change-border{
+  border-width:7px;
+  border-style:none groove groove none;
+  border-color: #00e6e6;
+}

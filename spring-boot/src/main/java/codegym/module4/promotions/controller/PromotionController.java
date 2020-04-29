@@ -1,7 +1,7 @@
 package codegym.module4.promotions.controller;
 
 import codegym.module4.promotions.entity.Promotions;
-import codegym.module4.promotions.service.PromotionService;
+import codegym.module4.promotions.service.Iplm.PromotionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

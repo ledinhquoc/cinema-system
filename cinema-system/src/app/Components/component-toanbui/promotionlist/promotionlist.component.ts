@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {PromotionService} from '../service/promotion.service'
 
 @Component({
   selector: 'app-promotionlist',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PromotionlistComponent implements OnInit {
 
-  constructor() { }
+  public promotions;
+  constructor(
+    public promotionService : PromotionService,
+  ) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.promotionService.getAllPromotions().subscribe(data =>{
+      console.log(data);
+      this.promotions=data
+    })
   }
 
 }

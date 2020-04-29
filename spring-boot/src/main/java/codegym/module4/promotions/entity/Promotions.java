@@ -8,6 +8,7 @@ import java.sql.Date;
 
 @Entity
 public class Promotions {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long promotion_id;

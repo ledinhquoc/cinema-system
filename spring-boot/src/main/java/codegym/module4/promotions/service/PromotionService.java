@@ -1,4 +1,4 @@
-package codegym.module4.promotions.service;
+package codegym.module4.promotions.service.Iplm;
 
 import codegym.module4.promotions.entity.Promotions;
 

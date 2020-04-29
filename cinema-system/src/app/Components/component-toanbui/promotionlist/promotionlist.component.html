@@ -1,1 +1,16 @@
-<p>promotionlist works!</p>
+
+<h2>Danh Sách Khuyến Mãi</h2>
+<div>
+  <div class="row d-flex justify-content-start border" >
+    <div class="col-sm-3 change-cart" *ngFor="let promote of promotions" >
+      <div style="border: 1.1px ridge #000066;border-radius: 5px;" >
+
+        <img src="{{promote.promotion_image}}"  alt="{{promote.promotion_image}}"  [routerLink]="['/promotions/'+ promote.promotion_id]">
+
+        <p ><i class="far fa-calendar-alt"></i><span>{{promote.promotion_begin_date| date:'dd/MM/yyyy'}}-{{promote.promotion_end_date| date:'dd/MM/yyyy'}}</span><br><br></p>
+      </div>
+    </div>
+
+  </div>
+</div>
+

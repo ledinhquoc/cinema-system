@@ -1,0 +1,31 @@
+
+<div style="padding-left: 4%;padding-top: 2%;padding-bottom: 2%; font-size: x-large ; font-family: 'Numans', sans-serif"> Chi Tiết Khuyến Mãi </div>
+<div  class="container" style="background-color: #ffc10754">
+  <div class="row">
+    <div class="col-6 change-border" style="margin: 0;padding: 0;">
+      <img src="{{promote?.promotion_image}}" alt="" style="width:100%;max-height: 350px; ">
+    </div>
+
+    <div class="col-6 pl-3" style="margin: 0;padding: 0;">
+
+        <div class="d-flex align-items-center" style="height: 12% ;border-bottom-color: #ccfff5;border-bottom-style: ridge"  >{{promote?.promotion_title}}</div>
+
+        <div class="d-flex align-items-center" style="height: 12% ;border-bottom-color: #ccfff5;border-bottom-style: ridge">
+          <div style="padding-right: 1%;">Thời gian:</div>từ<span class="change-size m-2">{{promote?.promotion_begin_date| date:'dd/MM/yyyy'}}</span>đến<span class="change-size m-2">{{promote?.promotion_end_date| date:'dd/MM/yyyy'}}</span>
+        </div>
+
+        <div class="d-flex align-items-center" style="height: 12% ;border-bottom-color: #ccfff5;border-bottom-style: ridge">
+          <div>Giảm giá vé:</div><span class="change-size m-2">{{promote?.promotion_discuont}}đ</span>
+        </div>
+
+    </div>
+
+  </div>
+  <div class="row">
+    <h4 style="padding-top: 1%;">Nội dung</h4>
+  </div>
+  <div class="row">
+    <p>{{promote?.promotion_description}}</p>
+  </div>
+
+</div>

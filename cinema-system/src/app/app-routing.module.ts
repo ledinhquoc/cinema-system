@@ -22,6 +22,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { MatConfirmDialogComponent } from './Components/component-viet/mat-confirm-dialog/mat-confirm-dialog.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { PromotionlistComponent } from './Components/component-toanbui/promotionlist/promotionlist.component';
+import { PromotionDetailComponent } from './Components/component-toanbui/promotion-detail/promotion-detail.component';
 
 
 const routes: Routes = [
@@ -43,7 +44,8 @@ const routes: Routes = [
       }]
   },
   {path: 'resetPassword', component: ResetPasswordComponent},
-  {path: 'promotions', component: PromotionlistComponent}
+  {path: 'promotions', component: PromotionlistComponent},
+  {path: 'promotions/:promotion_id', component: PromotionDetailComponent}
 
 
 ];
@@ -53,7 +55,7 @@ const routes: Routes = [
   exports: [RouterModule, TopBarComponent, SlideBarComponent,],
   declarations: [TopBarComponent, SlideBarComponent, InfomationComponent, HomeAccountComponent
     , HistoryTicketComponent,ErrorDisplayComponent,LoginComponent,
-    ResetPasswordComponent, TicketCanceledComponent, TicketBookingComponent, MatConfirmDialogComponent, PromotionlistComponent,],
+    ResetPasswordComponent, TicketCanceledComponent, TicketBookingComponent, MatConfirmDialogComponent, PromotionlistComponent, PromotionDetailComponent,],
   entryComponents:[MatConfirmDialogComponent]
 })
 export class AppRoutingModule {
