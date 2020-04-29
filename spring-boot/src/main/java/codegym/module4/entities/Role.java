@@ -1,5 +1,6 @@
 package codegym.module4.entities;
 
+import codegym.module4.jwt.ERole;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
@@ -18,7 +19,9 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private String name;
+    //Vu thay String thay Enum
+    @Enumerated(EnumType.STRING)
+    private ERole name;
 
     @ManyToMany(targetEntity = User.class)
     @JsonBackReference
@@ -41,14 +44,14 @@ public class Role {
     /**
      * @return the name
      */
-    public String getName() {
+    public ERole getName() {
         return name;
     }
 
     /**
      * @param name the name to set
      */
-    public void setName(String name) {
+    public void setName(ERole name) {
         this.name = name;
     }
 

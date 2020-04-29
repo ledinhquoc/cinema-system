@@ -31,7 +31,7 @@ import {ListFilmComponent} from './Components/component-tuan/list-film/list-film
 import {NgxPaginationModule} from 'ngx-pagination';
 import {Ng2SearchPipeModule} from 'ng2-search-filter';
 
-
+import { ConfirmPasswordComponent } from './Components/component-vu/confirm-password/confirm-password.component';
 
 
 
@@ -61,6 +61,8 @@ const routes: Routes = [
       }]
   },
   {path: 'resetPassword', component: ResetPasswordComponent},
+  {path: 'login', component: LoginComponent},
+  {path:'confirm-password/:id',component: ConfirmPasswordComponent},
   {path: 'see-ticker-prices', component: SeeTickerPricesComponent}
 ];
 
@@ -80,7 +82,7 @@ const routes: Routes = [
   PositionSelectorComponent,
     TicketBookingInformationComponent,
   DetailFilmComponent,
-  ListFilmComponent,
+  ListFilmComponent,ConfirmPasswordComponent,
     SeeTickerPricesComponent,],
   imports: [RouterModule.forRoot(routes),
   ReactiveFormsModule,
@@ -92,7 +94,7 @@ const routes: Routes = [
   MatSnackBarModule,
   NgxPaginationModule,
   Ng2SearchPipeModule],
-  exports: [RouterModule, TopBarComponent, SlideBarComponent],
+  exports: [RouterModule, TopBarComponent, SlideBarComponent, LoginComponent],
   entryComponents:[MatConfirmDialogComponent]
 
 })

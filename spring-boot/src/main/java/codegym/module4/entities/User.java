@@ -21,20 +21,28 @@ public class User {
     @Column(name = "name")
     String name;
 
+    //Vu thay String thanh boolean;
     @Column(name = "status")
-    String status;
+    boolean status;
 
     @ManyToMany
     @JsonBackReference
-    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+    @JoinTable(name = "user_role",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
     private List<Role> roles;
 
+    public List<Role> getRoles() {
+        return roles;
+    }
 
-    public User(int idUser, String password, String name, String status) {
-        this.id = idUser;
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
+    }
+
+    public User(String password, String name) {
         this.password = password;
         this.name = name;
-        this.status = status;
     }
 
     public User() {
@@ -63,11 +71,11 @@ public class User {
     public void setName(String name) {
         this.name = name;
     }
-    public String getStatus() {
+    public boolean getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(boolean status) {
         this.status = status;
     }
 }

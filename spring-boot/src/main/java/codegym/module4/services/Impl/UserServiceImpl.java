@@ -8,16 +8,44 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
-public class UserServiceImpl implements UserService
-{
+public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepo userRepo;
+
+
     @Override
-    public List<User> findAll()
-    {
+    public Optional<User> findById(Long id) {
+        return Optional.empty();
+    }
+
+    @Override
+    public void delete(int id) {
+        userRepo.deleteById(id);
+    }
+
+    @Override
+    public void save(User user) {
+        userRepo.save(user);
+    }
+
+    @Override
+    public List<User> findAllUser() {
         return userRepo.findAll();
     }
+
+    @Override
+    public Optional<User> findByName(String name) {
+        return userRepo.findByName(name);
+    }
+
+    @Override
+    public Boolean existsByName(String username) {
+        return userRepo.existsByName(username);
+    }
+
+
 }
