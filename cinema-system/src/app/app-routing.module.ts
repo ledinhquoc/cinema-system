@@ -49,7 +49,8 @@ const routes: Routes = [
       }]
   },
   {path: 'resetPassword', component: ResetPasswordComponent},
-  {path: 'see-ticker-prices', component: SeeTickerPricesComponent}
+  {path: 'see-ticker-prices', component: SeeTickerPricesComponent},
+  {path: 'login', component: LoginComponent}
 ];
 
 @NgModule({

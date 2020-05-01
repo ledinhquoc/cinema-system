@@ -18,11 +18,13 @@ public class User {
     @Column(name = "password")
     String password;
 
-    @Column(name = "name")
+    @Column(name = "username")
     String name;
 
     @Column(name = "status")
     String status;
+
+
 
     @ManyToMany
     @JsonBackReference

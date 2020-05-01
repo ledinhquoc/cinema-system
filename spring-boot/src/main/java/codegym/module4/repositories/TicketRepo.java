@@ -9,6 +9,7 @@ import java.util.List;
 
 @Repository
 public interface TicketRepo extends JpaRepository<Ticket, Integer> {
-
+//VIET ADD
     List<Ticket> findByCustomerAndOrderStatus(Customer customer, String status);
+    //VIET END
 }

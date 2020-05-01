@@ -40,6 +40,5 @@ public class UserController {
         userDetail = userService.findUserById(id);
         userDetail.setPassword(userUpdate.getPassword());
         return userService.save(userDetail);
-
     }
 }

@@ -11,7 +11,9 @@ public class Ticket {
         //do nothing
     }
 
-    @Id
+
+
+        @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
@@ -31,7 +33,6 @@ public class Ticket {
     private int price;
 
     @ManyToOne
-
     @JoinColumn(name = "seat_id")
     private Seat seat;
 
@@ -40,12 +41,10 @@ public class Ticket {
     private TicketPrices ticketPrices;
 
     @ManyToOne
-
     @JoinColumn(name = "promotion_id")
     private Promotion promotion;
 
     @ManyToOne
-
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
@@ -57,9 +56,29 @@ public class Ticket {
     @JoinColumn(name = "movie_schedule_id")
     private MovieSchedules movieSchedules;
 
+
+
+    public Ticket(int id, String bookedTicketCode, String orderStatus, int price, Seat seat, TicketPrices ticketPrices
+            , Promotion promotion, Customer customer, Employee employee, MovieSchedules movieSchedules) {
+        this.id = id;
+        this.bookedTicketCode = bookedTicketCode;
+        this.orderStatus = orderStatus;
+        this.price = price;
+        this.seat = seat;
+        this.ticketPrices = ticketPrices;
+        this.promotion = promotion;
+        this.customer = customer;
+        this.employee = employee;
+        this.movieSchedules = movieSchedules;
+    }
+
+
     /**
      * @return the id
      */
+
+
+
     public int getId() {
         return id;
     }

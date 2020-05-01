@@ -8,4 +8,5 @@ import java.util.List;
 public interface TicketService {
     List<Ticket> findAll();
     List<Ticket>findByCustomerAndOrderStatus(Customer customer, String status);
+    Ticket Creat(Ticket ticket);
 }

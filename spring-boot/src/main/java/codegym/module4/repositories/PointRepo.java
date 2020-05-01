@@ -10,8 +10,8 @@ import java.util.List;
 
 @Repository
 public interface PointRepo extends JpaRepository<Point,Long>
-{
+{ //VIET ADD
     List<Point> findByCustomer(Customer idCustomer);
     List<Point> findByDateCreateBetweenAndCustomerAndPointStatus(Date from, Date to, Customer idCustomer, String status);
-
+//VIET END
 }

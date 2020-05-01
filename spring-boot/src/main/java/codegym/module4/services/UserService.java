@@ -3,6 +3,7 @@ package codegym.module4.services;
 import codegym.module4.entities.User;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface UserService
 {
@@ -13,4 +14,6 @@ public interface UserService
     List<User> findAllUsers();
 
     User save(User user);
+
+
 }

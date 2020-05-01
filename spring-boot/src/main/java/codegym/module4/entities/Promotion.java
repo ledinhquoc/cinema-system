@@ -23,8 +23,24 @@ public class Promotion {
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(value=TemporalType.DATE)
-  @Column(name = "promotion_date")
-    private Date promotionDate;
+  @Column(name = "promotion_begin_date")
+    private Date promotionBeginDate;
+
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Temporal(value=TemporalType.DATE)
+    @Column(name = "promotion_end_date")
+    private Date promotionEndDate;
+
+    @Column(name = "promotion_title")
+    private String promotionTitle;
+
+    @Column(name = "promotion_discount")
+    private String promotionDiscount;
+
+    @Column(name = "promotion_description")
+    private String promotionDescription;
+
 
     @Column(name = "promotion_image")
     private String promotionImage;
@@ -34,12 +50,44 @@ public class Promotion {
     private List<Ticket> tickets;
 
 
-    public Date getPromotionDate() {
-        return promotionDate;
+    public Date getPromotionBeginDate() {
+        return promotionBeginDate;
     }
 
-    public void setPromotionDate(Date promotionDate) {
-        this.promotionDate = promotionDate;
+    public void setPromotionBeginDate(Date promotionBeginDate) {
+        this.promotionBeginDate = promotionBeginDate;
+    }
+
+    public Date getPromotionEndDate() {
+        return promotionEndDate;
+    }
+
+    public void setPromotionEndDate(Date promotionEndDate) {
+        this.promotionEndDate = promotionEndDate;
+    }
+
+    public String getPromotionTitle() {
+        return promotionTitle;
+    }
+
+    public void setPromotionTitle(String promotionTitle) {
+        this.promotionTitle = promotionTitle;
+    }
+
+    public String getPromotionDiscount() {
+        return promotionDiscount;
+    }
+
+    public void setPromotionDiscount(String promotionDiscount) {
+        this.promotionDiscount = promotionDiscount;
+    }
+
+    public String getPromotionDescription() {
+        return promotionDescription;
+    }
+
+    public void setPromotionDescription(String promotionDescription) {
+        this.promotionDescription = promotionDescription;
     }
 
     public String getPromotionImage() {

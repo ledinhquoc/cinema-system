@@ -26,4 +26,9 @@ public class TicketServiceImpl implements TicketService {
         return ticketRepo.findByCustomerAndOrderStatus(customer,status);
     }
 
+    @Override
+    public Ticket Creat(Ticket ticket) {
+        return ticketRepo.save(ticket);
+    }
+
 }

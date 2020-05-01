@@ -3,6 +3,7 @@ package codegym.module4.controllers;
 
 import codegym.module4.entities.Customer;
 import codegym.module4.services.CustomerService;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.*;
 
@@ -51,5 +52,12 @@ public class CustomerController {
       return customerService.saveCustomer(customerDetails);
 
     }
+
+    @PostMapping(path = "/new")
+    public Customer newCustomer(@RequestBody Customer customer)
+    {
+        return customerService.saveCustomer(customer);
+    }
+
 
 }
