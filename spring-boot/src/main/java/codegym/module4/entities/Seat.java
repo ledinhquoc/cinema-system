@@ -26,6 +26,7 @@ public class Seat {
     @Column(name = "is_vip")
     private boolean isVip;
 
+
     @ManyToOne
     @JoinColumn(name = "_row_id")
     private Row row;

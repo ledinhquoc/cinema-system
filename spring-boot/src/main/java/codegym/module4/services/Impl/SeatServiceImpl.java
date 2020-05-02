@@ -11,13 +11,12 @@ import java.util.List;
 
 @Service
 @Transactional
-public class SeatServiceImpl implements SeatService
-{
+public class SeatServiceImpl implements SeatService {
     @Autowired
     private SeatRepo seatRepo;
+
     @Override
-    public List<Seat> findAll()
-    {
+    public List<Seat> findAll() {
         return seatRepo.findAll();
     }
 }
