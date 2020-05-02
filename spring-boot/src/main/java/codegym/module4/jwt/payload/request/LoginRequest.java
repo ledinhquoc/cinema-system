@@ -1,10 +1,11 @@
 package codegym.module4.jwt.payload.request;
 
+
 import javax.validation.constraints.NotBlank;
 
 public class LoginRequest {
     @NotBlank
-    private String name;
+    private String username;
 
     @NotBlank
     private String password;
@@ -13,16 +14,16 @@ public class LoginRequest {
     }
 
     public LoginRequest(String username, String password) {
-        this.name = username;
-        this.password = password;
+        this.username = username;
+        this.username = password;
     }
 
     public String getUsername() {
-        return name;
+        return username;
     }
 
     public void setUsername(String username) {
-        this.name = username;
+        this.username = username;
     }
 
     public String getPassword() {

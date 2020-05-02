@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {UserService} from "../service/user.service";
+import {NotificationService} from "../../../Services/notification.service";
+
 
 @Component({
   selector: 'app-confirm-password',
@@ -16,7 +18,8 @@ export class ConfirmPasswordComponent implements OnInit {
   constructor(private router: Router,
               private route: ActivatedRoute,
               private fb: FormBuilder,
-              private userService: UserService) {
+              private userService: UserService,
+              private notificationService: NotificationService) {
   }
 
   ngOnInit(): void {
@@ -37,9 +40,16 @@ export class ConfirmPasswordComponent implements OnInit {
       if (confirmPass != password) {
         this.error_message = 'Mật khẩu không khớp';
       } else {
-        this.userService.getUserById(id).subscribe(data => {
-          console.log(data);
+        this.userService.updatePassword(id,password).subscribe(data =>{
+          this.notificationService.warn('Check your email to reset password');
+          window.location.assign('login');
+        },error => {
+          this.notificationService.warn('fail');
         });
+
+        // this.userService.getUserById(id).subscribe(data => {
+        //   console.log(data);
+        // });
       }
     }else{
       this.check = true;

@@ -1,5 +1,53 @@
+<nav id="nav-bar" class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+  <a class="navbar-branch" href="#">
+    <img id="logo" src="../assets/images/logoCGV.png" height="75" width="230" alt="logo" style="height: 65px;">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse"
+          data-target="#navbarResponsive">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarResponsive">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link active" href="#">HOME</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">CINEMA CGV</a>
+      </li>
+      <li class="nav-item" *ngIf="isLoggedIn">
+        <a class="nav-link" href="#">MEMBER</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">CULTUREPLEX</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">ABOUT</a>
+      </li>
+      <li class="nav-item" *ngIf="!isLoggedIn">
+        <a class="nav-link" [routerLink]="['login']">LOGIN</a>
+      </li>
+
+      <li class="nav-item" *ngIf="isLoggedIn">
+        <div class="btn-group dropleft" style="padding-top: 10px">
+          <button type="button" class="btn btn-primary" data-toggle="dropdown" style="font-size: 11px;border-radius: 19px;background-color: #000000;
+    border-color: #0f1011;">
+            {{username}} <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+            <li><a [routerLink]=" [id,'account']" >Information</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a (click)="logout()">LogOut</a></li>
+          </ul>
+        </div>
+      </li>
+
+    </ul>
+  </div>
+
+</nav>
 
 
 <router-outlet></router-outlet>
-
 

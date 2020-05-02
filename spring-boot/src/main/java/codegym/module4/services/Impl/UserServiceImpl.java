@@ -18,6 +18,11 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
+    public User findByIdL(int id) {
+        return userRepo.findByIdL(id);
+    }
+
+    @Override
     public Optional<User> findById(Long id) {
         return Optional.empty();
     }
@@ -38,13 +43,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Optional<User> findByName(String name) {
-        return userRepo.findByName(name);
+    public Optional<User> findByUsername(String name) {
+        return userRepo.findByUsername(name);
     }
 
     @Override
     public Boolean existsByName(String username) {
-        return userRepo.existsByName(username);
+        return userRepo.existsByUsername(username);
     }
 
 

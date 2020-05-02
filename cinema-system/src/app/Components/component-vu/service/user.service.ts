@@ -34,8 +34,8 @@ export class UserService {
     return this.http.get(API_URL + 'admin', this.httpOptions);
   }
 
-  addUser(post: Partial<any>): Observable<any>{
-    return this.http.post(API_URL + 'addUser', post);
+  addCustomer(post: Partial<any>): Observable<any>{
+    return this.http.post(API_URL + 'api/v1/auth/signup', post);
   }
 
   getListUser(): Observable<any> {
@@ -51,7 +51,11 @@ export class UserService {
   }
 
   updatePassword(id: any, pass: any): Observable<any> {
-    return this.http.patch(API_URL + 'user/' + id + '/password',pass);
+    return this.http.patch(API_URL + 'api/v1/users/updatePassword/' + id + '/password',pass);
   }
+  getAllCustomer():Observable<any> {
+    return this.http.get(API_URL + 'customers');
+  }
+
 
 }

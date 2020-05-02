@@ -4,7 +4,10 @@ import codegym.module4.entities.MovieSchedules;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface MovieSchedulesRepo extends JpaRepository<MovieSchedules,Integer>
 {
+
 }

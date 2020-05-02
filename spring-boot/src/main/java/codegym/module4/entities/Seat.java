@@ -25,6 +25,10 @@ public class Seat {
     private boolean isSelecting;
     @Column(name = "is_vip")
     private boolean isVip;
+    @Column(name = "name")
+    private String name;
+
+
 
     @ManyToOne
     @JoinColumn(name = "_row_id")
@@ -125,9 +129,19 @@ public class Seat {
         return tickets;
     }
 
+    public String isName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     /**
      * @param tickets the tickets to set
      */
+
+
     public void setTickets(List<Ticket> tickets) {
         this.tickets = tickets;
     }

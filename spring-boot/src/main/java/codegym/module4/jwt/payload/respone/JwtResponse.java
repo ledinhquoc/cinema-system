@@ -9,7 +9,7 @@ public class JwtResponse {
     private String username;
     private List<String> roles;
 
-    public JwtResponse(String accessToken, int id, String username, List<String> roles) {
+    public JwtResponse(String accessToken, int id, List<String> roles,String username) {
         this.token = accessToken;
         this.id = id;
         this.username = username;

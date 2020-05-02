@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {AuthService, FacebookLoginProvider, SocialUser} from 'angularx-social-login';
+
 import {Router} from '@angular/router';
-import {User} from '../interface/user';
 import {UserService} from '../service/user.service';
 import {TokenStorageService} from "../service/token-storage.service";
 import {AuthServices} from "../service/auth.service"
+import {AuthService, FacebookLoginProvider, SocialUser} from "angularx-social-login";
 
 @Component({
   selector: 'app-login',
@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
         this.listPassword.push(item.password);
       }
     });
-    console.log(this.tokenStorage.getToken());
+    console.log(this.listUserName);
   }
 
 
@@ -95,7 +95,7 @@ export class LoginComponent implements OnInit {
               this.isLoginFailed = false;
               this.isLoggedIn = true;
               this.roles = this.tokenStorage.getUser().roles;
-              this.reloadPage();
+              window.location.assign('#');
             },
             err => {
               // this.errorMessage = err.error.message;
@@ -118,16 +118,17 @@ export class LoginComponent implements OnInit {
   }
 
   //facebook
-  Login() {
+  LoginByFacebook() {
+    console.log('hello');
     let socialPlatformProvider;
     let username;
     socialPlatformProvider = FacebookLoginProvider.PROVIDER_ID;
     this.OAuth.signIn(socialPlatformProvider).then(socialusers => {
-      this.userService.getListUser().subscribe(data => {
+      this.userService.getAllCustomer().subscribe(data => {
         for (const item of data) {
           if (socialusers.email === item.email) {
             this.check = true;
-            username = item.username;
+            username = item['user'].username;
             break;
           }
         }
@@ -144,9 +145,9 @@ export class LoginComponent implements OnInit {
               this.isLoginFailed = false;
               this.isLoggedIn = true;
               this.roles = this.tokenStorage.getUser().roles;
-              this.reloadPage();
+              window.location.assign('#');
             });
-          this.router.navigate(['home']);
+
         } else {
           this.Savesresponse(socialusers);
         }
@@ -156,20 +157,41 @@ export class LoginComponent implements OnInit {
   }
 
   Savesresponse(user: SocialUser) {
-    const userFB = {
-      username: user.firstName,
-      password: "$2y$12$2CTyvZZnosmg0v.CCWLMb.GGb98ptg5Edsu/1UQXb4.lUfsGDMgcq",
-      status: false,
-      roles: [
-        {
-          idRole: 2,
-          name: "ROLE_USER"
-        }
-      ]
-    };
-    this.userService.addUser(userFB).subscribe(data => {
+    const userTest = {
+      fullName: user.name,
+      gender: 'Na',
+      idCard: 'Na',
+      email: user.email,
+      phone: 'Na',
+      address: 'Na',
+      user: {
+        password: '123456',
+        username: user.lastName,
+        roles: [
+          {
+            id: 2,
+            name: 'ROLE_USER'
+          }
+        ]
+      },
+      "birthday": "1991-02-27"
+    }
+    this.formTest = this.fb.group({
+      username1: [user.lastName],
+      password1: [123456]
+    });
+    this.userService.addCustomer(userTest).subscribe(data => {
       console.log('success');
-      this.router.navigate(['home']);
+      this.authService.login(this.formTest.value).subscribe(
+        data1 => {
+          this.tokenStorage.saveToken(data1.accessToken);
+          this.tokenStorage.saveUser(data1);
+          this.isLoginFailed = false;
+          this.isLoggedIn = true;
+          this.roles = this.tokenStorage.getUser().roles;
+          window.location.assign('#');
+        });
+
     });
   }
 
