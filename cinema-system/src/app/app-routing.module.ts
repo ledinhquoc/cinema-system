@@ -29,6 +29,7 @@ import {CarouselComponent} from "./Components/component-hoang/carousel/carousel.
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
+import {MemberComponent} from "./Components/component-vu/member/member.component";
 
 
 
@@ -59,6 +60,7 @@ const routes: Routes = [
   {path: 'see-ticker-prices', component: SeeTickerPricesComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: UserRegistrationComponent},
+  {path: 'member', component: MemberComponent},
   {path: 'confirmPassword/:id', component: ConfirmPasswordComponent},
 
 ];

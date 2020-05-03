@@ -57,10 +57,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable()
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-                .authorizeRequests().antMatchers("**").permitAll()
-//                .antMatchers("/api/test/admin").access("hasRole('ROLE_ADMIN')")
-//                .antMatchers("/api/test/user").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
-//                .antMatchers("/api/test/**").permitAll()
+                .authorizeRequests().antMatchers("/api/v1/auth/**").permitAll()
+//                .antMatchers("/api/v1/users").access("hasRole('ROLE_ADMIN')")
+                .antMatchers("/api/v1/users/**").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+                .antMatchers("**").permitAll()
                 .anyRequest().authenticated()
                 .and().cors();
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);

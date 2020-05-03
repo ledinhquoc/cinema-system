@@ -4,11 +4,15 @@ package codegym.module4.controllers;
 import codegym.module4.entities.User;
 import codegym.module4.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -50,6 +54,7 @@ public class UserController {
     public User updatePassword(@PathVariable int id, @RequestBody String pass) {
         User user1 = userService.findByIdL(id);
         user1.setPassword(encoder.encode(pass));
+        user1.setStatus(false);
         userService.save(user1);
         return userService.findByIdL(id);
     }
@@ -60,6 +65,12 @@ public class UserController {
         user1.setStatus(true);
         userService.save(user1);
         return userService.findByIdL(id);
+    }
+    @GetMapping("/user")
+    public ResponseEntity<?> userAccess() {
+        Map<String, String> stringStringMap = new HashMap<>();
+        stringStringMap.put("hello", "Hello user");
+        return new ResponseEntity<>(stringStringMap, HttpStatus.OK);
     }
 
 //    @GetMapping("/user/{id}")

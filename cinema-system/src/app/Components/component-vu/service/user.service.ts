@@ -22,13 +22,6 @@ export class UserService {
     return this.http.get(API_URL + 'all', { responseType: 'text' });
   }
 
-  getUserBoard(): Observable<any> {
-    return this.http.get(API_URL + 'user',this.httpOptions);
-  }
-
-  getModeratorBoard(): Observable<any> {
-    return this.http.get(API_URL + 'mod', { responseType: 'text' });
-  }
 
   getAdminBoard(): Observable<any> {
     return this.http.get(API_URL + 'admin', this.httpOptions);
@@ -55,6 +48,10 @@ export class UserService {
   }
   getAllCustomer():Observable<any> {
     return this.http.get(API_URL + 'customers');
+  }
+
+  getUserBoard(): Observable<any> {
+    return this.http.get(API_URL + 'api/v1/users/user',this.httpOptions);
   }
 
 

@@ -9,10 +9,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import {AuthService, AuthServiceConfig, FacebookLoginProvider} from "angularx-social-login";
+import { MemberComponent } from './Components/component-vu/member/member.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    MemberComponent,
   ]
   ,
   imports: [BrowserModule, AppRoutingModule, HttpClientModule,BrowserAnimationsModule,ReactiveFormsModule],
