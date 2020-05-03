@@ -1,0 +1,33 @@
+<div class="container">
+  <!--    newwwwwwwwwwwwwwwwwwww-->
+  <div *ngFor="let day of movies | slice:6:7; let i=index">
+    <div class="row mt-3 " *ngFor="let movie of day.movies">
+      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+        <img style="height: 100%;width: 100%;border-radius: 15px "
+             [src]="movie.url"
+             alt="">
+      </div>
+      <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+        <div>
+          <!-- name -->
+          <h4>{{movie.name}}</h4>
+          <div class="d-flex ">
+            <p class="mr-3">Type Of Movie</p>
+            <!--            <p class="mr-3">ddsđ</p>-->
+            <!--            <p class="mr-3">ddsđ</p>-->
+          </div>
+          <h4>2D Phụ Đề Anh</h4>
+        </div>
+        <div class="btn-group mt-3" role="group" aria-label="Basic example" *ngFor="let time of movie.times">
+          <button  type="button" style="height: 5vh;width: 12%;font-size: large;" class="mx-2 btn btn-outline-secondary" (click)="chonGhe()">
+            {{time.time}}
+          </button>
+        </div>
+      </div>
+      <br>
+    </div>
+    <br>
+  </div>
+
+
+</div>

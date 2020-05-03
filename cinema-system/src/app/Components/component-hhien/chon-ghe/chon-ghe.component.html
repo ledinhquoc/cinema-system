@@ -1,0 +1,81 @@
+<div class="container mt-5">
+  <!--  head-->
+  <div style="background-color: whitesmoke;border-radius: 30px 30px 0px 0px">
+    <div class="row d-flex justify-content-center">
+      <h2 class="">Chọn ghế</h2>
+    </div>
+    <br>
+    <div class="d-flex justify-content-center">
+      <div>
+        <p style="font-weight: bold;"> KẺ ĐÀO TẨU GIẤC MƠ</p>
+      </div>
+      <div class="ml-2">
+        08:00 Ngày: 28/4/2020
+      </div>
+    </div>
+    <div class="mx-5 row">
+      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 text-right" >
+        Ghế đã chọn :
+      </div>
+      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 d-flex">
+        <div *ngFor="let seat_dangchon of seats_selecting_show" class="mx-1" style="font-weight: bold ">{{seat_dangchon}}</div>
+      </div>
+      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+        <button style="height: 4vh" class="btn btn-danger" >Đặt vé</button>
+      </div>
+    </div>
+    <br>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+    </div>
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+      <div class="d-flex justify-content-center bg" style="background-color: gray;">
+        <div class="text-white">Screen</div>
+      </div>
+      <br>
+      <hr>
+      <div class=" ">
+        <span class="fa-stack fa-2x" *ngFor="let seat of seats" style="text-align: center" (click)="selectSeat(seat)">
+           <em class="fas fa-couch" style="font-size: 5vh"
+              [style]=" seat.is_booked?'color:rgba(193,0,0,0.67)':seat.is_selecting ?'color: greenyellow':seat.is_vip?'color:deepskyblue':'color: gainsboro'"></em>
+          <strong class="fa-stack-1x calendar-text" style="color: black;font-size: 2vh">{{row[seat.row_id]+seat.seat_number}}</strong>
+        </span>
+      </div>
+      <hr>
+      <div class="d-flex">
+        <div class="mr-2">
+          <i class="fas fa-couch" style="font-size: 5vh" style="color: gainsboro"> </i>
+        </div>
+        <div class="mr-5">
+          <p> Ghế trống</p>
+        </div>
+        <div class="mr-2">
+          <i class="fas fa-couch" style="font-size: 5vh" style="color: rgba(193,0,0,0.67)"> </i>
+        </div>
+        <div>
+          <p> Ghế đã có người đặt</p>
+        </div>
+      </div>
+      <div class="d-flex">
+        <div class="mr-2">
+          <i class="fas fa-couch" style="font-size: 5vh" style="color: deepskyblue"> </i>
+        </div>
+        <div class="mr-5">
+          <p> Ghế Vip </p>
+        </div>
+        <div class="mr-2 ml-3">
+          <i class="fas fa-couch" style="font-size: 5vh" style="color: yellowgreen"> </i>
+        </div>
+        <div class="mr-5">
+          <p> Ghế đang chọn</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+    </div>
+  </div>
+  <!--  body-->
+
+</div>

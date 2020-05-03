@@ -16,6 +16,8 @@ import {TicketCanceledComponent} from './Components/component-viet/Tickes/ticket
 import {TicketBookingComponent} from './Components/component-viet/Tickes/ticket-booking/ticket-booking.component';
 import {TicketBookingInformationComponent} from './Components/component-toantr/ticket-booking-information/ticket-booking-information.component';
 import {PositionSelectorComponent} from './Components/component-toantr/position-selector/position-selector.component';
+import {BanVeComponent} from '././Components/component-hhien/ban-ve/ban-ve.component';
+import {ChonGheComponent} from '././Components/component-hhien/chon-ghe/chon-ghe.component';
 
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
@@ -25,15 +27,11 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatConfirmDialogComponent} from './Components/component-viet/mat-confirm-dialog/mat-confirm-dialog.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 
-import { SeeTickerPricesComponent } from './Components/component-quy/see-ticker-prices/see-ticker-prices.component';
+import {SeeTickerPricesComponent} from './Components/component-quy/see-ticker-prices/see-ticker-prices.component';
 import {DetailFilmComponent} from './Components/component-tuan/detail-film/detail-film.component';
 import {ListFilmComponent} from './Components/component-tuan/list-film/list-film.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {Ng2SearchPipeModule} from 'ng2-search-filter';
-
-
-
-
 
 
 const routes: Routes = [
@@ -46,8 +44,8 @@ const routes: Routes = [
         path: ':id/show', component: HomeAccountComponent,
       },
       {
-      path: ':id/changeInformation', component: InfomationComponent,
-    },
+        path: ':id/changeInformation', component: InfomationComponent,
+      },
 
 
       {
@@ -61,39 +59,48 @@ const routes: Routes = [
       }]
   },
   {path: 'resetPassword', component: ResetPasswordComponent},
-  {path: 'see-ticker-prices', component: SeeTickerPricesComponent}
+  {path: 'see-ticker-prices', component: SeeTickerPricesComponent},
+  {
+    path: 'ban-ve',
+    component: BanVeComponent,
+    loadChildren: () => import('./Components/component-hhien/ban-ve/ban-ve.module').then(m => m.BanVeModule)
+  },
+  {path: 'chon-ghe', component: ChonGheComponent}
 ];
 
 @NgModule({
 
   declarations: [TopBarComponent,
-  SlideBarComponent,
-  InfomationComponent,
-  HomeAccountComponent,
-  HistoryTicketComponent,
-  ErrorDisplayComponent,
-  LoginComponent,
+    BanVeComponent,
+    ChonGheComponent,
+    SlideBarComponent,
+    InfomationComponent,
+    HomeAccountComponent,
+    HistoryTicketComponent,
+    ErrorDisplayComponent,
+    LoginComponent,
     ResetPasswordComponent,
-  TicketCanceledComponent,
-  TicketBookingComponent,
-  MatConfirmDialogComponent,
-  PositionSelectorComponent,
+    TicketCanceledComponent,
+    TicketBookingComponent,
+    MatConfirmDialogComponent,
+    PositionSelectorComponent,
     TicketBookingInformationComponent,
-  DetailFilmComponent,
-  ListFilmComponent,
+    DetailFilmComponent,
+    ListFilmComponent,
     SeeTickerPricesComponent,],
   imports: [RouterModule.forRoot(routes),
-  ReactiveFormsModule,
-  FormsModule,
+    ReactiveFormsModule,
+    FormsModule,
     CommonModule,
-  MatDialogModule,
-  MatButtonModule,
-  MatIconModule,
-  MatSnackBarModule,
-  NgxPaginationModule,
-  Ng2SearchPipeModule],
+    MatDialogModule,
+    MatButtonModule,
+    MatIconModule,
+    MatSnackBarModule,
+    NgxPaginationModule,
+    Ng2SearchPipeModule],
   exports: [RouterModule, TopBarComponent, SlideBarComponent],
-  entryComponents:[MatConfirmDialogComponent]
+  entryComponents: [MatConfirmDialogComponent]
 
 })
-export class AppRoutingModule {}
+export class AppRoutingModule {
+}
