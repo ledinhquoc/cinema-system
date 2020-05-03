@@ -11,6 +11,7 @@ import {TicketBookingInformationComponent} from './Components/component-toantr/t
 import {PositionSelectorComponent} from './Components/component-toantr/position-selector/position-selector.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
+import {MaterialModule} from '../app/material/material.module';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
@@ -23,6 +24,11 @@ import {LoginComponent} from "./Components/component-vu/login/login.component";
 import {ResetPasswordComponent} from "./Components/component-vu/reset-password/reset-password.component";
 import {ConfirmPasswordComponent} from "./Components/component-vu/confirm-password/confirm-password.component";
 import {ErrorDisplayComponent} from "./Components/component-vu/error-display/error-display.component";
+import {UserRegistrationComponent} from "./Components/component-hoang/user-registration/user-registration.component";
+import {CarouselComponent} from "./Components/component-hoang/carousel/carousel.component";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
 
 
 
@@ -52,19 +58,20 @@ const routes: Routes = [
   {path: 'resetPassword', component: ResetPasswordComponent},
   {path: 'see-ticker-prices', component: SeeTickerPricesComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'register', component: UserRegistrationComponent},
   {path: 'confirmPassword/:id', component: ConfirmPasswordComponent},
 
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes),
-    ReactiveFormsModule, FormsModule, CommonModule, MatDialogModule,
-    MatButtonModule, MatIconModule, MatSnackBarModule, NgxPaginationModule,Ng2SearchPipeModule],
+    ReactiveFormsModule,MaterialModule, FormsModule, CommonModule, MatDialogModule,
+    MatButtonModule, MatIconModule, MatSnackBarModule, NgxPaginationModule, Ng2SearchPipeModule, MatFormFieldModule, MatDatepickerModule,MatNativeDateModule],
   exports: [RouterModule, TopBarComponent, SlideBarComponent,],
   declarations: [TopBarComponent, SlideBarComponent, InfomationComponent, HomeAccountComponent
-    , HistoryTicketComponent, ErrorDisplayComponent, LoginComponent,
+    , HistoryTicketComponent, ErrorDisplayComponent, LoginComponent,CarouselComponent,
     TicketCanceledComponent, TicketBookingComponent, ConfirmPasswordComponent,
-    MatConfirmDialogComponent, PositionSelectorComponent,ResetPasswordComponent,
+    MatConfirmDialogComponent, PositionSelectorComponent,ResetPasswordComponent,UserRegistrationComponent,
     TicketBookingInformationComponent, SeeTickerPricesComponent],
   entryComponents: [MatConfirmDialogComponent]
 })

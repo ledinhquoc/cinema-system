@@ -34,7 +34,7 @@
         </div>
         <div class="card-footer" style="margin-top: 15px;">
           <div class="d-flex justify-content-center links" *ngIf="!checkStatus">
-            Chưa có tài khoản ?<a href="#">Đăng ký</a>
+            Chưa có tài khoản ?<a [routerLink]="['register']" >Đăng ký</a>
           </div>
           <div  *ngIf="checkStatus" style="color: #ff2820;margin-left: 40px">
             {{errorMessage}}
