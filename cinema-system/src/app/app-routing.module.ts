@@ -1,14 +1,10 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-
 import {LoginComponent} from './Components/component-vu/login/login.component';
 import {ResetPasswordComponent} from './Components/component-vu/reset-password/reset-password.component';
-
 import {TopBarComponent} from './Components/component-viet/TopBar/top-bar/top-bar.component';
 import {SlideBarComponent} from './Components/component-viet/SlideBar/slide-bar/slide-bar.component';
 import {ErrorDisplayComponent} from './Components/component-vu/error-display/error-display.component';
-
-
 import {InfomationComponent} from './Components/component-viet/InformationAccount/infomation/infomation.component';
 import {HomeAccountComponent} from './Components/component-viet/home-account/home-account.component';
 import {HistoryTicketComponent} from './Components/component-viet/Tickes/history-ticket/history-ticket.component';
@@ -59,7 +55,7 @@ const routes: Routes = [
       }]
   },
   {path: 'resetPassword', component: ResetPasswordComponent},
-  {path: 'see-ticker-prices', component: SeeTickerPricesComponent}
+  {path: 'ticker-prices', component: SeeTickerPricesComponent}
 ];
 
 @NgModule({
@@ -89,7 +85,8 @@ const routes: Routes = [
   MatIconModule,
   MatSnackBarModule,
   NgxPaginationModule,
-  Ng2SearchPipeModule],
+  Ng2SearchPipeModule
+    ],
   exports: [RouterModule, TopBarComponent, SlideBarComponent],
   entryComponents:[MatConfirmDialogComponent]
 
