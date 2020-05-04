@@ -28,11 +28,9 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import {Ng2SearchPipeModule} from 'ng2-search-filter';
 
 
-
-
-
-
 const routes: Routes = [
+  {path: 'list-film', component: ListFilmComponent},
+  {path: 'film-detail/:id', component: DetailFilmComponent},
   {
     path: ':id/account', component: SlideBarComponent,
     children: [{
@@ -75,8 +73,8 @@ const routes: Routes = [
   MatConfirmDialogComponent,
   PositionSelectorComponent,
     TicketBookingInformationComponent,
-  DetailFilmComponent,
   ListFilmComponent,
+    DetailFilmComponent,
     SeeTickerPricesComponent,],
   imports: [RouterModule.forRoot(routes),
   ReactiveFormsModule,
