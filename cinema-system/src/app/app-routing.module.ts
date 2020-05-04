@@ -23,10 +23,10 @@ import {SeeTickerPricesComponent} from './Components/component-quy/see-ticker-pr
 import {NgxPaginationModule} from 'ngx-pagination';
 import {Ng2SearchPipeModule} from 'ng2-search-filter';
 import { BookingComponent } from './Components/component-quoc/booking/booking.component';
-import { MaterialModule} from './material/material.module';
 import { TicketConfirmComponent } from './Components/component-quoc/ticket-confirm/ticket-confirm/ticket-confirm.component';
 import { TicketConfirmInfoComponent } from './Components/component-quoc/ticket-confirm-info/ticket-confirm-info/ticket-confirm-info.component';
-
+import { ListFilmComponent} from '../app/Components/component-tuan/list-film/list-film.component';
+import { DetailFilmComponent} from '../app/Components/component-tuan/detail-film/detail-film.component';
 import {LoginComponent} from "./Components/component-vu/login/login.component";
 import {ResetPasswordComponent} from "./Components/component-vu/reset-password/reset-password.component";
 import {ConfirmPasswordComponent} from "./Components/component-vu/confirm-password/confirm-password.component";
@@ -42,7 +42,7 @@ import {MemberComponent} from "./Components/component-vu/member/member.component
 
 
 const routes: Routes = [
-  {path: 'list-film', component: ListFilmComponent},
+  {path: '', component: ListFilmComponent},
   {path: 'film-detail/:id', component: DetailFilmComponent},
   {
     path: ':id/account', component: SlideBarComponent,
@@ -79,7 +79,7 @@ const routes: Routes = [
   {path: 'member', component: MemberComponent},
   {path: 'confirmPassword/:id', component: ConfirmPasswordComponent},
 
-
+];
 @NgModule({
 
   declarations: [TopBarComponent,
@@ -119,9 +119,13 @@ const routes: Routes = [
   MatSnackBarModule,
   NgxPaginationModule,
   Ng2SearchPipeModule,
-  MaterialModule],
+  MaterialModule,
+  MatFormFieldModule,
+  MatDatepickerModule,
+  MatNativeDateModule],
   exports: [RouterModule, TopBarComponent, SlideBarComponent],
   entryComponents:[MatConfirmDialogComponent],
 
+})
 export class AppRoutingModule {
 }

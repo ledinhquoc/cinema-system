@@ -9,7 +9,7 @@ export class FilmService {
 
   constructor(public http: HttpClient) { }
   private baseUrlFilm = 'http://localhost:8080/movies';
-  private baseUrlSchedule = 'http://localhost:8080/movieSchedules/hour/';
+  private baseUrlSchedule = 'http://localhost:8080/movieSchedules/hour';
 
   getAllFilm(): Observable<any> {
     return this.http.get(this.baseUrlFilm);

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { FilmService} from '../../../services/film.service'
 import { ActivatedRoute } from '@angular/router';
-import * as moment from 'moment';
+import * as moment from 'moment/moment';
 
 @Component({
   selector: 'app-booking',
@@ -53,8 +53,10 @@ export class BookingComponent implements OnInit {
    
     this.filmService.getAllFilms().subscribe(data =>{
       this.films=data;
-      console.log(data);
     });
+
+    this.movie=history.state.movie;
+    console.log("data cua tuan",history.state.movie);
   }
 
  getHour(){
@@ -73,18 +75,18 @@ for(var i = 0;tt<22*60;i++ ){
 this.timeList  = this.times;
  }
 
-getI(i: number)
+getI()
 {
-    this.i = i;
-  this.filmService.getAllFilms().subscribe(data =>{
-      for(const item of data){
-        if(item.id === i){
-          this.dateStart = item['movieSchedules'].movie.dateStart;
-          this.dateEnd = item['movieSchedules'].movie.dateEnd;
-        }
-      }
+    
+ 
+  
+          this.dateStart = this.movie.dateStart;
+          this.dateEnd = this.movie.dateEnd;
+        
+      
       this.dayList = this.daybetween(this.dateStart, this.dateEnd); 
-  });
+      console.log("popop",this.dayList);
+  
 }
  daybetween(from,to){
   const fromDate = moment(new Date(from)).startOf('day');

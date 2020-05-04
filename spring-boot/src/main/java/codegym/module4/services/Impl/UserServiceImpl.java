@@ -33,7 +33,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void save(User user) {
+    public List< User > findAll(){
+        return userRepo.findAll();
+    }
+
+    @Override
+    public void saveV(User user) {
         userRepo.save(user);
     }
 

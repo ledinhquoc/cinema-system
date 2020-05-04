@@ -51,127 +51,67 @@ public class Promotion
     @JsonBackReference
     private List<Ticket> tickets;
 
-    public Date getPromotionEndDate()
-    {
-        return this.promotionEndDate;
-    }
-
-    public void setPromotionEndDate(Date promotionEndDate)
-    {
-        this.promotionEndDate = promotionEndDate;
-    }
-
-    public Date getPromotionBeginDate()
-    {
-        return this.promotionBeginDate;
-    }
-
-    public void setPromotionBeginDate(Date promotionBeginDate)
-    {
-        this.promotionBeginDate = promotionBeginDate;
-    }
-
-    public int getPromotionDiscount()
-    {
-        return this.promotionDiscount;
-    }
-
-    public void setPromotionDiscount(int promotionDiscount)
-    {
-        this.promotionDiscount = promotionDiscount;
-    }
-
-    public String getPromotionTitle()
-    {
-        return this.promotionTitle;
-    }
-
-    public void setPromotionTitle(String promotionTitle)
-    {
-        this.promotionTitle = promotionTitle;
-    }
-
-
-    public Date getPromotionBeginDate() {
-        return promotionBeginDate;
-    }
-
-    public void setPromotionBeginDate(Date promotionBeginDate) {
-        this.promotionBeginDate = promotionBeginDate;
-    }
-
-    public Date getPromotionEndDate() {
-        return promotionEndDate;
-    }
-
-    public void setPromotionEndDate(Date promotionEndDate) {
-        this.promotionEndDate = promotionEndDate;
-    }
-
-    public String getPromotionTitle() {
-        return promotionTitle;
-    }
-
-    public void setPromotionTitle(String promotionTitle) {
-        this.promotionTitle = promotionTitle;
-    }
-
-    public String getPromotionDiscount() {
-        return promotionDiscount;
-    }
-
-    public void setPromotionDiscount(String promotionDiscount) {
-        this.promotionDiscount = promotionDiscount;
-    }
-
-    public String getPromotionDescription() {
-        return promotionDescription;
-    }
-
-    public void setPromotionDescription(String promotionDescription) {
-
-        this.promotionDescription = promotionDescription;
-    }
-
-    public String getPromotionImage()
-    {
-        return promotionImage;
-    }
-
-    public void setPromotionImage(String promotionImage)
-    {
-        this.promotionImage = promotionImage;
-    }
-
-    /**
-     * @return the id
-     */
-    public int getId()
-    {
+    public int getId(){
         return id;
     }
 
-    /**
-     * @param id the id to set
-     */
-    public void setId(int id)
-    {
+    public void setId(int id){
         this.id = id;
     }
 
-    /**
-     * @return the tickets
-     */
-    public List<Ticket> getTickets()
-    {
+    public Date getPromotionEndDate(){
+        return promotionEndDate;
+    }
+
+    public void setPromotionEndDate(Date promotionEndDate){
+        this.promotionEndDate = promotionEndDate;
+    }
+
+    public Date getPromotionBeginDate(){
+        return promotionBeginDate;
+    }
+
+    public void setPromotionBeginDate(Date promotionBeginDate){
+        this.promotionBeginDate = promotionBeginDate;
+    }
+
+    public int getPromotionDiscount(){
+        return promotionDiscount;
+    }
+
+    public void setPromotionDiscount(int promotionDiscount){
+        this.promotionDiscount = promotionDiscount;
+    }
+
+    public String getPromotionTitle(){
+        return promotionTitle;
+    }
+
+    public void setPromotionTitle(String promotionTitle){
+        this.promotionTitle = promotionTitle;
+    }
+
+    public String getPromotionDescription(){
+        return promotionDescription;
+    }
+
+    public void setPromotionDescription(String promotionDescription){
+        this.promotionDescription = promotionDescription;
+    }
+
+    public String getPromotionImage(){
+        return promotionImage;
+    }
+
+    public void setPromotionImage(String promotionImage){
+        this.promotionImage = promotionImage;
+    }
+
+    public List< Ticket > getTickets(){
         return tickets;
     }
 
-    /**
-     * @param tickets the tickets to set
-     */
-    public void setTickets(List<Ticket> tickets)
-    {
+    public void setTickets(List< Ticket > tickets){
         this.tickets = tickets;
     }
 }

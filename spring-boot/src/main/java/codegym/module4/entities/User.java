@@ -95,13 +95,5 @@ public class User implements Serializable {
         this.status = status;
     }
 
-    public List<Role> getRoles()
-    {
-        return this.roles;
-    }
 
-    public void setRoles(List<Role> roles)
-    {
-        this.roles = roles;
-    }
 }

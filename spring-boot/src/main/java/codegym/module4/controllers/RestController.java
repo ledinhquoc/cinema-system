@@ -86,7 +86,7 @@ public class RestController
             @PathVariable("id")Integer id){
         Optional<Ticket> ticket =ticketService.findById(id);
 
-        if (ticket.isPresent()) {
+        if (!ticket.isPresent()) {
             return new ResponseEntity<>(ticket.get(),
                     HttpStatus.NO_CONTENT);
         }
@@ -174,11 +174,11 @@ public class RestController
     }
 
 
-    @GetMapping(path = "tickets/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Ticket getTicketById(@PathVariable int id)
-    {
-        return ticketService.findById(id);
-    }
+//    @GetMapping(path = "tickets/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+//    public Ticket getTicketById(@PathVariable int id)
+//    {
+//        return ticketService.findById(id);
+//    }
 
     @GetMapping(path = "show-rooms/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ShowRoom getShowRoomById(@PathVariable int id)
@@ -204,7 +204,7 @@ public class RestController
     }
 
     @GetMapping(path = "customers/ticket/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Customer> getCustomerByTicket(@PathVariable int id)
+    public List<Customer> getCustomerByTicketToan(@PathVariable int id)
     {
         StoredProcedureQuery spQuery =
                 entityManager.createNamedStoredProcedureQuery("GetCustomerByTicketId");
@@ -259,6 +259,16 @@ public class RestController
     public Role getRoleById(@PathVariable int id)
     {
         return roleService.findById(id);
+    }
+
+    @GetMapping(path="tickets/empty",produces = MediaType.APPLICATION_JSON_VALUE)
+    public Ticket getEmptyTicket(){
+        return new Ticket();
+    }
+
+    @GetMapping(path = "movie-schedules/empty",produces = MediaType.APPLICATION_JSON_VALUE)
+    public MovieSchedules getEmptyMovieSchedule(){
+        return new MovieSchedules();
     }
 }
 

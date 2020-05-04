@@ -5,10 +5,10 @@
           <ng-template matStepLabel >Chọn Phim</ng-template>
             
           <mat-list  class="film">
-          <mat-list-item  *ngFor="let ticket of films; let ai = index"  >
+          <mat-list-item   >
                <button mat-stroked-button matStepperNext color="primary" 
-               style="width: 100%; margin-left:0px" (click)="getI(ticket.id)" >
-            {{ticket.movieSchedules.movie.movieName }} 
+               style="width: 100%; margin-left:0px" (click)="getI()" >
+            {{movie.movieName }} 
             </button>
 
             </mat-list-item> 
@@ -60,7 +60,7 @@
         <p>Đặt vé thành công</p>
         <div>
           <button mat-raised-button matStepperPrevious  color="primary" style="margin-right: 15px;">Chọn Giờ</button>
-          <button mat-raised-button (click)="stepper.reset()"  color="primary">Thông Tin Đặt Vé</button>
+          <button mat-raised-button (click)="stepper.reset()"  color="primary" [routerLink]="['/chon-ghe']" routerLinkActive="router-link-active" [state]="{movie:movie}">Chọn Ghế </button>
         </div>
       </mat-step>
     </mat-horizontal-stepper>

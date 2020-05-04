@@ -153,8 +153,5 @@ public class Seat {
         return this.name;
     }
 
-    public void setName(String seatName)
-    {
-        this.name = seatName;
-    }
+
 }

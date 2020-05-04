@@ -20,7 +20,7 @@ public interface UserService
 
     void delete(int id);
 
-    void save(User user);
+    void saveV(User user);
 
     List<User> findAllUser();
 

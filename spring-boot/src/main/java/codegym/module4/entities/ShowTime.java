@@ -23,10 +23,10 @@ public class ShowTime {
     private int id;
     @Column(name = "hour_start")
 
-    private Time hourStart;
+    private String hourStart;
     @Column(name = "hour_end")
 
-    private Time hourEnd;
+    private String hourEnd;
 
     @OneToMany(targetEntity = MovieSchedules.class)
     @JsonBackReference
@@ -53,28 +53,28 @@ public class ShowTime {
     /**
      * @return the hourStart
      */
-    public Time getHourStart() {
+    public String getHourStart() {
         return hourStart;
     }
 
     /**
      * @param hourStart the hourStart to set
      */
-    public void setHourStart(Time hourStart) {
+    public void setHourStart(String hourStart) {
         this.hourStart = hourStart;
     }
 
     /**
      * @return the hourEnd
      */
-    public Time getHourEnd() {
+    public String getHourEnd() {
         return hourEnd;
     }
 
     /**
      * @param hourEnd the hourEnd to set
      */
-    public void setHourEnd(Time hourEnd) {
+    public void setHourEnd(String hourEnd) {
         this.hourEnd = hourEnd;
     }
 
