@@ -30,6 +30,10 @@ import {DetailFilmComponent} from './Components/component-tuan/detail-film/detai
 import {ListFilmComponent} from './Components/component-tuan/list-film/list-film.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {Ng2SearchPipeModule} from 'ng2-search-filter';
+import { BookingComponent } from './Components/component-quoc/booking/booking.component';
+import { MaterialModule} from './material/material.module';
+import { TicketConfirmComponent } from './Components/component-quoc/ticket-confirm/ticket-confirm/ticket-confirm.component';
+import { TicketConfirmInfoComponent } from './Components/component-quoc/ticket-confirm-info/ticket-confirm-info/ticket-confirm-info.component';
 
 
 
@@ -61,7 +65,10 @@ const routes: Routes = [
       }]
   },
   {path: 'resetPassword', component: ResetPasswordComponent},
-  {path: 'see-ticker-prices', component: SeeTickerPricesComponent}
+  {path: 'see-ticker-prices', component: SeeTickerPricesComponent},
+  {
+    path: 'booking', component: BookingComponent,
+  },
 ];
 
 @NgModule({
@@ -81,7 +88,10 @@ const routes: Routes = [
     TicketBookingInformationComponent,
   DetailFilmComponent,
   ListFilmComponent,
-    SeeTickerPricesComponent,],
+    SeeTickerPricesComponent,
+    BookingComponent,
+    TicketConfirmComponent,
+    TicketConfirmInfoComponent,],
   imports: [RouterModule.forRoot(routes),
   ReactiveFormsModule,
   FormsModule,
@@ -91,7 +101,8 @@ const routes: Routes = [
   MatIconModule,
   MatSnackBarModule,
   NgxPaginationModule,
-  Ng2SearchPipeModule],
+  Ng2SearchPipeModule,
+  MaterialModule],
   exports: [RouterModule, TopBarComponent, SlideBarComponent],
   entryComponents:[MatConfirmDialogComponent]
 

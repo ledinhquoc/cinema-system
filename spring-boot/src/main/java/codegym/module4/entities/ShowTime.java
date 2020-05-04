@@ -4,6 +4,7 @@ package codegym.module4.entities;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
+import java.sql.Time;
 import java.util.List;
 
 
@@ -22,10 +23,10 @@ public class ShowTime {
     private int id;
     @Column(name = "hour_start")
 
-    private String hourStart;
+    private Time hourStart;
     @Column(name = "hour_end")
 
-    private String hourEnd;
+    private Time hourEnd;
 
     @OneToMany(targetEntity = MovieSchedules.class)
     @JsonBackReference
@@ -52,28 +53,28 @@ public class ShowTime {
     /**
      * @return the hourStart
      */
-    public String getHourStart() {
+    public Time getHourStart() {
         return hourStart;
     }
 
     /**
      * @param hourStart the hourStart to set
      */
-    public void setHourStart(String hourStart) {
+    public void setHourStart(Time hourStart) {
         this.hourStart = hourStart;
     }
 
     /**
      * @return the hourEnd
      */
-    public String getHourEnd() {
+    public Time getHourEnd() {
         return hourEnd;
     }
 
     /**
      * @param hourEnd the hourEnd to set
      */
-    public void setHourEnd(String hourEnd) {
+    public void setHourEnd(Time hourEnd) {
         this.hourEnd = hourEnd;
     }
 

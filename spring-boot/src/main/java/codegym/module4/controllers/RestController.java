@@ -9,8 +9,10 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
+import java.util.Optional;
 
 @org.springframework.web.bind.annotation.RestController
 @CrossOrigin(origins = "*")
@@ -58,10 +60,27 @@ public class RestController
     @Autowired
     private RowService rowService;
 
-    @GetMapping(path = "tickets", produces = "application/json")
-    public List<Ticket> getAllTickets()
+    @GetMapping(value = "/tickets", produces = "application/json")
+    public ResponseEntity<List<Ticket>> getAllTickets()
     {
-        return ticketService.findAll();
+        List<Ticket> tickets=ticketService.findAll();
+
+        if(tickets.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+            return new ResponseEntity<>(tickets,HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/tickets/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Ticket> getTicketById(
+            @PathVariable("id")Integer id){
+        Optional<Ticket> ticket =ticketService.findById(id);
+
+        if (ticket.isPresent()) {
+            return new ResponseEntity<>(ticket.get(),
+                    HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(ticket.get(), HttpStatus.OK);
     }
 
     @GetMapping(path = "movie-schedules", produces = "application/json")
