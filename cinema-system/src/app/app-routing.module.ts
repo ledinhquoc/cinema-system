@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
+import {RouterModule, Routes} from '@angular/router';
 
 import {LoginComponent} from './Components/component-vu/login/login.component';
 import {ResetPasswordComponent} from './Components/component-vu/reset-password/reset-password.component';
@@ -38,8 +38,8 @@ const routes: Routes = [
         path: ':id/show', component: HomeAccountComponent,
       },
       {
-      path: ':id/changeInformation', component: InfomationComponent,
-    },
+        path: ':id/changeInformation', component: InfomationComponent,
+      },
 
 
       {
@@ -53,7 +53,9 @@ const routes: Routes = [
       }]
   },
   {path: 'resetPassword', component: ResetPasswordComponent},
-  {path: 'see-ticker-prices', component: SeeTickerPricesComponent}
+  {path: 'see-ticker-prices', component: SeeTickerPricesComponent},
+  {path: 'chon-ghe', component: PositionSelectorComponent},
+  {path: 'thong-tin-dat-ve', component: TicketBookingInformationComponent}
 ];
 
 @NgModule({
