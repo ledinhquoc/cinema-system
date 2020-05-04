@@ -7,5 +7,13 @@ export class MemberInformationModule {
   email:string;
   phone:string;
   address:string;
-  idUser:any[];
+  user: User;
+}
+export interface User {
+  id: number,
+  password: string,
+  username: string,
+  status: boolean,
+  roles: []
+
 }

@@ -1,5 +1,6 @@
 package codegym.module4.services.Impl;
 
+import codegym.module4.entities.Movie;
 import codegym.module4.entities.MovieSchedules;
 import codegym.module4.repositories.MovieSchedulesRepo;
 import codegym.module4.services.MovieSchedulesService;
@@ -21,5 +22,10 @@ public class MovieSchedulesServiceImpl implements MovieSchedulesService
     public List<MovieSchedules> findAll()
     {
         return movieSchedulesRepo.findAll();
+    }
+
+    @Override
+    public List<MovieSchedules> findByMovie(Movie movie) {
+        return movieSchedulesRepo.findByMovie(movie);
     }
 }

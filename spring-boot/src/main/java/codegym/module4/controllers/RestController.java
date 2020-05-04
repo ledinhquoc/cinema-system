@@ -101,7 +101,7 @@ public class RestController
 
     @GetMapping(path = "users",produces = MediaType.APPLICATION_JSON_VALUE)
     public List<User> getAllUsers(){
-        return userService.findAll();
+        return userService.findAllUser();
     }
 
     @GetMapping(path = "customers",produces = MediaType.APPLICATION_JSON_VALUE)
