@@ -8,14 +8,19 @@ import {Observable} from 'rxjs';
 export class FilmService {
 
   constructor(public http: HttpClient) { }
-  private baseUrl = 'http://localhost:3000/films';
+  private baseUrlFilm = 'http://localhost:8080/movies';
+  private baseUrlSchedule = 'http://localhost:8080/movieSchedules/hour/';
 
   getAllFilm(): Observable<any> {
-    return this.http.get(this.baseUrl);
+    return this.http.get(this.baseUrlFilm);
   }
 
   getFilmById(id: number): Observable<any> {
-    return this.http.get(this.baseUrl + '/' + id);
+    return this.http.get(this.baseUrlFilm + '/' + id);
+  }
+
+  getScheduleById(id: number): Observable<any> {
+    return this.http.get(this.baseUrlSchedule + '/' + id);
   }
 
 }
