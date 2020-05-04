@@ -20,17 +20,17 @@
         <th>Ghế vip</th>
         <th>Ghế đôi</th>
       </tr>
-      <tr class="price" *ngFor="let item of ticker">
-        <th *ngIf="item.name =='2d'">{{item.time}}</th>
-        <td *ngIf="item.name =='2d'">{{item.thu246gt}}</td>
-        <td *ngIf="item.name =='2d'">{{item.thu246gv}}</td>
-        <td *ngIf="item.name =='2d'">{{item.thu246gd}}</td>
-        <td *ngIf="item.name =='2d'">{{item.thu3gt}}</td>
-        <td *ngIf="item.name =='2d'">{{item.thu3gv}}</td>
-        <td *ngIf="item.name =='2d'">{{item.thu3gd}}</td>
-        <td *ngIf="item.name =='2d'">{{item.thu67CNgt}}</td>
-        <td *ngIf="item.name =='2d'">{{item.thu67CNgv}}</td>
-        <td *ngIf="item.name =='2d'">{{item.thu67CNgd}}</td>
+      <tr class="price" *ngFor="let item of ticket">
+        <th *ngIf="item.ticketType =='Giá vé 2D'">{{item.showTime}}</th>
+        <td *ngIf="item.ticketType =='Giá vé 2D'">{{item.thu246gt | number: '1.0-3' }}</td>
+        <td *ngIf="item.ticketType =='Giá vé 2D'">{{item.thu246gv | number: '1.0-3' }}</td>
+        <td *ngIf="item.ticketType =='Giá vé 2D'">{{item.thu246gd | number: '1.0-3' }}</td>
+        <td *ngIf="item.ticketType =='Giá vé 2D'">{{item.thu3gt | number: '1.0-3' }}</td>
+        <td *ngIf="item.ticketType =='Giá vé 2D'">{{item.thu3gv | number: '1.0-3' }}</td>
+        <td *ngIf="item.ticketType =='Giá vé 2D'">{{item.thu3gd | number: '1.0-3' }}</td>
+        <td *ngIf="item.ticketType =='Giá vé 2D'">{{item.thu67CNgt | number: '1.0-3' }}</td>
+        <td *ngIf="item.ticketType =='Giá vé 2D'">{{item.thu67CNgv | number: '1.0-3' }}</td>
+        <td *ngIf="item.ticketType =='Giá vé 2D'">{{item.thu67CNgd | number: '1.0-3' }}</td>
       </tr>
     </table>
     <table class="table">
@@ -51,17 +51,17 @@
         <th>Ghế vip</th>
         <th>Ghế đôi</th>
       </tr>
-      <tr class="price" *ngFor="let item of ticker">
-        <th *ngIf="item.name =='3d'">{{item.time}}</th>
-        <td *ngIf="item.name =='3d'">{{item.thu246gt}}</td>
-        <td *ngIf="item.name =='3d'">{{item.thu246gv}}</td>
-        <td *ngIf="item.name =='3d'">{{item.thu246gd}}</td>
-        <td *ngIf="item.name =='3d'">{{item.thu3gt}}</td>
-        <td *ngIf="item.name =='3d'">{{item.thu3gv}}</td>
-        <td *ngIf="item.name =='3d'">{{item.thu3gd}}</td>
-        <td *ngIf="item.name =='3d'">{{item.thu67CNgt}}</td>
-        <td *ngIf="item.name =='3d'">{{item.thu67CNgv}}</td>
-        <td *ngIf="item.name =='3d'">{{item.thu67CNgd}}</td>
+      <tr class="price" *ngFor="let item of ticket">
+        <th *ngIf="item.ticketType =='Giá vé 3D'">{{item.showTime}}</th>
+        <td *ngIf="item.ticketType =='Giá vé 3D'">{{item.thu246gt | number: '1.0-3' }}</td>
+        <td *ngIf="item.ticketType =='Giá vé 3D'">{{item.thu246gv | number: '1.0-3' }}</td>
+        <td *ngIf="item.ticketType =='Giá vé 3D'">{{item.thu246gd | number: '1.0-3' }}</td>
+        <td *ngIf="item.ticketType =='Giá vé 3D'">{{item.thu3gt | number: '1.0-3' }}</td>
+        <td *ngIf="item.ticketType =='Giá vé 3D'">{{item.thu3gv | number: '1.0-3' }}</td>
+        <td *ngIf="item.ticketType =='Giá vé 3D'">{{item.thu3gd | number: '1.0-3' }}</td>
+        <td *ngIf="item.ticketType =='Giá vé 3D'">{{item.thu67CNgt | number: '1.0-3' }}</td>
+        <td *ngIf="item.ticketType =='Giá vé 3D'">{{item.thu67CNgv | number: '1.0-3' }}</td>
+        <td *ngIf="item.ticketType =='Giá vé 3D'">{{item.thu67CNgd | number: '1.0-3' }}</td>
       </tr>
     </table>
   </div>
