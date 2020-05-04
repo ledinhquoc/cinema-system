@@ -25,8 +25,10 @@ public class Seat {
     private boolean isSelecting;
     @Column(name = "is_vip")
     private boolean isVip;
+
     @Column(name = "name")
     private String name;
+
 
 
 
@@ -144,5 +146,15 @@ public class Seat {
 
     public void setTickets(List<Ticket> tickets) {
         this.tickets = tickets;
+    }
+
+    public String getName()
+    {
+        return this.name;
+    }
+
+    public void setName(String seatName)
+    {
+        this.name = seatName;
     }
 }

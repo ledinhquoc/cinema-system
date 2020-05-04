@@ -8,5 +8,9 @@ import java.util.List;
 public interface MovieSchedulesService
 {
     List<MovieSchedules> findAll();
+
+    MovieSchedules findById(int id);
+
     List<MovieSchedules> findByMovie(Movie movie);
+
 }

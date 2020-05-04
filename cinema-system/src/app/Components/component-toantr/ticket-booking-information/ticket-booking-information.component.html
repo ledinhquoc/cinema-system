@@ -1,71 +1,68 @@
-<h5>Thong tin dat ve</h5>
-<div class="row ml-3">
+<h5>Thông tin đặt vé</h5>
+<div class="row ml-3" *ngIf="customer&&movie">
     <div class="col-md-3">
-        <img src="http://www.picsum.photos/170/220" alt="img">
+        <img [src]="movie.srcImg" alt="img">
     </div>
     <div class="col-md-9 ">
-        <h5 class="row">Dai chien giua nhung vi sao</h5>
+        <h5 class="row">{{movie.movieName}}</h5>
         <hr>
         <div class="row">
-            <label for="" class=" col-4"><strong>Man hinh: </strong></label>
-            <p class=" col-8">Scrn03</p>
+            <label class=" col-4"><strong>Màn hình: </strong></label>
+            <p class=" col-8">{{showRoom.screen}}</p>
         </div>
         <hr>
         <div class="row">
-            <label for="" class="col-4"><strong>Ma dat ve: </strong></label>
-            <p class="col-8">BV0000012</p>
+            <label class="col-4"><strong>Mã đặt vé: </strong></label>
+            <p class="col-8">{{ticket.bookedTicketCode}}</p>
         </div>
         <hr>
         <div class="row">
-            <label for="" class="col-4"><strong>Ngay chieu: </strong></label>
-            <p class="col-8">25-01-2017</p>
+            <label class="col-4"><strong>Ngày chiếu: </strong></label>
+            <p class="col-8">{{movieSchedules.openingDay|date}}</p>
         </div>
         <hr>
         <div class="row">
-            <label for="" class="col-4"><strong>Gio chieu: </strong></label>
-            <p class="col-8">08:20</p>
+            <label class="col-4"><strong>Giờ chiếu</strong></label>
+            <p class="col-8">{{movieSchedules.showTime.hourStart}}</p>
         </div>
         <hr>
         <div class="row">
-            <label for="" class="col-4"><strong>Ghe: </strong></label>
-            <p class="col-8">B8-B9-B10-C10</p>
+            <label class="col-4"><strong>Ghế</strong></label>
+            <p class="col-8">{{seat[0].name+seat[0].seatNumber}}</p>
         </div>
         <hr>
         <div class="row">
-            <label for="" class="col-4"><strong>Gia: </strong></label>
+            <label class="col-4"><strong>Giá: </strong></label>
             <p class="col-8">
-                B8: 45000d <br>
-                B9: 45000d <br>
-                B10: 45000d <br>
-                C10: 45000d <br>
+                {{ticket.price}}
             </p>
         </div>
         <hr>
         <div class="row">
-            <label for="" class="col-4"><strong>Tong cong: </strong></label>
-            <p class="col-8">180000d</p>
+            <label class="col-4"><strong>Tổng cộng: </strong></label>
+            <p class="col-8">{{ticket.price}}</p>
         </div>
-        <h6 class="row">Thong tin tai khoan dat ve</h6>
+        <h6 class="row">Thông tin tài khoản đặt vé</h6>
         <hr>
         <div class="row">
-            <label for="" class="col-4"><strong>Ho ten: </strong></label>
-            <p class="col-8">Nguyen Van A</p>
-        </div>
-        <hr>
-        <div class="row">
-            <label for="" class="col-4"><strong>Email: </strong></label>
-            <p class="col-8">nvtlong2810@gmail.com</p>
+            <label class="col-4"><strong>Họ tên: </strong></label>
+            <p class="col-8">{{customer.fullName}}</p>
         </div>
         <hr>
         <div class="row">
-            <label for="" class="col-4"><strong>CMND: </strong></label>
-            <p class="col-8">191816354</p>
+            <label class="col-4"><strong>Email: </strong></label>
+            <p class="col-8">{{customer.email}}</p>
         </div>
         <hr>
         <div class="row">
-            <label for="" class="col-4"><strong>So dien thoai: </strong></label>
-            <p class="col-8">0935991771</p>
+            <label class="col-4"><strong>CMND: </strong></label>
+            <p class="col-8">{{customer.idCard}}</p>
         </div>
-        <p class="row">Vui long den lay ve truoc thoi gian chieu phim 30 phut.Sau thoi gian do ve se tu dong huy!</p>
+        <hr>
+        <div class="row">
+            <label class="col-4"><strong>Số điện thoại: </strong></label>
+            <p class="col-8">{{customer.phone}}</p>
+        </div>
+      <p class="row">Vui lòng đến lấy vé trước thời gian chiếu phim 30 phút. Sau thời gian đó vé sẽ tự động hủy!</p>
     </div>
 </div>

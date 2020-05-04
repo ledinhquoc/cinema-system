@@ -23,10 +23,15 @@ public class TicketServiceImpl implements TicketService {
     }
 
     @Override
-<<<<<<< HEAD
+
+    public Ticket findById(int id)
+    {
+        return ticketRepo.findById(id).orElse(null);
+
+
     public Optional< Ticket > findById(Integer id){
         return Optional.ofNullable(ticketRepo.findById(id).orElse(null));
-=======
+
     public List<Ticket> findByCustomerAndOrderStatus(Customer customer, String status) {
         return ticketRepo.findByCustomerAndOrderStatus(customer,status);
     }
@@ -34,7 +39,7 @@ public class TicketServiceImpl implements TicketService {
     @Override
     public Ticket Creat(Ticket ticket) {
         return ticketRepo.save(ticket);
->>>>>>> 2a8d2bade39a72fe52976d9932427f70cf148e12
+
     }
 
 }

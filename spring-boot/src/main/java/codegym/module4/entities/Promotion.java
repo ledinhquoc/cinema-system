@@ -9,36 +9,38 @@ import java.util.List;
 
 @Entity
 @Table(name = "promotion")
-public class Promotion {
+public class Promotion
+{
 
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
+    @Column(name = "id")
     private int id;
 
-    public Promotion() {
+    public Promotion()
+    {
         //do nothing
     }
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @Temporal(value=TemporalType.DATE)
-  @Column(name = "promotion_begin_date")
-    private Date promotionBeginDate;
 
-
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @Temporal(value=TemporalType.DATE)
+    @Temporal(value = TemporalType.DATE)
     @Column(name = "promotion_end_date")
     private Date promotionEndDate;
 
-    @Column(name = "promotion_title")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Temporal(value = TemporalType.DATE)
+    @Column(name = "promotion_begin_date")
+    private Date promotionBeginDate;
+
+    @Column(name="promotion_discount")
+    private int promotionDiscount;
+
+    @Column(name="promotion_title")
     private String promotionTitle;
 
-    @Column(name = "promotion_discount")
-    private String promotionDiscount;
-
-    @Column(name = "promotion_description")
+    @Column(name="promotion_description")
     private String promotionDescription;
 
 
@@ -48,6 +50,46 @@ public class Promotion {
     @OneToMany(targetEntity = Ticket.class)
     @JsonBackReference
     private List<Ticket> tickets;
+
+    public Date getPromotionEndDate()
+    {
+        return this.promotionEndDate;
+    }
+
+    public void setPromotionEndDate(Date promotionEndDate)
+    {
+        this.promotionEndDate = promotionEndDate;
+    }
+
+    public Date getPromotionBeginDate()
+    {
+        return this.promotionBeginDate;
+    }
+
+    public void setPromotionBeginDate(Date promotionBeginDate)
+    {
+        this.promotionBeginDate = promotionBeginDate;
+    }
+
+    public int getPromotionDiscount()
+    {
+        return this.promotionDiscount;
+    }
+
+    public void setPromotionDiscount(int promotionDiscount)
+    {
+        this.promotionDiscount = promotionDiscount;
+    }
+
+    public String getPromotionTitle()
+    {
+        return this.promotionTitle;
+    }
+
+    public void setPromotionTitle(String promotionTitle)
+    {
+        this.promotionTitle = promotionTitle;
+    }
 
 
     public Date getPromotionBeginDate() {
@@ -87,42 +129,49 @@ public class Promotion {
     }
 
     public void setPromotionDescription(String promotionDescription) {
+
         this.promotionDescription = promotionDescription;
     }
 
-    public String getPromotionImage() {
+    public String getPromotionImage()
+    {
         return promotionImage;
     }
 
-    public void setPromotionImage(String promotionImage) {
+    public void setPromotionImage(String promotionImage)
+    {
         this.promotionImage = promotionImage;
     }
 
     /**
      * @return the id
      */
-    public int getId() {
+    public int getId()
+    {
         return id;
     }
 
     /**
      * @param id the id to set
      */
-    public void setId(int id) {
+    public void setId(int id)
+    {
         this.id = id;
     }
 
     /**
      * @return the tickets
      */
-    public List<Ticket> getTickets() {
+    public List<Ticket> getTickets()
+    {
         return tickets;
     }
 
     /**
      * @param tickets the tickets to set
      */
-    public void setTickets(List<Ticket> tickets) {
+    public void setTickets(List<Ticket> tickets)
+    {
         this.tickets = tickets;
     }
 }

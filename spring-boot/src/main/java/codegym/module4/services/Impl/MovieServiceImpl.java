@@ -24,8 +24,14 @@ public class MovieServiceImpl implements MovieService
     }
 
     @Override
+
+    public Movie findByMovieSchedules(MovieSchedules movieSchedules)
+    {
+        return movieRepo.findByMovieSchedules(movieSchedules);
+
     public Optional<Movie> findById(int id) {
         return movieRepo.findById(id);
+
     }
 
 }

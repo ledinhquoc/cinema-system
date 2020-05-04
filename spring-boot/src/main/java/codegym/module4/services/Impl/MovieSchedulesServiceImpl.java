@@ -25,7 +25,13 @@ public class MovieSchedulesServiceImpl implements MovieSchedulesService
     }
 
     @Override
+
+    public MovieSchedules findById(int id)
+    {
+        return movieSchedulesRepo.findById(id).orElse(null);
+
     public List<MovieSchedules> findByMovie(Movie movie) {
         return movieSchedulesRepo.findByMovie(movie);
+
     }
 }

@@ -30,6 +30,18 @@ public class CustomerServiceImpl implements CustomerService
 
 
     @Override
+    public Customer save(Customer customer)
+    {
+        return customerRepo.save(customer);
+    }
+
+    @Override
+    public Customer findById(int id)
+    {
+        return customerRepo.findById(id).orElse(null);
+
+
+    @Override
     public Customer findCustomerById(int id) {
         return customerRepo.findById(id).get();
     }
@@ -47,5 +59,6 @@ public class CustomerServiceImpl implements CustomerService
     @Override
     public Customer saveCustomer(Customer customer) {
         return customerRepo.save(customer);
+
     }
 }

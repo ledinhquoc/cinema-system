@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
+import {RouterModule, Routes} from '@angular/router';
 
 import {TopBarComponent} from './Components/component-viet/TopBar/top-bar/top-bar.component';
 import {SlideBarComponent} from './Components/component-viet/SlideBar/slide-bar/slide-bar.component';
@@ -53,8 +53,8 @@ const routes: Routes = [
         path: ':id/show', component: HomeAccountComponent,
       },
       {
-      path: ':id/changeInformation', component: InfomationComponent,
-    },
+        path: ':id/changeInformation', component: InfomationComponent,
+      },
       {
         path: ':id/history-ticket', component: HistoryTicketComponent,
       },
@@ -66,12 +66,19 @@ const routes: Routes = [
       }]
   },
   {path: 'resetPassword', component: ResetPasswordComponent},
-<<<<<<< HEAD
+
   {path: 'see-ticker-prices', component: SeeTickerPricesComponent},
-  {
+  {path: 'chon-ghe', component: PositionSelectorComponent},
+  {path: 'thong-tin-dat-ve', component: TicketBookingInformationComponent},
+    {
     path: 'booking', component: BookingComponent,
   },
-];
+   {path: 'see-ticker-prices', component: SeeTickerPricesComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'register', component: UserRegistrationComponent},
+  {path: 'member', component: MemberComponent},
+  {path: 'confirmPassword/:id', component: ConfirmPasswordComponent},
+
 
 @NgModule({
 
@@ -93,7 +100,15 @@ const routes: Routes = [
     SeeTickerPricesComponent,
     BookingComponent,
     TicketConfirmComponent,
-    TicketConfirmInfoComponent,],
+    TicketConfirmInfoComponent,
+                  ErrorDisplayComponent,
+                 LoginComponent,
+                 CarouselComponent,
+                  TicketCanceledComponent,
+                 TicketBookingComponent,
+                 ConfirmPasswordComponent, 
+              ResetPasswordComponent,
+               UserRegistrationComponent,],
   imports: [RouterModule.forRoot(routes),
   ReactiveFormsModule,
   FormsModule,
@@ -106,43 +121,7 @@ const routes: Routes = [
   Ng2SearchPipeModule,
   MaterialModule],
   exports: [RouterModule, TopBarComponent, SlideBarComponent],
-  entryComponents:[MatConfirmDialogComponent]
-=======
-
-  {path: 'see-ticker-prices', component: SeeTickerPricesComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'register', component: UserRegistrationComponent},
-  {path: 'member', component: MemberComponent},
-  {path: 'confirmPassword/:id', component: ConfirmPasswordComponent},
-
-];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes),
-    ReactiveFormsModule,MaterialModule, FormsModule, CommonModule, MatDialogModule,
-    MatButtonModule, MatIconModule, MatSnackBarModule, NgxPaginationModule, Ng2SearchPipeModule, MatFormFieldModule, MatDatepickerModule,MatNativeDateModule],
-  exports: [RouterModule, TopBarComponent, SlideBarComponent,],
-  declarations: [TopBarComponent,
-                 SlideBarComponent,
-                 InfomationComponent, 
-                 HomeAccountComponent, 
-                 HistoryTicketComponent,
-                 ErrorDisplayComponent,
-                 LoginComponent,
-                 CarouselComponent,
-                  TicketCanceledComponent,
-                 TicketBookingComponent,
-                 ConfirmPasswordComponent,     
-                  MatConfirmDialogComponent,
-                 PositionSelectorComponent,
-                 ResetPasswordComponent,
-                 UserRegistrationComponent,
-    TicketBookingInformationComponent, SeeTickerPricesComponent],
-  entryComponents: [MatConfirmDialogComponent]
->>>>>>> 2a8d2bade39a72fe52976d9932427f70cf148e12
-
-})
-
+  entryComponents:[MatConfirmDialogComponent],
 
 export class AppRoutingModule {
 }

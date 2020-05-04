@@ -43,6 +43,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+
+    public User save(User user)
+    {
+        return userRepo.save(user);
+    }
+
     public Optional<User> findByUsername(String name) {
         return userRepo.findByUsername(name);
     }
@@ -51,6 +57,7 @@ public class UserServiceImpl implements UserService {
     public Boolean existsByName(String username) {
         return userRepo.existsByUsername(username);
     }
+
 
 
 }
