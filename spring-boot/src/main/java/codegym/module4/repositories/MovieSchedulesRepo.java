@@ -10,5 +10,7 @@ import java.util.List;
 @Repository
 public interface MovieSchedulesRepo extends JpaRepository<MovieSchedules,Integer>
 {
+
     List<MovieSchedules> findByMovie(Movie movie);
+
 }

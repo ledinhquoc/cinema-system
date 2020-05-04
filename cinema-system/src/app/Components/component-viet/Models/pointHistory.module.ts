@@ -3,6 +3,6 @@ export class PointHistoryModule {
   public idUser:string;
   public dateCreat:string;
   public nameMovie:string;
-  public point:string;
+  public pointValue:number;
 
 }

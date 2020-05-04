@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import {MemberInformationModule} from '../../Models/memberInformation.module';
+
 import {ActivatedRoute, Router} from '@angular/router';
 import {HistoryUsePointService} from '../../../../Services/history-use-point.service';
 import {PointHistoryModule} from '../../Models/pointHistory.module';
@@ -18,6 +18,7 @@ export class HistoryTicketComponent implements OnInit {
   public to:string;
   public checkPoint:string;
   public p: number = 1;
+  term: string;
   constructor(public historyUsePointService: HistoryUsePointService,
               public router: Router,
               public activatedRouteService: ActivatedRoute,) { }

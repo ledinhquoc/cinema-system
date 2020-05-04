@@ -1,7 +1,4 @@
 package codegym.module4.entities;
-
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -15,7 +12,7 @@ public class Customer {
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
@@ -43,15 +40,14 @@ public class Customer {
     private String address;
 
     @OneToMany(targetEntity = Point.class)
-    @JsonBackReference
     private List<Point> points;
 
-    @OneToOne
+    //Vu add them Cascade
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User user;
 
     @OneToMany(targetEntity = Ticket.class)
-    @JsonBackReference
     private List<Ticket> tickets;
 
 
