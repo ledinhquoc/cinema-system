@@ -1,5 +1,6 @@
 package codegym.module4.services.Impl;
 
+import codegym.module4.entities.Customer;
 import codegym.module4.entities.Ticket;
 import codegym.module4.repositories.TicketRepo;
 import codegym.module4.services.TicketService;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -21,9 +23,23 @@ public class TicketServiceImpl implements TicketService {
     }
 
     @Override
+
     public Ticket findById(int id)
     {
         return ticketRepo.findById(id).orElse(null);
+
+
+    public Optional< Ticket > findById(Integer id){
+        return Optional.ofNullable(ticketRepo.findById(id).orElse(null));
+
+    public List<Ticket> findByCustomerAndOrderStatus(Customer customer, String status) {
+        return ticketRepo.findByCustomerAndOrderStatus(customer,status);
+    }
+
+    @Override
+    public Ticket Creat(Ticket ticket) {
+        return ticketRepo.save(ticket);
+
     }
 
 }

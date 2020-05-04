@@ -1,5 +1,7 @@
 export class UserModule {
-  idUser:number;
-  name_user:string;
+  id:number;
+  username:string;
   password:string;
+  roles: Array<any>;
+
 }

@@ -24,6 +24,7 @@ public class Promotion
     }
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
+
     @Temporal(value = TemporalType.DATE)
     @Column(name = "promotion_end_date")
     private Date promotionEndDate;
@@ -41,6 +42,7 @@ public class Promotion
 
     @Column(name="promotion_description")
     private String promotionDescription;
+
 
     @Column(name = "promotion_image")
     private String promotionImage;
@@ -89,13 +91,45 @@ public class Promotion
         this.promotionTitle = promotionTitle;
     }
 
-    public String getPromotionDescription()
-    {
-        return this.promotionDescription;
+
+    public Date getPromotionBeginDate() {
+        return promotionBeginDate;
     }
 
-    public void setPromotionDescription(String promotionDescription)
-    {
+    public void setPromotionBeginDate(Date promotionBeginDate) {
+        this.promotionBeginDate = promotionBeginDate;
+    }
+
+    public Date getPromotionEndDate() {
+        return promotionEndDate;
+    }
+
+    public void setPromotionEndDate(Date promotionEndDate) {
+        this.promotionEndDate = promotionEndDate;
+    }
+
+    public String getPromotionTitle() {
+        return promotionTitle;
+    }
+
+    public void setPromotionTitle(String promotionTitle) {
+        this.promotionTitle = promotionTitle;
+    }
+
+    public String getPromotionDiscount() {
+        return promotionDiscount;
+    }
+
+    public void setPromotionDiscount(String promotionDiscount) {
+        this.promotionDiscount = promotionDiscount;
+    }
+
+    public String getPromotionDescription() {
+        return promotionDescription;
+    }
+
+    public void setPromotionDescription(String promotionDescription) {
+
         this.promotionDescription = promotionDescription;
     }
 

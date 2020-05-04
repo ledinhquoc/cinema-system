@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+
 import org.springframework.web.bind.annotation.*;
+
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -15,6 +17,7 @@ import javax.persistence.Query;
 import javax.persistence.StoredProcedureQuery;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @org.springframework.web.bind.annotation.RestController
 @CrossOrigin(origins = "*")
@@ -62,13 +65,32 @@ public class RestController
     @Autowired
     private RowService rowService;
 
+
     @PersistenceContext
     private EntityManager entityManager;
 
-    @GetMapping(path = "tickets", produces = "application/json")
-    public List<Ticket> getAllTickets()
+    @GetMapping(value = "/tickets", produces = "application/json")
+    public ResponseEntity<List<Ticket>> getAllTickets()
+
     {
-        return ticketService.findAll();
+        List<Ticket> tickets=ticketService.findAll();
+
+        if(tickets.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+            return new ResponseEntity<>(tickets,HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/tickets/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Ticket> getTicketById(
+            @PathVariable("id")Integer id){
+        Optional<Ticket> ticket =ticketService.findById(id);
+
+        if (ticket.isPresent()) {
+            return new ResponseEntity<>(ticket.get(),
+                    HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(ticket.get(), HttpStatus.OK);
     }
 
     @GetMapping(path = "movie-schedules", produces = "application/json")
@@ -89,10 +111,12 @@ public class RestController
         return employeeRepo.findAll();
     }
 
+
     @GetMapping(path = "users", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<User> getAllUsers()
     {
         return userService.findAll();
+
     }
 
     @GetMapping(path = "customers", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -148,6 +172,7 @@ public class RestController
     {
         return rowService.findAll();
     }
+
 
     @GetMapping(path = "tickets/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Ticket getTicketById(@PathVariable int id)
@@ -236,3 +261,4 @@ public class RestController
         return roleService.findById(id);
     }
 }
+

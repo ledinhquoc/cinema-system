@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import "../node_modules/bootstrap/dist/css/bootstrap.css";
-body {
-  /*background-image: url('assets/images/banner.jpg');*/
+/* body {
+  background-image: url('assets/images/banner.jpg');
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
@@ -16,7 +16,7 @@ html, body {
 
 }
 
-/* mat-confirm-dialog (customised dialog) */
+mat-confirm-dialog (customised dialog)
 .confirm-dialog-container .mat-dialog-container {
   border-radius: .25em .25em .4em .4em;
   padding: 0px;
@@ -58,7 +58,7 @@ html, body {
   font-size: 15px;
 }
 
-/* notification */
+notification
 
 snack-bar-container.success {
   background-color: #5cb85c;
@@ -79,7 +79,9 @@ snack-bar-container.notification simple-snack-bar{
 
 .hide{
   display: none;
-}
+} */
+
+
 
 
 
