@@ -3,12 +3,12 @@
   <div class="container row px-0 mx-0 d-flex justify-content-beetween" style="height: 90%">
     <div class="card col-8">
       <div class="card-header ">
-        <h4><strong>Register an account</strong></h4>
+        <h4><strong>Đăng ký tài khoản</strong></h4>
       </div>
       <div class="card-body">
         <form [formGroup]="formAddnewAccount">
           <div class="form-group row">
-            <label for="staticTaikhoan" class="col-sm-3 col-form-label d-flex justify-content-end">Account<span
+            <label for="staticTaikhoan" class="col-sm-3 col-form-label d-flex justify-content-end">Tên đăng nhập<span
               class="star">(*)</span></label>
             <div class="col-sm-9">
               <input type="text" class="form-control" id="staticTaikhoan" formControlName="account">
@@ -21,7 +21,7 @@
         .getError('minlength')">
           Account is minlength 6</span>
               </div>
-              <span style="color: red" *ngIf="check">Account already exists</span>
+              <span style="color: red" *ngIf="check">Tài khoản đã tồn tại</span>
             </div>
           </div>
           <fieldset formGroupName="pwGroup">
@@ -35,13 +35,13 @@
       formAddnewAccount.get('pwGroup').get('password').touched">
         <span *ngIf="formAddnewAccount.get('pwGroup').get('password').invalid&&formAddnewAccount.get('pwGroup').get('password')
         .getError('required')">
-          Password is required</span>
+          Cần nhập mật khẩu</span>
                   <span *ngIf="formAddnewAccount.get('pwGroup').get('password').invalid&&formAddnewAccount.get('pwGroup').get('password')
         .getError('minlength')">
-          Password is length > 5</span>
+         Độ dài mật khẩu > 5</span>
                   <span *ngIf="formAddnewAccount.get('pwGroup').get('password').invalid&&formAddnewAccount.get('pwGroup').get('password')
         .getError('pattern')">
-          Password is not Malformed</span>
+          Mật khẩu không đúng định dạng</span>
                 </div>
               </div>
             </div>
@@ -53,7 +53,7 @@
                 <input type="password" class="form-control" formControlName="confirmPassword">
                 <div style="color: red" *ngIf="formAddnewAccount.hasError('passwordnotmatch', ['pwGroup']) &&
       formAddnewAccount.get('pwGroup').touched">
-                  Password does not match!
+                 Mật khẩu không khớp!
                 </div>
               </div>
             </div>

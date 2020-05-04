@@ -20,12 +20,12 @@ export class UserServiceService {
   }
 
   getUserEdit(id:number):Observable<any>{
-    return this.http.get(`${this.API}/${id}`);
+    return this.http.get(`${this.API}/${id}`,this.httpOptions);
   }
 
 
   updateUser(user):Observable<any>{
-    return this.http.put(`${this.API}/${user.id}`,user)
+    return this.http.put(`${this.API}/${user.id}`,user,this.httpOptions)
   }
 
   updatePassword(id:number,post: any): Observable<any>{

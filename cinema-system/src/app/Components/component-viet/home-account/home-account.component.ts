@@ -6,6 +6,7 @@ import {UserModule} from '../Models/user.module';
 import {UserServiceService} from '../../../Services/user-service.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {InformationAccountService} from "../../../Services/information-account.service";
+import {TokenStorageService} from "../../component-vu/service/token-storage.service";
 
 
 @Component({
@@ -26,10 +27,12 @@ export class HomeAccountComponent implements OnInit {
               public userService1: UserServiceService,
               public router: Router,
               public activatedRouteService1: ActivatedRoute,
+              private tokenStorageService: TokenStorageService
              ) {
   }
 
   ngOnInit(): void {
+    console.log(this.tokenStorageService.getUser().roles)
     this.formMemberShow1 = this.formBuilderStudentEdit1.group({
       id: [],
       idAccount: [''],
