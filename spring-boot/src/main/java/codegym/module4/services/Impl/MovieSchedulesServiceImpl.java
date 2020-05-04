@@ -22,4 +22,10 @@ public class MovieSchedulesServiceImpl implements MovieSchedulesService
     {
         return movieSchedulesRepo.findAll();
     }
+
+    @Override
+    public MovieSchedules findById(int id)
+    {
+        return movieSchedulesRepo.findById(id).orElse(null);
+    }
 }

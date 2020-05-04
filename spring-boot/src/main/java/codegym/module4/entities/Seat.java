@@ -25,6 +25,7 @@ public class Seat {
     private boolean isSelecting;
     @Column(name = "is_vip")
     private boolean isVip;
+    private String name;
 
     @ManyToOne
     @JoinColumn(name = "_row_id")
@@ -130,5 +131,15 @@ public class Seat {
      */
     public void setTickets(List<Ticket> tickets) {
         this.tickets = tickets;
+    }
+
+    public String getName()
+    {
+        return this.name;
+    }
+
+    public void setName(String seatName)
+    {
+        this.name = seatName;
     }
 }

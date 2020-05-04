@@ -20,4 +20,10 @@ public class UserServiceImpl implements UserService
     {
         return userRepo.findAll();
     }
+
+    @Override
+    public User save(User user)
+    {
+        return userRepo.save(user);
+    }
 }

@@ -20,4 +20,10 @@ public class TicketServiceImpl implements TicketService {
         return ticketRepo.findAll();
     }
 
+    @Override
+    public Ticket findById(int id)
+    {
+        return ticketRepo.findById(id).orElse(null);
+    }
+
 }

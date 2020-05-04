@@ -20,4 +20,16 @@ public class CustomerServiceImpl implements CustomerService
     {
         return customerRepo.findAll();
     }
+
+    @Override
+    public Customer save(Customer customer)
+    {
+        return customerRepo.save(customer);
+    }
+
+    @Override
+    public Customer findById(int id)
+    {
+        return customerRepo.findById(id).orElse(null);
+    }
 }

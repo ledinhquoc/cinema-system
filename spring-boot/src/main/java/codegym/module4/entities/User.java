@@ -11,15 +11,15 @@ import java.util.List;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     int id;
 
     @Column(name = "password")
     String password;
 
-    @Column(name = "name")
-    String name;
+    @Column(name = "username")
+    String username;
 
     @Column(name = "status")
     String status;
@@ -30,10 +30,10 @@ public class User {
     private List<Role> roles;
 
 
-    public User(int idUser, String password, String name, String status) {
+    public User(int idUser, String password, String username, String status) {
         this.id = idUser;
         this.password = password;
-        this.name = name;
+        this.username = username;
         this.status = status;
     }
 
@@ -56,12 +56,12 @@ public class User {
         this.password = password;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String name) {
+        this.username = name;
     }
     public String getStatus() {
         return status;
@@ -69,5 +69,15 @@ public class User {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public List<Role> getRoles()
+    {
+        return this.roles;
+    }
+
+    public void setRoles(List<Role> roles)
+    {
+        this.roles = roles;
     }
 }
