@@ -1,15 +1,15 @@
-import {HttpService} from '../../../Services/http.service';
 import {Component, OnInit} from '@angular/core';
-
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {BanVeService} from '../../../Services/ban-ve.service';
 import {Router} from '@angular/router';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {HttpService} from '../../../Services/http.service';
 
 @Component({
-  selector: 'app-position-selector',
-  templateUrl: './position-selector.component.html',
-  styleUrls: ['./position-selector.component.css'],
+  selector: 'app-chon-ghe',
+  templateUrl: './chon-ghe.component.html',
+  styleUrls: ['./chon-ghe.component.css']
 })
-export class PositionSelectorComponent implements OnInit {
+export class ChonGheComponent implements OnInit {
   showRoom: any;
   ticket: any;
   movie: any;
