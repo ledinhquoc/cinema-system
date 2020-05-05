@@ -8,6 +8,10 @@
   background-color: rgb(238, 230, 215) !important;
   border-radius: 10px;
   height: 100%;
+  font-family: 'Fredoka One', cursive;
+  font-size:20px;
+  color: #222;
+  
 }
 .item-slide-bar{
   font-size: 15px;

@@ -7,4 +7,5 @@ import java.util.List;
 public interface ShowRoomService
 {
     List<ShowRoom> findAll();
+    ShowRoom findById(int id);
 }

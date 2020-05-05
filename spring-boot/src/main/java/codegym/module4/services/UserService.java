@@ -9,6 +9,10 @@ import java.util.Optional;
 public interface UserService
 {
 
+    List<User> findAll();
+    User save(User user);
+
+
     User findByIdL(int id);
 
     //Vu add : Start
@@ -16,7 +20,7 @@ public interface UserService
 
     void delete(int id);
 
-    void save(User user);
+    void saveV(User user);
 
     List<User> findAllUser();
 
@@ -26,6 +30,5 @@ public interface UserService
 
 
     // End
-
 
 }

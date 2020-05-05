@@ -45,6 +45,7 @@ public class User implements Serializable {
         return roles;
     }
 
+
     public void setRoles(List<Role> roles) {
         this.roles = roles;
     }
@@ -53,6 +54,7 @@ public class User implements Serializable {
         this.id = idUser;
         this.password = password;
         this.username = name;
+
         this.status = status;
     }
 
@@ -79,8 +81,10 @@ public class User implements Serializable {
         return username;
     }
 
+
     public void setUsername(String username) {
         this.username = username;
+
     }
 
     public boolean getStatus() {
@@ -90,4 +94,6 @@ public class User implements Serializable {
     public void setStatus(boolean status) {
         this.status = status;
     }
+
+
 }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -22,13 +23,24 @@ public class TicketServiceImpl implements TicketService {
     }
 
     @Override
-    public List<Ticket> findByCustomerAndOrderStatus(Customer customer, String status) {
-        return ticketRepo.findByCustomerAndOrderStatus(customer,status);
+
+    public Ticket findById(int id){
+        return ticketRepo.findById(id).orElse(null);
+
     }
+    public Optional< Ticket > findById(Integer id){
+        return Optional.ofNullable(ticketRepo.findById(id).orElse(null));
+    }
+        public List< Ticket > findByCustomerAndOrderStatus (Customer customer, String status){
+            return ticketRepo.findByCustomerAndOrderStatus(customer, status);
+        }
 
     @Override
     public Ticket Creat(Ticket ticket) {
         return ticketRepo.save(ticket);
+
     }
+
+
 
 }
