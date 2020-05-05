@@ -67,6 +67,10 @@ const routes: Routes = [
   },
   {path: 'resetPassword', component: ResetPasswordComponent},
 
+  {path: 'ticket-prices', component: SeeTickerPricesComponent}
+];
+
+
   {path: 'see-ticker-prices', component: SeeTickerPricesComponent},
   {path: 'chon-ghe', component: PositionSelectorComponent},
   {path: 'thong-tin-dat-ve', component: TicketBookingInformationComponent},
