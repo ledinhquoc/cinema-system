@@ -37,6 +37,7 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 import {MemberComponent} from "./Components/component-vu/member/member.component";
+import { ShowtimesComponent } from './Components/component-tmt/showtimes/showtimes.component';
 
 
 
@@ -112,7 +113,8 @@ const routes: Routes = [
                  TicketBookingComponent,
                  ConfirmPasswordComponent, 
               ResetPasswordComponent,
-               UserRegistrationComponent,],
+               UserRegistrationComponent,
+               ShowtimesComponent,],
   imports: [RouterModule.forRoot(routes),
   ReactiveFormsModule,
   FormsModule,
