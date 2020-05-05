@@ -1,9 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-
 import {TopBarComponent} from './Components/component-viet/TopBar/top-bar/top-bar.component';
 import {SlideBarComponent} from './Components/component-viet/SlideBar/slide-bar/slide-bar.component';
-
 import {InfomationComponent} from './Components/component-viet/InformationAccount/infomation/infomation.component';
 import {HomeAccountComponent} from './Components/component-viet/home-account/home-account.component';
 import {HistoryTicketComponent} from './Components/component-viet/Tickes/history-ticket/history-ticket.component';
@@ -22,10 +20,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {SeeTickerPricesComponent} from './Components/component-quy/see-ticker-prices/see-ticker-prices.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {Ng2SearchPipeModule} from 'ng2-search-filter';
-
 import {BookingComponent} from './Components/component-quoc/booking/booking.component';
 import {TicketConfirmComponent} from './Components/component-quoc/ticket-confirm/ticket-confirm/ticket-confirm.component';
-// tslint:disable-next-line:max-line-length
 import {TicketConfirmInfoComponent} from './Components/component-quoc/ticket-confirm-info/ticket-confirm-info/ticket-confirm-info.component';
 import {ListFilmComponent} from '../app/Components/component-tuan/list-film/list-film.component';
 import {DetailFilmComponent} from '../app/Components/component-tuan/detail-film/detail-film.component';
@@ -69,14 +65,10 @@ const routes: Routes = [
       }]
   },
   {path: 'resetPassword', component: ResetPasswordComponent},
-
   {path: 'ticket-prices', component: SeeTickerPricesComponent},
   {path: 'chon-ghe', component: PositionSelectorComponent},
   {path: 'thong-tin-dat-ve', component: TicketBookingInformationComponent},
-  {
-    path: 'booking', component: BookingComponent,
-  },
- 
+  {path: 'booking', component: BookingComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: UserRegistrationComponent},
   {path: 'member', component: MemberComponent},
