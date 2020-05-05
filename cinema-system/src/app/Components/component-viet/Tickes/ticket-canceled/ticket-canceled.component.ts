@@ -13,6 +13,7 @@ export class TicketCanceledComponent implements OnInit {
 
   public statusTickets4: TicketStatusModule [];
   public pageCancel: number = 1;
+  term: any;
   constructor(public statusTicketService: StatusTicketService,
               public router: Router,
               public activatedRouteService: ActivatedRoute,) { }
@@ -25,7 +26,7 @@ export class TicketCanceledComponent implements OnInit {
     this.activatedRouteService.params.subscribe(data => {
       let id = data['id'];
 
-      this.statusTicketService.getStatusTickes(id,"Cancelled").subscribe((statusTicket: TicketStatusModule[]) => {
+      this.statusTicketService.getStatusTickes(id,"cancel").subscribe((statusTicket: TicketStatusModule[]) => {
         this.statusTickets4 = statusTicket;
 console.log(this.statusTickets4)
       });

@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MemberInformationModule} from '../Models/memberInformation.module';
 import {UserModule} from '../Models/user.module';
-import {InformationAccountService} from '../../../Services/information-account.service';
+
 import {UserServiceService} from '../../../Services/user-service.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {MaterialService} from '../../../Services/material.service';
-import {NotificationService} from '../../../Services/notification.service';
+import {InformationAccountService} from "../../../Services/information-account.service";
+import {TokenStorageService} from "../../component-vu/service/token-storage.service";
+
 
 @Component({
   selector: 'app-home-account',
@@ -21,16 +22,18 @@ export class HomeAccountComponent implements OnInit {
   public member: MemberInformationModule;
   public user: UserModule;
 
-  constructor(public formBuilderStudentEdit: FormBuilder,
-              public memberService: InformationAccountService,
-              public userService: UserServiceService,
+  constructor(public formBuilderStudentEdit1: FormBuilder,
+              public memberService1: InformationAccountService,
+              public userService1: UserServiceService,
               public router: Router,
               public activatedRouteService1: ActivatedRoute,
+              private tokenStorageService: TokenStorageService
              ) {
   }
 
   ngOnInit(): void {
-    this.formMemberShow1 = this.formBuilderStudentEdit.group({
+    console.log(this.tokenStorageService.getUser().roles)
+    this.formMemberShow1 = this.formBuilderStudentEdit1.group({
       id: [],
       idAccount: [''],
       oldPassWord: ['', [Validators.required]],
@@ -41,7 +44,7 @@ export class HomeAccountComponent implements OnInit {
 
 
     });
-    this.formMemberShow2 = this.formBuilderStudentEdit.group({
+    this.formMemberShow2 = this.formBuilderStudentEdit1.group({
       fullName: ['', [Validators.required, Validators.pattern('^[a-z A-z]*$')]],
       birthday: ['', [Validators.required]],
       gender: ['', [Validators.required]],
@@ -57,15 +60,16 @@ export class HomeAccountComponent implements OnInit {
   loadDataMemberEdit1() {
     this.activatedRouteService1.params.subscribe(data => {
       let id = data['id'];
-      this.memberService.getAccountEdit(id).subscribe((member: MemberInformationModule) => {
+      let idUser;
+      this.memberService1.getAccountEdit(id).subscribe((member: MemberInformationModule) => {
         this.member = member;
+        idUser = member['user'].id;
         console.log(this.member);
         console.log(this.formMemberShow1);
-      });
-      this.userService.getUserEdit(id).subscribe((user: UserModule) => {
-        this.user = user;
-        console.log(this.user);
-
+        this.userService1.getUserEdit(idUser).subscribe((user: UserModule) => {
+          this.user = user;
+          console.log(this.user);
+        });
       });
     });
   }

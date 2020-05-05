@@ -4,6 +4,9 @@
   background-color: white;
   border-radius: 20px;
   margin-left:15%;
+  font-family: 'Fredoka One', cursive;
+  font-size:20px;
+  color: #222;
 }
 #checkboxPointPlus{
   font-size: 15px;

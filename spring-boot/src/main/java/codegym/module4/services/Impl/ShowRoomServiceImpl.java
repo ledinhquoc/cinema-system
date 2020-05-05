@@ -20,4 +20,10 @@ public class ShowRoomServiceImpl implements ShowRoomService
     {
         return showRoomRepo.findAll();
     }
+
+    @Override
+    public ShowRoom findById(int id)
+    {
+        return showRoomRepo.findById(id).orElse(null);
+    }
 }

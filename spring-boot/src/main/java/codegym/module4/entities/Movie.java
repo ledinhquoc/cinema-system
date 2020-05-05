@@ -7,11 +7,19 @@ import java.util.Date;
 import java.util.List;
 
 
-
 @Entity
 @Table(name = "movie")
-public class Movie {
-    public Movie() {
+@NamedStoredProcedureQuery(name = "GetMovieByMovieScheduleId",
+        procedureName = "GetMovieByMovieScheduleId",
+        resultClasses = {Movie.class},
+        parameters = {@StoredProcedureParameter(name = "movieScheduleId",
+                type = Integer.class,
+                mode = ParameterMode.IN)}
+)
+public class Movie
+{
+    public Movie()
+    {
         // Do nothing because of X and Y
     }
 
@@ -60,182 +68,208 @@ public class Movie {
     /**
      * @return the id
      */
-    public int getId() {
+    public int getId()
+    {
         return id;
     }
 
     /**
      * @param id the id to set
      */
-    public void setId(int id) {
+    public void setId(int id)
+    {
         this.id = id;
     }
 
     /**
      * @return the movieName
      */
-    public String getMovieName() {
+    public String getMovieName()
+    {
         return movieName;
     }
 
     /**
      * @param movieName the movieName to set
      */
-    public void setMovieName(String movieName) {
+    public void setMovieName(String movieName)
+    {
         this.movieName = movieName;
     }
 
     /**
      * @return the movieType
      */
-    public String getMovieType() {
+    public String getMovieType()
+    {
         return movieType;
     }
 
     /**
      * @param movieType the movieType to set
      */
-    public void setMovieType(String movieType) {
+    public void setMovieType(String movieType)
+    {
         this.movieType = movieType;
     }
 
     /**
      * @return the dateStart
      */
-    public Date getDateStart() {
+    public Date getDateStart()
+    {
         return dateStart;
     }
 
     /**
      * @param dateStart the dateStart to set
      */
-    public void setDateStart(Date dateStart) {
+    public void setDateStart(Date dateStart)
+    {
         this.dateStart = dateStart;
     }
 
     /**
      * @return the dateEnd
      */
-    public Date getDateEnd() {
+    public Date getDateEnd()
+    {
         return dateEnd;
     }
 
     /**
      * @param dateEnd the dateEnd to set
      */
-    public void setDateEnd(Date dateEnd) {
+    public void setDateEnd(Date dateEnd)
+    {
         this.dateEnd = dateEnd;
     }
 
     /**
      * @return the movieStudio
      */
-    public String getMovieStudio() {
+    public String getMovieStudio()
+    {
         return movieStudio;
     }
 
     /**
      * @param movieStudio the movieStudio to set
      */
-    public void setMovieStudio(String movieStudio) {
+    public void setMovieStudio(String movieStudio)
+    {
         this.movieStudio = movieStudio;
     }
 
     /**
      * @return the directors
      */
-    public String getDirectors() {
+    public String getDirectors()
+    {
         return directors;
     }
 
     /**
      * @param directors the directors to set
      */
-    public void setDirectors(String directors) {
+    public void setDirectors(String directors)
+    {
         this.directors = directors;
     }
 
     /**
      * @return the actor
      */
-    public String getActor() {
+    public String getActor()
+    {
         return actor;
     }
 
     /**
      * @param actor the actor to set
      */
-    public void setActor(String actor) {
+    public void setActor(String actor)
+    {
         this.actor = actor;
     }
 
     /**
      * @return the duration
      */
-    public int getDuration() {
+    public int getDuration()
+    {
         return duration;
     }
 
     /**
      * @param duration the duration to set
      */
-    public void setDuration(int duration) {
+    public void setDuration(int duration)
+    {
         this.duration = duration;
     }
 
     /**
      * @return the content
      */
-    public String getContent() {
+    public String getContent()
+    {
         return content;
     }
 
     /**
      * @param content the content to set
      */
-    public void setContent(String content) {
+    public void setContent(String content)
+    {
         this.content = content;
     }
 
     /**
      * @return the srcImg
      */
-    public String getSrcImg() {
+    public String getSrcImg()
+    {
         return srcImg;
     }
 
     /**
      * @param srcImg the srcImg to set
      */
-    public void setSrcImg(String srcImg) {
+    public void setSrcImg(String srcImg)
+    {
         this.srcImg = srcImg;
     }
 
     /**
      * @return the srcVideo
      */
-    public String getSrcVideo() {
+    public String getSrcVideo()
+    {
         return srcVideo;
     }
 
     /**
      * @param srcVideo the srcVideo to set
      */
-    public void setSrcVideo(String srcVideo) {
+    public void setSrcVideo(String srcVideo)
+    {
         this.srcVideo = srcVideo;
     }
 
     /**
      * @return the movieSchedules
      */
-    public List<MovieSchedules> getMovieSchedules() {
+    public List<MovieSchedules> getMovieSchedules()
+    {
         return movieSchedules;
     }
 
     /**
      * @param movieSchedules the movieSchedules to set
      */
-    public void setMovieSchedules(List<MovieSchedules> movieSchedules) {
+    public void setMovieSchedules(List<MovieSchedules> movieSchedules)
+    {
         this.movieSchedules = movieSchedules;
     }
 
