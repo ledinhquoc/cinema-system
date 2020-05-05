@@ -76,11 +76,7 @@ const routes: Routes = [
   {
     path: 'booking', component: BookingComponent,
   },
-<<<<<<< HEAD
  
-=======
-  {path: 'see-ticker-prices', component: SeeTickerPricesComponent},
->>>>>>> 048156692df6ed152f1c6eadebf7fc64077f9f32
   {path: 'login', component: LoginComponent},
   {path: 'register', component: UserRegistrationComponent},
   {path: 'member', component: MemberComponent},
@@ -93,7 +89,6 @@ const routes: Routes = [
 @NgModule({
 
   declarations: [TopBarComponent,
-<<<<<<< HEAD
                 SlideBarComponent,
                 InfomationComponent,
                 HomeAccountComponent,
@@ -134,54 +129,6 @@ const routes: Routes = [
   MatFormFieldModule,
   MatDatepickerModule,
   MatNativeDateModule],
-=======
-    ShowtimesComponent,
-    ChonGheComponent,
-    SlideBarComponent,
-    InfomationComponent,
-    HomeAccountComponent,
-    HistoryTicketComponent,
-    ErrorDisplayComponent,
-    LoginComponent,
-    ResetPasswordComponent,
-    TicketCanceledComponent,
-    TicketBookingComponent,
-    MatConfirmDialogComponent,
-    PositionSelectorComponent,
-    TicketBookingInformationComponent,
-    DetailFilmComponent,
-    ListFilmComponent,
-    SeeTickerPricesComponent,
-    BookingComponent,
-    TicketConfirmComponent,
-    TicketConfirmInfoComponent,
-
-    ErrorDisplayComponent,
-    LoginComponent,
-    CarouselComponent,
-    TicketCanceledComponent,
-    TicketBookingComponent,
-    ConfirmPasswordComponent,
-    ResetPasswordComponent,
-    UserRegistrationComponent,
-      ShowtimesComponent,],
-
-
-  imports: [RouterModule.forRoot(routes),
-    ReactiveFormsModule,
-    FormsModule,
-    CommonModule,
-    MatDialogModule,
-    MatButtonModule,
-    MatIconModule,
-    MatSnackBarModule,
-    NgxPaginationModule,
-    Ng2SearchPipeModule,
-    MaterialModule,
-    MatFormFieldModule,
-    MatDatepickerModule,
-    MatNativeDateModule],
->>>>>>> 048156692df6ed152f1c6eadebf7fc64077f9f32
   exports: [RouterModule, TopBarComponent, SlideBarComponent],
   entryComponents: [MatConfirmDialogComponent],
 
