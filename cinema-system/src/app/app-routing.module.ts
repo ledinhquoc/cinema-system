@@ -22,6 +22,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {SeeTickerPricesComponent} from './Components/component-quy/see-ticker-prices/see-ticker-prices.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {Ng2SearchPipeModule} from 'ng2-search-filter';
+
 import {BookingComponent} from './Components/component-quoc/booking/booking.component';
 import {TicketConfirmComponent} from './Components/component-quoc/ticket-confirm/ticket-confirm/ticket-confirm.component';
 // tslint:disable-next-line:max-line-length
@@ -40,6 +41,7 @@ import {MatNativeDateModule} from '@angular/material/core';
 import {MemberComponent} from './Components/component-vu/member/member.component';
 import {ChonGheComponent} from './Components/components-hhien/chon-ghe/chon-ghe.component';
 import {ShowtimesComponent} from './Components/components-hhien/showtimes/showtimes.component';
+
 
 
 const routes: Routes = [
@@ -67,6 +69,10 @@ const routes: Routes = [
       }]
   },
   {path: 'resetPassword', component: ResetPasswordComponent},
+
+  {path: 'ticket-prices', component: SeeTickerPricesComponent}
+];
+
 
   {path: 'see-ticker-prices', component: SeeTickerPricesComponent},
   {path: 'chon-ghe', component: PositionSelectorComponent},
@@ -107,6 +113,7 @@ const routes: Routes = [
     BookingComponent,
     TicketConfirmComponent,
     TicketConfirmInfoComponent,
+
     ErrorDisplayComponent,
     LoginComponent,
     CarouselComponent,
@@ -114,7 +121,10 @@ const routes: Routes = [
     TicketBookingComponent,
     ConfirmPasswordComponent,
     ResetPasswordComponent,
-    UserRegistrationComponent,],
+    UserRegistrationComponent,
+      ShowtimesComponent,],
+
+
   imports: [RouterModule.forRoot(routes),
     ReactiveFormsModule,
     FormsModule,

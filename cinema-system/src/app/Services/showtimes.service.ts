@@ -7,8 +7,10 @@ import {FormControl} from '@angular/forms';
   providedIn: 'root'
 })
 export class ShowtimesService {
+
   public API: string = 'http://localhost:8080/movieSchedules';
   // public API_SEATS:string = 'http://localhost:8080/seats';
+
 
   constructor(
     public http: HttpClient
@@ -18,7 +20,9 @@ export class ShowtimesService {
   getAllFilm(): Observable<any> {
     return this.http.get(this.API);
   }
+
   // getAllSeat(): Observable<any> {
   //   return  this.http.get(this.API_SEATS);
   // }
+
 }
