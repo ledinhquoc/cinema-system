@@ -6,6 +6,7 @@ import {UserService} from '../service/user.service';
 import {TokenStorageService} from "../service/token-storage.service";
 import {AuthServices} from "../service/auth.service"
 import {AuthService, FacebookLoginProvider, SocialUser} from "angularx-social-login";
+import {CookieService} from "ngx-cookie-service";
 
 @Component({
   selector: 'app-login',
@@ -27,18 +28,20 @@ export class LoginComponent implements OnInit {
   checkStatus: boolean;
   check: boolean;
   formTest: FormGroup;
+  cookie: string;
 
   constructor(private authService: AuthServices, private tokenStorage: TokenStorageService,
               public OAuth: AuthService,
               private userService: UserService,
               private router: Router,
               private fb: FormBuilder,
+              private cookieService: CookieService
   ) {
   }
 
 
   ngOnInit() {
-
+      console.log(this.cookieService.getAll());
     this.formLogin = this.fb.group({
       username1: [null, Validators.required],
       password1: [null, Validators.required]
@@ -91,6 +94,7 @@ export class LoginComponent implements OnInit {
           this.authService.login(this.formLogin.value).subscribe(
             data => {
               this.tokenStorage.saveToken(data.accessToken);
+              this.cookieService.set('rememberme',this.tokenStorage.getToken())
               this.tokenStorage.saveUser(data);
               this.isLoginFailed = false;
               this.isLoggedIn = true;
