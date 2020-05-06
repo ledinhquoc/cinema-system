@@ -41,6 +41,8 @@ import {MatNativeDateModule} from '@angular/material/core';
 import {MemberComponent} from './Components/component-vu/member/member.component';
 import {ChonGheComponent} from './Components/components-hhien/chon-ghe/chon-ghe.component';
 import {ShowtimesComponent} from './Components/components-hhien/showtimes/showtimes.component';
+import { ListFilmsComponent } from './Components/component-quy/list-films/list-films.component';
+import { AddFilmComponent } from './Components/component-quy/add-film/add-film.component';
 
 
 
@@ -76,13 +78,15 @@ const routes: Routes = [
   {
     path: 'booking', component: BookingComponent,
   },
- 
+
   {path: 'login', component: LoginComponent},
   {path: 'register', component: UserRegistrationComponent},
   {path: 'member', component: MemberComponent},
   {path: 'confirmPassword/:id', component: ConfirmPasswordComponent},
   {path: 'movieSchedules', component: ShowtimesComponent},
-  {path: 'chonGhe', component: ChonGheComponent}
+  {path: 'chonGhe', component: ChonGheComponent},
+  {path: 'list-films', component: ListFilmsComponent},
+  {path: 'add-film', component: AddFilmComponent},
 
 ];
 
@@ -112,11 +116,13 @@ const routes: Routes = [
                 CarouselComponent,
                 TicketCanceledComponent,
                 TicketBookingComponent,
-                ConfirmPasswordComponent, 
+                ConfirmPasswordComponent,
                 ResetPasswordComponent,
                 UserRegistrationComponent,
                 ChonGheComponent,
-                ShowtimesComponent],
+                ShowtimesComponent,
+                ListFilmsComponent,
+                AddFilmComponent],
   imports: [RouterModule.forRoot(routes),
   ReactiveFormsModule,
   FormsModule,

@@ -1,16 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import {FilmService} from '../service/film.service';
-import { HttpService } from 'src/app/Services/http.service';
-import { Router } from '@angular/router';
-import { TokenStorageService } from '../../component-vu/service/token-storage.service';
-
+import {FilmService} from '../../component-tuan/service/film.service';
+import {HttpService} from '../../../Services/http.service';
+import {Router} from '@angular/router';
 
 @Component({
-  selector: 'app-list-film',
-  templateUrl: './list-film.component.html',
-  styleUrls: ['./list-film.component.scss']
+  selector: 'app-list-films',
+  templateUrl: './list-films.component.html',
+  styleUrls: ['./list-films.component.css']
 })
-export class ListFilmComponent implements OnInit {
+export class ListFilmsComponent implements OnInit {
   page = 1;
   search: string;
   movieSchedule;
@@ -36,4 +34,5 @@ export class ListFilmComponent implements OnInit {
 
     this.router.navigate(['/booking'],{state:{movieSchedule:this.movieSchedule,ticket:this.ticket}});
   }
+
 }
