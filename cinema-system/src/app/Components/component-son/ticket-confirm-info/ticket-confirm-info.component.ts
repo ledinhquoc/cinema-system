@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CustomerService } from '../../../../Services/customer.service';
+import { CustomerService } from './../../../Services/customer.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -7,15 +7,15 @@ import { Router, ActivatedRoute } from '@angular/router';
   templateUrl: './ticket-confirm-info.component.html',
   styleUrls: ['./ticket-confirm-info.component.css']
 })
-export class TicketConfirmInfoComponent implements OnInit {
-
-  public ticketId;
+export class TicketConfirmmInfoComponent implements OnInit {
+	  public ticketId;
   public ticket;
+
   constructor(
-    public customerService: CustomerService,
+  	public customerService: CustomerService,
   	public router: Router,
   	public activatedRoute: ActivatedRoute
-  ) { }
+  	) { }
 
   ngOnInit(): void {
   	this.activatedRoute.params.subscribe(data => {
