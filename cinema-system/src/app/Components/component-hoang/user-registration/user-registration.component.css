@@ -1,20 +1,43 @@
+@import url('https://fonts.googleapis.com/css?family=Numans');
+.container-fluid{
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  background-color: rgba(103, 91, 90, 0.1);
+  font-family: 'Numans', sans-serif;
+}
+.form-control{
+  border-radius: 3px;
+  border-style: solid;
+  border: 1px;
+  font-size: 10px;
+}
 .star{
   color: red;
 }
 .card{
-  background-color: rgba(0,0,0,0) !important;
-  border-radius: 0;
+  height: 100%;
+  width: 700px;
+  background-color: rgba(103, 91, 90, 0.2) !important;
+  border-radius: 3px;
   border: 0;
+  padding-right: 15px;
+  right: 15px;
 }
 .card-header{
   /*background-color: rgba(0,0,0,1) !important;*/
+  width: 700px;
   color: white;
   background-color: #6c976e;
   border: 0;
+  border-radius: 3px;
 }
 .btn{
-  background-color: #ff7b59;
-  border: 0;
+  background-color: #6c976e;
+  border: 1px;
+  width: 100px;
+  height: 40px;
+  font-size: 14px;
 }
 .btn:hover{
   color: brown;
