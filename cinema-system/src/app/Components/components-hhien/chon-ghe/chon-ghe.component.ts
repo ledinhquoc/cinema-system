@@ -16,6 +16,8 @@ export class ChonGheComponent implements OnInit {
   movieSchedules: any;
   rows: any;
   seats = [];
+  movieName: any;
+  movieTime: any;
 
   SeatColors: any;
   selectingSeatCount = 0;
@@ -53,6 +55,10 @@ export class ChonGheComponent implements OnInit {
       this.ticket = ticket;
       this.movie = this.ticket.movieSchedules.movie;
       this.movieSchedules = this.ticket.movieSchedules;
+      // hhien
+      this.movieName = history.state.name;
+      this.movieTime = history.state.time;
+
     });
     this.myHttp.getById('show-rooms', 1).subscribe((showRoom) => {
       this.showRoom = showRoom;
@@ -69,6 +75,7 @@ export class ChonGheComponent implements OnInit {
     });
     this.SeatColors = SeatColors;
   }
+
   getSeatsByRow(row: any) {
     let seats;
     return seats;

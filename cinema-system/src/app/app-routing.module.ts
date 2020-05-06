@@ -36,10 +36,12 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MemberComponent} from './Components/component-vu/member/member.component';
 import {ChonGheComponent} from './Components/components-hhien/chon-ghe/chon-ghe.component';
+import {BanVeComponent} from './Components/components-hhien/showtimes/showtimes.component';
 import {ShowtimesComponent} from './Components/components-hhien/showtimes/showtimes.component';
 import { TicketConfirmmComponent } from './Components/component-son/ticket-confirm/ticket-confirm.component';
 import { TicketConfirmmInfoComponent } from './Components/component-son/ticket-confirm-info/ticket-confirm-info.component'; 
 import { CustomerComponent } from './Components/component-son/customer/customer.component';
+
 
 
 const routes: Routes = [
@@ -80,6 +82,7 @@ const routes: Routes = [
   },
   {path: 'resetPassword', component: ResetPasswordComponent},
   {path: 'ticket-prices', component: SeeTickerPricesComponent},
+  {path: 'see-ticker-prices', component: SeeTickerPricesComponent},
   {path: 'chon-ghe', component: PositionSelectorComponent},
   {path: 'thong-tin-dat-ve', component: TicketBookingInformationComponent},
   {path: 'booking', component: BookingComponent},
@@ -88,46 +91,44 @@ const routes: Routes = [
   {path: 'member', component: MemberComponent},
   {path: 'confirmPassword/:id', component: ConfirmPasswordComponent},
   {path: 'movieSchedules', component: ShowtimesComponent},
-  {path: 'chonGhe', component: ChonGheComponent}
-
+  {path: 'chonGhe', component: ChonGheComponent},
+  {path: 'ban-ve', component: BanVeComponent}
 ];
 
 @NgModule({
 
   declarations: [TopBarComponent,
-                SlideBarComponent,
-                InfomationComponent,
-                HomeAccountComponent,
-                HistoryTicketComponent,
-                ErrorDisplayComponent,
-                LoginComponent,
-                ResetPasswordComponent,
-                TicketCanceledComponent,
-                TicketBookingComponent,
-                MatConfirmDialogComponent,
-                PositionSelectorComponent,
-                TicketBookingInformationComponent,
-                DetailFilmComponent,
-                ListFilmComponent,
-                SeeTickerPricesComponent,
-                BookingComponent,
-                TicketConfirmComponent,
-                TicketConfirmInfoComponent,
-                ErrorDisplayComponent,
-                LoginComponent,
-                CarouselComponent,
-                TicketCanceledComponent,
-                TicketBookingComponent,
-                ConfirmPasswordComponent,
-                TicketConfirmComponent,
-                TicketConfirmInfoComponent,
-                CustomerComponent, 
-                TicketConfirmmComponent,
-                TicketConfirmmInfoComponent,
-                ResetPasswordComponent,
-                UserRegistrationComponent,
-                ChonGheComponent,
-                ShowtimesComponent],
+
+    ChonGheComponent,
+    SlideBarComponent,
+    InfomationComponent,
+    HomeAccountComponent,
+    HistoryTicketComponent,
+    ErrorDisplayComponent,
+    LoginComponent,
+    ResetPasswordComponent,
+    TicketCanceledComponent,
+    TicketBookingComponent,
+    MatConfirmDialogComponent,
+    PositionSelectorComponent,
+    TicketBookingInformationComponent,
+    DetailFilmComponent,
+    ListFilmComponent,
+    SeeTickerPricesComponent,
+    BookingComponent,
+    TicketConfirmComponent,
+    TicketConfirmInfoComponent,
+    ErrorDisplayComponent,
+    LoginComponent,
+    CarouselComponent,
+    TicketCanceledComponent,
+    TicketBookingComponent,
+    ConfirmPasswordComponent,
+    ResetPasswordComponent,
+    UserRegistrationComponent,
+    ShowtimesComponent,
+    BanVeComponent],
+
   imports: [RouterModule.forRoot(routes),
   ReactiveFormsModule,
   FormsModule,
