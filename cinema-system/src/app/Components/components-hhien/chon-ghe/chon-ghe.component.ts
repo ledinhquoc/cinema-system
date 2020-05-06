@@ -83,7 +83,7 @@ export class ChonGheComponent implements OnInit {
 
   onSubmit() {
     this.ticket.seat = this.selectedSeats;
-    this.router.navigate(['thong-tin-dat-ve'], {
+    this.router.navigate(['xac-nhan-ban-ve'], {
       state: {
         ticket: this.ticket,
       },
