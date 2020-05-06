@@ -37,8 +37,8 @@ import {MatNativeDateModule} from '@angular/material/core';
 import {MemberComponent} from './Components/component-vu/member/member.component';
 import {ChonGheComponent} from './Components/components-hhien/chon-ghe/chon-ghe.component';
 import {ShowtimesComponent} from './Components/components-hhien/showtimes/showtimes.component';
-import { TicketConfirmComponent } from './Components/component-son/ticket-confirm/ticket-confirm.component';
-import { TicketConfirmInfoComponent } from './Components/component-son/ticket-confirm-info/ticket-confirm-info.component';
+import { TicketConfirmmComponent } from './Components/component-son/ticket-confirm/ticket-confirm.component';
+import { TicketConfirmmInfoComponent } from './Components/component-son/ticket-confirm-info/ticket-confirm-info.component'; 
 import { CustomerComponent } from './Components/component-son/customer/customer.component';
 
 
@@ -68,11 +68,11 @@ const routes: Routes = [
   },
   {
     path: 'ticket-confirm/:id',
-    component: TicketConfirmComponent
+    component: TicketConfirmmComponent
   },
   {
     path: 'ticket-confirm-info/:id',
-    component: TicketConfirmInfoComponent
+    component: TicketConfirmmInfoComponent
   },
   {
     path: 'customer/:id',
@@ -118,7 +118,12 @@ const routes: Routes = [
                 CarouselComponent,
                 TicketCanceledComponent,
                 TicketBookingComponent,
-                ConfirmPasswordComponent, 
+                ConfirmPasswordComponent,
+                TicketConfirmComponent,
+                TicketConfirmInfoComponent,
+                CustomerComponent, 
+                TicketConfirmmComponent,
+                TicketConfirmmInfoComponent,
                 ResetPasswordComponent,
                 UserRegistrationComponent,
                 ChonGheComponent,

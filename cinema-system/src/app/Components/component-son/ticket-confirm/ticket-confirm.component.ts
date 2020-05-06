@@ -7,7 +7,7 @@ import { ActivatedRoute } from '@angular/router'
   templateUrl: './ticket-confirm.component.html',
   styleUrls: ['./ticket-confirm.component.css']
 })
-export class TicketConfirmComponent implements OnInit {
+export class TicketConfirmmComponent implements OnInit {
 	public customers;
   public term;
   public p;
