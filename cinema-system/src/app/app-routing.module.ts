@@ -37,7 +37,9 @@ import {MatNativeDateModule} from '@angular/material/core';
 import {MemberComponent} from './Components/component-vu/member/member.component';
 import {ChonGheComponent} from './Components/components-hhien/chon-ghe/chon-ghe.component';
 import {ShowtimesComponent} from './Components/components-hhien/showtimes/showtimes.component';
-
+import { TicketConfirmComponent } from './Components/component-son/ticket-confirm/ticket-confirm.component';
+import { TicketConfirmInfoComponent } from './Components/component-son/ticket-confirm-info/ticket-confirm-info.component';
+import { CustomerComponent } from './Components/component-son/customer/customer.component';
 
 
 const routes: Routes = [
@@ -63,6 +65,18 @@ const routes: Routes = [
       {
         path: ':id/ticket-canceled', component: TicketCanceledComponent,
       }]
+  },
+  {
+    path: 'ticket-confirm/:id',
+    component: TicketConfirmComponent
+  },
+  {
+    path: 'ticket-confirm-info/:id',
+    component: TicketConfirmInfoComponent
+  },
+  {
+    path: 'customer/:id',
+    component: CustomerComponent
   },
   {path: 'resetPassword', component: ResetPasswordComponent},
   {path: 'ticket-prices', component: SeeTickerPricesComponent},
