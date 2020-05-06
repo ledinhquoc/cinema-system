@@ -40,7 +40,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MemberComponent} from './Components/component-vu/member/member.component';
 import {ChonGheComponent} from './Components/components-hhien/chon-ghe/chon-ghe.component';
-import {ShowtimesComponent} from './Components/components-hhien/showtimes/showtimes.component';
+import {BanVeComponent} from './Components/components-hhien/showtimes/showtimes.component';
+import {ShowtimesComponent} from './Components/component-tmt/showtimes/showtimes.component';
 
 
 
@@ -70,10 +71,7 @@ const routes: Routes = [
   },
   {path: 'resetPassword', component: ResetPasswordComponent},
 
-  {path: 'ticket-prices', component: SeeTickerPricesComponent}
-];
-
-
+  {path: 'ticket-prices', component: SeeTickerPricesComponent},
   {path: 'see-ticker-prices', component: SeeTickerPricesComponent},
   {path: 'chon-ghe', component: PositionSelectorComponent},
   {path: 'thong-tin-dat-ve', component: TicketBookingInformationComponent},
@@ -86,14 +84,14 @@ const routes: Routes = [
   {path: 'member', component: MemberComponent},
   {path: 'confirmPassword/:id', component: ConfirmPasswordComponent},
   {path: 'movieSchedules', component: ShowtimesComponent},
-  {path: 'chonGhe', component: ChonGheComponent}
 
+  {path: 'chonGhe', component: ChonGheComponent},
+  {path: 'ban-ve', component: BanVeComponent}
 ];
 
 @NgModule({
 
   declarations: [TopBarComponent,
-    ShowtimesComponent,
     ChonGheComponent,
     SlideBarComponent,
     InfomationComponent,
@@ -122,7 +120,8 @@ const routes: Routes = [
     ConfirmPasswordComponent,
     ResetPasswordComponent,
     UserRegistrationComponent,
-      ShowtimesComponent,],
+      ShowtimesComponent,
+    BanVeComponent],
 
 
   imports: [RouterModule.forRoot(routes),
