@@ -37,11 +37,11 @@ import {MatNativeDateModule} from '@angular/material/core';
 import {MemberComponent} from './Components/component-vu/member/member.component';
 import {ChonGheComponent} from './Components/components-hhien/chon-ghe/chon-ghe.component';
 import {BanVeComponent} from './Components/components-hhien/showtimes/showtimes.component';
-import {ShowtimesComponent} from './Components/components-hhien/showtimes/showtimes.component';
+
 import { TicketConfirmmComponent } from './Components/component-son/ticket-confirm/ticket-confirm.component';
 import { TicketConfirmmInfoComponent } from './Components/component-son/ticket-confirm-info/ticket-confirm-info.component'; 
 import { CustomerComponent } from './Components/component-son/customer/customer.component';
-
+import { ShowtimesComponent } from './Components/component-tmt/showtimes/showtimes.component';
 
 
 const routes: Routes = [
@@ -69,7 +69,7 @@ const routes: Routes = [
       }]
   },
   {
-    path: 'ticket-confirm/:id',
+    path: 'xac-nhan-ban-ve',
     component: TicketConfirmmComponent
   },
   {
@@ -120,7 +120,11 @@ const routes: Routes = [
     TicketConfirmInfoComponent,
     ErrorDisplayComponent,
     LoginComponent,
+    CustomerComponent,
+    TicketConfirmmComponent,
+    TicketConfirmmInfoComponent,
     CarouselComponent,
+    ShowtimesComponent,
     TicketCanceledComponent,
     TicketBookingComponent,
     ConfirmPasswordComponent,

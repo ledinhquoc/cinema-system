@@ -1,106 +1,99 @@
-<div class="container" style="margin-bottom: 20px; background-color: #fdfcf0">
-  <h2 style="padding: 5px">Xác nhận bán vé</h2>
-  <hr />
-  <div class="row">
-    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-      <img id="image-main" class="gallery-image visible" src="{{ ticket?.movieSchedules.movie.srcImg }}" style="width: 210px; margin-left: 20px">
+<h5>Xác nhận bán vé</h5>
+<div class="row ml-3" *ngIf="customer&&movie">
+    <div class="col-md-3">
+        <img [src]="movie.srcImg" alt="img">
+        //
     </div>
-    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
-      <label style="font-size: 140%">{{ ticket?.movieSchedules.movie.movieName }}</label>
-      <hr>
-      <div class="row">
-        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-          <strong>Màn hình: </strong>
+    <div class="col-md-9 ">
+        <h5 class="row">{{movie.movieName}}</h5>
+        <hr>
+        <div class="row">
+            <label class=" col-4"><strong>Màn hình: </strong></label>
+            <p class=" col-8">{{showRoom.screen}}</p>
         </div>
-        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
-          <p>{{ ticket?.seat.row.showRoom.screen }}</p>
+        <hr>
+        <div class="row">
+            <label class="col-4"><strong>Mã đặt vé: </strong></label>
+            <p class="col-8">{{ticket.bookedTicketCode}}</p>
         </div>
-      </div>
-      <hr>
-      <div class="row">
-        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-          <strong>Ngày chiếu: </strong>
+        <hr>
+        <div class="row">
+            <label class="col-4"><strong>Ngày chiếu: </strong></label>
+            <p class="col-8">{{movieSchedules.openingDay|date}}</p>
         </div>
-        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
-          <p>{{ ticket?.movieSchedules.movie.dateStart }}</p>
+        <hr>
+        <div class="row">
+            <label class="col-4"><strong>Giờ chiếu</strong></label>
+            <p class="col-8">{{movieSchedules.showTime.hourStart}}</p>
         </div>
-      </div>
-      <hr>
-      <div class="row">
-        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-          <strong>Giờ chiếu: </strong>
+        <hr>
+        <div class="row">
+            <label class="col-4"><strong>Ghế</strong></label>
+            <p class="col-8">{{seat[0].name+seat[0].seatNumber}}</p>
         </div>
-        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
-          <p>{{ ticket?.movieSchedules.showTime.hourStart }}</p>
+        <hr>
+        <div class="row">
+            <label class="col-4"><strong>Giá: </strong></label>
+            <p class="col-8">
+                {{ticket.price}}
+            </p>
         </div>
-      </div>
-      <hr>
-      <div class="row">
-        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-          <strong>Ghế: </strong>
+        <hr>
+        <div class="row">
+            <label class="col-4"><strong>Tổng cộng: </strong></label>
+            <p class="col-8">{{ticket.price}}</p>
         </div>
-        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
-          <p>B8 - B9 - B10 - C10</p>
+        <h6 class="row">Thông tin tài khoản đặt vé</h6>
+        <hr>
+        <div class="row">
+            <label class="col-4"><strong>Họ tên: </strong></label>
+            <p class="col-8">{{customer.fullName}}</p>
         </div>
-      </div>
-      <hr>
-      <div class="row">
-        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-          <strong>Giá: </strong>
+        <hr>
+        <div class="row">
+            <label class="col-4"><strong>Email: </strong></label>
+            <p class="col-8">{{customer.email}}</p>
         </div>
-        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
-          <p>{{ ticket?.ticketPrices.thu3gd | currency : 'VND' }}</p>
+        <hr>
+        <div class="row">
+            <label class="col-4"><strong>CMND: </strong></label>
+            <p class="col-8">{{customer.idCard}}</p>
         </div>
-      </div>
+        <hr>
+        <div class="row">
+            <label class="col-4"><strong>Số điện thoại: </strong></label>
+            <p class="col-8">{{customer.phone}}</p>
+        </div>
+     <button type="button" class="btn btn-warning" style="margin-top: 10px; margin-right: 2px" [routerLink]="['/chonGhe']">Quay lại</button>
+  <!-- Button to Open the Modal -->
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="margin-top: 10px">
+    Hoàn tất
+  </button>
+
+  <!-- The Modal -->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
       
-      <hr>
-      <div class="row">
-        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-          <strong>Tổng cộng: </strong>
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Thành công</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
-        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
-          <strong style="color: green">180000đ</strong>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          Xác nhận bán vé thành công !!
         </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Trang chủ</button>
+        </div>
+        
       </div>
-     
-      
-     
-      <br>
-      <label style="font-size: 140%">Thành viên</label>
-      <div class="d-flex">
-       <input type="text" class="form-control" [(ngModel)]="term" placeholder="Nhập CMND hoặc số thẻ" style="width: 300px">
-     
-      </div>
-      <table class="table table-striped table-hover" style="margin-top: 5px">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Họ tên</th>
-          <th>Giới tính</th>
-          <th>Số CMND</th>
-          <th>Email</th>
-          <th>Địa chỉ</th>
-          <th>Số điện thoại</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let item of customers| filter:term | paginate: { itemsPerPage: 4, currentPage: p } ; let i = index" style="cursor: pointer;" [routerLink]="['/customer', item.id]">
-          <td>{{ i+1 }}</td>
-          <td>{{ item.fullName }}</td>
-          <td>{{ item.gender }}</td>
-          <td>{{ item.idCard }}</td>
-          <td>{{ item.email }}</td>
-          <td>{{ item.address }}</td>
-          <td>{{ item.phone }}</td>
-          
-        </tr>
-      </tbody>
-    </table>
-    <pagination-controls (pageChange)="p = $event" style="float: right;"></pagination-controls>
-      <button type="button" class="btn btn-warning" style="margin-top: 10px; margin-right: 2px">Quay lại</button>
-      <button type="button" class="btn btn-primary" [routerLink]="['/ticket-confirm-info', ticketId]" style="margin-top: 10px">Xác nhận bán vé</button>
     </div>
-    
-    
   </div>
+    </div>
+    
 </div>
