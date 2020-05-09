@@ -1,8 +1,6 @@
 package codegym.module4.entities;
-
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -12,7 +10,18 @@ import java.util.List;
 
 @Entity
 @Table(name = "customer")
-public class Customer {
+@NamedStoredProcedureQueries(
+        @NamedStoredProcedureQuery(
+                name = "GetCustomerByTicketId",
+                procedureName = "GetCustomerByTicketId",
+                resultClasses = {Customer.class},
+                parameters = {@StoredProcedureParameter(
+                        name = "ticketId", mode = ParameterMode.IN, type = Integer.class
+                )}
+        )
+)
+public class Customer
+{
 
 
     @Id
@@ -43,21 +52,43 @@ public class Customer {
     @Column(name = "address")
     private String address;
 
+    public Date getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public List<Point> getPoints() {
+        return points;
+    }
+
+    public void setPoints(List<Point> points) {
+        this.points = points;
+    }
+
     @OneToMany(targetEntity = Point.class)
+    @JsonIgnore
+//    @JsonBackReference
     private List<Point> points;
 
-    @OneToOne
+    //Vu add them Cascade
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User user;
 
     @OneToMany(targetEntity = Ticket.class)
+//    @JsonBackReference
+    @JsonIgnore
     private List<Ticket> tickets;
 
 
     public Customer(int id, User idUser,
                     String fullName, Date birthday, String gender, String idCard,
                     String email
-            , String phone, String address) {
+            , String phone, String address)
+    {
         this.id = id;
         this.user = idUser;
         this.fullName = fullName;
@@ -69,78 +100,111 @@ public class Customer {
         this.address = address;
     }
 
-    public long getId() {
+    public long getId()
+    {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(int id)
+    {
         this.id = id;
     }
 
-    public User getUser() {
+    public User getUser()
+    {
         return user;
     }
 
-    public void setUser(User idUser) {
+    public void setUser(User idUser)
+    {
         this.user = idUser;
     }
 
-    public String getFullName() {
+    public String getFullName()
+    {
         return fullName;
     }
 
-    public void setFullName(String fullName) {
+    public void setFullName(String fullName)
+    {
         this.fullName = fullName;
     }
 
-    public Date getBirthday() {
+    public Date getBirthday()
+    {
         return dateOfBirth;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(Date birthday)
+    {
         this.dateOfBirth = birthday;
     }
 
-    public String getGender() {
+    public String getGender()
+    {
         return gender;
     }
 
-    public void setGender(String gender) {
+    public void setGender(String gender)
+    {
         this.gender = gender;
     }
 
-    public String getIdCard() {
+    public String getIdCard()
+    {
         return idCard;
     }
 
-    public void setIdCard(String idCard) {
+    public void setIdCard(String idCard)
+    {
         this.idCard = idCard;
     }
 
-    public String getEmail() {
+    public String getEmail()
+    {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(String email)
+    {
         this.email = email;
     }
 
-    public String getPhone() {
+    public String getPhone()
+    {
         return phone;
     }
 
-    public void setPhone(String phone) {
+    public void setPhone(String phone)
+    {
         this.phone = phone;
     }
 
-    public String getAddress() {
+    public String getAddress()
+    {
         return address;
     }
 
-    public void setAddress(String address) {
+    public void setAddress(String address)
+    {
         this.address = address;
     }
 
-    public Customer() {
+    public Customer()
+    {
+    }
+
+    /**
+     * @return the tickets
+     */
+    public List<Ticket> getTickets() {
+        return tickets;
+    }
+
+    /**
+     * @param tickets the tickets to set
+     */
+    public void setTickets(List<Ticket> tickets) {
+        this.tickets = tickets;
     }
 }

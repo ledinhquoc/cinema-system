@@ -1,7 +1,10 @@
 package codegym.module4.entities;
 
 
+import codegym.module4.jwt.ERole;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.util.List;
@@ -19,10 +22,11 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private String name;
+    @Enumerated(EnumType.STRING)
+    private ERole name;
 
-    @ManyToMany(targetEntity = User.class)
-    @JsonBackReference
+    @ManyToMany(mappedBy = "roles")
+    @JsonIgnore
     private List<User> users;
 
     /**
@@ -42,14 +46,14 @@ public class Role {
     /**
      * @return the name
      */
-    public String getName() {
+    public ERole getName() {
         return name;
     }
 
     /**
      * @param name the name to set
      */
-    public void setName(String name) {
+    public void setName(ERole name) {
         this.name = name;
     }
 

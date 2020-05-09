@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping(CustomerController.BASE_URL)
 public class CustomerController {
@@ -34,7 +34,7 @@ public class CustomerController {
 
     @GetMapping("/{id}")
     public Customer getUserByID(@PathVariable int id){
-        return customerService.findCustomerById(id);
+        return customerService.findByIdL(id);
     }
 
 
@@ -57,6 +57,13 @@ public class CustomerController {
     public Customer newCustomer(@RequestBody Customer customer)
     {
         return customerService.saveCustomer(customer);
+    }
+
+    @DeleteMapping(path = "/delete/{id}")
+    public void newCustomer(@PathVariable int id)
+    {
+        Customer customer=customerService.findCustomerById(id);
+        customerService.deleteCustomer(customer);
     }
 
 

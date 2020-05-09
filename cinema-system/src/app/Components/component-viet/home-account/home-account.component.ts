@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MemberInformationModule} from '../Models/memberInformation.module';
 import {UserModule} from '../Models/user.module';
-import {InformationAccountService} from '../../../Services/information-account.service';
+
 import {UserServiceService} from '../../../Services/user-service.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {InformationAccountService} from "../../../Services/information-account.service";
+import {TokenStorageService} from "../../component-vu/service/token-storage.service";
 
 
 @Component({
@@ -25,10 +27,12 @@ export class HomeAccountComponent implements OnInit {
               public userService1: UserServiceService,
               public router: Router,
               public activatedRouteService1: ActivatedRoute,
+              private tokenStorageService: TokenStorageService
              ) {
   }
 
   ngOnInit(): void {
+    console.log(this.tokenStorageService.getUser().roles)
     this.formMemberShow1 = this.formBuilderStudentEdit1.group({
       id: [],
       idAccount: [''],
@@ -56,15 +60,16 @@ export class HomeAccountComponent implements OnInit {
   loadDataMemberEdit1() {
     this.activatedRouteService1.params.subscribe(data => {
       let id = data['id'];
+      let idUser;
       this.memberService1.getAccountEdit(id).subscribe((member: MemberInformationModule) => {
         this.member = member;
+        idUser = member['user'].id;
         console.log(this.member);
         console.log(this.formMemberShow1);
-      });
-      this.userService1.getUserEdit(id).subscribe((user: UserModule) => {
-        this.user = user;
-        console.log(this.user);
-
+        this.userService1.getUserEdit(idUser).subscribe((user: UserModule) => {
+          this.user = user;
+          console.log(this.user);
+        });
       });
     });
   }

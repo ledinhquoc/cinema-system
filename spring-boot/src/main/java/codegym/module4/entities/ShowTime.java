@@ -2,8 +2,11 @@ package codegym.module4.entities;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.sql.Time;
 import java.util.List;
 
 
@@ -28,7 +31,7 @@ public class ShowTime {
     private String hourEnd;
 
     @OneToMany(targetEntity = MovieSchedules.class)
-    @JsonBackReference
+    @JsonIgnore
     private List<MovieSchedules> movieSchedules;
 
 

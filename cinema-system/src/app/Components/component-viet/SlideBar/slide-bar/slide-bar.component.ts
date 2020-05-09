@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {MemberInformationModule} from '../../Models/memberInformation.module';
-import {InformationAccountService} from '../../../../services/information-account.service';
+
 import {ActivatedRoute, Router} from '@angular/router';
 import {PointHistoryModule} from '../../Models/pointHistory.module';
 import {HistoryUsePointService} from '../../../../Services/history-use-point.service';
+import {InformationAccountService} from "../../../../Services/information-account.service";
 
 @Component({
   selector: 'app-slide-bar',
@@ -16,11 +17,11 @@ export class SlideBarComponent implements OnInit {
   public point: PointHistoryModule [];
   public  memberAvatar:MemberInformationModule;
   public pointSum:number =0;
+  id:number;
   constructor(
 
 
     public historyUsePointService: HistoryUsePointService,
-
 
               public memberService:InformationAccountService,
               public router:Router,
@@ -36,10 +37,13 @@ export class SlideBarComponent implements OnInit {
   loadDataAvarta() {
     this.activatedRouteService.params.subscribe(data => {
       let id = data['id'];
+      console.log(id);
       this.memberService.getAccountEdit(id).subscribe((member:MemberInformationModule) => {
         this.memberAvatar = member;
+        console.log(member);
       });
     });
+
   }
 
 

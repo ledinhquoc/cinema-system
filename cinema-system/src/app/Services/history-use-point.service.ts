@@ -7,7 +7,7 @@ import {Observable} from 'rxjs';
 })
 export class HistoryUsePointService {
 
-  public API: string = 'http://localhost:8081/api/v1/point';
+  public API: string = 'http://localhost:8080/api/v1/point';
 
   constructor(public http: HttpClient) {
   }

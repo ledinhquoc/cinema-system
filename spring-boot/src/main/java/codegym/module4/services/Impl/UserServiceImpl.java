@@ -12,40 +12,57 @@ import java.util.Optional;
 
 @Service
 @Transactional
-public class UserServiceImpl implements UserService
-{
+public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepo userRepo;
 
-    public UserServiceImpl(UserRepo userRepo) {
-        this.userRepo = userRepo;
-    }
-
 
     @Override
-    public List<User> findAll()
+    public User findByIdL(int id) {
+        return userRepo.findByIdL(id);
+    }
+
+    @Override
+    public Optional<User> findById(Long id) {
+        return Optional.empty();
+    }
+
+    @Override
+    public void delete(int id) {
+        userRepo.deleteById(id);
+    }
+
+    @Override
+    public List< User > findAll(){
+        return userRepo.findAll();
+    }
+
+    @Override
+    public void saveV(User user) {
+        userRepo.save(user);
+    }
+
+    @Override
+    public List<User> findAllUser() {
+        return userRepo.findAll();
+    }
+
+    @Override
+
+    public User save(User user)
     {
-        return userRepo.findAll();
+        return userRepo.save(user);
     }
 
-
-    @Override
-    public User findUserById(Integer id) {
-        return userRepo.findById(id).get();
-    }
-
-
-    @Override
-    public List<User> findAllUsers() {
-
-        return userRepo.findAll();
+    public Optional<User> findByUsername(String name) {
+        return userRepo.findByUsername(name);
     }
 
     @Override
-    public User save(User user) {   return userRepo.save(user);
+    public Boolean existsByName(String username) {
+        return userRepo.existsByUsername(username);
     }
 
 
 
 }
-

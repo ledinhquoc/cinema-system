@@ -2,6 +2,7 @@ package codegym.module4.entities;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -37,7 +38,6 @@ public class Point {
 
 
     @ManyToOne
-    @JsonBackReference
     @JoinColumn(name = "customer_id")
     private Customer customer;
 

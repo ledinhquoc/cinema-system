@@ -1,9 +1,8 @@
-import { HttpService } from '../../../services/http.service';
-import { Component, OnInit } from '@angular/core';
+import {HttpService} from '../../../Services/http.service';
+import {Component, OnInit} from '@angular/core';
 
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-position-selector',
@@ -11,50 +10,90 @@ import { Router } from '@angular/router';
   styleUrls: ['./position-selector.component.css'],
 })
 export class PositionSelectorComponent implements OnInit {
-
   showRoom: any;
-  user: any;
+  ticket: any;
+  movie: any;
+  movieSchedules: any;
+  rows: any;
+  seats = [];
+
   SeatColors: any;
   selectingSeatCount = 0;
+  selectedSeats = [];
+  rowNames = [
+    'A', 'B',
+    'C',
+    'D',
+    'E',
+    'F',
+    'G',
+    'H',
+    'I',
+    'J',
+    'K',
+    'L',
+    'M',
+    'N',
+    'O',
+    'P',
+    'Q',
+    'R',
+    'S',
+    'T',
+  ];
   formGroup = new FormGroup({
     seatAmount: new FormControl(1, [Validators.min(1), Validators.required]),
   });
-  constructor(private myHttp: HttpService, private router: Router) {}
+
+  constructor(private myHttp: HttpService, private router: Router) {
+  }
 
   ngOnInit(): void {
-    this.myHttp.getById('users', 1).subscribe((user) => {
-      this.user = user;
-      console.log(this.user);
+    this.myHttp.getById('tickets', 1).subscribe((ticket) => {
+      this.ticket = ticket;
+      this.movie = this.ticket.movieSchedules.movie;
+      this.movieSchedules = this.ticket.movieSchedules;
     });
-    this.myHttp.getById('showrooms', 1).subscribe((showRoom) => {
+    this.myHttp.getById('show-rooms', 1).subscribe((showRoom) => {
       this.showRoom = showRoom;
-      console.log(this.showRoom);
-
+      this.myHttp
+        .getById('rows/show-room', this.showRoom.id)
+        .subscribe((rows) => {
+          this.rows = rows;
+          (this.rows as Array<any>).map((row) => {
+            this.myHttp.getById('seats/row', row.id).subscribe((seats) => {
+              this.seats.push(seats);
+            });
+          });
+        });
     });
     this.SeatColors = SeatColors;
   }
-
+  getSeatsByRow(row: any) {
+    let seats;
+    return seats;
+  }
 
   onSubmit() {
-    for (const row of this.showRoom._rows) {
-      for (const seat of row.seats) {
-        if (seat.selecting) {
-          (this.user.tickets[0].seats as Array<any>).push(seat);
-        }
-      }
-    }
-    this.router.navigate(['thong-tin-dat-ve'], { state: this.user.tickets });
+    this.ticket.seat = this.selectedSeats;
+    this.router.navigate(['thong-tin-dat-ve'], {
+      state: {
+        ticket: this.ticket,
+      },
+    });
   }
 
   onSeatSelect(seat: any) {
     if (seat.booked) return;
 
-    if (seat.selecting) {
+    seat.selecting = !seat.selecting;
+    if (!seat.selecting) {
       --this.selectingSeatCount;
+      this.selectedSeats.splice(this.selectedSeats.indexOf(seat), 1);
     } else {
       ++this.selectingSeatCount;
+      this.selectedSeats.push(seat);
     }
-    seat.selecting = !seat.selecting;
     this.handleSubmission();
   }
 
@@ -62,40 +101,13 @@ export class PositionSelectorComponent implements OnInit {
     this.formGroup.setErrors(
       this.selectingSeatCount === this.formGroup.get('seatAmount').value
         ? {}
-        : { unequalOptions: true }
+        : {unequalOptions: true}
     );
   }
-
-
-  // fillEmptySeat(seats: any[]): any[] {
-  //   return seats.map((seat, index) => {
-  //     if (seat.number === index + 1) return seat;
-
-  //     let distance = seat.number - index;
-  //     let emptySeats = [];
-  //     for (let i = 0; i < distance; i++) {
-  //       emptySeats.push({ isEmptySeat: true });
-  //     }
-  //     return emptySeats;
-  //   });
-
-  //   for (let position of this.positions) {
-  //     let seats: any[] = position.seats;
-  //     for (let i = 0; i < seats.length; i++) {
-  //       let seat = seats[i];
-  //       if (seat.number === i + 1) {
-  //         this.filledSeats.push(seat);
-  //         break;
-  //       }
-
-  //       new Array<any>()
-  //     }
-  //   }
-  // }
 }
 
 enum SeatColors {
   BookedSeat = 'bg-danger',
   SelectingSeat = 'bg-success',
-  VipSeat = 'bg-info'
+  VipSeat = 'bg-info',
 }
