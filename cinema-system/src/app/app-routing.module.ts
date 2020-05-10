@@ -42,6 +42,7 @@ import { TicketConfirmmComponent } from './Components/component-son/ticket-confi
 import { TicketConfirmmInfoComponent } from './Components/component-son/ticket-confirm-info/ticket-confirm-info.component'; 
 import { CustomerComponent } from './Components/component-son/customer/customer.component';
 import { ShowtimesComponent } from './Components/component-tmt/showtimes/showtimes.component';
+import { FilmManagementComponent } from './Components/component-son/film-management/film-management.component';
 
 
 const routes: Routes = [
@@ -73,12 +74,8 @@ const routes: Routes = [
     component: TicketConfirmmComponent
   },
   {
-    path: 'ticket-confirm-info/:id',
-    component: TicketConfirmmInfoComponent
-  },
-  {
-    path: 'customer/:id',
-    component: CustomerComponent
+    path: 'quan-ly-phim',
+    component: FilmManagementComponent
   },
   {path: 'resetPassword', component: ResetPasswordComponent},
   {path: 'ticket-prices', component: SeeTickerPricesComponent},
@@ -131,7 +128,8 @@ const routes: Routes = [
     ResetPasswordComponent,
     UserRegistrationComponent,
     ShowtimesComponent,
-    BanVeComponent],
+    BanVeComponent,
+    FilmManagementComponent],
 
   imports: [RouterModule.forRoot(routes),
   ReactiveFormsModule,
