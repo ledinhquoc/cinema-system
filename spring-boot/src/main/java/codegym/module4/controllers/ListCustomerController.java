@@ -23,8 +23,8 @@ public class ListCustomerController {
         return customerService.findAll();
     }
 
-    @PutMapping(path = "customers/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Customer> editCustomer(@PathVariable int id) {
-        customerService.findById(id)
-    }
+//    @PutMapping(path = "customers/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+//    public List<Customer> editCustomer(@PathVariable int id) {
+//        customerService.findById(id)
+//    }
 }
