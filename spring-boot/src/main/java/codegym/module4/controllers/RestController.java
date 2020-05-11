@@ -292,5 +292,10 @@ public class RestController
     public Seat CreatSeats(@RequestBody Seat seat){
         return seatService.updateSeat(seat);
     }
+
+    @PostMapping(path = "promotion/new")
+    public Promotion CreatSeats(@RequestBody Promotion promotion){
+        return promotionService.save(promotion);
+    }
 }
 

@@ -20,4 +20,9 @@ public class PromotionServiceImpl implements PromotionService
     {
         return promotionRepo.findAll();
     }
+
+    @Override
+    public Promotion save(Promotion promotion) {
+        return promotionRepo.save(promotion);
+    }
 }

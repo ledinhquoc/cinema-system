@@ -79,7 +79,7 @@ public class Customer
     private User user;
 
     @OneToMany(targetEntity = Ticket.class)
-//    @JsonBackReference
+
     @JsonIgnore
     private List<Ticket> tickets;
 
