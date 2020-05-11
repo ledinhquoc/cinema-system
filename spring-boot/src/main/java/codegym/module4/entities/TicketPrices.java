@@ -23,14 +23,12 @@ public class TicketPrices {
     @Column(name = "show_time")
     private String showTime;
 
-    @Column(name = "thu246gt")
-    private double thu246gt;
+    @Column(name = "thu245gt")
+    private double thu245gt;
 
-    @Column(name = "thu246gv")
-    private double thu246gv;
+    @Column(name = "thu245gv")
+    private double thu245gv;
 
-    @Column(name = "thu246gd")
-    private double thu246gd;
 
     @Column(name = "thu3gt")
     private double thu3gt;
@@ -38,8 +36,7 @@ public class TicketPrices {
     @Column(name = "thu3gv")
     private double thu3gv;
 
-    @Column(name = "thu3gd")
-    private double thu3gd;
+
 
     @Column(name = "thu67CNgt")
     private double thu67CNgt;
@@ -47,8 +44,7 @@ public class TicketPrices {
     @Column(name = "thu67CNgv")
     private double thu67CNgv;
 
-    @Column(name = "thu67CNgd")
-    private double thu67CNgd;
+
 
     @OneToMany(targetEntity = Ticket.class)
     @JsonBackReference
@@ -96,47 +92,6 @@ public class TicketPrices {
         this.showTime = showTime;
     }
 
-    /**
-     * @return the thu246gt
-     */
-    public double getThu246gt() {
-        return thu246gt;
-    }
-
-    /**
-     * @param thu246gt the thu246gt to set
-     */
-    public void setThu246gt(double thu246gt) {
-        this.thu246gt = thu246gt;
-    }
-
-    /**
-     * @return the thu246gv
-     */
-    public double getThu246gv() {
-        return thu246gv;
-    }
-
-    /**
-     * @param thu246gv the thu246gv to set
-     */
-    public void setThu246gv(double thu246gv) {
-        this.thu246gv = thu246gv;
-    }
-
-    /**
-     * @return the thu246gd
-     */
-    public double getThu246gd() {
-        return thu246gd;
-    }
-
-    /**
-     * @param thu246gd the thu246gd to set
-     */
-    public void setThu246gd(double thu246gd) {
-        this.thu246gd = thu246gd;
-    }
 
     /**
      * @return the thu3gt
@@ -169,15 +124,20 @@ public class TicketPrices {
     /**
      * @return the thu3gd
      */
-    public double getThu3gd() {
-        return thu3gd;
+    public double getThu245gt() {
+        return thu245gt;
     }
 
-    /**
-     * @param thu3gd the thu3gd to set
-     */
-    public void setThu3gd(double thu3gd) {
-        this.thu3gd = thu3gd;
+    public void setThu245gt(double thu245gt) {
+        this.thu245gt = thu245gt;
+    }
+
+    public double getThu245gv() {
+        return thu245gv;
+    }
+
+    public void setThu245gv(double thu245gv) {
+        this.thu245gv = thu245gv;
     }
 
     /**
@@ -211,16 +171,6 @@ public class TicketPrices {
     /**
      * @return the thu67CNgd
      */
-    public double getThu67CNgd() {
-        return thu67CNgd;
-    }
-
-    /**
-     * @param thu67cNgd the thu67CNgd to set
-     */
-    public void setThu67CNgd(double thu67cNgd) {
-        thu67CNgd = thu67cNgd;
-    }
 
     /**
      * @return the tickets

@@ -52,7 +52,6 @@ export class DetailFilmComponent implements OnInit {
               j=j-1;
             }
           }
-
           this.dayHours1 = [this.day, this.hour];
           this.dayHours.push(this.dayHours1);
           this.hour=[];

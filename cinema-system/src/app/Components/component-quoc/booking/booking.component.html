@@ -3,21 +3,16 @@
       <mat-step [stepControl]="firstFormGroup">
         <form [formGroup]="firstFormGroup">
           <ng-template matStepLabel >Chọn Phim</ng-template>
-            
           <mat-list  class="film">
           <mat-list-item   >
                <button mat-stroked-button matStepperNext color="primary" 
                style="width: 100%; margin-left:0px" (click)="getI()" >
             {{movie.movieName }} 
             </button>
-
             </mat-list-item> 
            </mat-list> 
         </form>
       </mat-step>
-
-
-
       <mat-step [stepControl]="secondFormGroup">
         <form [formGroup]="secondFormGroup">
           <ng-template matStepLabel>Chọn Ngày</ng-template>
@@ -25,21 +20,11 @@
             <mat-list-item *ngFor="let item of dayList">
                  <button mat-stroked-button matStepperNext color="primary"
                  style="width: 100px; margin-left:0px"
-                   (click)="getHour()">{{item | date :"dd/MM/yyyy"}} </button>
-                 
+                   (click)="getHour()">{{item | date :"dd/MM/yyyy"}} </button> 
               </mat-list-item>
-             </mat-list> 
-            
-          
+             </mat-list>         
          </form>
       </mat-step>
-
-
-
-
-
-
-
       <mat-step [stepControl]="thirdFormGroup">
         <form [formGroup]="thirdFormGroup">
           <ng-template matStepLabel>Chọn Giờ</ng-template>
@@ -50,7 +35,6 @@
                  style="width: 100px; margin-left:0px" >
               {{item }} 
               </button>
-  
               </mat-list-item>
              </mat-list> 
         </form>

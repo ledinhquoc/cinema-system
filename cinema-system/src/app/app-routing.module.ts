@@ -1,9 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-
 import {TopBarComponent} from './Components/component-viet/TopBar/top-bar/top-bar.component';
 import {SlideBarComponent} from './Components/component-viet/SlideBar/slide-bar/slide-bar.component';
-
 import {InfomationComponent} from './Components/component-viet/InformationAccount/infomation/infomation.component';
 import {HomeAccountComponent} from './Components/component-viet/home-account/home-account.component';
 import {HistoryTicketComponent} from './Components/component-viet/Tickes/history-ticket/history-ticket.component';
@@ -37,9 +35,27 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 import {MemberComponent} from "./Components/component-vu/member/member.component";
+import {LoginComponent} from './Components/component-vu/login/login.component';
+import {ResetPasswordComponent} from './Components/component-vu/reset-password/reset-password.component';
+import {ConfirmPasswordComponent} from './Components/component-vu/confirm-password/confirm-password.component';
+import {ErrorDisplayComponent} from './Components/component-vu/error-display/error-display.component';
+import {UserRegistrationComponent} from './Components/component-hoang/user-registration/user-registration.component';
+import {CarouselComponent} from './Components/component-hoang/carousel/carousel.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MemberComponent} from './Components/component-vu/member/member.component';
+import {ChonGheComponent} from './Components/components-hhien/chon-ghe/chon-ghe.component';
+import {BanVeComponent} from './Components/components-hhien/showtimes/showtimes.component';
+import { TicketConfirmmComponent } from './Components/component-son/ticket-confirm/ticket-confirm.component';
+import { TicketConfirmmInfoComponent } from './Components/component-son/ticket-confirm-info/ticket-confirm-info.component'; 
+import { CustomerComponent } from './Components/component-son/customer/customer.component';
+import { ShowtimesComponent } from './Components/component-tmt/showtimes/showtimes.component';
+import { FilmManagementComponent } from './Components/component-son/film-management/film-management.component';
 import {BookingTicketComponent} from "./Components/component-vu/admin-ticket/booking-ticket/booking-ticket.component";
 import {ConfirmBookingComponent} from "./Components/component-vu/admin-ticket/confirm-booking/confirm-booking.component";
 import {InformationConfirmComponent} from "./Components/component-vu/admin-ticket/information-confirm/information-confirm.component";
+
 
 
 const routes: Routes = [
@@ -66,34 +82,44 @@ const routes: Routes = [
         path: ':id/ticket-canceled', component: TicketCanceledComponent,
       }]
   },
+  {
+    path: 'xac-nhan-ban-ve',
+    component: TicketConfirmmComponent
+  },
+  {
+    path: 'quan-ly-phim',
+    component: FilmManagementComponent
+  },
   {path: 'resetPassword', component: ResetPasswordComponent},
-
+  {path: 'ticket-prices', component: SeeTickerPricesComponent},
   {path: 'see-ticker-prices', component: SeeTickerPricesComponent},
   {path: 'chon-ghe', component: PositionSelectorComponent},
   {path: 'thong-tin-dat-ve', component: TicketBookingInformationComponent},
-  {
-    path: 'booking', component: BookingComponent,
-  },
-  {path: 'see-ticker-prices', component: SeeTickerPricesComponent},
+  {path: 'booking', component: BookingComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: UserRegistrationComponent},
   {path: 'member', component: MemberComponent},
   {path: 'confirmPassword/:id', component: ConfirmPasswordComponent},
   {path: 'booking-ticket', component: BookingTicketComponent},
   {path: 'confirm-booking/:id', component: ConfirmBookingComponent},
-  {path: 'information-confirm/:id', component: InformationConfirmComponent}
+  {path: 'information-confirm/:id', component: InformationConfirmComponent},
+  {path: 'movieSchedules', component: ShowtimesComponent},
+  {path: 'chonGhe', component: ChonGheComponent},
+  {path: 'ban-ve', component: BanVeComponent}
 
 ];
 
 @NgModule({
 
   declarations: [TopBarComponent,
+
+    ChonGheComponent,
     SlideBarComponent,
     InfomationComponent,
     HomeAccountComponent,
     HistoryTicketComponent,
     ErrorDisplayComponent,
-    LoginComponent, MemberComponent,
+    LoginComponent,
     ResetPasswordComponent,
     TicketCanceledComponent,
     TicketBookingComponent,
@@ -107,27 +133,38 @@ const routes: Routes = [
     TicketConfirmComponent,
     TicketConfirmInfoComponent,
     ErrorDisplayComponent,
-    LoginComponent, InformationConfirmComponent,
-    CarouselComponent, ConfirmBookingComponent,
+    InformationConfirmComponent,
+    ConfirmBookingComponent,
+    BookingTicketComponent,
+    LoginComponent,
+    CustomerComponent,
+    TicketConfirmmComponent,
+    TicketConfirmmInfoComponent,
+    CarouselComponent,
+    ShowtimesComponent,
     TicketCanceledComponent,
     TicketBookingComponent,
     ConfirmPasswordComponent,
-    ResetPasswordComponent, BookingTicketComponent,
-    UserRegistrationComponent,],
+    ResetPasswordComponent,
+    UserRegistrationComponent,
+    ShowtimesComponent,
+    BanVeComponent,
+    FilmManagementComponent],
   imports: [RouterModule.forRoot(routes),
-    ReactiveFormsModule,
-    FormsModule,
-    CommonModule,
-    MatDialogModule,
-    MatButtonModule,
-    MatIconModule,
-    MatSnackBarModule,
-    NgxPaginationModule,
-    Ng2SearchPipeModule,
-    MaterialModule,
-    MatFormFieldModule,
-    MatDatepickerModule,
-    MatNativeDateModule],
+  ReactiveFormsModule,
+  FormsModule,
+  CommonModule,
+  MatDialogModule,
+  MatButtonModule,
+  MatIconModule,
+  MatSnackBarModule,
+  NgxPaginationModule,
+  Ng2SearchPipeModule,
+  MaterialModule,
+  MatFormFieldModule,
+  MatDatepickerModule,
+  MatNativeDateModule],
+
   exports: [RouterModule, TopBarComponent, SlideBarComponent],
   entryComponents: [MatConfirmDialogComponent],
 

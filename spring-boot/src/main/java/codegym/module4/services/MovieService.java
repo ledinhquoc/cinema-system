@@ -14,4 +14,6 @@ public interface MovieService
 
     Optional<Movie> findById(int id);
 
+    void save(Movie movie);
+
 }
