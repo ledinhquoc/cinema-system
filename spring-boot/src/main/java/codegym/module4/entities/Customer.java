@@ -52,6 +52,7 @@ public class Customer
     @Column(name = "address")
     private String address;
 
+
     public Date getDateOfBirth() {
         return dateOfBirth;
     }
@@ -71,6 +72,7 @@ public class Customer
     @OneToMany(targetEntity = Point.class)
     @JsonIgnore
 //    @JsonBackReference
+
     private List<Point> points;
 
     //Vu add them Cascade
@@ -80,7 +82,9 @@ public class Customer
 
     @OneToMany(targetEntity = Ticket.class)
 
+
     @JsonIgnore
+
     private List<Ticket> tickets;
 
 
@@ -194,6 +198,7 @@ public class Customer
     {
     }
 
+
     /**
      * @return the tickets
      */
@@ -207,4 +212,15 @@ public class Customer
     public void setTickets(List<Ticket> tickets) {
         this.tickets = tickets;
     }
+
+    public Date getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+
+
 }

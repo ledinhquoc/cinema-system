@@ -25,6 +25,16 @@ import {TicketConfirmComponent} from './Components/component-quoc/ticket-confirm
 import {TicketConfirmInfoComponent} from './Components/component-quoc/ticket-confirm-info/ticket-confirm-info/ticket-confirm-info.component';
 import {ListFilmComponent} from '../app/Components/component-tuan/list-film/list-film.component';
 import {DetailFilmComponent} from '../app/Components/component-tuan/detail-film/detail-film.component';
+import {LoginComponent} from "./Components/component-vu/login/login.component";
+import {ResetPasswordComponent} from "./Components/component-vu/reset-password/reset-password.component";
+import {ConfirmPasswordComponent} from "./Components/component-vu/confirm-password/confirm-password.component";
+import {ErrorDisplayComponent} from "./Components/component-vu/error-display/error-display.component";
+import {UserRegistrationComponent} from "./Components/component-hoang/user-registration/user-registration.component";
+import {CarouselComponent} from "./Components/component-hoang/carousel/carousel.component";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
+import {MemberComponent} from "./Components/component-vu/member/member.component";
 import {LoginComponent} from './Components/component-vu/login/login.component';
 import {ResetPasswordComponent} from './Components/component-vu/reset-password/reset-password.component';
 import {ConfirmPasswordComponent} from './Components/component-vu/confirm-password/confirm-password.component';
@@ -36,12 +46,22 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MemberComponent} from './Components/component-vu/member/member.component';
 import {ChonGheComponent} from './Components/components-hhien/chon-ghe/chon-ghe.component';
-import {ShowtimesComponent} from './Components/components-hhien/showtimes/showtimes.component';
+
+import {BanVeComponent} from './Components/components-hhien/showtimes/showtimes.component';
+import { TicketConfirmmComponent } from './Components/component-son/ticket-confirm/ticket-confirm.component';
+import { TicketConfirmmInfoComponent } from './Components/component-son/ticket-confirm-info/ticket-confirm-info.component'; 
+import { CustomerComponent } from './Components/component-son/customer/customer.component';
+import { ShowtimesComponent } from './Components/component-tmt/showtimes/showtimes.component';
+import { FilmManagementComponent } from './Components/component-son/film-management/film-management.component';
+import {BookingTicketComponent} from "./Components/component-vu/admin-ticket/booking-ticket/booking-ticket.component";
+import {ConfirmBookingComponent} from "./Components/component-vu/admin-ticket/confirm-booking/confirm-booking.component";
+import {InformationConfirmComponent} from "./Components/component-vu/admin-ticket/information-confirm/information-confirm.component";
 import {SlideBarManageShowRoomComponent} from './Components/component-viet/ManageShowroom/slide-bar-manage-show-room/slide-bar-manage-show-room.component';
 import { ListShowRoomComponent } from './Components/component-viet/ManageShowroom/list-show-room/list-show-room.component';
 import { ShowroomDetailsComponent } from './Components/component-viet/ManageShowroom/showroom-details/showroom-details.component';
 import { AddSeatComponent } from './Components/component-viet/ManageShowroom/add-seat/add-seat.component';
 import { AddShowroomComponent } from './Components/component-viet/ManageShowroom/add-showroom/add-showroom.component';
+
 
 
 
@@ -78,8 +98,12 @@ const routes: Routes = [
   {path: 'register', component: UserRegistrationComponent},
   {path: 'member', component: MemberComponent},
   {path: 'confirmPassword/:id', component: ConfirmPasswordComponent},
+  {path: 'booking-ticket', component: BookingTicketComponent},
+  {path: 'confirm-booking/:id', component: ConfirmBookingComponent},
+  {path: 'information-confirm/:id', component: InformationConfirmComponent},
   {path: 'movieSchedules', component: ShowtimesComponent},
   {path: 'chonGhe', component: ChonGheComponent},
+
   {path: 'showRoom', component: SlideBarManageShowRoomComponent,
     children: [{
       path: '', component: ListShowRoomComponent,
@@ -90,39 +114,58 @@ const routes: Routes = [
 
     ]},
 
+  {path: 'ban-ve', component: BanVeComponent}
+
+
 ];
 
 @NgModule({
 
   declarations: [TopBarComponent,
-                SlideBarComponent,
-                InfomationComponent,
-                HomeAccountComponent,
-                HistoryTicketComponent,
-                ErrorDisplayComponent,
-                LoginComponent,
-                ResetPasswordComponent,
-                TicketCanceledComponent,
-                TicketBookingComponent,
-                MatConfirmDialogComponent,
-                PositionSelectorComponent,
-                TicketBookingInformationComponent,
-                DetailFilmComponent,
-                ListFilmComponent,
-                SeeTickerPricesComponent,
-                BookingComponent,
-                TicketConfirmComponent,
-                TicketConfirmInfoComponent,
-                ErrorDisplayComponent,
-                LoginComponent,
-                CarouselComponent,
-                TicketCanceledComponent,
-                TicketBookingComponent,
-                ConfirmPasswordComponent,
-                ResetPasswordComponent,
-                UserRegistrationComponent,
-                ChonGheComponent,
-                ShowtimesComponent,SlideBarManageShowRoomComponent, ListShowRoomComponent, ShowroomDetailsComponent, AddSeatComponent, AddShowroomComponent],
+    ChonGheComponent,
+    SlideBarComponent,
+    InfomationComponent,
+    HomeAccountComponent,
+    HistoryTicketComponent,
+    ErrorDisplayComponent,
+    LoginComponent,
+    ResetPasswordComponent,
+    TicketCanceledComponent,
+    TicketBookingComponent,
+    MatConfirmDialogComponent,
+    PositionSelectorComponent,
+    TicketBookingInformationComponent,
+    DetailFilmComponent,
+    ListFilmComponent,
+    SeeTickerPricesComponent,
+    BookingComponent,
+    TicketConfirmComponent,
+    TicketConfirmInfoComponent,
+    ErrorDisplayComponent,
+    InformationConfirmComponent,
+    ConfirmBookingComponent,
+    BookingTicketComponent,
+    LoginComponent,
+    CustomerComponent,
+    TicketConfirmmComponent,
+    TicketConfirmmInfoComponent,
+    CarouselComponent,
+    ShowtimesComponent,
+    TicketCanceledComponent,
+    TicketBookingComponent,
+    ConfirmPasswordComponent,
+    ResetPasswordComponent,
+    UserRegistrationComponent,
+    ShowtimesComponent,
+    BanVeComponent,
+    FilmManagementComponent,
+  ShowtimesComponent,
+  SlideBarManageShowRoomComponent,
+  ListShowRoomComponent,
+  ShowroomDetailsComponent,
+  AddSeatComponent,
+  AddShowroomComponent],
+
   imports: [RouterModule.forRoot(routes),
   ReactiveFormsModule,
   FormsModule,
@@ -137,6 +180,7 @@ const routes: Routes = [
   MatFormFieldModule,
   MatDatepickerModule,
   MatNativeDateModule],
+
   exports: [RouterModule, TopBarComponent, SlideBarComponent],
   entryComponents: [MatConfirmDialogComponent,AddSeatComponent,AddShowroomComponent],
 

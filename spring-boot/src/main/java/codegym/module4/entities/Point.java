@@ -1,8 +1,11 @@
 package codegym.module4.entities;
 
 
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -14,9 +17,9 @@ public class Point {
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private long id;
+    private int id;
 
 
 
@@ -29,7 +32,7 @@ public class Point {
     private String nameMovie;
 
     @Column(name = "pointValue")
-    private String pointValue;
+    private double pointValue;
 
 
     @Column(name = "pointStatus")
@@ -41,40 +44,34 @@ public class Point {
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
+    @Column(name = "ticket_id")
+    private int idTicket;
+
+    public int getIdTicket() {
+        return idTicket;
+    }
+
+    public void setIdTicket(int idTicket) {
+        this.idTicket = idTicket;
+    }
+
     public Point() {
     }
 
-    public Point(long id, Customer idCustomer, Date dateCreate, String nameMovie, String pointValue, String pointStatus) {
-        this.id = id;
-        this.dateCreate = dateCreate;
-        this.nameMovie = nameMovie;
-        this.pointValue = pointValue;
-        this.customer = idCustomer;
-       this.pointStatus=pointStatus;
-    }
 
-
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public Customer getIdCustomer() {
-        return customer;
-    }
-
-    public void setIdCustomer(Customer idCustomer) {
-        this.customer = idCustomer;
-    }
-
-    public Date getDateCreat() {
+    public Date getDateCreate() {
         return dateCreate;
     }
 
-    public void setDateCreat(Date dateCreate) {
+    public void setDateCreate(Date dateCreate) {
         this.dateCreate = dateCreate;
     }
 
@@ -86,11 +83,11 @@ public class Point {
         this.nameMovie = nameMovie;
     }
 
-    public String getPointValue() {
+    public double getPointValue() {
         return pointValue;
     }
 
-    public void setPointValue(String pointValue) {
+    public void setPointValue(double pointValue) {
         this.pointValue = pointValue;
     }
 
@@ -101,4 +98,14 @@ public class Point {
     public void setPointStatus(String pointStatus) {
         this.pointStatus = pointStatus;
     }
+
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
 }
