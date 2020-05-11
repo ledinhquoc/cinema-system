@@ -8,5 +8,4 @@ public interface ShowRoomService
 {
     List<ShowRoom> findAll();
     ShowRoom findById(int id);
-    ShowRoom creat(ShowRoom showRoom);
 }

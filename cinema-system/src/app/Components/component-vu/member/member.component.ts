@@ -16,7 +16,7 @@ export class MemberComponent implements OnInit {
     }, error => {
       console.log(error)
       this.context = "Không được vào đây bạn ei";
-    });
+    })
   }
 
 }

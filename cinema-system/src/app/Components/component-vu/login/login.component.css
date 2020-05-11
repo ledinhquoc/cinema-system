@@ -9,7 +9,7 @@
   background-repeat: no-repeat;
   height: 100%;
   font-family: 'Numans', sans-serif;
-  background-image: url('http://images5.fanpop.com/image/photos/30800000/The-Avengers-the-avengers-30839585-1920-1080.jpg');
+  background-image: url('https://img.wallpapersafari.com/desktop/1600/900/34/32/yQIFN8.jpg');
 }
 h3{
   font-size: 1.7rem;
@@ -22,8 +22,8 @@ h3{
 .card{
   margin-top: 100px;
   height: 470px;
-  /*margin-left: auto;*/
-  margin-right: 65%;
+  margin-left: auto;
+  margin-right: 15%;
   width: 400px;
   background-color: rgba(103, 91, 90, 0.3) !important;
 }
@@ -31,7 +31,7 @@ h3{
 .social_icon span{
   font-size: 60px;
   margin-left: 10px;
-  color: #ee2e24;
+  color: #6c976e;
 }
 
 .social_icon span:hover{
@@ -51,7 +51,7 @@ h3{
 
 .input-group-prepend span{
   width: 50px;
-  background-color: #ee2e24;
+  background-color: #6c976e;
   color: black;
   border:0 !important;
 }
@@ -76,10 +76,8 @@ input:focus{
 
 .login_btn{
   border-radius: 29px;
-  color: white;
-  font-size: 20px;
-  font-weight: bolder;
-  background-color: #ee2e24;
+  color: black;
+  background-color: #6c976e;
   width: 160px;
 }
 

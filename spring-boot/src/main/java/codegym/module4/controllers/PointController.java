@@ -40,24 +40,4 @@ public class PointController {
             , @PathVariable String status) {
         return pointService.findPointByDateFormDate(from, to, id ,status);
     }
-    @GetMapping("/{id}/point-value")
-    public double getPointByCustomer(@PathVariable int id){
-        return pointService.sumPoint(id);
-    }
-
-    @GetMapping("/{id}/sub-point")
-    public double getSubPointByCustomer(@PathVariable int id){
-        return pointService.subPoint(id);
-    }
-
-    @PostMapping("/create")
-    public Point addNewPoint(@RequestBody Point point){
-        return pointService.save(point);
-    }
-
-    @GetMapping("find-point/{id}")
-    public Point findPointByIdCustomers(@PathVariable int id){
-        return pointService.findPointById(id);
-    }
-
 }

@@ -3,7 +3,6 @@ package codegym.module4.entities;
 
 import codegym.module4.jwt.ERole;
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -26,7 +25,7 @@ public class Role {
     private ERole name;
 
     @ManyToMany(mappedBy = "roles")
-    @JsonIgnore
+    @JsonIgnoreProperties("roles")
     private List<User> users;
 
     /**

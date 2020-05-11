@@ -1,10 +1,8 @@
-
 import {HttpService} from '../../../Services/http.service';
 import {Component, OnInit} from '@angular/core';
 
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
-
 
 @Component({
   selector: 'app-position-selector',

@@ -3,7 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MemberInformationModule} from '../../Models/memberInformation.module';
 
 import {ActivatedRoute, Router} from '@angular/router';
-
+import {MaterialService} from '../../../../services/material.service';
 
 import {UserServiceService} from '../../../../Services/user-service.service';
 import {UserModule} from '../../Models/user.module';
@@ -11,7 +11,6 @@ import {InformationAccountService} from "../../../../Services/information-accoun
 import {AuthServices} from "../../../component-vu/service/auth.service";
 import {TokenStorageService} from "../../../component-vu/service/token-storage.service";
 import {NotificationService} from "../../../../Services/notification.service";
-import {MaterialService} from '../../../../Services/material.service';
 
 
 @Component({
@@ -47,6 +46,8 @@ export class InfomationComponent implements OnInit {
       confirmPassWord: ['',[Validators.required]],
       userName: [''],
       password: [''],
+
+
     });
     this.formMember2 = this.formBuilderStudentEdit.group({   fullName: ['',[Validators.required,Validators.pattern('^[a-z A-z]*$')]],
       birthday: ['',[Validators.required]],

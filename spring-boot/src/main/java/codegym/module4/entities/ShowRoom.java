@@ -1,8 +1,6 @@
 package codegym.module4.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.util.List;
@@ -28,7 +26,7 @@ public class ShowRoom {
     private String screen;
 
     @OneToMany(targetEntity = Row.class)
-    @JsonIgnore
+    @JsonBackReference
     private List<Row> rows;
 
     /**

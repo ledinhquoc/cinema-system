@@ -1,8 +1,6 @@
 package codegym.module4.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.util.List;
@@ -24,11 +22,10 @@ public class Row
 
     @ManyToOne
     @JoinColumn(name = "show_room_id")
-
     private ShowRoom showRoom;
 
     @OneToMany(targetEntity = Seat.class)
-    @JsonIgnore
+    @JsonBackReference
     private List<Seat> seats;
 
     /**

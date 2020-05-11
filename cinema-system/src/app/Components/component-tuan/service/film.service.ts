@@ -22,5 +22,11 @@ export class FilmService {
   getScheduleById(id: number): Observable<any> {
     return this.http.get(this.baseUrlSchedule + '/' + id);
   }
+  addNewFilm(film): Observable<any>{
+    return  this.http.post(this.baseUrlFilm,film);
+  }
 
+  updateFilm(film,id): Observable<any>{
+    return this.http.put(this.baseUrlFilm + '/'+ id,film);
+  }
 }

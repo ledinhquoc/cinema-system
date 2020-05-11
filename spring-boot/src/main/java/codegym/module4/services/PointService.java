@@ -17,11 +17,6 @@ public interface PointService
     List<Point> findPointByDateFormDate(Date form, Date to, Customer idCustomer, String status);
 
 
-    //Vu Add
     List<Point> findAllPoint();
-    double sumPoint(int id);
-    Point save(Point point);
-    Point findPointById(int id);
-     double subPoint(int id);
-    //Vu end
+
 }
