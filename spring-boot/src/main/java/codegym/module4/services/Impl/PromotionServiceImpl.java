@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -22,7 +23,24 @@ public class PromotionServiceImpl implements PromotionService
     }
 
     @Override
+<<<<<<< HEAD
     public Promotion save(Promotion promotion) {
         return promotionRepo.save(promotion);
+=======
+
+    public Optional<Promotion> findById(int id) {
+        return promotionRepo.findById(id);
+    }
+
+    @Override
+    public void save(Promotion promotion) {
+         promotionRepo.save(promotion);
+    }
+
+    @Override
+    public void remove(Promotion promotion) {
+         promotionRepo.delete(promotion);
+
+>>>>>>> 8b122d312ab15deb493403fc776a7a376b4f6c4c
     }
 }

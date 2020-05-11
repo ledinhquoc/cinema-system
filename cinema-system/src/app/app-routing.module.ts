@@ -22,7 +22,9 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import {Ng2SearchPipeModule} from 'ng2-search-filter';
 import {BookingComponent} from './Components/component-quoc/booking/booking.component';
 import {TicketConfirmComponent} from './Components/component-quoc/ticket-confirm/ticket-confirm/ticket-confirm.component';
+// tslint:disable-next-line:max-line-length
 import {TicketConfirmInfoComponent} from './Components/component-quoc/ticket-confirm-info/ticket-confirm-info/ticket-confirm-info.component';
+
 import {ListFilmComponent} from '../app/Components/component-tuan/list-film/list-film.component';
 import {DetailFilmComponent} from '../app/Components/component-tuan/detail-film/detail-film.component';
 import {LoginComponent} from "./Components/component-vu/login/login.component";
@@ -91,7 +93,6 @@ const routes: Routes = [
   {path: 'information-confirm/:id', component: InformationConfirmComponent},
   {path: 'movieSchedules', component: ShowtimesComponent},
   {path: 'chonGhe', component: ChonGheComponent},
-
   {path: 'showRoom', component: SlideBarManageShowRoomComponent,
     children: [{
       path: '', component: ListShowRoomComponent,
@@ -101,10 +102,6 @@ const routes: Routes = [
       },
 
     ]},
-
- 
-
-
 ];
 
 @NgModule({
