@@ -46,6 +46,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MemberComponent} from './Components/component-vu/member/member.component';
 import {ChonGheComponent} from './Components/components-hhien/chon-ghe/chon-ghe.component';
+
 import {BanVeComponent} from './Components/components-hhien/showtimes/showtimes.component';
 import { TicketConfirmmComponent } from './Components/component-son/ticket-confirm/ticket-confirm.component';
 import { TicketConfirmmInfoComponent } from './Components/component-son/ticket-confirm-info/ticket-confirm-info.component'; 
@@ -55,6 +56,12 @@ import { FilmManagementComponent } from './Components/component-son/film-managem
 import {BookingTicketComponent} from "./Components/component-vu/admin-ticket/booking-ticket/booking-ticket.component";
 import {ConfirmBookingComponent} from "./Components/component-vu/admin-ticket/confirm-booking/confirm-booking.component";
 import {InformationConfirmComponent} from "./Components/component-vu/admin-ticket/information-confirm/information-confirm.component";
+import {SlideBarManageShowRoomComponent} from './Components/component-viet/ManageShowroom/slide-bar-manage-show-room/slide-bar-manage-show-room.component';
+import { ListShowRoomComponent } from './Components/component-viet/ManageShowroom/list-show-room/list-show-room.component';
+import { ShowroomDetailsComponent } from './Components/component-viet/ManageShowroom/showroom-details/showroom-details.component';
+import { AddSeatComponent } from './Components/component-viet/ManageShowroom/add-seat/add-seat.component';
+import { AddShowroomComponent } from './Components/component-viet/ManageShowroom/add-showroom/add-showroom.component';
+
 
 
 
@@ -82,17 +89,8 @@ const routes: Routes = [
         path: ':id/ticket-canceled', component: TicketCanceledComponent,
       }]
   },
-  {
-    path: 'xac-nhan-ban-ve',
-    component: TicketConfirmmComponent
-  },
-  {
-    path: 'quan-ly-phim',
-    component: FilmManagementComponent
-  },
   {path: 'resetPassword', component: ResetPasswordComponent},
   {path: 'ticket-prices', component: SeeTickerPricesComponent},
-  {path: 'see-ticker-prices', component: SeeTickerPricesComponent},
   {path: 'chon-ghe', component: PositionSelectorComponent},
   {path: 'thong-tin-dat-ve', component: TicketBookingInformationComponent},
   {path: 'booking', component: BookingComponent},
@@ -105,14 +103,25 @@ const routes: Routes = [
   {path: 'information-confirm/:id', component: InformationConfirmComponent},
   {path: 'movieSchedules', component: ShowtimesComponent},
   {path: 'chonGhe', component: ChonGheComponent},
+
+  {path: 'showRoom', component: SlideBarManageShowRoomComponent,
+    children: [{
+      path: '', component: ListShowRoomComponent,
+    },
+      {
+        path: ':id/showroomDetails', component: ShowroomDetailsComponent,
+      },
+
+    ]},
+
   {path: 'ban-ve', component: BanVeComponent}
+
 
 ];
 
 @NgModule({
 
   declarations: [TopBarComponent,
-
     ChonGheComponent,
     SlideBarComponent,
     InfomationComponent,
@@ -149,7 +158,14 @@ const routes: Routes = [
     UserRegistrationComponent,
     ShowtimesComponent,
     BanVeComponent,
-    FilmManagementComponent],
+    FilmManagementComponent,
+  ShowtimesComponent,
+  SlideBarManageShowRoomComponent,
+  ListShowRoomComponent,
+  ShowroomDetailsComponent,
+  AddSeatComponent,
+  AddShowroomComponent],
+
   imports: [RouterModule.forRoot(routes),
   ReactiveFormsModule,
   FormsModule,
@@ -166,7 +182,7 @@ const routes: Routes = [
   MatNativeDateModule],
 
   exports: [RouterModule, TopBarComponent, SlideBarComponent],
-  entryComponents: [MatConfirmDialogComponent],
+  entryComponents: [MatConfirmDialogComponent,AddSeatComponent,AddShowroomComponent],
 
 })
 export class AppRoutingModule {

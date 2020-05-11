@@ -1,8 +1,11 @@
 package codegym.module4.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.Date;
-
+import java.util.List;
 
 
 @Entity
@@ -23,12 +26,18 @@ public class MovieSchedules {
 
     @ManyToOne
     @JoinColumn(name = "show_time_id")
+
     private ShowTime showTime;
 
     @ManyToOne
     @JoinColumn(name = "movie_id")
+
     private Movie movie;
 
+
+    @OneToMany(targetEntity = Ticket.class)
+    @JsonIgnore
+    private List<Ticket> tickets;
     /**
      * @return the id
      */
@@ -83,5 +92,14 @@ public class MovieSchedules {
      */
     public void setMovie(Movie movie) {
         this.movie = movie;
+    }
+
+
+    public List< Ticket > getTickets(){
+        return tickets;
+    }
+
+    public void setTickets(List< Ticket > tickets){
+        this.tickets = tickets;
     }
 }
