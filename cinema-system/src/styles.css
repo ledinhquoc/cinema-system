@@ -11,17 +11,10 @@ html, body {
   width: 100%;
   height: 100%;
 
-<<<<<<< HEAD
-}
-
-mat-confirm-dialog
-=======
-
 }
 
 
 
->>>>>>> 8b122d312ab15deb493403fc776a7a376b4f6c4c
 .confirm-dialog-container .mat-dialog-container {
   border-radius: .25em .25em .4em .4em;
   padding: 0px;
@@ -85,10 +78,7 @@ snack-bar-container.notification simple-snack-bar{
 .hide{
   display: none;
 }
-<<<<<<< HEAD
-=======
 
->>>>>>> 8b122d312ab15deb493403fc776a7a376b4f6c4c
 
 
 

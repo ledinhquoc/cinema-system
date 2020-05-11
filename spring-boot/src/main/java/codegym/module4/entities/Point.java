@@ -38,8 +38,6 @@ public class Point {
     @Column(name = "pointStatus")
     private String pointStatus;
 
-
-
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private Customer customer;
