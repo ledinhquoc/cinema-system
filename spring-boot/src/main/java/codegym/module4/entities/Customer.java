@@ -53,14 +53,6 @@ public class Customer
     private String address;
 
 
-    public Date getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-
     public List<Point> getPoints() {
         return points;
     }
