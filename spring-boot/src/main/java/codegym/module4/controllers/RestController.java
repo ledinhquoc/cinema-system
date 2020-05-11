@@ -7,9 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-
 import org.springframework.web.bind.annotation.*;
-
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -23,6 +21,8 @@ import java.util.Optional;
 @CrossOrigin(origins = "*")
 public class RestController
 {
+    @Autowired
+    private EmployeeService employeeService;
     @Autowired
     private TicketService ticketService;
 
@@ -73,20 +73,23 @@ public class RestController
     public ResponseEntity<List<Ticket>> getAllTickets()
 
     {
-        List<Ticket> tickets=ticketService.findAll();
+        List<Ticket> tickets = ticketService.findAll();
 
-        if(tickets.isEmpty()){
+        if (tickets.isEmpty())
+        {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-            return new ResponseEntity<>(tickets,HttpStatus.OK);
+        return new ResponseEntity<>(tickets, HttpStatus.OK);
     }
 
-    @GetMapping(value = "/tickets/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/tickets/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Ticket> getTicketById(
-            @PathVariable("id")Integer id){
-        Optional<Ticket> ticket =ticketService.findById(id);
+            @PathVariable("id") Integer id)
+    {
+        Optional<Ticket> ticket = ticketService.findById(id);
 
-        if (!ticket.isPresent()) {
+        if (!ticket.isPresent())
+        {
             return new ResponseEntity<>(ticket.get(),
                     HttpStatus.NO_CONTENT);
         }
@@ -261,14 +264,69 @@ public class RestController
         return roleService.findById(id);
     }
 
-    @GetMapping(path="tickets/empty",produces = MediaType.APPLICATION_JSON_VALUE)
-    public Ticket getEmptyTicket(){
+    @GetMapping(path = "tickets/empty", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Ticket getEmptyTicket()
+    {
         return new Ticket();
     }
 
-    @GetMapping(path = "movie-schedules/empty",produces = MediaType.APPLICATION_JSON_VALUE)
-    public MovieSchedules getEmptyMovieSchedule(){
+    @GetMapping(path = "movie-schedules/empty", produces = MediaType.APPLICATION_JSON_VALUE)
+    public MovieSchedules getEmptyMovieSchedule()
+    {
         return new MovieSchedules();
+    }
+
+    @GetMapping(path = "movies/sold-tickets")
+    public List statisticMoviesBySoldTickets()
+    {
+        Query query =
+                entityManager
+                        .createNativeQuery("call GetSoldTicketQuantitiesByMovie()");
+
+        return query.getResultList();
+    }
+
+    @GetMapping(path = "customers/top")
+    public List getTopCustomers()
+    {
+        Query query =
+                entityManager.createNativeQuery("call GetTopMembers()");
+
+        return query.getResultList();
+    }
+
+    @GetMapping(path = "movie-genres/top-sold")
+    public List getMostWatchedMovieGenres()
+    {
+        Query query =
+                entityManager.createNativeQuery("call GetMostWatchGenres");
+
+        return query.getResultList();
+    }
+
+    @GetMapping(path="show-times/top")
+    public List getTopShowTimes(){
+        Query query=
+                entityManager.createNativeQuery("call GetTopShowTimes");
+
+        return query.getResultList();
+    }
+
+    @GetMapping(path="incomes")
+    public List getIncomes(){
+        Query query=
+                entityManager.createNativeQuery("call StatisticIncomes");
+        return query.getResultList();
+    }
+
+    @GetMapping(path="employees/new")
+    public Employee getNewEmployee(){
+        return new Employee();
+    }
+
+    @GetMapping(path = "employees/{id}")
+    public Employee getEmployeeById(@PathVariable int id){
+        return employeeService.findById(id);
     }
 }
 

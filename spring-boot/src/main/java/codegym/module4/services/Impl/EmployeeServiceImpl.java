@@ -15,6 +15,13 @@ public class EmployeeServiceImpl implements EmployeeService
 {
     @Autowired
     private EmployeeRepo employeeRepo;
+
+    @Override
+    public Employee findById(int id)
+    {
+        return employeeRepo.findById(id).orElse(null);
+    }
+
     @Override
     public List<Employee> findAll()
     {
