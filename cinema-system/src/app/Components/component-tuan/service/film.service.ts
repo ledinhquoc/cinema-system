@@ -10,7 +10,6 @@ export class FilmService {
   constructor(public http: HttpClient) { }
   private baseUrlFilm = 'http://localhost:8080/movies';
   private baseUrlSchedule = 'http://localhost:8080/movieSchedules/hour';
-  private baseUrlPromotion = 'http://localhost:8080/promotions';
 
   getAllFilm(): Observable<any> {
     return this.http.get(this.baseUrlFilm);
@@ -23,22 +22,11 @@ export class FilmService {
   getScheduleById(id: number): Observable<any> {
     return this.http.get(this.baseUrlSchedule + '/' + id);
   }
-
-  getAllPromotion(): Observable<any> {
-    return this.http.get(this.baseUrlPromotion);
+  addNewFilm(film): Observable<any>{
+    return  this.http.post(this.baseUrlFilm,film);
   }
 
-  getPromotionById(id: number): Observable<any> {
-    return this.http.get(this.baseUrlPromotion + '/' + id);
-  }
-
-  createPromotion(obj: any): Observable<any> {
-    return this.http.post(this.baseUrlPromotion , obj);
-  }
-  deletePromotion(id: number): Observable<any> {
-    return this.http.delete<any>(this.baseUrlPromotion + '/' + id);
-  }
-  editPromotion(promotions, id): Observable<any> {
-    return this.http.put(this.baseUrlPromotion + '/' + id, promotions);
+  updateFilm(film,id): Observable<any>{
+    return this.http.put(this.baseUrlFilm + '/'+ id,film);
   }
 }
