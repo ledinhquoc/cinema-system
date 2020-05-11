@@ -43,25 +43,5 @@ public List<Point> findPointByDateFormDate(Date form, Date to, Customer idCustom
         return pointRepo.findAll();
     }
 
-    @Override
-    public double sumPoint(int id) {
-        return pointRepo.sumPoint(id);
-    }
-
-    @Override
-    public Point save(Point point) {
-        return pointRepo.save(point);
-    }
-
-    @Override
-    public Point findPointById(int id) {
-        return pointRepo.findPointById(id);
-    }
-
-    @Override
-    public double subPoint(int id) {
-        return pointRepo.subPoint(id);
-    }
-
 
 }

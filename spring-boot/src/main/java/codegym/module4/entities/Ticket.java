@@ -30,7 +30,7 @@ public class Ticket {
 
 
     @Column(name = "price")
-    private double price;
+    private int price;
 
     @ManyToOne
     @JoinColumn(name = "seat_id")
@@ -121,14 +121,14 @@ public class Ticket {
     /**
      * @return the price
      */
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 
     /**
      * @param price the price to set
      */
-    public void setPrice(double price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 

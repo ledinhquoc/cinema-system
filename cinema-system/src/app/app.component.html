@@ -1,7 +1,6 @@
-<script src="app.module.ts"></script>
 <nav style=" font-family: 'Fredoka One', cursive;
 font-size:20px;
-color: #222;" id="nav-bar" class="navbar navbar-expand-md navbar-custome sticky-top">
+color: #222;" id="nav-bar" class="navbar navbar-expand-md navbar-light bg-light sticky-top">
   <a class="navbar-branch" href="#">
     <img id="logo" src="../assets/images/logoCGV.png" height="75" width="230" alt="logo" style="height: 65px;">
   </a>
@@ -12,7 +11,7 @@ color: #222;" id="nav-bar" class="navbar navbar-expand-md navbar-custome sticky-
   <div class="collapse navbar-collapse" id="navbarResponsive">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
-        <a class="nav-link active" [routerLink]="['/']" >HOME</a>
+        <a class="nav-link active" href="#">HOME</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">CINEMA CGV</a>
@@ -26,24 +25,6 @@ color: #222;" id="nav-bar" class="navbar navbar-expand-md navbar-custome sticky-
       <li class="nav-item">
         <a class="nav-link" href="#">ABOUT</a>
       </li>
-
-      <li class="nav-item" *ngIf="showAdminBoard">
-        <div class="btn-group dropleft" style="padding-top: 10px">
-          <button type="button" class="btn btn-primary" data-toggle="dropdown" style="font-size: 11px;border-radius: 19px;background-color: #5cb85c;
-    border-color: #6bff53; margin-right: 10px">
-           Admin <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu" role="menu">
-            <li><a [routerLink]=" ['booking-ticket']" >Quản lí đặt vé</a></li>
-            <li><a href="#">Quản lí nhân viên</a></li>
-            <li><a href="#">Quản lí phim</a></li>
-            <li><a href="#">Quản lí Khách hàng</a></li>
-          </ul>
-        </div>
-      </li>
-
-
-
       <li class="nav-item" *ngIf="!isLoggedIn">
         <a class="nav-link" [routerLink]="['login']">LOGIN</a>
       </li>
@@ -73,7 +54,4 @@ color: #222;" id="nav-bar" class="navbar navbar-expand-md navbar-custome sticky-
 
 
 <router-outlet></router-outlet>
-
-<!--<app-paypal></app-paypal>-->
-
 

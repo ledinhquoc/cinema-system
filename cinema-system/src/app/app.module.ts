@@ -8,18 +8,18 @@ import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ReactiveFormsModule} from '@angular/forms';
 import {AuthService, AuthServiceConfig, FacebookLoginProvider} from "angularx-social-login";
-import {CookieService} from "ngx-cookie-service";
-import { PaypalComponent } from './Components/component-vu/admin-ticket/paypal/paypal.component';
+import {MemberComponent} from './Components/component-vu/member/member.component';
+import {httpInteceptorProvider} from "./Services/auth-interceptor";
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 @NgModule({
   declarations: [
     AppComponent,
-    PaypalComponent,
-
+    MemberComponent,
   ]
   ,
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, ReactiveFormsModule],
-  providers: [AuthService,CookieService,
+  imports: [ MatCheckboxModule,BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, ReactiveFormsModule,],
+  providers: [AuthService, httpInteceptorProvider,
     {
       provide: AuthServiceConfig,
       useFactory: socialConfigs

@@ -51,6 +51,9 @@ public class Customer
     private String address;
 
     @OneToMany(targetEntity = Point.class)
+
+//    @JsonBackReference
+
     private List<Point> points;
 
     //Vu add them Cascade
@@ -59,6 +62,9 @@ public class Customer
     private User user;
 
     @OneToMany(targetEntity = Ticket.class)
+
+//    @JsonBackReference
+
     private List<Ticket> tickets;
 
 
@@ -171,14 +177,4 @@ public class Customer
     public Customer()
     {
     }
-
-    public Date getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-
-
 }

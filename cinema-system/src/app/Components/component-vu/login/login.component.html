@@ -26,7 +26,7 @@
           <app-error-display [displayError]="(isFieldValidPassword('password1') && !checkStatus) || checkPassword && !checkStatus" errorMsg="password is invalid"></app-error-display>
 
           <div class="row align-items-center remember">
-            <input type="checkbox" name="remember" id="rember" (change)="checkRemember($event.target)" >Remember me
+            <input type="checkbox" checked>Remember me
           </div>
           <div class="form-group">
             <input type="submit" value="Login" (click)="onSubmit()" class="btn float-right login_btn">

@@ -17,7 +17,4 @@ public interface TicketService {
     List<Ticket>findByCustomerAndOrderStatus(Customer customer, String status);
     Ticket Creat(Ticket ticket);
 
-    Ticket saveTicket(Ticket ticket);
-
-
 }

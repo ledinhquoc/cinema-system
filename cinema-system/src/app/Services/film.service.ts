@@ -6,9 +6,7 @@ import { Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class FilmService {
-  public API: string = 'http://localhost:8080/tickets';
-  
-
+  public API = 'http://localhost:8080/tickets';
   constructor(
     public http: HttpClient
   ) { }
@@ -24,4 +22,6 @@ export class FilmService {
   getAllHours(): Observable<any>{
     return this.http.get(this.API);
   }
+
+
 }

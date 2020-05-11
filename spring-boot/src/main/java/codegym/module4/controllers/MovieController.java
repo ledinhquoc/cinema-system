@@ -14,7 +14,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.util.List;
 import java.util.Optional;
 
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class MovieController {
     @Autowired
@@ -41,22 +41,23 @@ public class MovieController {
         }
         return new ResponseEntity<>(movie.get(), HttpStatus.OK) ;
     }
-    @PostMapping(value = "/movies")
-    public ResponseEntity<Movie> createMovie(
+    @RequestMapping(value = "/movies",
+            method = RequestMethod.POST)
+    public ResponseEntity<Movie> createProduct(
             @RequestBody Movie movie,
             UriComponentsBuilder builder) {
         movieService.save(movie);
         HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(builder.path("/movies/{id}")
+        headers.setLocation(builder.path("/products/{id}")
                 .buildAndExpand(movie.getId()).toUri());
         return new ResponseEntity<>(movie, HttpStatus.CREATED);
     }
     @RequestMapping(value = "/movies/{id}",
             method = RequestMethod.PUT)
-    public ResponseEntity<Movie> updateMovie(
+    public ResponseEntity<Movie> updateProduct(
             @PathVariable("id") Integer id,
             @RequestBody Movie movie) {
-        Optional<Movie> currentMovie = movieService
+        Optional<Movie> currentMovie= movieService
                 .findById(id);
 
         if (!currentMovie.isPresent()) {
@@ -75,9 +76,14 @@ public class MovieController {
         currentMovie.get().setSrcImg(movie.getSrcImg());
         currentMovie.get().setSrcVideo(movie.getSrcVideo());
 
-
-
         movieService.save(currentMovie.get());
         return new ResponseEntity<>(currentMovie.get(), HttpStatus.OK);
+    }
+    @RequestMapping(value = "/movies/{id}",
+            method = RequestMethod.DELETE)
+    public ResponseEntity<Movie> deleteProduct(
+            @PathVariable("id") int id) {
+        movieService.remove(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

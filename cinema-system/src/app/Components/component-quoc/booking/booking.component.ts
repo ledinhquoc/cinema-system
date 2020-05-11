@@ -31,7 +31,7 @@ export class BookingComponent implements OnInit {
 
   public date:string;
   public i:any;
- 
+
 
   constructor(
     private _formBuilder: FormBuilder,
@@ -50,26 +50,26 @@ export class BookingComponent implements OnInit {
     this.thirdFormGroup = this._formBuilder.group({
       thirdCtrl: ['', Validators.required]
     });
-   
+
     this.filmService.getAllFilms().subscribe(data =>{
       this.films=data;
     });
 
     this.movie=history.state.movie;
-    console.log("data cua tuan",history.state.movie);
+    console.log('data cua tuan',history.state.movie);
   }
 
  getHour(){
-let x = 45;
+const x = 45;
 // let times = [];
 let tt = 120*4+30;
-let ap = ['AM','PM'];
+const ap = ['AM','PM'];
 
-for(var i = 0;tt<22*60;i++ ){
-  var hh = Math.floor(tt/60);
-  var mm = (tt%60);
+for(let i = 0;tt<22*60;i++ ){
+  const hh = Math.floor(tt/60);
+  const mm = (tt%60);
  //  times[i] = ("" + ((hh==12)?12:hh%12)).slice(-2) + ':' + ("0" + mm).slice(-2) + ap[Math.floor(hh/12)];
- this.times[i] = ("0" + hh ).slice(-2) + ':' + ("0" + mm).slice(-2) ;
+ this.times[i] = ('0' + hh ).slice(-2) + ':' + ('0' + mm).slice(-2) ;
   tt= tt + x
 }
 this.timeList  = this.times;
@@ -77,21 +77,21 @@ this.timeList  = this.times;
 
 getI()
 {
-    
- 
-  
+
+
+
           this.dateStart = this.movie.dateStart;
           this.dateEnd = this.movie.dateEnd;
-        
-      
-      this.dayList = this.daybetween(this.dateStart, this.dateEnd); 
-      console.log("popop",this.dayList);
-  
+
+
+      this.dayList = this.daybetween(this.dateStart, this.dateEnd);
+      console.log('popop',this.dayList);
+
 }
  daybetween(from,to){
   const fromDate = moment(new Date(from)).startOf('day');
   const toDate = moment(new Date(to)).endOf('day');
-  
+
   const span = moment.duration(toDate.diff(fromDate)).asDays();
   const days = [];
   console.log(span)

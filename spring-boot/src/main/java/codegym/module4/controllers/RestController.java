@@ -254,11 +254,6 @@ public class RestController
 
         return userService.save(user);
     }
-    @GetMapping("roles")
-        public List<Role> getAllRole(){
-        return roleService.findAll();
-        }
-
 
     @GetMapping(path = "/roles/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Role getRoleById(@PathVariable int id)

@@ -4,7 +4,6 @@ import {AbstractControl, FormGroup, FormBuilder, Validators} from '@angular/form
 import { Router} from '@angular/router';
 import {User} from '../model/user';
 import {UserService} from "../../component-vu/service/user.service";
-import {NotificationService} from "../../../Services/notification.service"
 function comparePassword(c: AbstractControl) {
   const v = c.value;
   return (v.password === v.confirmPassword) ? null : {
@@ -26,8 +25,7 @@ export class UserRegistrationComponent implements OnInit {
   check: boolean;
   constructor(public formBuilder: FormBuilder,
               public route: Router,
-              public userRegistrationService: UserService,
-              public notificationService: NotificationService) { }
+              public userRegistrationService: UserService) { }
 
   ngOnInit(): void {
 
@@ -40,9 +38,9 @@ export class UserRegistrationComponent implements OnInit {
     this.formAddnewAccount = this.formBuilder.group(
       {
         id: [],
-        account: ['',[Validators.required, Validators.pattern('^[0-9a-zA-Z](\\w){5,20}$')]],
+        account: ['',[Validators.required, Validators.minLength(6)]],
         pwGroup: this.formBuilder.group({
-          password: ['', [Validators.required, Validators.minLength(6), Validators.pattern('^[0-9a-z]{6,12}$')]],
+          password: ['', [Validators.required, Validators.minLength(6), Validators.pattern('^[0-9a-z]*')]],
           confirmPassword: ['', [Validators.required]]
         }, {validator: comparePassword}),
         fullName: ['', [Validators.required]],
@@ -52,15 +50,14 @@ export class UserRegistrationComponent implements OnInit {
         gender: ['', [Validators.required]],
         email: ['', [Validators.required, Validators.email]],
         phone: ['', [Validators.required, Validators.pattern('^(090|091)[0-9]{7}$')]],
-        cb: [false, Validators.requiredTrue]
       }
     );
     this.check = false;
   }
   addNewAccount() {
     this.check = false;
-    this.userRegistrationService.getAllCustomer().subscribe(data1 => {
-      for (const item of data1) {
+    this.userRegistrationService.getAllCustomer().subscribe(data => {
+      for (const item of data) {
         console.log(item['user'].name)
         if (item['user'].name === this.formAddnewAccount.get('account').value) {
           this.check = true;
@@ -83,23 +80,23 @@ export class UserRegistrationComponent implements OnInit {
             roles: [
               {
                 id: 2,
-                name: 'ROLE_USER'
+                name: "ROLE_USER"
               }
             ]
           },
-          birthday: this.formAddnewAccount.get('dateOfBirth').value
+          birthday: '1991-02-02'
         }
         console.log(value)
         this.userRegistrationService.addCustomer(value).subscribe(data => {
           this.user = data;
           console.log(data);
-          this.notificationService.warn('Đăng kí thành công,tài khoản của bạn đã là thành viên,' +
-            'hãy đăng nhập để tham gia!');
           this.route.navigateByUrl('/login');
         });
       }
 
     });
+
+
   }
   exit() {
     this.route.navigateByUrl('/login');
