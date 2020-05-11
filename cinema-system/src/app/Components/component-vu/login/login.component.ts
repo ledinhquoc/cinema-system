@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit {
   check: boolean;
   formTest: FormGroup;
   cookie: string;
+  rememberMe: false;
 
   constructor(private authService: AuthServices, private tokenStorage: TokenStorageService,
               public OAuth: AuthService,
@@ -94,15 +95,17 @@ export class LoginComponent implements OnInit {
           this.authService.login(this.formLogin.value).subscribe(
             data => {
               this.tokenStorage.saveToken(data.accessToken);
-              this.cookieService.set('rememberme',this.tokenStorage.getToken())
               this.tokenStorage.saveUser(data);
-              this.isLoginFailed = false;
-              this.isLoggedIn = true;
+              // this.isLoginFailed = false;
+              // this.isLoggedIn = true;
               this.roles = this.tokenStorage.getUser().roles;
+              if(this.rememberMe){
+                this.cookieService.set('data-access',this.tokenStorage.getToken());
+                this.cookieService.set('username',this.tokenStorage.getUser().username);
+              }
               window.location.assign('#');
             },
             err => {
-              // this.errorMessage = err.error.message;
               this.isLoginFailed = true;
               this.count++;
               this.checkPassword = true;
@@ -115,10 +118,6 @@ export class LoginComponent implements OnInit {
     } else {
       this.validateAllFormFields(this.formLogin);
     }
-  }
-
-  reloadPage() {
-    location.reload();
   }
 
   //facebook
@@ -238,4 +237,7 @@ export class LoginComponent implements OnInit {
   }
 
 
+  checkRemember(event :any) {
+    this.rememberMe = event.checked;
+  }
 }
