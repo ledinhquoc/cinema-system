@@ -19,7 +19,7 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 </head>
 
-<body class="mat-typography">
+<body >
 <app-root></app-root>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -30,6 +30,24 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <!--<script defer src="https://use.fontawesome.com/releases/v5.13.0/js/all.js"></script>-->
+
+<script
+  src="https://www.paypal.com/sdk/js?client-id=AShplnzFcgo2-76JrPXOcLGoMydfzjjdaRJkeZiLri38fgQojRBHPALiqGsWJPhSCv00KvsdqLeCYjRF">
+</script>
+<script>
+  // Render the PayPal button into #paypal-button-container
+  paypal.Buttons({
+
+    style: {
+      color:  'blue',
+      shape:  'pill',
+      label:  'pay',
+      height: 40
+    }
+
+  }).render('#paypal-button-container');
+</script>
+
 </body>
 
 </html>
