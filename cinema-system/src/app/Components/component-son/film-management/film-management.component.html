@@ -29,7 +29,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of movies let i = index" style="cursor: pointer;">
+        <tr *ngFor="let item of movies let i = index" style="cursor: pointer;" [routerLink]="['/edit-film,movies[i].id']">
           <td style="text-align: center;"> <a href="#">{{ i+1 }}</a> </td>
           <td><input [(ngModel)]="movies[i].movieName" class="form-control" type="text" /></td>
           <td><input [(ngModel)]="movies[i].dateStart" class="form-control" type="text" /></td>
@@ -42,11 +42,11 @@
           <td class="text-truncate" style="max-width: 200px;"><input [(ngModel)]="movies[i].content" class="form-control" type="text" /></td>
           <td class="text-truncate"><input [(ngModel)]="movies[i].srcImg" class="form-control" type="text" /></td>
           <td class="text-truncate"><input [(ngModel)]="movies[i].srcVideo" class="form-control" type="text" /></td>
-          <td><button (click)="addRow(i)" type="button" class="btn btn-info add-new" style="font-size: 10%"><i class="fa fa-plus"></i></button>
-            <button (click)="onEdit(i)" type="button" class="btn btn-warning" style="font-size: 10%; margin-left: 2px"><i class="fa fa-pen"></i></button></td>
+          <td><button (click)="addRow(i)" type="button" class="btn btn-info add-new" ><i class="fa fa-plus"></i></button>
+            <button (click)="onEdit(i)" type="button" class="btn btn-warning" style="margin-left: 2px"><i class="fa fa-pen"></i></button></td>
         </tr>
       </tbody>
     </table>
-    <button type="button" class="btn btn-primary">Thêm mới phim</button>
+    <button [routerLink]="['/add-film']" type="button" class="btn btn-primary">Thêm mới phim</button>
   </div>
 </div>
