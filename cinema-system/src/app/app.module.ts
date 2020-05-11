@@ -10,6 +10,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {AuthService, AuthServiceConfig, FacebookLoginProvider} from "angularx-social-login";
 import {MemberComponent} from './Components/component-vu/member/member.component';
 import {httpInteceptorProvider} from "./Services/auth-interceptor";
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 @NgModule({
   declarations: [
@@ -17,7 +18,7 @@ import {httpInteceptorProvider} from "./Services/auth-interceptor";
     MemberComponent,
   ]
   ,
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, ReactiveFormsModule],
+  imports: [ MatCheckboxModule,BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, ReactiveFormsModule,],
   providers: [AuthService, httpInteceptorProvider,
     {
       provide: AuthServiceConfig,

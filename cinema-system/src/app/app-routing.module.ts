@@ -43,6 +43,7 @@ import {ChonGheComponent} from './Components/components-hhien/chon-ghe/chon-ghe.
 import {ShowtimesComponent} from './Components/components-hhien/showtimes/showtimes.component';
 import { ListFilmsComponent } from './Components/component-quy/list-films/list-films.component';
 import { AddFilmComponent } from './Components/component-quy/add-film/add-film.component';
+import { EditFilmComponent } from './Components/component-quy/edit-film/edit-film.component';
 
 
 
@@ -87,6 +88,7 @@ const routes: Routes = [
   {path: 'chonGhe', component: ChonGheComponent},
   {path: 'list-films', component: ListFilmsComponent},
   {path: 'add-film', component: AddFilmComponent},
+  {path: 'edit-film/:id', component: EditFilmComponent},
 
 ];
 
@@ -122,7 +124,8 @@ const routes: Routes = [
                 ChonGheComponent,
                 ShowtimesComponent,
                 ListFilmsComponent,
-                AddFilmComponent],
+                AddFilmComponent,
+                EditFilmComponent],
   imports: [RouterModule.forRoot(routes),
   ReactiveFormsModule,
   FormsModule,

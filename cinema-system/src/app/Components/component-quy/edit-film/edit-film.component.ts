@@ -1,15 +1,14 @@
-import {Component, OnInit} from '@angular/core';
-import {FilmService} from '../../component-tuan/service/film.service';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Router} from "@angular/router";
-import {min} from "moment";
+import { Component, OnInit } from '@angular/core';
+import {FilmService} from "../../component-tuan/service/film.service";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {ActivatedRoute, Params, Router} from "@angular/router";
 
 @Component({
-  selector: 'app-add-film',
-  templateUrl: './add-film.component.html',
-  styleUrls: ['./add-film.component.css']
+  selector: 'app-edit-film',
+  templateUrl: './edit-film.component.html',
+  styleUrls: ['./edit-film.component.css']
 })
-export class AddFilmComponent implements OnInit {
+export class EditFilmComponent implements OnInit {
   submitted = false;
   formAddFilm : FormGroup;
   movieTypeAction: string;
@@ -39,7 +38,9 @@ export class AddFilmComponent implements OnInit {
   content: any;
   srcVideo: any;
   srcImg: any;
+  id: any ;
   constructor(
+    private route: ActivatedRoute,
     public  filmService: FilmService,
     public formBuilder: FormBuilder,
     public router: Router
@@ -59,6 +60,9 @@ export class AddFilmComponent implements OnInit {
       content: [this.content,[Validators.required]],
       srcImg: [this.srcImg,[Validators.required]],
       srcVideo: [this.srcVideo,[Validators.required]],
+    })
+      this.filmService.getFilmById(112).subscribe(data =>{
+        this.formAddFilm.patchValue(data);
     })
 
   }
@@ -110,11 +114,11 @@ export class AddFilmComponent implements OnInit {
     // }
     if(this.dateEnd <= this.dayStart){
       // this.isCheckFormDay = true ;
-         alert("Ngày kết thúc phải lớn hơn ngày bắt đầu")
+      alert("Ngày kết thúc phải lớn hơn ngày bắt đầu")
     } else {
       this.filmService.addNewFilm(this.formAddFilm.value).subscribe(data=>{
-      console.log(data);
-      this.router.navigateByUrl('add-film').then(r => null);
+        console.log(data);
+        this.router.navigateByUrl('add-film').then(r => null);
       });
     }
   }
