@@ -30,12 +30,7 @@ public class MovieServiceImpl implements MovieService
     }
     public Optional<Movie> findById(int id) {
         return movieRepo.findById(id);
-    }
 
-    @Override
-    public void save(Movie movie) {
-        movieRepo.save(movie);
     }
-
 
 }

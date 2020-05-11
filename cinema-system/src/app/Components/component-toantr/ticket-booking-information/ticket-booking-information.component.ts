@@ -25,7 +25,6 @@ export class TicketBookingInformationComponent implements OnInit {
     this.movieSchedules = this.ticket.movieSchedules;
     this.seat = this.ticket.seat;
 
-
     // this.myHttp
     //   .getById(
     //     `movies/movie-schedule/`,
