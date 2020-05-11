@@ -22,7 +22,9 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import {Ng2SearchPipeModule} from 'ng2-search-filter';
 import {BookingComponent} from './Components/component-quoc/booking/booking.component';
 import {TicketConfirmComponent} from './Components/component-quoc/ticket-confirm/ticket-confirm/ticket-confirm.component';
+// tslint:disable-next-line:max-line-length
 import {TicketConfirmInfoComponent} from './Components/component-quoc/ticket-confirm-info/ticket-confirm-info/ticket-confirm-info.component';
+
 import {ListFilmComponent} from '../app/Components/component-tuan/list-film/list-film.component';
 import {DetailFilmComponent} from '../app/Components/component-tuan/detail-film/detail-film.component';
 import {LoginComponent} from "./Components/component-vu/login/login.component";
@@ -46,7 +48,6 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MemberComponent} from './Components/component-vu/member/member.component';
 import {ChonGheComponent} from './Components/components-hhien/chon-ghe/chon-ghe.component';
-
 import {BanVeComponent} from './Components/components-hhien/showtimes/showtimes.component';
 import { TicketConfirmmComponent } from './Components/component-son/ticket-confirm/ticket-confirm.component';
 import { TicketConfirmmInfoComponent } from './Components/component-son/ticket-confirm-info/ticket-confirm-info.component'; 
@@ -61,9 +62,8 @@ import { ListShowRoomComponent } from './Components/component-viet/ManageShowroo
 import { ShowroomDetailsComponent } from './Components/component-viet/ManageShowroom/showroom-details/showroom-details.component';
 import { AddSeatComponent } from './Components/component-viet/ManageShowroom/add-seat/add-seat.component';
 import { AddShowroomComponent } from './Components/component-viet/ManageShowroom/add-showroom/add-showroom.component';
-
-
-
+import {ShowtimesComponent} from './Components/components-hhien/showtimes/showtimes.component';
+import { ListDiscountComponent } from './Components/component-tuan/list-discount/list-discount.component';
 
 const routes: Routes = [
   {path: '', component: ListFilmComponent},
@@ -103,7 +103,7 @@ const routes: Routes = [
   {path: 'information-confirm/:id', component: InformationConfirmComponent},
   {path: 'movieSchedules', component: ShowtimesComponent},
   {path: 'chonGhe', component: ChonGheComponent},
-
+  {path: 'list-discount', component: ListDiscountComponent},
   {path: 'showRoom', component: SlideBarManageShowRoomComponent,
     children: [{
       path: '', component: ListShowRoomComponent,
@@ -115,13 +115,13 @@ const routes: Routes = [
     ]},
 
   {path: 'ban-ve', component: BanVeComponent}
-
-
 ];
 
 @NgModule({
 
   declarations: [TopBarComponent,
+
+    ListDiscountComponent,
     ChonGheComponent,
     SlideBarComponent,
     InfomationComponent,
@@ -165,7 +165,6 @@ const routes: Routes = [
   ShowroomDetailsComponent,
   AddSeatComponent,
   AddShowroomComponent],
-
   imports: [RouterModule.forRoot(routes),
   ReactiveFormsModule,
   FormsModule,
