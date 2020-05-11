@@ -10,9 +10,12 @@
 html, body {
   width: 100%;
   height: 100%;
+
+
 }
 
-mat-confirm-dialog(customised dialog)
+
+
 .confirm-dialog-container .mat-dialog-container {
   border-radius: .25em .25em .4em .4em;
   padding: 0px;

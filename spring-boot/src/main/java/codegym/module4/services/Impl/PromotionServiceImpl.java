@@ -23,6 +23,7 @@ public class PromotionServiceImpl implements PromotionService
     }
 
     @Override
+
     public Optional<Promotion> findById(int id) {
         return promotionRepo.findById(id);
     }
@@ -35,5 +36,6 @@ public class PromotionServiceImpl implements PromotionService
     @Override
     public void remove(Promotion promotion) {
          promotionRepo.delete(promotion);
+
     }
 }

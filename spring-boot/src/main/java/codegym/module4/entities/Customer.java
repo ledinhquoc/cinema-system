@@ -1,4 +1,6 @@
 package codegym.module4.entities;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -50,8 +52,25 @@ public class Customer
     @Column(name = "address")
     private String address;
 
-    @OneToMany(targetEntity = Point.class)
 
+    public Date getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public List<Point> getPoints() {
+        return points;
+    }
+
+    public void setPoints(List<Point> points) {
+        this.points = points;
+    }
+
+    @OneToMany(targetEntity = Point.class)
+    @JsonIgnore
 //    @JsonBackReference
 
     private List<Point> points;
@@ -63,7 +82,8 @@ public class Customer
 
     @OneToMany(targetEntity = Ticket.class)
 
-//    @JsonBackReference
+
+    @JsonIgnore
 
     private List<Ticket> tickets;
 
@@ -177,4 +197,30 @@ public class Customer
     public Customer()
     {
     }
+
+
+    /**
+     * @return the tickets
+     */
+    public List<Ticket> getTickets() {
+        return tickets;
+    }
+
+    /**
+     * @param tickets the tickets to set
+     */
+    public void setTickets(List<Ticket> tickets) {
+        this.tickets = tickets;
+    }
+
+    public Date getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+
+
 }

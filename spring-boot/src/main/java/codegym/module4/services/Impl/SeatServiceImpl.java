@@ -20,4 +20,14 @@ public class SeatServiceImpl implements SeatService
     {
         return seatRepo.findAll();
     }
+
+    @Override
+    public Seat updateSeat(Seat seat) {
+        return seatRepo.save(seat);
+    }
+
+    @Override
+    public Seat findById(int id) {
+        return seatRepo.findById(id).get();
+    }
 }

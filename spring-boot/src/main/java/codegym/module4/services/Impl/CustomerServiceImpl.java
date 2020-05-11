@@ -60,4 +60,9 @@ public class CustomerServiceImpl implements CustomerService
         return customerRepo.save(customer);
 
     }
+
+    @Override
+    public void deleteCustomer(Customer customer) {
+        customerRepo.delete(customer);
+    }
 }

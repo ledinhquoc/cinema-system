@@ -10,16 +10,20 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {AuthService, AuthServiceConfig, FacebookLoginProvider} from 'angularx-social-login';
 import {MemberComponent} from './Components/component-vu/member/member.component';
 import {httpInteceptorProvider} from './Services/auth-interceptor';
+import {AuthService, AuthServiceConfig, FacebookLoginProvider} from "angularx-social-login";
+import {CookieService} from "ngx-cookie-service";
+import { PaypalComponent } from './Components/component-vu/admin-ticket/paypal/paypal.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    MemberComponent,
+    PaypalComponent,
+
   ]
   ,
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, ReactiveFormsModule],
-  providers: [AuthService, httpInteceptorProvider,
+  providers: [AuthService,CookieService,
     {
       provide: AuthServiceConfig,
       useFactory: socialConfigs
