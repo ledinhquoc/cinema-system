@@ -50,7 +50,6 @@ public class CustomerController {
         customerDetails.setPhone(customerUpdate.getPhone());
         customerDetails.setIdCard(customerUpdate.getIdCard());
       return customerService.saveCustomer(customerDetails);
-
     }
 
     @PostMapping(path = "/new")
@@ -58,6 +57,7 @@ public class CustomerController {
     {
         return customerService.saveCustomer(customer);
     }
+
 
 
 }

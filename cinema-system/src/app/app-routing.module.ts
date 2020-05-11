@@ -35,12 +35,15 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MemberComponent} from './Components/component-vu/member/member.component';
+
 import {ChonGheComponent} from './Components/components-hhien/chon-ghe/chon-ghe.component';
-import {BanVeComponent} from './Components/components-hhien/showtimes/showtimes.component';
-import {ShowtimesComponent} from './Components/components-hhien/showtimes/showtimes.component';
+import {BanVeComponent} from './Components/components-hhien/ban-ve/ban-ve.component';
+
 import { TicketConfirmmComponent } from './Components/component-son/ticket-confirm/ticket-confirm.component';
-import { TicketConfirmmInfoComponent } from './Components/component-son/ticket-confirm-info/ticket-confirm-info.component'; 
+import { TicketConfirmmInfoComponent } from './Components/component-son/ticket-confirm-info/ticket-confirm-info.component';
 import { CustomerComponent } from './Components/component-son/customer/customer.component';
+import { ListCustonerComponent } from './Components/components-hhien/list-custoner/list-custoner.component';
+
 
 
 
@@ -90,15 +93,19 @@ const routes: Routes = [
   {path: 'register', component: UserRegistrationComponent},
   {path: 'member', component: MemberComponent},
   {path: 'confirmPassword/:id', component: ConfirmPasswordComponent},
-  {path: 'movieSchedules', component: ShowtimesComponent},
+  // {path: 'movieSchedules', component: ShowtimesComponent},
   {path: 'chonGhe', component: ChonGheComponent},
-  {path: 'ban-ve', component: BanVeComponent}
+  {path: 'ban-ve', component: BanVeComponent},
+  {path: 'list-customer', component: ListCustonerComponent},
 ];
 
 @NgModule({
 
   declarations: [TopBarComponent,
-
+    TicketConfirmmInfoComponent,
+    ListCustonerComponent,
+    CustomerComponent,
+    BanVeComponent,
     ChonGheComponent,
     SlideBarComponent,
     InfomationComponent,
@@ -118,6 +125,7 @@ const routes: Routes = [
     BookingComponent,
     TicketConfirmComponent,
     TicketConfirmInfoComponent,
+    TicketConfirmmComponent,
     ErrorDisplayComponent,
     LoginComponent,
     CarouselComponent,
@@ -126,8 +134,9 @@ const routes: Routes = [
     ConfirmPasswordComponent,
     ResetPasswordComponent,
     UserRegistrationComponent,
-    ShowtimesComponent,
-    BanVeComponent],
+    ListCustonerComponent,
+    // ShowtimesComponent,
+    ],
 
   imports: [RouterModule.forRoot(routes),
   ReactiveFormsModule,

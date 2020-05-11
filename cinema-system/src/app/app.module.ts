@@ -15,6 +15,7 @@ import {httpInteceptorProvider} from "./Services/auth-interceptor";
   declarations: [
     AppComponent,
     MemberComponent,
+
   ]
   ,
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, ReactiveFormsModule],

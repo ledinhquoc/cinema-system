@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ShowtimesComponent } from './showtimes.component';
+import { ShowtimesComponent } from './ban-ve.component';
 
 describe('ShowtimesComponent', () => {
   let component: ShowtimesComponent;

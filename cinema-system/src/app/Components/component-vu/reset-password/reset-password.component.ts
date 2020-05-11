@@ -14,7 +14,7 @@ export interface Email1 {
   styleUrls: ['./reset-password.component.css']
 })
 export class ResetPasswordComponent implements OnInit {
-  emails: Array<Email1> = [];
+  emails: Array<Email1> = [];u
   formReset: FormGroup;
   message: string;
   check: boolean;

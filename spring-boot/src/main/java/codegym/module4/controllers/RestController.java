@@ -38,8 +38,7 @@ public class RestController
     @Autowired
     private UserService userService;
 
-    @Autowired
-    private CustomerService customerService;
+
 
     @Autowired
     private PointService pointService;
@@ -117,12 +116,6 @@ public class RestController
     {
         return userService.findAll();
 
-    }
-
-    @GetMapping(path = "customers", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Customer> getAllCustomers()
-    {
-        return customerService.findAll();
     }
 
     @GetMapping(path = "points", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -270,5 +263,11 @@ public class RestController
     public MovieSchedules getEmptyMovieSchedule(){
         return new MovieSchedules();
     }
+
+//    hhien
+
+//    hhien
+
+
 }
 

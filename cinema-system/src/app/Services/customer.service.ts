@@ -21,4 +21,16 @@ export class CustomerService {
   getTicketById(ticketId): Observable<any> {
     return this.http.get(this.API2 + '/' + ticketId)
   }
+
+
+  // hhien
+  addCustomer(customer): Observable<any> {
+    return this.http.post(this.API , customer)
+  }
+
+  editCustomer(customer, customerid): Observable<any> {
+    return this.http.put(this.API + '/' + customer,customerid)
+  }
+
+
 }

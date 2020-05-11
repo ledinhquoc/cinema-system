@@ -1,15 +1,16 @@
 import {Component, OnInit} from '@angular/core';
 import {ShowtimesService} from '../../../Services/showtimes.service';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+// import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { Router } from '@angular/router';
 
 import {FormControl} from '@angular/forms';
 import {MatDatepickerInputEvent} from '@angular/material/datepicker';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-showtimes',
-  templateUrl: './showtimes.component.html',
-  styleUrls: ['./showtimes.component.css']
+  selector: 'app-ban-ve',
+  templateUrl: './ban-ve.component.html',
+  styleUrls: ['./ban-ve.component.css']
 })
 export class BanVeComponent implements OnInit {
   isFilter = false;

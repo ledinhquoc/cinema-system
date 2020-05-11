@@ -1,5 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import "../node_modules/bootstrap/dist/css/bootstrap.css";
+@import "~assets/lib/css/list-customer.css";
+
  /* body {
   background-image: url('assets/images/banner.jpg');
   background-repeat: no-repeat;
@@ -10,10 +12,10 @@
 html, body {
   width: 100%;
   height: 100%;
- 
+
 }
 
-mat-confirm-dialog (customised dialog) 
+/*mat-confirm-dialog (customised dialog)*/
 .confirm-dialog-container .mat-dialog-container {
   border-radius: .25em .25em .4em .4em;
   padding: 0px;
@@ -28,9 +30,9 @@ mat-confirm-dialog (customised dialog)
   order: 2;
   font-weight: bolder;
 }
-.confirm-dialog-container #close-icon:hover{
-  cursor: pointer;
-}
+/*.confirm-dialog-container #close-icon:hover{*/
+/*  cursor: pointer;*/
+/*}*/
 
 .confirm-dialog-container #no-button{
   height: 50px;
@@ -73,10 +75,10 @@ snack-bar-container.notification simple-snack-bar{
   font-weight: bold;
 }
 
-
 .hide{
   display: none;
-} 
+}
+
 
 
 

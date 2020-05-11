@@ -1,0 +1,89 @@
+<div class="container-fluid">
+    <div class="table-wrapper">
+      <div class="table-title">
+        <div class="row">
+          <div class="col-sm-8"><h2>Employee <b>Details</b></h2></div>
+          <div class="col-sm-4">
+            <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add New</button>
+          </div>
+        </div>
+      </div>
+      <table class="table table-bordered">
+        <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Date</th>
+          <th>Gender</th>
+          <th>ID Card</th>
+          <th>Email</th>
+          <th>Address</th>
+          <th>Phone Number</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let property of customers">
+          <td>{{property.id}}</td>
+          <td>{{property.fullName}}</td>
+          <td>{{property.birthday}}</td>
+          <td>{{property.gender}}</td>
+          <td>{{property.idCard}}</td>
+          <td>{{property.email}}</td>
+          <td>{{property.address}}</td>
+          <td>
+            <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
+            <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+            <a class="delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+<!--  <div class="mt-5">-->
+<!--    <button (click)="addRow()" class="btn btn-warning"><i class="fa fa-plus fa-2x"></i></button>-->
+<!--    <table class="table table-hover">-->
+<!--      <thead>-->
+<!--      <tr>-->
+<!--        <th>Id</th>-->
+<!--        <th>Name</th>-->
+<!--        <th>Date</th>-->
+<!--        <th>Gender</th>-->
+<!--        <th>ID Card</th>-->
+<!--        <th>Email</th>-->
+<!--        <th>Address</th>-->
+<!--        <th>Phone Number</th>-->
+<!--        <th>Actions</th>-->
+<!--      </tr>-->
+<!--      </thead>-->
+<!--      <tbody>-->
+<!--      <tr *ngFor="let customer of customerArray ; let i = index">-->
+<!--        &lt;!&ndash;        <td>{{customer.id}} </td>&ndash;&gt;-->
+<!--        <td><input type="text" [ngModel]="customerArray[customer.id-1].id" class="form-control"></td>-->
+<!--        &lt;!&ndash;        <td>{{customer.fullName}}</td>&ndash;&gt;-->
+<!--        <td><input type="text" [ngModel]="customerArray[customer.id-1].fullName" class="form-control"></td>-->
+<!--        &lt;!&ndash;        <td>{{customer.birthday}}</td>&ndash;&gt;-->
+<!--        <td><input type="text" [ngModel]="customerArray[customer.id-1].birthday" class="form-control"></td>-->
+<!--        &lt;!&ndash;        <td>{{customer.gender}}</td>&ndash;&gt;-->
+<!--        <td><input type="text" [ngModel]="customerArray[customer.id-1].gender" class="form-control"></td>-->
+<!--        &lt;!&ndash;        <td>{{customer.idCard}}</td>&ndash;&gt;-->
+<!--        <td><input type="text" [ngModel]="customerArray[customer.id-1].idCard" class="form-control"></td>-->
+<!--        &lt;!&ndash;        <td>{{customer.email}}</td>&ndash;&gt;-->
+<!--        <td><input type="text" [ngModel]="customerArray[customer.id-1].email" class="form-control"></td>-->
+<!--        &lt;!&ndash;        <td>{{customer.phone}}</td>&ndash;&gt;-->
+<!--        <td><input type="text" [ngModel]="customerArray[customer.id-1].phone" class="form-control"></td>-->
+<!--        &lt;!&ndash;        <td>{{customer.address}}</td>&ndash;&gt;-->
+<!--        <td><input type="text" [ngModel]="customerArray[customer.id-1].address" class="form-control"></td>-->
+<!--        <td>-->
+<!--&lt;!&ndash;          <button (click)="edit(customer.id)"class="btn btn-danger"><i class="fa fa-pen fa-2x"></i></button>&ndash;&gt;-->
+
+<!--&lt;!&ndash;          <button (click)="delete(customerArray[customer.id-1])"class="btn btn-danger"><i class="fa fa-trash fa-2x"></i></button>&ndash;&gt;-->
+<!--          <button (click)="addRow(customer.id)" class="btn btn-warning"><i class="fa fa-plus fa-2x"></i></button>-->
+<!--        </td>-->
+<!--      </tr>-->
+<!--      </tbody>-->
+<!--    </table>-->
+
+<!--  </div>-->
+
+</div>
