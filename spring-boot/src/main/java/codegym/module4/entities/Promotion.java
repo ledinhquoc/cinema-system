@@ -47,9 +47,9 @@ public class Promotion
     @Column(name = "promotion_image")
     private String promotionImage;
 
-    @OneToMany(targetEntity = Ticket.class)
-    @JsonBackReference
-    private List<Ticket> tickets;
+//    @OneToMany(targetEntity = Ticket.class)
+//    @JsonBackReference
+//    private List<Ticket> tickets;
 
     public int getId(){
         return id;
@@ -106,12 +106,12 @@ public class Promotion
     public void setPromotionImage(String promotionImage){
         this.promotionImage = promotionImage;
     }
-
-    public List< Ticket > getTickets(){
-        return tickets;
-    }
-
-    public void setTickets(List< Ticket > tickets){
-        this.tickets = tickets;
-    }
+//
+//    public List< Ticket > getTickets(){
+//        return tickets;
+//    }
+//
+//    public void setTickets(List< Ticket > tickets){
+//        this.tickets = tickets;
+//    }
 }

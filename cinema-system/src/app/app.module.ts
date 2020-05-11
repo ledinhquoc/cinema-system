@@ -7,9 +7,10 @@ import {AppComponent} from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ReactiveFormsModule} from '@angular/forms';
-import {AuthService, AuthServiceConfig, FacebookLoginProvider} from "angularx-social-login";
+import {AuthService, AuthServiceConfig, FacebookLoginProvider} from 'angularx-social-login';
 import {MemberComponent} from './Components/component-vu/member/member.component';
-import {httpInteceptorProvider} from "./Services/auth-interceptor";
+import {httpInteceptorProvider} from './Services/auth-interceptor';
+
 
 @NgModule({
   declarations: [

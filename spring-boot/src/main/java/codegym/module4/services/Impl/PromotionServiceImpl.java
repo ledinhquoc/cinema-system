@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -19,5 +20,20 @@ public class PromotionServiceImpl implements PromotionService
     public List<Promotion> findAll()
     {
         return promotionRepo.findAll();
+    }
+
+    @Override
+    public Optional<Promotion> findById(int id) {
+        return promotionRepo.findById(id);
+    }
+
+    @Override
+    public void save(Promotion promotion) {
+         promotionRepo.save(promotion);
+    }
+
+    @Override
+    public void remove(Promotion promotion) {
+         promotionRepo.delete(promotion);
     }
 }

@@ -22,9 +22,10 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import {Ng2SearchPipeModule} from 'ng2-search-filter';
 import {BookingComponent} from './Components/component-quoc/booking/booking.component';
 import {TicketConfirmComponent} from './Components/component-quoc/ticket-confirm/ticket-confirm/ticket-confirm.component';
+// tslint:disable-next-line:max-line-length
 import {TicketConfirmInfoComponent} from './Components/component-quoc/ticket-confirm-info/ticket-confirm-info/ticket-confirm-info.component';
-import {ListFilmComponent} from '../app/Components/component-tuan/list-film/list-film.component';
-import {DetailFilmComponent} from '../app/Components/component-tuan/detail-film/detail-film.component';
+import {ListFilmComponent} from './Components/component-tuan/list-film/list-film.component';
+import {DetailFilmComponent} from './Components/component-tuan/detail-film/detail-film.component';
 import {LoginComponent} from './Components/component-vu/login/login.component';
 import {ResetPasswordComponent} from './Components/component-vu/reset-password/reset-password.component';
 import {ConfirmPasswordComponent} from './Components/component-vu/confirm-password/confirm-password.component';
@@ -37,7 +38,7 @@ import {MatNativeDateModule} from '@angular/material/core';
 import {MemberComponent} from './Components/component-vu/member/member.component';
 import {ChonGheComponent} from './Components/components-hhien/chon-ghe/chon-ghe.component';
 import {ShowtimesComponent} from './Components/components-hhien/showtimes/showtimes.component';
-
+import { ListDiscountComponent } from './Components/component-tuan/list-discount/list-discount.component';
 
 
 const routes: Routes = [
@@ -74,7 +75,8 @@ const routes: Routes = [
   {path: 'member', component: MemberComponent},
   {path: 'confirmPassword/:id', component: ConfirmPasswordComponent},
   {path: 'movieSchedules', component: ShowtimesComponent},
-  {path: 'chonGhe', component: ChonGheComponent}
+  {path: 'chonGhe', component: ChonGheComponent},
+  {path: 'list-discount', component: ListDiscountComponent},
 
 ];
 
@@ -104,11 +106,12 @@ const routes: Routes = [
                 CarouselComponent,
                 TicketCanceledComponent,
                 TicketBookingComponent,
-                ConfirmPasswordComponent, 
+                ConfirmPasswordComponent,
                 ResetPasswordComponent,
                 UserRegistrationComponent,
                 ChonGheComponent,
-                ShowtimesComponent],
+                ShowtimesComponent,
+                ListDiscountComponent,],
   imports: [RouterModule.forRoot(routes),
   ReactiveFormsModule,
   FormsModule,
