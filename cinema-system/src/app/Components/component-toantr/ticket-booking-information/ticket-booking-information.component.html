@@ -18,7 +18,7 @@
         <hr>
         <div class="row">
             <label class="col-4"><strong>Ngày chiếu: </strong></label>
-            <p class="col-8">{{movieSchedules.openingDay|date}}</p>
+            <p class="col-8">{{movieSchedules.openingDay | date}}</p>
         </div>
         <hr>
         <div class="row">
@@ -63,7 +63,8 @@
             <label class="col-4"><strong>Số điện thoại: </strong></label>
             <p class="col-8">{{customer.phone}}</p>
         </div>
-      <p class="row">Vui lòng đến lấy vé trước thời gian chiếu phim 30 phút. Sau thời gian đó vé sẽ tự động hủy!</p>
+        <p class="row">Vui lòng đến lấy vé trước thời gian chiếu phim 30 phút. Sau thời gian đó vé sẽ tự động hủy!</p>
     </div>
-    <button style="margin-left:40% ;" class="btn btn-primary" [routerLink]="['']" routerLinkActive="router-link-active" >Hoàn tất</button>
+    <button style="margin-left:40% ;" class="btn btn-primary" [routerLink]="['']"
+        routerLinkActive="router-link-active">Hoàn tất</button>
 </div>
