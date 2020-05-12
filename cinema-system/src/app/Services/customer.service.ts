@@ -25,7 +25,7 @@ export class CustomerService {
 
   // hhien
   addCustomer(customer): Observable<any> {
-    return this.http.post(this.API , customer)
+    return this.http.post(this.API ,customer)
   }
 
   editCustomer(customer, customerid): Observable<any> {
