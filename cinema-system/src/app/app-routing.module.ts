@@ -22,6 +22,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import {Ng2SearchPipeModule} from 'ng2-search-filter';
 import {BookingComponent} from './Components/component-quoc/booking/booking.component';
 import {TicketConfirmComponent} from './Components/component-quoc/ticket-confirm/ticket-confirm/ticket-confirm.component';
+import {ListCustonerComponent} from './Components/components-hhien/list-custoner/list-custoner.component';
 // tslint:disable-next-line:max-line-length
 import {TicketConfirmInfoComponent} from './Components/component-quoc/ticket-confirm-info/ticket-confirm-info/ticket-confirm-info.component';
 
@@ -38,7 +39,7 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 import {ChonGheComponent} from './Components/components-hhien/chon-ghe/chon-ghe.component';
 import { TicketConfirmmComponent } from './Components/component-son/ticket-confirm/ticket-confirm.component';
-import { TicketConfirmmInfoComponent } from './Components/component-son/ticket-confirm-info/ticket-confirm-info.component'; 
+import { TicketConfirmmInfoComponent } from './Components/component-son/ticket-confirm-info/ticket-confirm-info.component';
 import { CustomerComponent } from './Components/component-son/customer/customer.component';
 import { ShowtimesComponent } from './Components/component-tmt/showtimes/showtimes.component';
 import { FilmManagementComponent } from './Components/component-son/film-management/film-management.component';
@@ -102,11 +103,13 @@ const routes: Routes = [
       },
 
     ]},
+  {path:'list-customer',component: ListCustonerComponent}
 ];
 
 @NgModule({
 
   declarations: [TopBarComponent,
+    ListCustonerComponent,
     ChonGheComponent,
     SlideBarComponent,
     InfomationComponent,
