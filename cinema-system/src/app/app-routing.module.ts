@@ -27,32 +27,33 @@ import {TicketConfirmInfoComponent} from './Components/component-quoc/ticket-con
 
 import {ListFilmComponent} from '../app/Components/component-tuan/list-film/list-film.component';
 import {DetailFilmComponent} from '../app/Components/component-tuan/detail-film/detail-film.component';
-import {LoginComponent} from "./Components/component-vu/login/login.component";
-import {ResetPasswordComponent} from "./Components/component-vu/reset-password/reset-password.component";
-import {ConfirmPasswordComponent} from "./Components/component-vu/confirm-password/confirm-password.component";
-import {ErrorDisplayComponent} from "./Components/component-vu/error-display/error-display.component";
-import {UserRegistrationComponent} from "./Components/component-hoang/user-registration/user-registration.component";
-import {CarouselComponent} from "./Components/component-hoang/carousel/carousel.component";
-import {MatFormFieldModule} from "@angular/material/form-field";
-import {MatDatepickerModule} from "@angular/material/datepicker";
-import {MatNativeDateModule} from "@angular/material/core";
+import {LoginComponent} from './Components/component-vu/login/login.component';
+import {ResetPasswordComponent} from './Components/component-vu/reset-password/reset-password.component';
+import {ConfirmPasswordComponent} from './Components/component-vu/confirm-password/confirm-password.component';
+import {ErrorDisplayComponent} from './Components/component-vu/error-display/error-display.component';
+import {UserRegistrationComponent} from './Components/component-hoang/user-registration/user-registration.component';
+import {CarouselComponent} from './Components/component-hoang/carousel/carousel.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
 import {ChonGheComponent} from './Components/components-hhien/chon-ghe/chon-ghe.component';
 import { TicketConfirmmComponent } from './Components/component-son/ticket-confirm/ticket-confirm.component';
-import { TicketConfirmmInfoComponent } from './Components/component-son/ticket-confirm-info/ticket-confirm-info.component'; 
+import { TicketConfirmmInfoComponent } from './Components/component-son/ticket-confirm-info/ticket-confirm-info.component';
 import { CustomerComponent } from './Components/component-son/customer/customer.component';
 import { ShowtimesComponent } from './Components/component-tmt/showtimes/showtimes.component';
 import { FilmManagementComponent } from './Components/component-son/film-management/film-management.component';
-import {BookingTicketComponent} from "./Components/component-vu/admin-ticket/booking-ticket/booking-ticket.component";
-import {ConfirmBookingComponent} from "./Components/component-vu/admin-ticket/confirm-booking/confirm-booking.component";
-import {InformationConfirmComponent} from "./Components/component-vu/admin-ticket/information-confirm/information-confirm.component";
+import {BookingTicketComponent} from './Components/component-vu/admin-ticket/booking-ticket/booking-ticket.component';
+import {ConfirmBookingComponent} from './Components/component-vu/admin-ticket/confirm-booking/confirm-booking.component';
+import {InformationConfirmComponent} from './Components/component-vu/admin-ticket/information-confirm/information-confirm.component';
 import {SlideBarManageShowRoomComponent} from './Components/component-viet/ManageShowroom/slide-bar-manage-show-room/slide-bar-manage-show-room.component';
 import { ListShowRoomComponent } from './Components/component-viet/ManageShowroom/list-show-room/list-show-room.component';
 import { ShowroomDetailsComponent } from './Components/component-viet/ManageShowroom/showroom-details/showroom-details.component';
 import { AddSeatComponent } from './Components/component-viet/ManageShowroom/add-seat/add-seat.component';
 import { AddShowroomComponent } from './Components/component-viet/ManageShowroom/add-showroom/add-showroom.component';
 import { MemberComponent } from './Components/component-vu/member/member.component';
-
-
+import { AddFilmComponent } from './Components/component-quy/add-film/add-film.component';
+import { EditFilmComponent } from './Components/component-quy/edit-film/edit-film.component';
+import { ListFilmsComponent } from './Components/component-quy/list-films/list-films.component';
 
 
 const routes: Routes = [
@@ -102,6 +103,9 @@ const routes: Routes = [
       },
 
     ]},
+  {path: 'add-film', component: AddFilmComponent},
+  {path: 'edit-film/:id', component: EditFilmComponent},
+  {path: 'admin-movies', component: ListFilmsComponent},
 ];
 
 @NgModule({
@@ -149,7 +153,10 @@ const routes: Routes = [
   ShowroomDetailsComponent,
   AddSeatComponent,
   AddShowroomComponent,
-  MemberComponent],
+  MemberComponent,
+  AddFilmComponent,
+  EditFilmComponent,
+  ListFilmsComponent],
 
   imports: [RouterModule.forRoot(routes),
   ReactiveFormsModule,
