@@ -17,6 +17,9 @@ public class CustomerServiceImpl implements CustomerService
     private CustomerRepo customerRepo;
 
 
+
+
+
     public CustomerServiceImpl(CustomerRepo customerRepo) {
         this.customerRepo = customerRepo;
     }
@@ -64,5 +67,10 @@ public class CustomerServiceImpl implements CustomerService
     @Override
     public void deleteCustomer(Customer customer) {
         customerRepo.delete(customer);
+    }
+
+    @Override
+    public void deleteCustomerById(Integer id) {
+    customerRepo.deleteById(id);
     }
 }
