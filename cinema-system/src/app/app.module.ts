@@ -1,3 +1,4 @@
+import { HttpService } from "./Services/http.service";
 import { MatInputModule } from "@angular/material/input";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatDatepickerModule } from "@angular/material/datepicker";
@@ -20,8 +21,7 @@ import { httpInteceptorProvider } from "./Services/auth-interceptor";
 import { MovieStatisticComponent } from "./Components/component-toantr/movie-statistic/movie-statistic.component";
 import { AddNewEditEmployeeComponent } from "./Components/component-toantr/add-new-edit-employee/add-new-edit-employee.component";
 import { DatepickerMinMaxComponent } from "./Components/component-toantr/datepicker-min-max/datepicker-min-max.component";
-import { EmployeeUsernameAsyncValidatorDirective } from "./Components/component-toantr/Directives/employee-username-async-validator/employee-username-async-validator.directive";
-import { FullnameTrimDirective } from './Components/component-toantr/Directives/fullname/fullname-trim.directive';
+import { FullnameTrimDirective } from "./Components/component-toantr/Directives/fullname/fullname-trim.directive";
 
 @NgModule({
   declarations: [
@@ -30,7 +30,6 @@ import { FullnameTrimDirective } from './Components/component-toantr/Directives/
     MovieStatisticComponent,
     AddNewEditEmployeeComponent,
     DatepickerMinMaxComponent,
-    EmployeeUsernameAsyncValidatorDirective,
     FullnameTrimDirective,
   ],
   imports: [
@@ -52,6 +51,7 @@ import { FullnameTrimDirective } from './Components/component-toantr/Directives/
       provide: AuthServiceConfig,
       useFactory: socialConfigs,
     },
+    HttpService,
   ],
   bootstrap: [AppComponent],
 })

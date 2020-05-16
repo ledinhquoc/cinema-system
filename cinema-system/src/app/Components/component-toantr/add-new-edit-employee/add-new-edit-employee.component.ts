@@ -1,11 +1,17 @@
-import { Router, ActivatedRoute } from "@angular/router";
-import { Validators, AbstractControl } from "@angular/forms";
-import { HttpService } from "./../../../Services/http.service";
-import { FormGroup, FormControl } from "@angular/forms";
-import { FormBuilder } from "@angular/forms";
-import { Component, OnInit } from "@angular/core";
-import { EmployeeUsernameAsyncValidatorDirective } from "../Directives/employee-username-async-validator/employee-username-async-validator.directive";
 import { Location } from "@angular/common";
+import { Component, OnInit } from "@angular/core";
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+  ValidationErrors,
+} from "@angular/forms";
+import { ActivatedRoute } from "@angular/router";
+import { Observable } from "rxjs";
+import { HttpService } from "./../../../Services/http.service";
+import { AsyncEmployeeValidator } from "./../validators/async-employee.validators";
+import { HttpErrorResponse } from "@angular/common/http";
 
 @Component({
   selector: "app-add-new-edit-employee",
@@ -14,11 +20,12 @@ import { Location } from "@angular/common";
 })
 export class AddNewEditEmployeeComponent implements OnInit {
   employeeForm: FormGroup;
-  mode = "new"; // should not have value, TODO: revert when done testing
+  mode: string; // should not have value, TODO: revert when done testing
   minDate: Date;
   maxDate: Date;
   employee: any;
   isInvalidPassword = true;
+  taskComplete = false;
   constructor(
     private form: FormBuilder,
     private myHttp: HttpService,
@@ -36,7 +43,6 @@ export class AddNewEditEmployeeComponent implements OnInit {
     this.getEmployee()
       .then((emp) => {
         this.employee = emp;
-        console.log("good afternoon", this.employee);
       })
       .then((result) => {
         this.employeeForm = this.initiateForm();
@@ -45,11 +51,10 @@ export class AddNewEditEmployeeComponent implements OnInit {
 
   getEmployee(): Promise<any> {
     if (!this.employee) {
-      console.log("Hi, im in getEmployee() function!");
       if (this.mode === "new") {
         return this.myHttp.getOne("employees/new").toPromise();
       } else if (this.mode === "edit") {
-        return this.myHttp.getById("employees", 1).toPromise();
+        return this.myHttp.getById("employees", 11).toPromise();
       } else {
         console.log("getEmployee() says : unmatched 'mode'!", this.mode);
       }
@@ -64,7 +69,7 @@ export class AddNewEditEmployeeComponent implements OnInit {
         // Validators.pattern(/^\X+[\s]?\X+[\D]+$/),
       ]),
       dateOfBirth: new FormControl(
-        this.employee.dateOfBirth ? new Date(this.employee.dateOfBirth) : "",
+        this.employee?.dateOfBirth ? new Date(this.employee.dateOfBirth) : "",
         [Validators.required]
       ),
       gender: new FormControl(this.employee?.gender || "", [
@@ -74,12 +79,18 @@ export class AddNewEditEmployeeComponent implements OnInit {
         Validators.required,
         Validators.pattern(/^[\d]{9}$/),
       ]),
-      email: new FormControl(this.employee?.email || "", [
-        Validators.required,
-        Validators.pattern(
-          /^[a-zA-Z]{7,20}[\d]{0,3}\@[a-zA-Z]{2,5}\.[a-zA-Z]{2,7}$/
-        ),
-      ]),
+      email: new FormControl(
+        this.employee?.email || "",
+        [
+          Validators.required,
+          Validators.pattern(
+            /^[a-zA-Z]{7,20}[\d]{0,3}\@[a-zA-Z]{2,5}\.[a-zA-Z]{2,7}$/
+          ),
+        ],
+        this.mode === "new"
+          ? [AsyncEmployeeValidator.uniqueEmail.bind(this)]
+          : null
+      ),
       address: new FormControl(this.employee?.address || "", [
         Validators.required,
       ]),
@@ -88,17 +99,18 @@ export class AddNewEditEmployeeComponent implements OnInit {
         Validators.pattern(/^[\d]{9,11}$/),
       ]),
       username: new FormControl(
-        {
-          value: this.employee?.users?.username || "",
-          disabled: this.mode === "edit",
-        },
-        [Validators.required, Validators.pattern(/^[a-zA-Z\d]{5,15}$/)]
-        // [new EmployeeUsernameAsyncValidatorDirective(this.myHttp).validate]
+        this.employee?.users?.username || "",
+        [Validators.required, Validators.pattern(/^[a-zA-Z\d]{5,15}$/)],
+        this.mode === "new"
+          ? [AsyncEmployeeValidator.uniqueUsername.bind(this)]
+          : null
       ),
-      password: new FormControl("", [
-        // Validators.required,
-        Validators.pattern(/^[\S]{5,15}$/),
-      ]),
+      password: new FormControl(
+        "",
+        this.mode === "new"
+          ? [Validators.required, Validators.pattern(/^[\S]{5,15}$/)]
+          : [Validators.pattern(/^[\S]{5,15}$/)]
+      ),
     });
   }
   previousPage() {
@@ -106,20 +118,69 @@ export class AddNewEditEmployeeComponent implements OnInit {
   }
   onRepeatPasswordChange(submitBtn, repeatedPassword) {
     let employeePassword = this.password.value;
-    console.log("good evening", employeePassword);
 
     if (repeatedPassword.value !== employeePassword) {
-      console.log("repeatedPassword.value", repeatedPassword.value);
       submitBtn.disabled = true;
       this.isInvalidPassword = true;
     } else {
-      submitBtn.disabled = false;
+      submitBtn.disabled = this.employeeForm.invalid;
       this.isInvalidPassword = false;
-      console.log(
-        "Hi, im here cus 2nd pw is matched w/ 1st pw. Im gonna print it out, checkout ur self",
-        this.employeeForm
-      );
     }
+  }
+
+  submitEmployee() {
+    console.log(this.employeeForm);
+    let { username, password } = this.employeeForm.value;
+
+    this.employee.users = {
+      id: this.employee.users?.id || 0,
+      username,
+      password: password ? password : this.employee.users.password,
+    };
+    this.employee.address = this.address.value;
+    this.employee.dateOfBirth = this.employeeForm.get("dateOfBirth").value;
+    this.employee.email = this.email.value;
+    this.employee.fullName = this.fullName.value;
+    this.employee.gender = this.gender.value;
+    this.employee.idCard = this.idCard.value;
+    this.employee.phone = this.phone.value;
+
+    let result: Observable<any>;
+
+    switch (this.mode) {
+      case "new":
+        result = this.myHttp.post("employees/new/saved", this.employee);
+        break;
+      case "edit":
+        result = this.myHttp.update("employees/edit/saved", this.employee);
+        break;
+      default:
+        console.log(
+          "No matching value of " +
+            this.mode +
+            " mode.Check switch-case at 156L"
+        );
+    }
+    result.subscribe(
+      (result) => {
+        console.log(result);
+        this.taskComplete = true;
+      },
+      (httpError: HttpErrorResponse) => {
+        console.log("Error Occurred: ", httpError.error);
+
+        if (httpError.status === 406) {
+          let fieldErrors = httpError.error;
+          for (let prop in fieldErrors) {
+            //fieldErrors[prop]->"email.pattern"
+            let errorCode = (<string>fieldErrors[prop]).split(".");
+            let errorObj = {};
+            errorObj[errorCode[1]] = true;
+            this.employeeForm.get(errorCode[0]).setErrors(errorObj);
+          }
+        }
+      }
+    );
   }
 
   get username() {
@@ -145,5 +206,8 @@ export class AddNewEditEmployeeComponent implements OnInit {
   }
   get address() {
     return this.employeeForm.get("address");
+  }
+  get dateOfBirth() {
+    return this.employeeForm.get("dateOfBirth");
   }
 }

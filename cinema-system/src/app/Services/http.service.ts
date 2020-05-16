@@ -23,7 +23,7 @@ export class HttpService {
     });
   }
   update(type: string, data: any) {
-    return this.http.put(`${environment.apiUrl}/${type}/${data.id}`, data, {
+    return this.http.put(`${environment.apiUrl}/${type}`, data, {
       headers: new HttpHeaders().set("content-type", "application/json"),
     });
   }

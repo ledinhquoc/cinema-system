@@ -1,16 +1,20 @@
 <div class="movie-statistic-wrapper">
     <div class="row">
         <select name="statistic-mode" class="col-md-4 form-control" (change)="switchMode(this.$event.target.value)">
-            <option value="thong-ke-phim" [selected]="mode==='movies'">Thong ke phim</option>
-            <option value="thong-ke-thanh-vien" [selected]="mode==='members'">Thong ke thanh vien</option>
-            <option value="thong-ke-the-loai-phim" [selected]="mode==='genres'">Thong ke the loai phim</option>
-            <option value="thong-ke-xuat-chieu" [selected]="mode==='show-times'">Thong ke xuat chieu</option>
-            <option value="thong-ke-thu-nhap" [selected]="mode==='incomes'">Thong ke thu nhap</option>
+            <option value="thong-ke-phim" [selected]="mode==='movies'">Thống kê phim</option>
+            <option value="thong-ke-thanh-vien" [selected]="mode==='members'">Thống kê thành viên</option>
+            <option value="thong-ke-the-loai-phim" [selected]="mode==='genres'">Thống kê loại phim</option>
+            <option value="thong-ke-xuat-chieu" [selected]="mode==='show-times'">Thống kê xuất chiếu</option>
+            <option value="thong-ke-thu-nhap" [selected]="mode==='incomes'">Thống kê thu nhập</option>
         </select>
-        <select name="year-selector" class="col-md-2 form-control" *ngIf="mode==='incomes'&&incomes"
+        <!-- (change)="switchYear(this.$event.target.value)" -->
+        <select name="year-selector" class="col-md-2 form-control" *ngIf="mode==='incomes'"
             (change)="switchYear(this.$event.target.value)">
-            <option [value]="i" *ngFor="let income of incomes;index as i">{{income.year}}</option>
+            <option [value]="year" *ngFor="let year of incomeYears;index as i">{{year}}
+            </option>
         </select>
+        <!-- <input type="text" id="year-input" class="col-md-2 form-control" #yearInput [hidden]="mode!=='incomes'">
+        <button class="btn btn-primary" (click)="switchYear(yearInput.value)">Click me</button> -->
     </div>
     <canvas id="myChart" width="400" height="auto"></canvas>
 </div>
