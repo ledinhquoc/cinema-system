@@ -7,5 +7,6 @@ export class Customer {
   email:string;
   phone:number;
   address:string;
+  isEdit = false;
   user:[]
 }

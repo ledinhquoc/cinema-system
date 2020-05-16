@@ -22,7 +22,7 @@ public interface CustomerService
 
     void deleteCustomer(Customer customer);
 
-    void deleteCustomerById(Integer id);
+    void deleteCustomerById(int id);
 
 
 

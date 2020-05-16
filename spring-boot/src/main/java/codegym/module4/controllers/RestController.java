@@ -313,10 +313,10 @@ public class RestController {
 
     @DeleteMapping("customers/{id}")
     @Transactional
-    public void deleteCustomer(@PathVariable Integer id) {
+    public void deleteCustomer(@PathVariable int id) {
 //        Customer customerToDelete = customerService.findCustomerById(id);
 //        customerService.deleteCustomer(id);
-        System.out.printf("id" + id);
+        System.out.printf( "\n" +"Deleted id :" + id );
 //        customerService.deleteCustomerById(id);
         Query query =
                 entityManager
