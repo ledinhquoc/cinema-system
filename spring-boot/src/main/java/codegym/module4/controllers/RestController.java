@@ -1,12 +1,16 @@
 package codegym.module4.controllers;
 
 import codegym.module4.entities.*;
+import codegym.module4.entities.validators.EmployeeValidator;
+import codegym.module4.helpers.JsonConverter;
 import codegym.module4.repositories.EmployeeRepo;
 import codegym.module4.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityManager;
@@ -65,6 +69,8 @@ public class RestController
     @Autowired
     private RowService rowService;
 
+    @Autowired
+    private EmployeeValidator employeeValidator;
 
     @PersistenceContext
     private EntityManager entityManager;
@@ -304,29 +310,135 @@ public class RestController
         return query.getResultList();
     }
 
-    @GetMapping(path="show-times/top")
-    public List getTopShowTimes(){
-        Query query=
+    @GetMapping(path = "show-times/top")
+    public List getTopShowTimes()
+    {
+        Query query =
                 entityManager.createNativeQuery("call GetTopShowTimes");
 
         return query.getResultList();
     }
 
-    @GetMapping(path="incomes")
-    public List getIncomes(){
-        Query query=
-                entityManager.createNativeQuery("call StatisticIncomes");
+    @GetMapping(path = "incomes/{year}")
+    public List getIncomesByYear(@PathVariable String year)
+    {
+        Query query =
+                entityManager
+                        .createNativeQuery("call GetIncomeStatisticsByYear(:year)")
+                        .setParameter("year", year);
         return query.getResultList();
     }
 
-    @GetMapping(path="employees/new")
-    public Employee getNewEmployee(){
+    @GetMapping(path = "income-years")
+    public List getIncomeYears()
+    {
+        Query query =
+                entityManager.createNativeQuery("call GetIncomeYears");
+        return query.getResultList();
+    }
+
+    @GetMapping(path = "employees/new")
+    public Employee getNewEmployee()
+    {
         return new Employee();
     }
 
     @GetMapping(path = "employees/{id}")
-    public Employee getEmployeeById(@PathVariable int id){
+    public Employee getEmployeeById(@PathVariable int id)
+    {
         return employeeService.findById(id);
+    }
+
+    @GetMapping(path = "employees/check/user-name/{user-name}")
+    public Boolean checkUniqueUsername(@PathVariable("user-name") String username)
+    {
+        Query query =
+                entityManager
+                        .createNativeQuery("call CheckUniqueUsername(:username)")
+                        .setParameter("username", username);
+        return Integer.parseInt(query.getResultList().get(0).toString()) >= 1;
+    }
+
+    @GetMapping(path = "employees/check/email/{email}")
+    public Boolean checkUniqueEmail(@PathVariable("email") String email)
+    {
+        Query query =
+                entityManager
+                        .createNativeQuery("call CheckUniqueEmail(:email)")
+                        .setParameter("email", email);
+
+        return Integer.parseInt(query.getResultList().get(0).toString()) >= 1;
+    }
+
+    @PostMapping(path = "employees/new/saved")
+    public ResponseEntity<String> saveNewEmployee(@RequestBody Employee employee,BindingResult result)
+    {
+        JsonConverter jsonConverter=new JsonConverter();
+        employeeValidator.validate(employee, result);
+
+        if (result.hasErrors())
+        {
+            result.getFieldErrors().forEach(fieldError -> {
+                jsonConverter.addProperty(fieldError.getField(),fieldError.getCode());
+            });
+            return new ResponseEntity<>(jsonConverter.getJsonObject(), HttpStatus.NOT_ACCEPTABLE);
+        }
+
+        userService.save(employee.getUsers());
+        if (employeeService.save(employee) != null)
+        {
+            jsonConverter.addProperty("addOke",true);
+            return new ResponseEntity<>(jsonConverter.getJsonObject(), HttpStatus.CREATED);
+        }
+
+        jsonConverter.addProperty("backEndError",true);
+        return new ResponseEntity<>(jsonConverter.getJsonObject(), HttpStatus.NOT_MODIFIED);
+    }
+
+    @PutMapping(path = "employees/edit/saved", produces = MediaType.APPLICATION_JSON_VALUE)
+    @Transactional
+    public ResponseEntity<String> saveEditedEmployee(@RequestBody Employee employee, BindingResult result)
+    {
+        JsonConverter jsonConverter=new JsonConverter();
+        employeeValidator.validate(employee, result);
+
+        if (result.hasErrors())
+        {
+            result.getFieldErrors().forEach(fieldError -> {
+                jsonConverter.addProperty(fieldError.getField(),fieldError.getCode());
+            });
+            return new ResponseEntity<>(jsonConverter.getJsonObject(), HttpStatus.NOT_ACCEPTABLE);
+        }
+
+        Query query =
+                entityManager
+                        .createNativeQuery("update employee inner join user u on employee.user_id = u.id" +
+                                " set full_name=:fullName," +
+                                "date_of_birth=:dateOfBirth," +
+                                "gender=:gender," +
+                                "id_card=:idCard," +
+                                "email=:email," +
+                                "address=:address," +
+                                "phone=:phone," +
+                                "u.password=:password where employee.id=:id")
+                        .setParameter("fullName", employee.getFullName())
+                        .setParameter("dateOfBirth", employee.getDateOfBirth())
+                        .setParameter("gender", employee.getGender())
+                        .setParameter("idCard", employee.getIdCard())
+                        .setParameter("email", employee.getEmail())
+                        .setParameter("address", employee.getAddress())
+                        .setParameter("phone", employee.getPhone())
+                        .setParameter("password", employee.getUsers().getPassword())
+                        .setParameter("id", employee.getId());
+        if (query.executeUpdate() > 0)
+        {
+            jsonConverter.addProperty("addOke",true);
+            return new ResponseEntity<>(jsonConverter.getJsonObject(), HttpStatus.CREATED);
+        }
+
+        //Else
+        jsonConverter.addProperty("backEndError",true);
+        return new ResponseEntity<>(jsonConverter.getJsonObject(), HttpStatus.NOT_MODIFIED);
     }
 }
 

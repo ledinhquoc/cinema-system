@@ -1,4 +1,4 @@
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
 import { Validators, AbstractControl } from "@angular/forms";
 import { HttpService } from "./../../../Services/http.service";
 import { FormGroup, FormControl } from "@angular/forms";
@@ -23,7 +23,7 @@ export class AddNewEditEmployeeComponent implements OnInit {
     private form: FormBuilder,
     private myHttp: HttpService,
     private location: Location,
-    private router: Router
+    private route: ActivatedRoute
   ) {
     const currentYear = new Date().getFullYear();
     this.minDate = new Date(currentYear - 40, 0, 1);
@@ -31,8 +31,8 @@ export class AddNewEditEmployeeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.employee = history.state?.employee;
-    // this.mode = history.state?.mode;
+    this.employee = this.route.snapshot.data?.employee;
+    this.mode = this.route.snapshot.data.mode;
     this.getEmployee()
       .then((emp) => {
         this.employee = emp;
@@ -99,25 +99,22 @@ export class AddNewEditEmployeeComponent implements OnInit {
         // Validators.required,
         Validators.pattern(/^[\S]{5,15}$/),
       ]),
-      repeatedPassword: new FormControl("", [
-        // Validators.required,
-        Validators.pattern(/^[\S]{5,15}$/),
-      ]),
     });
   }
   previousPage() {
     this.location.back();
   }
-  onRepeatPasswordChange() {
+  onRepeatPasswordChange(submitBtn, repeatedPassword) {
     let employeePassword = this.password.value;
-    let repeatedPassword = this.repeatedPassword.value;
     console.log("good evening", employeePassword);
 
-    if (repeatedPassword !== employeePassword) {
-      console.log("repeatedPassword.value", repeatedPassword);
-      this.employeeForm.setErrors({ notMatchPw: true });
+    if (repeatedPassword.value !== employeePassword) {
+      console.log("repeatedPassword.value", repeatedPassword.value);
+      submitBtn.disabled = true;
+      this.isInvalidPassword = true;
     } else {
-      this.employeeForm.setErrors({ notMatchPw: false });
+      submitBtn.disabled = false;
+      this.isInvalidPassword = false;
       console.log(
         "Hi, im here cus 2nd pw is matched w/ 1st pw. Im gonna print it out, checkout ur self",
         this.employeeForm
@@ -148,8 +145,5 @@ export class AddNewEditEmployeeComponent implements OnInit {
   }
   get address() {
     return this.employeeForm.get("address");
-  }
-  get repeatedPassword() {
-    return this.employeeForm.get("repeatedPassword");
   }
 }

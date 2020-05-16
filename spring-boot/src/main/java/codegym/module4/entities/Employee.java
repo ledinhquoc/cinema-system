@@ -1,6 +1,8 @@
 package codegym.module4.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -44,12 +46,12 @@ public class Employee {
     private String phone;
 
     @OneToOne
-    @JsonBackReference
     @JoinColumn(name = "user_id")
     private User user;
 
     @OneToMany(targetEntity = Ticket.class)
-    @JsonBackReference
+    @JsonIgnore
+//    @JsonManagedReference
     private List<Ticket> tickets;
 
     /**
