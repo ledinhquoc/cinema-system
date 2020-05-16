@@ -61,7 +61,7 @@ export class EditFilmComponent implements OnInit {
       srcImg: [this.srcImg,[Validators.required]],
       srcVideo: [this.srcVideo,[Validators.required]],
     })
-      this.filmService.getFilmById(112).subscribe(data =>{
+      this.filmService.getFilmById(1).subscribe(data =>{
         this.formAddFilm.patchValue(data);
     })
 

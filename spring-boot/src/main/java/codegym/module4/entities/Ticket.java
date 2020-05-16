@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
-
+import java.util.Date;
 
 
 @Entity
@@ -30,6 +30,17 @@ public class Ticket {
 
     @Column(name = "price")
     private double price;
+
+    @Column(name = "date_create")
+    private Date date;
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
 
     @ManyToOne
     @JoinColumn(name = "seat_id")
@@ -64,7 +75,7 @@ public class Ticket {
 
 
     public Ticket(int id, String bookedTicketCode, String orderStatus, int price, Seat seat, TicketPrices ticketPrices
-            , Promotion promotion, Customer customer, Employee employee, MovieSchedules movieSchedules) {
+            , Promotion promotion, Customer customer, Employee employee, MovieSchedules movieSchedules, Date date) {
         this.id = id;
         this.bookedTicketCode = bookedTicketCode;
         this.orderStatus = orderStatus;
@@ -75,6 +86,7 @@ public class Ticket {
         this.customer = customer;
         this.employee = employee;
         this.movieSchedules = movieSchedules;
+        this.date = date;
     }
 
 

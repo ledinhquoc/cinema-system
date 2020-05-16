@@ -38,7 +38,7 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 import {ChonGheComponent} from './Components/components-hhien/chon-ghe/chon-ghe.component';
 import { TicketConfirmmComponent } from './Components/component-son/ticket-confirm/ticket-confirm.component';
-import { TicketConfirmmInfoComponent } from './Components/component-son/ticket-confirm-info/ticket-confirm-info.component'; 
+import { TicketConfirmmInfoComponent } from './Components/component-son/ticket-confirm-info/ticket-confirm-info.component';
 import { CustomerComponent } from './Components/component-son/customer/customer.component';
 import { ShowtimesComponent } from './Components/component-tmt/showtimes/showtimes.component';
 import { FilmManagementComponent } from './Components/component-son/film-management/film-management.component';
@@ -51,6 +51,8 @@ import { ShowroomDetailsComponent } from './Components/component-viet/ManageShow
 import { AddSeatComponent } from './Components/component-viet/ManageShowroom/add-seat/add-seat.component';
 import { AddShowroomComponent } from './Components/component-viet/ManageShowroom/add-showroom/add-showroom.component';
 import { MemberComponent } from './Components/component-vu/member/member.component';
+import {AddFilmComponent} from "./Components/component-quy/add-film/add-film.component";
+import {EditFilmComponent} from "./Components/component-quy/edit-film/edit-film.component";
 
 
 
@@ -102,11 +104,13 @@ const routes: Routes = [
       },
 
     ]},
+  {path: 'add-film', component: AddFilmComponent},
+  {path: 'edit-film/:id', component: EditFilmComponent},
 ];
 
 @NgModule({
 
-  declarations: [TopBarComponent,
+  declarations: [TopBarComponent,AddFilmComponent,EditFilmComponent,
     ChonGheComponent,
     SlideBarComponent,
     InfomationComponent,

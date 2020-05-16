@@ -13,9 +13,7 @@ color: #222;" id="nav-bar" class="navbar navbar-expand-md navbar-custome sticky-
   <div class="collapse navbar-collapse" id="navbarResponsive">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
-
         <a class="nav-link active" href="#"><b>Trang chủ</b></a>
-
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#"><b>Rạp CGV</b></a>
@@ -36,9 +34,10 @@ color: #222;" id="nav-bar" class="navbar navbar-expand-md navbar-custome sticky-
           </button>
           <ul class="dropdown-menu" role="menu">
             <li><a [routerLink]=" ['booking-ticket']" >Quản lí đặt vé</a></li>
-            <li><a href="#">Quản lí nhân viên</a></li>
-            <li><a href="#">Quản lí phim</a></li>
-            <li><a href="#">Quản lí Khách hàng</a></li>
+            <li><a href="#">Quản lý nhân viên</a></li>
+            <li><a href="#">Quản lý phim</a></li>
+            <li><a href="#">Quản lý Khách hàng</a></li>
+            <li><a [routerLink]="['showRoom']">Quản lý rạp phim</a></li>
           </ul>
         </div>
       </li>
