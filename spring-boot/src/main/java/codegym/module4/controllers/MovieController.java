@@ -56,8 +56,7 @@ public class MovieController {
     public ResponseEntity<Movie> updateMovie(
             @PathVariable("id") Integer id,
             @RequestBody Movie movie) {
-        Optional<Movie> currentMovie = movieService
-                .findById(id);
+        Optional<Movie> currentMovie = movieService.findById(id);
 
         if (!currentMovie.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -75,9 +74,19 @@ public class MovieController {
         currentMovie.get().setSrcImg(movie.getSrcImg());
         currentMovie.get().setSrcVideo(movie.getSrcVideo());
 
-
-
         movieService.save(currentMovie.get());
         return new ResponseEntity<>(currentMovie.get(), HttpStatus.OK);
     }
+
+    @PutMapping(path = "/movies/edit")
+    public List<Movie> editAll(@RequestBody List<Movie> movies){
+        System.out.println(movies);
+        return (List<Movie>) movieService.saveAll(movies);
+    }
+    @PostMapping(path = "/movies/add")
+    public List<Movie> saveAll(@RequestBody List<Movie> movies){
+        System.out.println(movies);
+        return (List<Movie>) movieService.saveAll(movies);
+    }
+
 }

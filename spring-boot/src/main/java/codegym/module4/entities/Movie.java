@@ -1,6 +1,8 @@
 package codegym.module4.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -9,6 +11,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "movie")
+@JsonIgnoreProperties("movie_schedules")
 @NamedStoredProcedureQuery(name = "GetMovieByMovieScheduleId",
         procedureName = "GetMovieByMovieScheduleId",
         resultClasses = {Movie.class},
@@ -34,9 +37,13 @@ public class Movie
     @Column(name = "movie_type")
     private String movieType;
 
+    @DateTimeFormat(pattern = "yyyy/MM/dd")
+    @Temporal(value = TemporalType.DATE)
     @Column(name = "date_start")
     private Date dateStart;
 
+    @DateTimeFormat(pattern = "yyyy/MM/dd")
+    @Temporal(value = TemporalType.DATE)
     @Column(name = "date_end")
     private Date dateEnd;
 
@@ -61,7 +68,10 @@ public class Movie
     @Column(name = "srcVideo")
     private String srcVideo;
 
-    @OneToMany(targetEntity = MovieSchedules.class)
+    @OneToMany(targetEntity = MovieSchedules.class,mappedBy = "movie", cascade = CascadeType.ALL)
+
+
+
     @JsonBackReference
     private List<MovieSchedules> movieSchedules;
 

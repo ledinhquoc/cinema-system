@@ -1,11 +1,3 @@
-input {
-border: 0;
-width: 100%;
-
-}
-td {
-padding-bottom: 0;
-}
 .table-wrapper {
 width: 100%;
 margin: 30px auto;
@@ -60,8 +52,9 @@ color: #27C46B;
 table.table td a.edit {
 color: #FFC107;
 }
-table.table td a.delete {
-color: #E34724;
+th, td {
+  
+  padding: 8px;
 }
 
 
@@ -74,6 +67,50 @@ border-radius: 2px;
 table.table .form-control.error {
 border-color: #f50000;
 }
+
+
+table thead{
+  border:1px solid black;
+}
+
+table{
+  border-collapse:collapse;
+  /*border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;*/
+}
+
+.table-primary{
+  border:1px solid black;
+}
+
+table.table td a.edit {
+  color: #FFC107;
+}
 table.table td .add {
-display: none;
+  color: #27C46B;
+}
+table.table td a {
+  cursor: pointer;
+  display: inline-block;
+  margin: 0 5px;
+  min-width: 24px;
+}
+
+body {
+  color: #566787;
+  background: #f7f5f2;
+  font-family: 'Roboto', sans-serif;
+}
+/*div.dataTables_wrapper {
+        width: 800px;
+        margin: 0 auto;
+    }
+*/
+.dtHorizontalVerticalExampleWrapper {
+max-width: 600px;
+margin: 0 auto;
+}
+#dtHorizontalVerticalExample th, td {
+white-space: nowrap;
 }

@@ -37,5 +37,10 @@ public class MovieServiceImpl implements MovieService
         movieRepo.save(movie);
     }
 
+    @Override
+    public List<Movie> saveAll(List<Movie> movies) {
+        return movieRepo.saveAll(movies);
+    }
+
 
 }

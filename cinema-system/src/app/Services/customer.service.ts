@@ -26,9 +26,12 @@ export class CustomerService {
     return this.http.get(this.API3)
   }
   addNewFilm(film): Observable<any> {
-    return this.http.post(this.API3, film)
+    return this.http.post(this.API3+ '/add', film)
   }
-  editFilm(film, filmid): Observable<any>{
-    return this.http.put(this.API3 + '/' + filmid, film)
+  editFilm(film): Observable<any>{
+    return this.http.put(this.API3 + '/edit', film)
   }
+  delFilm(id): Observable<any>{
+  return this.http.delete(this.API3 + '/delete' + id);
+}
 }
