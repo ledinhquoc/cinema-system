@@ -26,9 +26,12 @@ export class CustomerService {
   }
 
   editCustomer(customer, customerid): Observable<any> {
-    return this.http.put(this.API + '/' + customer,customerid)
+    return this.http.put(this.API + '/' + customerid,customer)
   }
-
+  deleteCustomer(customerId):Observable<any>{
+    return this.http.delete(this.API + '/' + customerId)
+  }
+// hhien
 
   getTicketById(ticketId): Observable<any> {
     return this.http.get(this.API2 + '/' + ticketId)
@@ -43,5 +46,6 @@ export class CustomerService {
   editFilm(film, filmid): Observable<any>{
     return this.http.put(this.API3 + '/' + filmid, film)
   }
+
 
 }
