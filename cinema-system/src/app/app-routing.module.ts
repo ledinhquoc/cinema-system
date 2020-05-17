@@ -43,8 +43,7 @@ import { TicketConfirmmInfoComponent } from './Components/component-son/ticket-c
 import { CustomerComponent } from './Components/component-son/customer/customer.component';
 import { ShowtimesComponent } from './Components/component-tmt/showtimes/showtimes.component';
 import { FilmManagementComponent } from './Components/component-son/film-management/film-management.component';
-import { AddFilmComponent } from './Components/component-quy/add-film/add-film.component';
-import { EditFilmComponent } from './Components/component-quy/edit-film/edit-film.component';
+
 
 
 const routes: Routes = [
@@ -132,8 +131,7 @@ const routes: Routes = [
     ShowtimesComponent,
     BanVeComponent,
     FilmManagementComponent,
-    AddFilmComponent,
-    EditFilmComponent],
+    ],
 
   imports: [RouterModule.forRoot(routes),
   ReactiveFormsModule,
