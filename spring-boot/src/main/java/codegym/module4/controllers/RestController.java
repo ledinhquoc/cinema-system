@@ -97,6 +97,18 @@ public class RestController{
         Optional< Ticket > ticket = ticketService.findById(id);
 
         if(!ticket.isPresent()){
+<<<<<<< HEAD
+=======
+=======
+    public ResponseEntity<Ticket> getTicketById(
+            @PathVariable("id") Integer id) {
+
+        Optional<Ticket> ticket = ticketService.findById(id);
+
+        if (!ticket.isPresent())
+        {
+>>>>>>> e5a9a6e0f9fee7f6ad4f3daf814ea95ce72ce173
+>>>>>>> 9d261c8e731328dea96eadec9821a9579d677edd
             return new ResponseEntity<>(ticket.get(),
                     HttpStatus.NO_CONTENT);
         }

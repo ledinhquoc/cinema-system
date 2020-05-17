@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1 m-auto">
+      <div class="contact-form">
+        <h1 style="font-size: 200%" align="left">Xóa khuyến mãi</h1>
+        <hr>
+        <br class="mb-5">
+<!--        <p class="hint-text">Hãy chắc chắn rằng bạn muốn xóa</p>-->
+        <form >
+          <div class="form-group">
+            <b>Hình ảnh</b> <br>
+            <img align="center" src="{{discount.promotionImage}}">
+          </div>
+          <div class="form-group">
+            <b >Tiêu đề</b>
+            <input type="text" class="form-control" placeholder="{{discount.promotionTitle}}" disabled>
+          </div>
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="form-group">
+                <b> Mức giảm giá</b>
+                <input type="text" style="text-align: center" class="form-control" placeholder="{{discount.promotionDiscount}}" disabled>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <b>Thời gian bắt đầu</b>
+                <input  type="text" style="text-align: center" class="form-control" placeholder="{{discount.promotionBeginDate| date:'dd/MM/yyyy'}}" disabled>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <b>Thời gian kết thúc</b>
+                <input type="text" class="form-control" style="text-align: center"  placeholder="{{discount.promotionEndDate| date:'dd/MM/yyyy'}}" disabled>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <b>Chi tiết</b>
+            <input class="form-control" type="text" rows="5" placeholder="{{discount.promotionDescription}}" disabled>
+          </div>
+          <button type="submit" (click)="deleteDiscount()" class="btn btn-danger mt-5 ml-5">Delete</button>
+          <button class="btn btn-primary mt-5" [routerLink]="['/list-discount']"><i class="fa fa-paper-plane" ></i>Back</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

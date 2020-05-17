@@ -11,10 +11,9 @@ import java.util.List;
 
 @Entity
 @Table(name = "promotion")
+@JsonIgnoreProperties("tickets")
 public class Promotion
 {
-
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -26,7 +25,6 @@ public class Promotion
     }
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-
     @Temporal(value = TemporalType.DATE)
     @Column(name = "promotion_end_date")
     private Date promotionEndDate;
@@ -49,11 +47,9 @@ public class Promotion
     @Column(name = "promotion_image")
     private String promotionImage;
 
-
-    @OneToMany(targetEntity = Ticket.class)
+    @OneToMany(targetEntity = Ticket.class,mappedBy = "promotion", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Ticket> tickets;
-
 
     public int getId(){
         return id;
@@ -110,12 +106,12 @@ public class Promotion
     public void setPromotionImage(String promotionImage){
         this.promotionImage = promotionImage;
     }
-//
-//    public List< Ticket > getTickets(){
-//        return tickets;
-//    }
-//
-//    public void setTickets(List< Ticket > tickets){
-//        this.tickets = tickets;
-//    }
+
+    public List< Ticket > getTickets(){
+        return tickets;
+    }
+
+    public void setTickets(List< Ticket > tickets){
+        this.tickets = tickets;
+    }
 }
