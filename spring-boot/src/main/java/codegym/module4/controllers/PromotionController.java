@@ -1,91 +1,64 @@
 package codegym.module4.controllers;
 
-import codegym.module4.entities.Movie;
+
 import codegym.module4.entities.Promotion;
-import codegym.module4.services.MovieService;
+
 import codegym.module4.services.PromotionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
+
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.util.UriComponentsBuilder;
 
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
-@CrossOrigin(origins = "**")
+@CrossOrigin(origins = "*")
 @RestController
 public class PromotionController {
     @Autowired
     private PromotionService promotionService;
+    @PersistenceContext
+    private EntityManager entityManager;
 
-    @GetMapping(value = "/promotions")
-    public ResponseEntity<List<Promotion>> findAll() {
-        List<Promotion> promotions = promotionService.findAll();
-        if (promotions.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-        return new ResponseEntity<>(promotions, HttpStatus.OK);
+    @GetMapping(path = "promotions", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Promotion> getAllPromotions() {
+        return promotionService.findAll();
     }
 
-    @GetMapping(value = "/promotions/{id}",
-            produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Promotion> getMovieById(
-            @PathVariable("id") Integer promotion_id) {
-        Optional<Promotion> promotion = promotionService.findById(promotion_id);
-
-        if (!promotion.isPresent()) {
-            return new ResponseEntity<>(promotion.get(),
-                    HttpStatus.NO_CONTENT);
-        }
-        return new ResponseEntity<>(promotion.get(), HttpStatus.OK) ;
-
+    @GetMapping(path = "promotions/{id}")
+    public Optional<Promotion> getPromotionById(@PathVariable int id){
+        return promotionService.findById(id);
     }
 
-    @PostMapping(value = "/promotions")
-    public ResponseEntity<Void> createPromotion(
-            @RequestBody Promotion promotion,
-            UriComponentsBuilder builder) {
-        promotionService.save(promotion);
-        HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(builder.path("/promotions/{id}")
-                .buildAndExpand(promotion.getId()).toUri());
-        return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
+    @PostMapping(path = "promotions")
+    public Promotion CreatPromotion(@RequestBody Promotion promotion) {
+        return promotionService.save(promotion);
     }
 
-    @PutMapping(value = "/promotions/{id}")
-    public ResponseEntity<Promotion> updatePromotion(
-            @PathVariable("id") Integer id,
-            @RequestBody Promotion promotion) {
-        Optional<Promotion> currentPromotions = promotionService
-                .findById(id);
-
-        if (!currentPromotions.isPresent()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-
-        currentPromotions.get().setPromotionBeginDate(promotion.getPromotionBeginDate());
-        currentPromotions.get().setPromotionEndDate(promotion.getPromotionEndDate());
-        currentPromotions.get().setPromotionDiscount(promotion.getPromotionDiscount());
-        currentPromotions.get().setPromotionDescription(promotion.getPromotionDescription());
-        currentPromotions.get().setPromotionTitle(promotion.getPromotionTitle());
-        currentPromotions.get().setPromotionImage(promotion.getPromotionImage());
-
-        promotionService.save(currentPromotions.get());
-        return new ResponseEntity<>(currentPromotions.get(), HttpStatus.OK);
+    @PostMapping(path = "promotions/add")
+    public List<Promotion> saveAll(@RequestBody List<Promotion> promotions) {
+        return promotionService.saveAll(promotions);
     }
 
-    @DeleteMapping(value = "/promotions/{id}")
-    public ResponseEntity<Promotion> deletePromotion(
-            @PathVariable("id") Integer id) {
-        Optional<Promotion> promotion = promotionService.findById(id);
-        if (!promotion.isPresent()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        promotionService.remove(promotion.get());
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    @PutMapping(path = "promotions/edit")
+    @Transactional
+    public List<Promotion> EditAllPromotion(@RequestBody List<Promotion> promotion) {
+        return (List<Promotion>) promotionService.saveAll(promotion);
+    }
+
+
+    @DeleteMapping(path = "promotions/delete/{id}")
+    @Transactional
+    public void deletePromotion(@PathVariable int id) {
+        Query query = entityManager.createNativeQuery("delete from promotion where promotion.id = :id", Promotion.class)
+                        .setParameter("id", id);
+        query.executeUpdate();
     }
 }

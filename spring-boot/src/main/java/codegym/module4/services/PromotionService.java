@@ -10,13 +10,9 @@ import java.util.Optional;
 public interface PromotionService
 {
     List<Promotion> findAll();
-
     Promotion save(Promotion promotion);
-
-
+    void remove(int id);
     Optional<Promotion> findById(int id);
-    void saveL(Promotion promotion);
-    void remove(Promotion promotion);
-
-
+    List<Promotion> saveAll(List<Promotion> promotions);
 }
+

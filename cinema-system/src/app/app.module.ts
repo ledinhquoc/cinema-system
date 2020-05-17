@@ -1,7 +1,7 @@
-import { HttpService } from "./Services/http.service";
-import { MatInputModule } from "@angular/material/input";
-import { MatFormFieldModule } from "@angular/material/form-field";
-import { MatDatepickerModule } from "@angular/material/datepicker";
+import { HttpService } from './Services/http.service';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { RouterModule } from "@angular/router";
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
@@ -17,7 +17,7 @@ import {
   FacebookLoginProvider,
 } from "angularx-social-login";
 import { MemberComponent } from "./Components/component-vu/member/member.component";
-import { httpInteceptorProvider } from "./Services/auth-interceptor";
+import { httpInteceptorProvider } from './Services/auth-interceptor';
 import { MovieStatisticComponent } from "./Components/component-toantr/movie-statistic/movie-statistic.component";
 import { AddNewEditEmployeeComponent } from "./Components/component-toantr/add-new-edit-employee/add-new-edit-employee.component";
 import { DatepickerMinMaxComponent } from "./Components/component-toantr/datepicker-min-max/datepicker-min-max.component";
@@ -52,9 +52,8 @@ import { PaypalComponent } from './Components/component-vu/admin-ticket/paypal/p
     AuthService,
     httpInteceptorProvider,
     CookieService,
-  ]
-  ,
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, ReactiveFormsModule],
+  ],
+  imports: [ BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, ReactiveFormsModule],
   providers: [AuthService,
 
     {

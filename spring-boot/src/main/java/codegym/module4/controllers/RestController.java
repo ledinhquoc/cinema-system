@@ -92,7 +92,6 @@ public class RestController {
 
     @GetMapping(value = "/tickets/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Ticket> getTicketById(
-
             @PathVariable("id") Integer id) {
 
         Optional<Ticket> ticket = ticketService.findById(id);
