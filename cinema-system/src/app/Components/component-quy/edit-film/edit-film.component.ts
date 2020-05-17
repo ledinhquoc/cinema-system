@@ -43,7 +43,7 @@ export class EditFilmComponent implements OnInit {
   actor: any;
   movieStudio: any;
   directors: any;
-  durations: any;
+  duration: any;
   content: any;
   srcVideo: any;
   srcImg: any;
@@ -51,6 +51,7 @@ export class EditFilmComponent implements OnInit {
   // ischeckform: boolean= true;
   isCheckFormDay = false;
   checkTypeMovie: string[];
+  istime: any;
   ngOnInit(): void {
     this.formAddFilm = this.formBuilder.group({
       movieName: [this.movieName,[Validators.required]],
@@ -60,7 +61,7 @@ export class EditFilmComponent implements OnInit {
       movieStudio: [this.movieStudio,[Validators.required]],
       directors: [this.directors,[Validators.required]],
       actor: [this.actor,[Validators.required]],
-      duration: [this.durations,[Validators.required]],
+      duration: [this.duration,[Validators.required]],
       content: [this.content,[Validators.required]],
       srcImg: [this.srcImg,[Validators.required]],
       srcVideo: [this.srcVideo,[Validators.required]],
@@ -144,22 +145,27 @@ export class EditFilmComponent implements OnInit {
 
 
     this.movieTypeAction = this.movieTypeAction.substr(1,this.movieTypeAction.length);
+    this.srcImg = this.srcImg.split('\\')
+    this.srcImg = this.srcImg[(this.srcImg.length)-1]
     this.submitted = true;
     this.srcImg = this.srcImg.split('\\')
     this.srcImg = this.srcImg[(this.srcImg.length)-1]
     if(this.formAddFilm.invalid && this.movieTypeAction !== ''){
       this.submitted = true ;
       alert('Vui lòng kiểm tra lại thông tin');
-    }else
+    }
+    if(this.duration <= 50){
+      this.istime = true ;
+    }else {this.istime = false}
+
       if(this.dateEnd <= this.dateStart  ){
-      alert('Ngày kết thúc phải lớn hơn ngày bắt đầu')
-    }else if (this.movieTypeAction === ''){
-        alert('vui lòng chon thể loại phim')
+        this.isCheckFormDay = true ;
+    }else{this.isCheckFormDay = false}
+
+      if (this.movieTypeAction === ''){
       }
-      else  if (this.formAddFilm.invalid === false){
+      if (this.formAddFilm.invalid === false && this.dateEnd > this.dateStart && this.duration > 50 && this.movieTypeAction !== ''){
         this.ngOnInit()
-        this.srcImg = this.srcImg.split('\\')
-        this.srcImg = this.srcImg[(this.srcImg.length)-1]
       this.filmService.updateFilm(this.formAddFilm.value,this.id).subscribe(data=>{
         console.log(data)
         this.router.navigateByUrl('admin-movies').then(r => null);

@@ -7,11 +7,16 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import javax.validation.Valid;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @CrossOrigin(origins = "http://localhost:4200")
@@ -19,6 +24,19 @@ import java.util.Optional;
 public class MovieController {
     @Autowired
     private MovieService movieService;
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public Map<String, String> handleValidationExceptions(
+            MethodArgumentNotValidException ex) {
+        Map<String, String> errors = new HashMap<>();
+        ex.getBindingResult().getAllErrors().forEach((error) -> {
+            String fieldName = ((FieldError) error).getField();
+            String errorMessage = error.getDefaultMessage();
+            errors.put(fieldName, errorMessage);
+        });
+        return errors;
+    }
 
     @GetMapping(value = "/movies")
     public ResponseEntity<List<Movie>> findAllMovie() {
@@ -44,11 +62,11 @@ public class MovieController {
     @RequestMapping(value = "/movies",
             method = RequestMethod.POST)
     public ResponseEntity<Movie> createProduct(
-            @RequestBody Movie movie,
+            @Valid @RequestBody Movie movie,
             UriComponentsBuilder builder) {
-        movieService.save(movie);
+            movieService.save(movie);
         HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(builder.path("/products/{id}")
+        headers.setLocation(builder.path("/movies/{id}")
                 .buildAndExpand(movie.getId()).toUri());
         return new ResponseEntity<>(movie, HttpStatus.CREATED);
     }
@@ -56,28 +74,28 @@ public class MovieController {
             method = RequestMethod.PUT)
     public ResponseEntity<Movie> updateProduct(
             @PathVariable("id") Integer id,
-            @RequestBody Movie movie) {
-        Optional<Movie> currentMovie= movieService
+            @Valid @RequestBody Movie movie) {
+        Optional<Movie> currentMovie = movieService
                 .findById(id);
 
         if (!currentMovie.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
+            currentMovie.get().setMovieName(movie.getMovieName());
+            currentMovie.get().setMovieType(movie.getMovieType());
+            currentMovie.get().setDateStart(movie.getDateStart());
+            currentMovie.get().setDateEnd(movie.getDateEnd());
+            currentMovie.get().setMovieStudio(movie.getMovieStudio());
+            currentMovie.get().setDirectors(movie.getDirectors());
+            currentMovie.get().setActor(movie.getActor());
+            currentMovie.get().setDuration(movie.getDuration());
+            currentMovie.get().setContent(movie.getContent());
+            currentMovie.get().setSrcImg(movie.getSrcImg());
+            currentMovie.get().setSrcVideo(movie.getSrcVideo());
 
-        currentMovie.get().setMovieName(movie.getMovieName());
-        currentMovie.get().setMovieType(movie.getMovieType());
-        currentMovie.get().setDateStart(movie.getDateStart());
-        currentMovie.get().setDateEnd(movie.getDateEnd());
-        currentMovie.get().setMovieStudio(movie.getMovieStudio());
-        currentMovie.get().setDirectors(movie.getDirectors());
-        currentMovie.get().setActor(movie.getActor());
-        currentMovie.get().setDuration(movie.getDuration());
-        currentMovie.get().setContent(movie.getContent());
-        currentMovie.get().setSrcImg(movie.getSrcImg());
-        currentMovie.get().setSrcVideo(movie.getSrcVideo());
+            movieService.save(currentMovie.get());
+            return new ResponseEntity<>(currentMovie.get(), HttpStatus.OK);
 
-        movieService.save(currentMovie.get());
-        return new ResponseEntity<>(currentMovie.get(), HttpStatus.OK);
     }
     @RequestMapping(value = "/movies/{id}",
             method = RequestMethod.DELETE)

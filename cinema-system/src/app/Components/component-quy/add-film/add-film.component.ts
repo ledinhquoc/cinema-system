@@ -49,6 +49,7 @@ export class AddFilmComponent implements OnInit {
   sicImgSave: string ;
   // ischeckform: boolean= true;
   isCheckFormDay = false;
+  istime: boolean = false;
 
   ngOnInit(): void {
     this.formAddFilm = this.formBuilder.group({
@@ -64,7 +65,6 @@ export class AddFilmComponent implements OnInit {
       srcImg: [this.srcImg,[Validators.required]],
       srcVideo: [this.srcVideo,[Validators.required]],
     })
-
   }
   checkValue(event: any){
   }
@@ -111,12 +111,16 @@ export class AddFilmComponent implements OnInit {
     if(this.formAddFilm.invalid){
       this.submitted = true;
     }
+    if(this.duration <= 50){
+      this.istime = true ;
+    }else {this.istime = false;}
+
     if(this.dateEnd <= this.dayStart){
-      // this.isCheckFormDay = true ;
-         alert('Ngày kết thúc phải lớn hơn ngày bắt đầu')
-    } else if (this.formAddFilm.invalid === false){
+      this.isCheckFormDay = true ;
+    } else {this.isCheckFormDay = false}
+
+    if (this.formAddFilm.invalid === false && this.dateEnd > this.dayStart &&  this.duration > 50){
       this.filmService.addNewFilm(this.formAddFilm.value).subscribe(data=>{
-      console.log(data);
       this.router.navigateByUrl('admin-movies').then(r => null);
       });
     }

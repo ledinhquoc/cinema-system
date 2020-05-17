@@ -41,7 +41,7 @@
     <div class="col-sm-3">
       <input  type="date" value="{{dateEnd | date: 'yyyy-MM-dd'}}"
               formControlName="dateEnd" [(ngModel)]="dateEnd" min="{{dateStart}}" class="form-control">
-      <!--        <p  *ngIf="isCheckFormDay" style="color: red">Ngày kết thúc phải lớn hơn ngày bắt đầu</p>-->
+              <p  *ngIf="isCheckFormDay" style="color: red">Ngày kết thúc phải lớn hơn ngày bắt đầu</p>
       <p *ngIf="submitted && f.dateEnd.errors  "
          style="color: red">Vui lòng chọn ngày kết thúc</p>
     </div>
@@ -70,9 +70,11 @@
     <div class="form-group row">
       <label class="col-sm-2 col-form-label d-flex justify-content-end  ">Thời lượng <span style="color: red">(*)</span></label>
       <div class="col-sm-7">
-        <input formControlName="duration" [(ngModel)]="durations" type="number" class="form-control"  placeholder="">
+        <input formControlName="duration" [(ngModel)]="duration" type="number" class="form-control"  placeholder="">
         <p *ngIf="submitted && f.duration.errors  "
            style="color: red">Vui lòng nhập thời lượng</p>
+        <p *ngIf="istime"
+           style="color: red">Thời lượng phim lớn hơn 50 phút</p>
       </div>
     </div>
     <!--    <div class="form-group row">-->
