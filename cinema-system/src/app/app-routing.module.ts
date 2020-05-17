@@ -40,9 +40,7 @@ import { UserRegistrationComponent } from "./Components/component-hoang/user-reg
 import { CarouselComponent } from "./Components/component-hoang/carousel/carousel.component";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatNativeDateModule } from "@angular/material/core";
-import { MemberComponent } from "./Components/component-vu/member/member.component";
 import { ChonGheComponent } from "./Components/components-hhien/chon-ghe/chon-ghe.component";
-import { ShowtimesComponent } from "./Components/components-hhien/showtimes/showtimes.component";
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { TicketConfirmmComponent } from './Components/component-son/ticket-confirm/ticket-confirm.component';
 import { TicketConfirmmInfoComponent } from './Components/component-son/ticket-confirm-info/ticket-confirm-info.component';
@@ -64,9 +62,8 @@ import { EditPromotionComponent } from './Components/component-quoc/edit-promoti
 import { AddFilmComponent } from './Components/component-quy/add-film/add-film.component';
 import { EditFilmComponent } from './Components/component-quy/edit-film/edit-film.component';
 import { ListFilmsComponent } from './Components/component-quy/list-films/list-films.component';
-
-
-
+import { ListDiscountComponent } from './Components/component-tuan/list-discount/list-discount.component';
+import {DeleteDiscountComponent} from "./Components/component-tuan/delete-discount/delete-discount.component";
 
 
 const routes: Routes = [
@@ -75,6 +72,8 @@ const routes: Routes = [
   {path: 'add-promotion', component: AddPromotionComponent},
   {path: 'edit-promotion/:id', component: EditPromotionComponent},
   {path: 'film-detail/:id', component: DetailFilmComponent},
+  {path: 'list-discount', component: ListDiscountComponent},
+  {path: 'delete-discount/:id', component: DeleteDiscountComponent},
 
   {
     path: ":id/account",
@@ -122,6 +121,7 @@ const routes: Routes = [
   {path: 'movieSchedules', component: ShowtimesComponent},
   {path: 'chonGhe', component: ChonGheComponent},
   {path: 'showRoom', component: SlideBarManageShowRoomComponent,
+
     children: [{
       path: '', component: ListShowRoomComponent,
     },
@@ -227,8 +227,11 @@ const routes: Routes = [
     EditFilmComponent,
     ListFilmsComponent,
     AddPromotionComponent,
-    EditPromotionComponent],
+    EditPromotionComponent,
+    ListDiscountComponent,
+    DeleteDiscountComponent],
   
+
   imports: [RouterModule.forRoot(routes),
     ReactiveFormsModule,
     FormsModule,

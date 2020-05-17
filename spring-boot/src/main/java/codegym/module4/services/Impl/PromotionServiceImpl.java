@@ -14,31 +14,31 @@ import java.util.Optional;
 @Transactional
 public class PromotionServiceImpl implements PromotionService
 {
-    @Autowired
-    private PromotionRepo promotionRepo;
-    @Override
-    public List<Promotion> findAll()
-    {
-        return promotionRepo.findAll();
-    }
+        @Autowired
+        private PromotionRepo promotionRepo;
+        @Override
+        public List<Promotion> findAll()
+        {
+            return promotionRepo.findAll();
+        }
 
-    @Override
-    public Promotion save(Promotion promotion) {
-        return promotionRepo.save(promotion);
-    }
+        @Override
+        public Promotion save(Promotion promotion) {
+            return promotionRepo.save(promotion);
+        }
 
-    public Optional<Promotion> findById(int id) {
-        return promotionRepo.findById(id);
-    }
+        @Override
+        public void remove(int id) {
+            promotionRepo.deleteById(id);
+        }
 
-    @Override
-    public void saveL(Promotion promotion) {
-         promotionRepo.save(promotion);
-    }
+        @Override
+        public Optional<Promotion> findById(int id) {
+            return promotionRepo.findById(id);
+        }
 
-    @Override
-    public void remove(Promotion promotion) {
-         promotionRepo.delete(promotion);
-
-    }
+        @Override
+        public List<Promotion> saveAll(List<Promotion> promotions) {
+            return promotionRepo.saveAll(promotions);
+        }
 }
