@@ -6,6 +6,7 @@ export class Promotions {
   promotionTitle: string;
   promotionDescription: string;
   promotionImage: string;
+  isEdit :boolean;
   constructor() {
   }
 }

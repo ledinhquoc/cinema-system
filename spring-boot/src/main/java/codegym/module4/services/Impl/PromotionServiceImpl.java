@@ -23,17 +23,23 @@ public class PromotionServiceImpl implements PromotionService
     }
 
     @Override
+    public Promotion save(Promotion promotion) {
+        return promotionRepo.save(promotion);
+    }
+
+    @Override
+    public void remove(int id) {
+         promotionRepo.deleteById(id);
+    }
+
+    @Override
     public Optional<Promotion> findById(int id) {
-        return promotionRepo.findById(id);
+       return promotionRepo.findById(id);
     }
 
     @Override
-    public void save(Promotion promotion) {
-         promotionRepo.save(promotion);
+    public List<Promotion> saveAll(List<Promotion> promotions) {
+        return promotionRepo.saveAll(promotions);
     }
 
-    @Override
-    public void remove(Promotion promotion) {
-         promotionRepo.delete(promotion);
-    }
 }

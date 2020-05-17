@@ -1,6 +1,8 @@
 package codegym.module4.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -62,7 +64,7 @@ public class Movie
     private String srcVideo;
 
     @OneToMany(targetEntity = MovieSchedules.class)
-    @JsonBackReference
+    @JsonIgnore
     private List<MovieSchedules> movieSchedules;
 
     /**

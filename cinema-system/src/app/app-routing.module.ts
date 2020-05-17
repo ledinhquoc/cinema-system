@@ -39,6 +39,7 @@ import {MemberComponent} from './Components/component-vu/member/member.component
 import {ChonGheComponent} from './Components/components-hhien/chon-ghe/chon-ghe.component';
 import {ShowtimesComponent} from './Components/components-hhien/showtimes/showtimes.component';
 import { ListDiscountComponent } from './Components/component-tuan/list-discount/list-discount.component';
+import {DeleteDiscountComponent} from "./Components/component-tuan/delete-discount/delete-discount.component";
 
 
 const routes: Routes = [
@@ -77,6 +78,7 @@ const routes: Routes = [
   {path: 'movieSchedules', component: ShowtimesComponent},
   {path: 'chonGhe', component: ChonGheComponent},
   {path: 'list-discount', component: ListDiscountComponent},
+  {path: 'delete-discount/:id', component: DeleteDiscountComponent},
 
 ];
 
@@ -111,21 +113,21 @@ const routes: Routes = [
                 UserRegistrationComponent,
                 ChonGheComponent,
                 ShowtimesComponent,
-                ListDiscountComponent,],
+                ListDiscountComponent,DeleteDiscountComponent],
   imports: [RouterModule.forRoot(routes),
-  ReactiveFormsModule,
-  FormsModule,
-  CommonModule,
-  MatDialogModule,
-  MatButtonModule,
-  MatIconModule,
-  MatSnackBarModule,
-  NgxPaginationModule,
-  Ng2SearchPipeModule,
-  MaterialModule,
-  MatFormFieldModule,
-  MatDatepickerModule,
-  MatNativeDateModule],
+    ReactiveFormsModule,
+    FormsModule,
+    CommonModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatIconModule,
+    MatSnackBarModule,
+    NgxPaginationModule,
+    Ng2SearchPipeModule,
+    MaterialModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatNativeDateModule],
   exports: [RouterModule, TopBarComponent, SlideBarComponent],
   entryComponents: [MatConfirmDialogComponent],
 

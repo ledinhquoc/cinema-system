@@ -31,14 +31,13 @@ export class FilmService {
   getPromotionById(id: number): Observable<any> {
     return this.http.get(this.baseUrlPromotion + '/' + id);
   }
-
-  createPromotion(obj: any): Observable<any> {
-    return this.http.post(this.baseUrlPromotion , obj);
+  createAllPromotion(promotion): Observable<any> {
+    return this.http.post(this.baseUrlPromotion + '/add' , promotion);
   }
   deletePromotion(id: number): Observable<any> {
-    return this.http.delete<any>(this.baseUrlPromotion + '/' + id);
+    return this.http.delete<any>(this.baseUrlPromotion + '/delete/' + id);
   }
-  editPromotion(promotions, id): Observable<any> {
-    return this.http.put(this.baseUrlPromotion + '/' + id, promotions);
+  editAllPromotion(promotion): Observable<any> {
+    return this.http.put(this.baseUrlPromotion +'/edit' ,promotion);
   }
 }
