@@ -22,10 +22,14 @@ import { MovieStatisticComponent } from "./Components/component-toantr/movie-sta
 import { AddNewEditEmployeeComponent } from "./Components/component-toantr/add-new-edit-employee/add-new-edit-employee.component";
 import { DatepickerMinMaxComponent } from "./Components/component-toantr/datepicker-min-max/datepicker-min-max.component";
 import { FullnameTrimDirective } from "./Components/component-toantr/Directives/fullname/fullname-trim.directive";
+import {CookieService} from "ngx-cookie-service";
+import { PaypalComponent } from './Components/component-vu/admin-ticket/paypal/paypal.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
+    PaypalComponent,
     MemberComponent,
     MovieStatisticComponent,
     AddNewEditEmployeeComponent,
@@ -47,6 +51,12 @@ import { FullnameTrimDirective } from "./Components/component-toantr/Directives/
   providers: [
     AuthService,
     httpInteceptorProvider,
+    CookieService,
+  ]
+  ,
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, ReactiveFormsModule],
+  providers: [AuthService,
+
     {
       provide: AuthServiceConfig,
       useFactory: socialConfigs,

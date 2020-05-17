@@ -28,7 +28,8 @@
               "src/styles.css"
             ],
             "scripts": [
-             "src/assets/lib/js/smtp.js"
+             "src/assets/lib/js/smtp.js",
+             "src/assets/lib/js/discount.js"
             ]
           },
           "configurations": {

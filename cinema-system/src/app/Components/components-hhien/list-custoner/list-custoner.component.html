@@ -1,0 +1,95 @@
+<div class="container">
+<!--    <div class="table-wrapper">-->
+<!--      <div class="table-title">-->
+<!--        <div class="row">-->
+<!--          <div class="col-sm-8"><h2>Employee <b>Details</b></h2></div>-->
+<!--          <div class="col-sm-4">-->
+<!--            <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add New</button>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <table class="table table-bordered">-->
+<!--        <thead>-->
+<!--        <tr>-->
+<!--          <th>Id</th>-->
+<!--          <th>Name</th>-->
+<!--          <th>Date</th>-->
+<!--          <th>Gender</th>-->
+<!--          <th>ID Card</th>-->
+<!--          <th>Email</th>-->
+<!--          <th>Address</th>-->
+<!--          <th>Phone Number</th>-->
+<!--        </tr>-->
+<!--        </thead>-->
+<!--        <tbody>-->
+<!--        <tr *ngFor="let property of customers">-->
+<!--          <td>{{property.id}}</td>-->
+<!--          <td>{{property.fullName}}</td>-->
+<!--          <td>{{property.birthday}}</td>-->
+<!--          <td>{{property.gender}}</td>-->
+<!--          <td>{{property.idCard}}</td>-->
+<!--          <td>{{property.email}}</td>-->
+<!--          <td>{{property.address}}</td>-->
+<!--          <td>-->
+<!--            <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>-->
+<!--            <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>-->
+<!--            <a class="delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>-->
+<!--          </td>-->
+<!--        </tr>-->
+<!--        </tbody>-->
+<!--      </table>-->
+<!--    </div>-->
+
+  <div class="mt-5">
+    <button (click)="newRow()" class="btn btn-success "><i class="material-icons">&#xE03B;</i></button>
+    <table class="table table-hover">
+      <thead>
+      <tr class="bg-info">
+        <th>#</th>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Date</th>
+        <th>Gender</th>
+        <th>ID Card</th>
+        <th>Email</th>
+        <th>Phone Number</th>
+
+        <th>Address</th>
+        <th>Actions</th>
+
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let customer of customerArray ; let i = index">
+        <!--        <td>{{customer.id}} </td>-->
+        <td><p>{{i}}</p></td>
+        <td><input type="text" [ngModel]="customerArray[i].id" class="form-control"></td>
+        <!--        <td>{{customer.fullName}}</td>-->
+        <td><input type="text" [ngModel]="customerArray[i].fullName" class="form-control"></td>
+        <!--        <td>{{customer.birthday}}</td>-->
+        <td><input type="text" [ngModel]="customerArray[i].birthday" class="form-control"></td>
+        <!--        <td>{{customer.gender}}</td>-->
+        <td><input type="text" [ngModel]="customerArray[i].gender" class="form-control"></td>
+        <!--        <td>{{customer.idCard}}</td>-->
+        <td><input type="text" [ngModel]="customerArray[i].idCard" class="form-control"></td>
+        <!--        <td>{{customer.email}}</td>-->
+        <td><input type="text" [ngModel]="customerArray[i].email" class="form-control"></td>
+        <!--        <td>{{customer.phone}}</td>-->
+        <td><input type="text" [ngModel]="customerArray[i].phone" class="form-control"></td>
+        <!--        <td>{{customer.address}}</td>-->
+        <td><input type="text" [ngModel]="customerArray[i].address" class="form-control"></td>
+        <td>
+<!--          <button (click)="edit(customer.id)"class="btn btn-danger"><i class="fa fa-pen fa-2x"></i></button>-->
+<!--          <button (click)="delete(customerArray[customer.id-1])"class="btn btn-danger"><i class="fa fa-trash fa-2x"></i></button>-->
+<!--          <a (click)="addRow(i)" class=" "><i class="material-icons">&#xE254;</i></a>-->
+                      <a  (click)="addRow(i)" title="Edit" data-toggle="tooltip"><i class="material-icons " style="color: yellow">&#xE254;</i></a>
+                      <a class="delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+</div>

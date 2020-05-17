@@ -263,6 +263,11 @@ public class RestController
 
         return userService.save(user);
     }
+    @GetMapping("roles")
+        public List<Role> getAllRole(){
+        return roleService.findAll();
+        }
+
 
     @GetMapping(path = "/roles/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Role getRoleById(@PathVariable int id)
@@ -439,6 +444,32 @@ public class RestController
         //Else
         jsonConverter.addProperty("backEndError",true);
         return new ResponseEntity<>(jsonConverter.getJsonObject(), HttpStatus.NOT_MODIFIED);
+      @GetMapping(path = "rowsByShowRoom/{id}")
+    public List<Row> getRowByShowRoom(@PathVariable ShowRoom id){
+
+        return rowService.findByShowRoom(id);
+    }
+    @PostMapping(path = "show-rooms")
+    public ShowRoom CreatShowroom(@RequestBody ShowRoom showRoom){
+        return showRoomService.creat(showRoom);
+    }
+
+    @PutMapping(path = "seats/{id}")
+    public Seat UpdateSeat(@PathVariable int id,@RequestBody Seat seat){
+        Seat seatUpdate= seatService.findById(id);
+        seatUpdate.setVip(seat.isVip());
+        return seatService.updateSeat(seatUpdate);
+    }
+
+    @PostMapping(path = "seats")
+    public Seat CreatSeats(@RequestBody Seat seat){
+        return seatService.updateSeat(seat);
+    }
+
+    @PostMapping(path = "promotion/new")
+    public Promotion CreatSeats(@RequestBody Promotion promotion){
+        return promotionService.save(promotion);
+
     }
 }
 

@@ -1,9 +1,8 @@
 package codegym.module4.entities;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import javax.persistence.*;
 
 
@@ -26,38 +25,43 @@ public class Ticket
     @Column(name = "booked_ticket_code")
     private String bookedTicketCode;
 
-
     @Column(name = "order_status")
     private String orderStatus;
 
-
     @Column(name = "price")
-    private int price;
+    private double price;
 
     @ManyToOne
     @JoinColumn(name = "seat_id")
+
     private Seat seat;
 
     @ManyToOne
     @JoinColumn(name = "ticket_price_id")
+
     private TicketPrices ticketPrices;
 
     @ManyToOne
     @JoinColumn(name = "promotion_id")
+
     private Promotion promotion;
 
     @ManyToOne
     @JoinColumn(name = "customer_id")
+
     private Customer customer;
 
     @ManyToOne
     @JoinColumn(name = "employee_id")
+
 //    @JsonBackReference
 //    @JsonIgnore
+
     private Employee employee;
 
     @ManyToOne
     @JoinColumn(name = "movie_schedule_id")
+
     private MovieSchedules movieSchedules;
 
 
@@ -130,16 +134,20 @@ public class Ticket
     /**
      * @return the price
      */
+
     public int getPrice()
     {
+
         return price;
     }
 
     /**
      * @param price the price to set
      */
+
     public void setPrice(int price)
     {
+
         this.price = price;
     }
 

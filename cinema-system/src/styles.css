@@ -21,6 +21,7 @@ mat-confirm-dialog
   .confirm-dialog-container
   .mat-dialog-container {
   border-radius: 0.25em 0.25em 0.4em 0.4em;
+
   padding: 0px;
 }
 .confirm-dialog-container .content-container {
@@ -76,3 +77,5 @@ snack-bar-container.notification simple-snack-bar {
 .hide {
   display: none;
 }
+
+
