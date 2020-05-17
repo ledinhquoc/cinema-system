@@ -57,6 +57,8 @@ import { ShowroomDetailsComponent } from './Components/component-viet/ManageShow
 import { AddSeatComponent } from './Components/component-viet/ManageShowroom/add-seat/add-seat.component';
 import { AddShowroomComponent } from './Components/component-viet/ManageShowroom/add-showroom/add-showroom.component';
 import { MemberComponent } from './Components/component-vu/member/member.component';
+import {AddFilmComponent} from "./Components/component-quy/add-film/add-film.component";
+import {EditFilmComponent} from "./Components/component-quy/edit-film/edit-film.component";
 
 
 const routes: Routes = [
@@ -115,6 +117,9 @@ const routes: Routes = [
       },
 
     ]},
+
+  {path: 'add-film', component: AddFilmComponent},
+  {path: 'edit-film/:id', component: EditFilmComponent},
   {path:'list-customer',component: ListCustonerComponent},
    {
     path: "thong-ke-phim",
@@ -151,12 +156,15 @@ const routes: Routes = [
     component: AddNewEditEmployeeComponent,
     data: { mode: "edit" },
   }   
+
 ];
 
 @NgModule({
-
   declarations: [TopBarComponent,
     ListCustonerComponent,
+  AddFilmComponent,
+  EditFilmComponent,
+
     ChonGheComponent,
     SlideBarComponent,
     InfomationComponent,
