@@ -16,8 +16,7 @@ import {
   AuthServiceConfig,
   FacebookLoginProvider,
 } from "angularx-social-login";
-import { MemberComponent } from "./Components/component-vu/member/member.component";
-import { httpInteceptorProvider } from "./Services/auth-interceptor";
+
 import { MovieStatisticComponent } from "./Components/component-toantr/movie-statistic/movie-statistic.component";
 import { AddNewEditEmployeeComponent } from "./Components/component-toantr/add-new-edit-employee/add-new-edit-employee.component";
 import { DatepickerMinMaxComponent } from "./Components/component-toantr/datepicker-min-max/datepicker-min-max.component";
@@ -37,7 +36,7 @@ registerLocaleData(en);
   declarations: [
     AppComponent,
     PaypalComponent,
-    MemberComponent,
+  
     MovieStatisticComponent,
     AddNewEditEmployeeComponent,
     DatepickerMinMaxComponent,
@@ -55,14 +54,7 @@ registerLocaleData(en);
     MatInputModule,
     FormsModule,
   ],
-  providers: [
-    AuthService,
-    httpInteceptorProvider,
-    CookieService,
-  ]
-  ,
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, ReactiveFormsModule],
-<<<<<<< HEAD
+  
   providers: [AuthService,CookieService,FilmService,
     {
       provide: AuthServiceConfig,
@@ -74,17 +66,6 @@ registerLocaleData(en);
     
   bootstrap: [AppComponent]
 
-=======
-  providers: [AuthService,
-
-    {
-      provide: AuthServiceConfig,
-      useFactory: socialConfigs,
-    },
-    HttpService,
-  ],
-  bootstrap: [AppComponent],
->>>>>>> e5a9a6e0f9fee7f6ad4f3daf814ea95ce72ce173
 })
 export class AppModule {}
 

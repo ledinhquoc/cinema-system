@@ -29,7 +29,7 @@ public class Ticket
     private String orderStatus;
 
     @Column(name = "price")
-    private double price;
+    private int price;
 
     @Column(name = "date_create")
     private Date date;
