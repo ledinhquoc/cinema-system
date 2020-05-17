@@ -6,6 +6,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { TopBarComponent } from "./Components/component-viet/TopBar/top-bar/top-bar.component";
 import { SlideBarComponent } from "./Components/component-viet/SlideBar/slide-bar/slide-bar.component";
 
+
 import { InfomationComponent } from "./Components/component-viet/InformationAccount/infomation/infomation.component";
 import { HomeAccountComponent } from "./Components/component-viet/home-account/home-account.component";
 import { HistoryTicketComponent } from "./Components/component-viet/Tickes/history-ticket/history-ticket.component";
@@ -50,20 +51,30 @@ import {BookingTicketComponent} from "./Components/component-vu/admin-ticket/boo
 import {ConfirmBookingComponent} from "./Components/component-vu/admin-ticket/confirm-booking/confirm-booking.component";
 import {InformationConfirmComponent} from "./Components/component-vu/admin-ticket/information-confirm/information-confirm.component";
 import {SlideBarManageShowRoomComponent} from './Components/component-viet/ManageShowroom/slide-bar-manage-show-room/slide-bar-manage-show-room.component';
-import { ListShowRoomComponent } from './Components/component-viet/ManageShowroom/list-show-room/list-show-room.component';
-import { ShowroomDetailsComponent } from './Components/component-viet/ManageShowroom/showroom-details/showroom-details.component';
-import { AddSeatComponent } from './Components/component-viet/ManageShowroom/add-seat/add-seat.component';
-import { AddShowroomComponent } from './Components/component-viet/ManageShowroom/add-showroom/add-showroom.component';
-import { MemberComponent } from './Components/component-vu/member/member.component';
-import {ListCustonerComponent} from "./Components/components-hhien/list-custoner/list-custoner.component";
+import {ListShowRoomComponent } from './Components/component-viet/ManageShowroom/list-show-room/list-show-room.component';
+import {ShowroomDetailsComponent } from './Components/component-viet/ManageShowroom/showroom-details/showroom-details.component';
+import {AddSeatComponent } from './Components/component-viet/ManageShowroom/add-seat/add-seat.component';
+import {AddShowroomComponent } from './Components/component-viet/ManageShowroom/add-showroom/add-showroom.component';
+import {MemberComponent } from './Components/component-vu/member/member.component';
+import {AddPromotionComponent } from './Components/component-quoc/add-promotion/add-promotion.component';
+import {NgZorroAntdModule} from '../app/ng-zorro-antd/ng-zorro-antd.module';
+import { EditPromotionComponent } from './Components/component-quoc/edit-promotion/edit-promotion.component';
+import { AddFilmComponent } from './Components/component-quy/add-film/add-film.component';
+import { EditFilmComponent } from './Components/component-quy/edit-film/edit-film.component';
+import { ListFilmsComponent } from './Components/component-quy/list-films/list-films.component';
 import { ListDiscountComponent } from './Components/component-tuan/list-discount/list-discount.component';
 import {DeleteDiscountComponent} from "./Components/component-tuan/delete-discount/delete-discount.component";
 
+
 const routes: Routes = [
-  { path: "", component: ListFilmComponent },
-  { path: "film-detail/:id", component: DetailFilmComponent },
+
+  {path: '', component: ListFilmComponent},
+  {path: 'add-promotion', component: AddPromotionComponent},
+  {path: 'edit-promotion/:id', component: EditPromotionComponent},
+  {path: 'film-detail/:id', component: DetailFilmComponent},
   {path: 'list-discount', component: ListDiscountComponent},
   {path: 'delete-discount/:id', component: DeleteDiscountComponent},
+
   {
     path: ":id/account",
     component: SlideBarComponent,
@@ -95,6 +106,7 @@ const routes: Routes = [
     ],
   },
   {path: 'resetPassword', component: ResetPasswordComponent},
+
   {path: 'ticket-prices', component: SeeTickerPricesComponent},
   {path: 'chon-ghe', component: PositionSelectorComponent},
   {path: 'thong-tin-dat-ve', component: TicketBookingInformationComponent},
@@ -118,6 +130,10 @@ const routes: Routes = [
       },
 
     ]},
+
+  {path: 'admin-movies', component: ListFilmsComponent},
+  {path: 'add-film', component: AddFilmComponent},
+  {path: 'edit-film/:id', component: EditFilmComponent},
   {path:'list-customer',component: ListCustonerComponent},
    {
     path: "thong-ke-phim",
@@ -157,9 +173,11 @@ const routes: Routes = [
 ];
 
 @NgModule({
-
   declarations: [TopBarComponent,
     ListCustonerComponent,
+  AddFilmComponent,
+  EditFilmComponent,
+
     ChonGheComponent,
     SlideBarComponent,
     InfomationComponent,
@@ -195,33 +213,42 @@ const routes: Routes = [
     ResetPasswordComponent,
     UserRegistrationComponent,
     ShowtimesComponent,
+    BanVeComponent,
     FilmManagementComponent,
-  ShowtimesComponent,
-  SlideBarManageShowRoomComponent,
-  ListShowRoomComponent,
-  ShowroomDetailsComponent,
-  AddSeatComponent,
-  AddShowroomComponent,
-  MemberComponent,
+    FilmManagementComponent,
+    ShowtimesComponent,
+    SlideBarManageShowRoomComponent,
+    ListShowRoomComponent,
+    ShowroomDetailsComponent,
+    AddSeatComponent,
+    AddShowroomComponent,
+    MemberComponent,
+    AddFilmComponent,
+    EditFilmComponent,
+    ListFilmsComponent,
+    AddPromotionComponent,
+    EditPromotionComponent,
     ListDiscountComponent,
     DeleteDiscountComponent],
+  
 
   imports: [RouterModule.forRoot(routes),
-  ReactiveFormsModule,
-  FormsModule,
-  CommonModule,
-  MatDialogModule,
-  MatButtonModule,
-  MatIconModule,
-  MatSnackBarModule,
-  NgxPaginationModule,
-  Ng2SearchPipeModule,
-  MaterialModule,
-  MatFormFieldModule,
-  MatDatepickerModule,
-  MatNativeDateModule],
+    ReactiveFormsModule,
+    FormsModule,
+    CommonModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatIconModule,
+    MatSnackBarModule,
+    NgxPaginationModule,
+    Ng2SearchPipeModule,
+    MaterialModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    NgZorroAntdModule],
 
-  exports: [RouterModule, TopBarComponent, SlideBarComponent],
+  exports: [RouterModule, TopBarComponent, SlideBarComponent,NgZorroAntdModule],
   entryComponents: [MatConfirmDialogComponent,AddSeatComponent,AddShowroomComponent],
 
 })

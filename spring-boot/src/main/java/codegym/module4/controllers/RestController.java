@@ -25,9 +25,13 @@ import java.util.Optional;
 
 @org.springframework.web.bind.annotation.RestController
 @CrossOrigin(origins = "*")
+<<<<<<< HEAD
+public class RestController{
+=======
 public class RestController {
     @Autowired
     private EmployeeService employeeService;
+>>>>>>> e5a9a6e0f9fee7f6ad4f3daf814ea95ce72ce173
     @Autowired
     private TicketService ticketService;
 
@@ -77,6 +81,10 @@ public class RestController {
     private EntityManager entityManager;
 
     @GetMapping(value = "/tickets", produces = "application/json")
+<<<<<<< HEAD
+    public ResponseEntity< List< Ticket > > getAllTickets(){
+        List< Ticket > tickets = ticketService.findAll();
+=======
     public ResponseEntity<List<Ticket>> getAllTickets() {
         List<Ticket> tickets = ticketService.findAll();
     {
@@ -84,6 +92,7 @@ public class RestController {
 
         if (tickets.isEmpty())
         {
+>>>>>>> e5a9a6e0f9fee7f6ad4f3daf814ea95ce72ce173
 
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
@@ -91,6 +100,13 @@ public class RestController {
     }
 
     @GetMapping(value = "/tickets/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+<<<<<<< HEAD
+    public ResponseEntity< Ticket > getTicketById(
+            @PathVariable("id") Integer id){
+        Optional< Ticket > ticket = ticketService.findById(id);
+
+        if(!ticket.isPresent()){
+=======
     public ResponseEntity<Ticket> getTicketById(
             @PathVariable("id") Integer id) {
 
@@ -98,6 +114,7 @@ public class RestController {
 
         if (!ticket.isPresent())
         {
+>>>>>>> e5a9a6e0f9fee7f6ad4f3daf814ea95ce72ce173
             return new ResponseEntity<>(ticket.get(),
                     HttpStatus.NO_CONTENT);
         }
@@ -105,69 +122,121 @@ public class RestController {
     }
 
     @GetMapping(path = "movie-schedules", produces = "application/json")
+<<<<<<< HEAD
+    public List< MovieSchedules > getAllMovieSchedules(){
+=======
     public List<MovieSchedules> getAllMovieSchedules() {
+>>>>>>> e5a9a6e0f9fee7f6ad4f3daf814ea95ce72ce173
         return movieSchedulesService.findAll();
     }
 
     @GetMapping(path = "movies", produces = "application/json")
+<<<<<<< HEAD
+    public ResponseEntity< List< Movie > > getAllMovies(){
+=======
     public ResponseEntity<List<Movie>> getAllMovies() {
+>>>>>>> e5a9a6e0f9fee7f6ad4f3daf814ea95ce72ce173
         return new ResponseEntity<>(movieService.findAll(), HttpStatus.OK);
     }
 
     @GetMapping(path = "employees", produces = MediaType.APPLICATION_JSON_VALUE)
+<<<<<<< HEAD
+    public List< Employee > getAllEmployees(){
+=======
     public List<Employee> getAllEmployees() {
+>>>>>>> e5a9a6e0f9fee7f6ad4f3daf814ea95ce72ce173
         return employeeRepo.findAll();
     }
 
 
     @GetMapping(path = "users", produces = MediaType.APPLICATION_JSON_VALUE)
+<<<<<<< HEAD
+    public List< User > getAllUsers(){
+=======
     public List<User> getAllUsers() {
+>>>>>>> e5a9a6e0f9fee7f6ad4f3daf814ea95ce72ce173
         return userService.findAll();
 
     }
 
     @GetMapping(path = "customers", produces = MediaType.APPLICATION_JSON_VALUE)
+<<<<<<< HEAD
+    public List< Customer > getAllCustomers(){
+=======
     public List<Customer> getAllCustomers() {
+>>>>>>> e5a9a6e0f9fee7f6ad4f3daf814ea95ce72ce173
         return customerService.findAll();
     }
 
     @GetMapping(path = "points", produces = MediaType.APPLICATION_JSON_VALUE)
+<<<<<<< HEAD
+    public List< Point > getAllPoints(){
+=======
     public List<Point> getAllPoints() {
+>>>>>>> e5a9a6e0f9fee7f6ad4f3daf814ea95ce72ce173
         return pointService.findAll();
     }
 
     @GetMapping(path = "promotions", produces = MediaType.APPLICATION_JSON_VALUE)
+<<<<<<< HEAD
+    public List< Promotion > getAllPromotions(){
+=======
     public List<Promotion> getAllPromotions() {
+>>>>>>> e5a9a6e0f9fee7f6ad4f3daf814ea95ce72ce173
         return promotionService.findAll();
     }
 
     @GetMapping(path = "roles", produces = MediaType.APPLICATION_JSON_VALUE)
+<<<<<<< HEAD
+    public List< Role > getAllRoles(){
+=======
     public List<Role> getAllRoles() {
+>>>>>>> e5a9a6e0f9fee7f6ad4f3daf814ea95ce72ce173
         return roleService.findAll();
     }
 
     @GetMapping(path = "seats", produces = MediaType.APPLICATION_JSON_VALUE)
+<<<<<<< HEAD
+    public List< Seat > getAllSeats(){
+=======
     public List<Seat> getAllSeats() {
+>>>>>>> e5a9a6e0f9fee7f6ad4f3daf814ea95ce72ce173
         return seatService.findAll();
     }
 
     @GetMapping(path = "show-rooms", produces = MediaType.APPLICATION_JSON_VALUE)
+<<<<<<< HEAD
+    public List< ShowRoom > getAllShowRooms(){
+=======
     public List<ShowRoom> getAllShowRooms() {
+>>>>>>> e5a9a6e0f9fee7f6ad4f3daf814ea95ce72ce173
         return showRoomService.findAll();
     }
 
     @GetMapping(path = "show-times", produces = MediaType.APPLICATION_JSON_VALUE)
+<<<<<<< HEAD
+    public List< ShowTime > getAllShowTimes(){
+=======
     public List<ShowTime> getAllShowTimes() {
+>>>>>>> e5a9a6e0f9fee7f6ad4f3daf814ea95ce72ce173
         return showTimeService.findAll();
     }
 
     @GetMapping(path = "ticket-prices", produces = MediaType.APPLICATION_JSON_VALUE)
+<<<<<<< HEAD
+    public List< TicketPrices > getAllTicketPrices(){
+=======
     public List<TicketPrices> getAllTicketPrices() {
+>>>>>>> e5a9a6e0f9fee7f6ad4f3daf814ea95ce72ce173
         return ticketPricesService.findAll();
     }
 
     @GetMapping(path = "rows", produces = MediaType.APPLICATION_JSON_VALUE)
+<<<<<<< HEAD
+    public List< Row > getAllRows(){
+=======
     public List<Row> getAllRows() {
+>>>>>>> e5a9a6e0f9fee7f6ad4f3daf814ea95ce72ce173
         return rowService.findAll();
     }
 
@@ -179,27 +248,43 @@ public class RestController {
 //    }
 
     @GetMapping(path = "show-rooms/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+<<<<<<< HEAD
+    public ShowRoom getShowRoomById(@PathVariable int id){
+=======
     public ShowRoom getShowRoomById(@PathVariable int id) {
+>>>>>>> e5a9a6e0f9fee7f6ad4f3daf814ea95ce72ce173
         return this.showRoomService.findById(id);
     }
 
     @GetMapping(path = "movies/movie-schedules/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+<<<<<<< HEAD
+    public List< Movie > getMovieByMovieSchedules(@PathVariable int id){
+=======
     public List<Movie> getMovieByMovieSchedules(@PathVariable int id) {
+>>>>>>> e5a9a6e0f9fee7f6ad4f3daf814ea95ce72ce173
         StoredProcedureQuery spQuery =
                 entityManager.createNamedStoredProcedureQuery("GetMovieByMovieScheduleId");
         spQuery.setParameter("movieScheduleId", id);
         spQuery.execute();
 
-        return new ArrayList<Movie>(spQuery.getResultList());
+        return new ArrayList< Movie >(spQuery.getResultList());
     }
 
     @GetMapping(path = "movie-schedules/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+<<<<<<< HEAD
+    public MovieSchedules getMovieSchedulesById(@PathVariable int id){
+=======
     public MovieSchedules getMovieSchedulesById(@PathVariable int id) {
+>>>>>>> e5a9a6e0f9fee7f6ad4f3daf814ea95ce72ce173
         return movieSchedulesService.findById(id);
     }
 
     @GetMapping(path = "customers/ticket/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+<<<<<<< HEAD
+    public List< Customer > getCustomerByTicketToan(@PathVariable int id){
+=======
     public List<Customer> getCustomerByTicketToan(@PathVariable int id) {
+>>>>>>> e5a9a6e0f9fee7f6ad4f3daf814ea95ce72ce173
         StoredProcedureQuery spQuery =
                 entityManager.createNamedStoredProcedureQuery("GetCustomerByTicketId");
         spQuery.setParameter("ticketId", id);
@@ -209,7 +294,11 @@ public class RestController {
     }
 
     @GetMapping(path = "rows/show-room/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+<<<<<<< HEAD
+    public List< Row > getRowsByShowRoomId(@PathVariable int id){
+=======
     public List<Row> getRowsByShowRoomId(@PathVariable int id) {
+>>>>>>> e5a9a6e0f9fee7f6ad4f3daf814ea95ce72ce173
         String sqlQuery = "select *\n" +
                 "from _row\n" +
                 "where _row.id in (\n" +
@@ -222,7 +311,11 @@ public class RestController {
     }
 
     @GetMapping(path = "seats/row/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+<<<<<<< HEAD
+    public List< Seat > getSeatsByRowId(@PathVariable int id){
+=======
     public List<Seat> getSeatsByRowId(@PathVariable int id) {
+>>>>>>> e5a9a6e0f9fee7f6ad4f3daf814ea95ce72ce173
         String sqlQuery = "    select *\n" +
                 "    from seat\n" +
                 "    where seat.id in (\n" +
@@ -237,9 +330,13 @@ public class RestController {
 
 
     @PostMapping(path = "users/new", produces = MediaType.APPLICATION_JSON_VALUE)
+<<<<<<< HEAD
+    public User newUser(@RequestBody User user){
+=======
     public User newUser(@RequestBody User user) {
+>>>>>>> e5a9a6e0f9fee7f6ad4f3daf814ea95ce72ce173
         Role roleAdmin = roleService.findById(1);
-        List<Role> roles = new ArrayList<>();
+        List< Role > roles = new ArrayList<>();
         roles.add(roleAdmin);
         user.setRoles(roles);
 
@@ -247,24 +344,44 @@ public class RestController {
     }
 
     @GetMapping("roles")
+<<<<<<< HEAD
+    public List< Role > getAllRole(){
+=======
     public List<Role> getAllRole() {
+>>>>>>> e5a9a6e0f9fee7f6ad4f3daf814ea95ce72ce173
         return roleService.findAll();
     }
 
 
     @GetMapping(path = "/roles/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+<<<<<<< HEAD
+    public Role getRoleById(@PathVariable int id){
+=======
     public Role getRoleById(@PathVariable int id) {
+>>>>>>> e5a9a6e0f9fee7f6ad4f3daf814ea95ce72ce173
         return roleService.findById(id);
     }
 
     @GetMapping(path = "tickets/empty", produces = MediaType.APPLICATION_JSON_VALUE)
+<<<<<<< HEAD
+    public Ticket getEmptyTicket(){
+=======
 
     public Ticket getEmptyTicket() {
 
+>>>>>>> e5a9a6e0f9fee7f6ad4f3daf814ea95ce72ce173
         return new Ticket();
     }
 
     @GetMapping(path = "movie-schedules/empty", produces = MediaType.APPLICATION_JSON_VALUE)
+<<<<<<< HEAD
+    public MovieSchedules getEmptyMovieSchedule(){
+        return new MovieSchedules();
+    }
+
+    @GetMapping(path = "rowsByShowRoom/{id}")
+    public List< Row > getRowByShowRoom(@PathVariable ShowRoom id){
+=======
     public MovieSchedules getEmptyMovieSchedule()
     {
         return new MovieSchedules();
@@ -429,6 +546,7 @@ public class RestController {
         return new ResponseEntity<>(jsonConverter.getJsonObject(), HttpStatus.NOT_MODIFIED);
       @GetMapping(path = "rowsByShowRoom/{id}")
     public List<Row> getRowByShowRoom(@PathVariable ShowRoom id){
+>>>>>>> e5a9a6e0f9fee7f6ad4f3daf814ea95ce72ce173
 
 
         return rowService.findByShowRoom(id);
@@ -440,7 +558,11 @@ public class RestController {
     }
 
     @PutMapping(path = "seats/{id}")
+<<<<<<< HEAD
+    public Seat UpdateSeat(@PathVariable int id, @RequestBody Seat seat){
+=======
     public Seat UpdateSeat(@PathVariable int id, @RequestBody Seat seat) {
+>>>>>>> e5a9a6e0f9fee7f6ad4f3daf814ea95ce72ce173
         Seat seatUpdate = seatService.findById(id);
         seatUpdate.setVip(seat.isVip());
         return seatService.updateSeat(seatUpdate);
@@ -450,6 +572,19 @@ public class RestController {
     public Seat CreatSeats(@RequestBody Seat seat) {
         return seatService.updateSeat(seat);
     }
+    @GetMapping(value = "/promotions/{id}",
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Promotion> getMovieById(
+            @PathVariable("id") Integer promotion_id) {
+        Optional<Promotion> promotion = promotionService.findById(promotion_id);
+
+        if (!promotion.isPresent()) {
+            return new ResponseEntity<>(promotion.get(),
+                    HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(promotion.get(), HttpStatus.OK) ;
+
+    }
 
     @PostMapping(path = "promotion/new")
     public Promotion CreatSeats(@RequestBody Promotion promotion) {
@@ -457,6 +592,20 @@ public class RestController {
 
     }
 
+<<<<<<< HEAD
+    @PutMapping(path = "promotions/{id}")
+    public Promotion editPromotion(@RequestBody Promotion promotion,
+                                   @PathVariable int id){
+        Promotion promotionUpdate = promotionService.findById(id).orElse(null);
+        promotionUpdate.setPromotionTitle(promotion.getPromotionTitle());
+        promotionUpdate.setPromotionImage(promotion.getPromotionImage());
+        promotionUpdate.setPromotionDiscount(promotion.getPromotionDiscount());
+        promotionUpdate.setPromotionDescription(promotion.getPromotionDescription());
+        promotionUpdate.setPromotionBeginDate(promotion.getPromotionBeginDate());
+        promotionUpdate.setPromotionEndDate(promotion.getPromotionEndDate());
+        return promotionService.save(promotionUpdate);
+    }
+=======
     //hh
 
     @RequestMapping(value = "customers",
@@ -511,5 +660,8 @@ public class RestController {
 //    }
 
     //hh
+>>>>>>> e5a9a6e0f9fee7f6ad4f3daf814ea95ce72ce173
 }
+
+
 

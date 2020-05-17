@@ -32,15 +32,18 @@ public class PromotionController {
         return promotionService.findAll();
     }
 
+
     @GetMapping(path = "promotions/{id}")
     public Optional<Promotion> getPromotionById(@PathVariable int id){
         return promotionService.findById(id);
     }
 
+
     @PostMapping(path = "promotions")
     public Promotion CreatPromotion(@RequestBody Promotion promotion) {
         return promotionService.save(promotion);
     }
+
 
     @PostMapping(path = "promotions/add")
     public List<Promotion> saveAll(@RequestBody List<Promotion> promotions) {
@@ -52,6 +55,7 @@ public class PromotionController {
     public List<Promotion> EditAllPromotion(@RequestBody List<Promotion> promotion) {
         return (List<Promotion>) promotionService.saveAll(promotion);
     }
+
 
 
     @DeleteMapping(path = "promotions/delete/{id}")

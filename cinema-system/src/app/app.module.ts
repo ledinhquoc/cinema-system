@@ -24,6 +24,13 @@ import { DatepickerMinMaxComponent } from "./Components/component-toantr/datepic
 import { FullnameTrimDirective } from "./Components/component-toantr/Directives/fullname/fullname-trim.directive";
 import {CookieService} from "ngx-cookie-service";
 import { PaypalComponent } from './Components/component-vu/admin-ticket/paypal/paypal.component';
+import { FilmService } from './services/film.service';
+import { NZ_I18N } from 'ng-zorro-antd/i18n';
+import { en_US } from 'ng-zorro-antd/i18n';
+import { registerLocaleData } from '@angular/common';
+import en from '@angular/common/locales/en';
+
+registerLocaleData(en);
 
 
 @NgModule({
@@ -48,21 +55,17 @@ import { PaypalComponent } from './Components/component-vu/admin-ticket/paypal/p
     MatInputModule,
     FormsModule,
   ],
-  providers: [
-    AuthService,
-    httpInteceptorProvider,
-    CookieService,
-  ],
-  imports: [ BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, ReactiveFormsModule],
-  providers: [AuthService,
-
+  providers: [AuthService,CookieService,FilmService,
     {
       provide: AuthServiceConfig,
-      useFactory: socialConfigs,
+      useFactory: socialConfigs
     },
-    HttpService,
-  ],
+  {
+    provide: NZ_I18N,useValue: en_US
+  }],
+    
   bootstrap: [AppComponent],
+
 })
 export class AppModule {}
 

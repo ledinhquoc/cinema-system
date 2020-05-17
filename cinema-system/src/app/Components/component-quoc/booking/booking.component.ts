@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { FilmService} from '../../../services/film.service'
+
 import { ActivatedRoute } from '@angular/router';
 import * as moment from 'moment/moment';
+import { FilmService } from 'src/app/services/film.service';
 
 @Component({
   selector: 'app-booking',

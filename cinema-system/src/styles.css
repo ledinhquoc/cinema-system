@@ -1,6 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 @import "../node_modules/bootstrap/dist/css/bootstrap.css";
+<<<<<<< HEAD
+@import "~ng-zorro-antd/ng-zorro-antd.min.css";
+@import "~ng-zorro-antd/style/index.min.css"; /* Import basic styles */
+@import "~ng-zorro-antd/button/style/index.min.css";  /* Import styles of the component */
+ /* body {
+=======
 /* body {
+>>>>>>> e5a9a6e0f9fee7f6ad4f3daf814ea95ce72ce173
   background-image: url('assets/images/banner.jpg');
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -11,6 +18,15 @@ html,
 body {
   width: 100%;
   height: 100%;
+<<<<<<< HEAD
+
+}
+
+
+
+.confirm-dialog-container .mat-dialog-container {
+  border-radius: .25em .25em .4em .4em;
+=======
   font-family: "Fredoka One", cursive;
   font-size: 20px;
   color: #222;
@@ -22,6 +38,7 @@ mat-confirm-dialog
   .mat-dialog-container {
   border-radius: 0.25em 0.25em 0.4em 0.4em;
 
+>>>>>>> e5a9a6e0f9fee7f6ad4f3daf814ea95ce72ce173
   padding: 0px;
 }
 .confirm-dialog-container .content-container {
@@ -58,7 +75,13 @@ mat-confirm-dialog
   font-size: 15px;
 }
 
+<<<<<<< HEAD
+
+
+snack-bar-container.success {
+=======
 notification snack-bar-container.success {
+>>>>>>> e5a9a6e0f9fee7f6ad4f3daf814ea95ce72ce173
   background-color: #5cb85c;
   color: #fff;
   font-family: "Fredoka One", cursive;
@@ -77,5 +100,12 @@ snack-bar-container.notification simple-snack-bar {
 .hide {
   display: none;
 }
+<<<<<<< HEAD
+
+
+
+
+=======
+>>>>>>> e5a9a6e0f9fee7f6ad4f3daf814ea95ce72ce173
 
 
