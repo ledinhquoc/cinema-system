@@ -1,15 +1,12 @@
-
-import {HttpService} from '../../../Services/http.service';
-import {Component, OnInit} from '@angular/core';
-
-import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {Router} from '@angular/router';
-
+import { Component, OnInit } from "@angular/core";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
+import { HttpService } from "../../../Services/http.service";
 
 @Component({
-  selector: 'app-position-selector',
-  templateUrl: './position-selector.component.html',
-  styleUrls: ['./position-selector.component.css'],
+  selector: "app-position-selector",
+  templateUrl: "./position-selector.component.html",
+  styleUrls: ["./position-selector.component.css"],
 })
 export class PositionSelectorComponent implements OnInit {
   showRoom: any;
@@ -23,47 +20,47 @@ export class PositionSelectorComponent implements OnInit {
   selectingSeatCount = 0;
   selectedSeats = [];
   rowNames = [
-    'A', 'B',
-    'C',
-    'D',
-    'E',
-    'F',
-    'G',
-    'H',
-    'I',
-    'J',
-    'K',
-    'L',
-    'M',
-    'N',
-    'O',
-    'P',
-    'Q',
-    'R',
-    'S',
-    'T',
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "K",
+    "L",
+    "M",
+    "N",
+    "O",
+    "P",
+    "Q",
+    "R",
+    "S",
+    "T",
   ];
   formGroup = new FormGroup({
     seatAmount: new FormControl(1, [Validators.min(1), Validators.required]),
   });
 
-  constructor(private myHttp: HttpService, private router: Router) {
-  }
+  constructor(private myHttp: HttpService, private router: Router) {}
 
   ngOnInit(): void {
-    this.myHttp.getById('tickets', 1).subscribe((ticket) => {
+    this.myHttp.getById("tickets", 1).subscribe((ticket) => {
       this.ticket = ticket;
       this.movie = this.ticket.movieSchedules.movie;
       this.movieSchedules = this.ticket.movieSchedules;
     });
-    this.myHttp.getById('show-rooms', 1).subscribe((showRoom) => {
+    this.myHttp.getById("show-rooms", 1).subscribe((showRoom) => {
       this.showRoom = showRoom;
       this.myHttp
-        .getById('rows/show-room', this.showRoom.id)
+        .getById("rows/show-room", this.showRoom.id)
         .subscribe((rows) => {
           this.rows = rows;
           (this.rows as Array<any>).map((row) => {
-            this.myHttp.getById('seats/row', row.id).subscribe((seats) => {
+            this.myHttp.getById("seats/row", row.id).subscribe((seats) => {
               this.seats.push(seats);
             });
           });
@@ -78,7 +75,7 @@ export class PositionSelectorComponent implements OnInit {
 
   onSubmit() {
     this.ticket.seat = this.selectedSeats;
-    this.router.navigate(['thong-tin-dat-ve'], {
+    this.router.navigate(["thong-tin-dat-ve"], {
       state: {
         ticket: this.ticket,
       },
@@ -101,15 +98,15 @@ export class PositionSelectorComponent implements OnInit {
 
   handleSubmission() {
     this.formGroup.setErrors(
-      this.selectingSeatCount === this.formGroup.get('seatAmount').value
+      this.selectingSeatCount === this.formGroup.get("seatAmount").value
         ? {}
-        : {unequalOptions: true}
+        : { unequalOptions: true }
     );
   }
 }
 
 enum SeatColors {
-  BookedSeat = 'bg-danger',
-  SelectingSeat = 'bg-success',
-  VipSeat = 'bg-info',
+  BookedSeat = "bg-danger",
+  SelectingSeat = "bg-success",
+  VipSeat = "bg-info",
 }
