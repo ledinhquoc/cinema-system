@@ -128,7 +128,7 @@ export class ConfirmBookingComponent implements OnInit {
     } else {
       const money = value * this.ticket.price;
       console.log(money);
-      if (money > this.sumPoint) {
+      if (money > this.point) {
         this.notificationService.warn('Không đủ điểm đổi vé');
       } else {
         const newPoint = {

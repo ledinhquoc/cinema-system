@@ -66,9 +66,11 @@ export class EditFilmComponent implements OnInit {
       srcImg: [this.srcImg,[Validators.required]],
       srcVideo: [this.srcVideo,[Validators.required]],
     })
+
        this.acticform.params.subscribe(data =>{
            this.id = data.id ;
       this.filmService.getFilmById(this.id).subscribe(data =>{
+
         this.formAddFilm.patchValue(data);
         this.dateStart = data.dateStart;
          this.dateEnd = data.dateEnd ;

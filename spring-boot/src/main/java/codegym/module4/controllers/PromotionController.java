@@ -31,19 +31,19 @@ public class PromotionController {
         return new ResponseEntity<>(promotions, HttpStatus.OK);
     }
 
-    @GetMapping(value = "/promotions/{id}",
-            produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Promotion> getMovieById(
-            @PathVariable("id") Integer promotion_id) {
-        Optional<Promotion> promotion = promotionService.findById(promotion_id);
-
-        if (!promotion.isPresent()) {
-            return new ResponseEntity<>(promotion.get(),
-                    HttpStatus.NO_CONTENT);
-        }
-        return new ResponseEntity<>(promotion.get(), HttpStatus.OK) ;
-
-    }
+//    @GetMapping(value = "/promotions/{id}",
+//            produces = MediaType.APPLICATION_JSON_VALUE)
+//    public ResponseEntity<Promotion> getMovieById(
+//            @PathVariable("id") Integer promotion_id) {
+//        Optional<Promotion> promotion = promotionService.findById(promotion_id);
+//
+//        if (!promotion.isPresent()) {
+//            return new ResponseEntity<>(promotion.get(),
+//                    HttpStatus.NO_CONTENT);
+//        }
+//        return new ResponseEntity<>(promotion.get(), HttpStatus.OK) ;
+//
+//    }
 
     @PostMapping(value = "/promotions")
     public ResponseEntity<Void> createPromotion(
@@ -56,27 +56,27 @@ public class PromotionController {
         return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
     }
 
-    @PutMapping(value = "/promotions/{id}")
-    public ResponseEntity<Promotion> updatePromotion(
-            @PathVariable("id") Integer id,
-            @RequestBody Promotion promotion) {
-        Optional<Promotion> currentPromotions = promotionService
-                .findById(id);
-
-        if (!currentPromotions.isPresent()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-
-        currentPromotions.get().setPromotionBeginDate(promotion.getPromotionBeginDate());
-        currentPromotions.get().setPromotionEndDate(promotion.getPromotionEndDate());
-        currentPromotions.get().setPromotionDiscount(promotion.getPromotionDiscount());
-        currentPromotions.get().setPromotionDescription(promotion.getPromotionDescription());
-        currentPromotions.get().setPromotionTitle(promotion.getPromotionTitle());
-        currentPromotions.get().setPromotionImage(promotion.getPromotionImage());
-
-        promotionService.save(currentPromotions.get());
-        return new ResponseEntity<>(currentPromotions.get(), HttpStatus.OK);
-    }
+//    @PutMapping(value = "/promotions/{id}")
+//    public ResponseEntity<Promotion> updatePromotion(
+//            @PathVariable("id") Integer id,
+//            @RequestBody Promotion promotion) {
+//        Optional<Promotion> currentPromotions = promotionService
+//                .findById(id);
+//
+//        if (!currentPromotions.isPresent()) {
+//            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//        }
+//
+//        currentPromotions.get().setPromotionBeginDate(promotion.getPromotionBeginDate());
+//        currentPromotions.get().setPromotionEndDate(promotion.getPromotionEndDate());
+//        currentPromotions.get().setPromotionDiscount(promotion.getPromotionDiscount());
+//        currentPromotions.get().setPromotionDescription(promotion.getPromotionDescription());
+//        currentPromotions.get().setPromotionTitle(promotion.getPromotionTitle());
+//        currentPromotions.get().setPromotionImage(promotion.getPromotionImage());
+//
+//        promotionService.save(currentPromotions.get());
+//        return new ResponseEntity<>(currentPromotions.get(), HttpStatus.OK);
+//    }
 
     @DeleteMapping(value = "/promotions/{id}")
     public ResponseEntity<Promotion> deletePromotion(

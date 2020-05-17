@@ -1,9 +1,14 @@
 package codegym.module4.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.format.annotation.DateTimeFormat;
+
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -13,6 +18,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "movie")
+@JsonIgnoreProperties("movie_schedules")
 @NamedStoredProcedureQuery(name = "GetMovieByMovieScheduleId",
         procedureName = "GetMovieByMovieScheduleId",
         resultClasses = {Movie.class},
@@ -41,11 +47,15 @@ public class Movie
     @NotEmpty(message = "Thể loại phim không được để trống")
     private String movieType;
 
+    @DateTimeFormat(pattern = "yyyy/MM/dd")
+    @Temporal(value = TemporalType.DATE)
 
     @Column(name = "date_start")
     @NotNull(message = "Ngày bắt đầu không được để trống")
     private Date dateStart;
 
+    @DateTimeFormat(pattern = "yyyy/MM/dd")
+    @Temporal(value = TemporalType.DATE)
     @Column(name = "date_end")
     @NotNull(message = "Ngày kthúc không được để trống")
     private Date dateEnd;
@@ -79,8 +89,10 @@ public class Movie
     @NotEmpty(message = "Trailer phim không được để trống")
     private String srcVideo;
 
-    @OneToMany(targetEntity = MovieSchedules.class)
-    @JsonIgnore
+
+    @OneToMany(targetEntity = MovieSchedules.class,mappedBy = "movie", cascade = CascadeType.ALL)
+    @JsonBackReference
+
     private List<MovieSchedules> movieSchedules;
 
     /**

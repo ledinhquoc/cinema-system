@@ -7,7 +7,7 @@
            style="width: 210px; margin-left: 20px">
     </div>
     <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
-      <label style="font-size: 140%">{{ ticket?.movieSchedules.movie.movieName }}</label>
+      <label style="font-size: 140%; color: red">{{ ticket?.movieSchedules.movie.movieName }}</label>
       <hr>
       <div class="row">
         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
@@ -71,31 +71,31 @@
       <div style="font-size: 16px;font-weight: bold">
         <div class="row infoE">
           <div class="col-sm-3 ">
-            <p class="info">Mã thành viên :</p>
+            <p class="info"><strong>Mã thành viên :</strong></p>
           </div>
           <div class="col-sm-9">TV{{ticket?.customer.id}}</div>
         </div>
         <div class="row infoE">
           <div class="col-sm-3">
-            <p class="info">CMND :</p>
+            <p class="info"><strong>CMND :</strong></p>
           </div>
           <div class="col-sm-9">{{ticket?.customer.idCard}}</div>
         </div>
         <div class="row infoE">
           <div class="col-sm-3">
-            <p class="info">Họ tên :</p>
+            <p class="info"><strong>Họ tên :</strong></p>
           </div>
           <div class="col-sm-9">{{ticket?.customer.fullName}}</div>
         </div>
         <div class="row infoE">
           <div class="col-sm-3">
-            <p class="info">Điểm thành viên :</p>
+            <p class="info"><strong>Điểm thành viên :</strong></p>
           </div>
           <div class="col-sm-9" style="color: #5cb85c">{{point}}đ</div>
         </div>
         <div class="row infoE">
           <div class="col-sm-3">
-            <p class="info">Đổi vé :</p>
+            <p class="info"><strong>Đổi vé :</strong></p>
           </div>
           <div class="col-sm-9">
             <input type="radio"  value="0" formControlName="use_point" id="1" checked> <label for="1" class="lb">0</label>
@@ -106,7 +106,7 @@
 
         <div class="row infoE">
           <div class="col-sm-3">
-            <p class="info">Thanh toán :</p>
+            <p class="info"><strong>Thanh toán :</strong></p>
           </div>
           <div class="col-sm-9">
             <input type="radio" id="paypal" value="paypal" formControlName="use_point" id="10" >
@@ -118,7 +118,7 @@
 
         <div class="row infoE">
           <div class="col-sm-3">
-            <p class="info">Số điện thoại :</p>
+            <p class="info"><strong>Số điện thoại :</strong></p>
           </div>
           <div class="col-sm-9">{{ticket?.customer.phone}}</div>
         </div>

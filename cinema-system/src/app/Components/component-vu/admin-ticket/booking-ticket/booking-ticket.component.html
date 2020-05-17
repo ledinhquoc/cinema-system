@@ -11,8 +11,9 @@
     <th scope="col">Mã thành viên</th>
     <th scope="col">Họ tên</th>
     <th scope="col">CMND</th>
-    <th scope="col">Sô điện thoại</th>
+    <th scope="col">Số điện thoại</th>
     <th scope="col">Phim</th>
+    <th scope="col">Ngày Đặt vé</th>
     <th scope="col">Xuất chiếu</th>
     <th scope="col"></th>
   </tr>
@@ -25,9 +26,10 @@
     <td>{{item['customer'].idCard}}</td>
     <td>{{item['customer'].phone}}</td>
     <td>{{item['movieSchedules']['movie'].movieName}}</td>
-    <td>{{item['movieSchedules'].openingDay}}</td>
-    <td><input *ngIf="item.orderStatus == 'waiting'" type="button" class="btn-success" id="btn" value="nhận vé" (click)="nextPage(item.id)" >
-      <input *ngIf="item.orderStatus === 'done'" type="button" class="btn-danger" id="btn1" value="Đã nhận" (click)="inforConfirm(item.id)" >
+    <td>{{item.date | date : 'short'}}</td>
+    <td>{{item['movieSchedules'].openingDay | date : 'short'}}</td>
+    <td><input *ngIf="item.orderStatus == 'waiting'" type="button" class="btn-primary" id="btn" value="nhận vé" (click)="nextPage(item.id)" >
+      <input *ngIf="item.orderStatus === 'done'" type="button" class="btn-success" id="btn1" value="Đã nhận" (click)="inforConfirm(item.id)" >
     </td>
   </tr>
   </tbody>

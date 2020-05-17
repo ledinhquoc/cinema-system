@@ -10,43 +10,140 @@
         </div>
       </div>
     </div>
-    <table class="table table-bordered text-center">
-      <thead>
+    <table id="dtHorizontalVerticalExample" class="table table-bordered text-center" cellspacing="0" style="width: 100%">
+      <thead class="table-primary">
         <tr>
-          <th style="width: 40px">#</th>
-          <th style="width: 170px">Phim</th>
+          <th style="width: 50px">#</th>
+          <th style="width: 250px">Phim</th>
           <th style="width: 125px">Ngày khởi chiếu</th>
           <th style="width: 125px">Ngày kết thúc</th>
-          <th>Hãng phim</th>
-          <th style="width: 50px">Thời lượng</th>
-          <th>Diễn viên</th>
-          <th>Thể loại phim</th>
-          <th>Đạo diễn</th>
-          <th>Nội dung phim</th>
-          <th>src_Img</th>
-          <th>src_video</th>
-          <th style="width: 90px">Actions</th>
+          <th style="width: 160px">Hãng phim</th>
+          <th style="width: 100px">Thời lượng</th>
+          <th style="width: 200px">Diễn viên</th>
+          <th style="width: 200px">Thể loại phim</th>
+          <th style="width: 200px">Đạo diễn</th>
+          <th style="width: 300px">Nội dung phim</th>
+          <th style="width: 300px">src_Img</th>
+          <th style="width: 300px">src_video</th>
+          <th style="width: 60px"></th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let item of movies let i = index" style="cursor: pointer;" [routerLink]="['/edit-film,movies[i].id']">
           <td style="text-align: center;"> <a href="#">{{ i+1 }}</a> </td>
-          <td><input [(ngModel)]="movies[i].movieName" class="form-control" type="text" /></td>
-          <td><input [(ngModel)]="movies[i].dateStart" class="form-control" type="text" /></td>
-          <td><input [(ngModel)]="movies[i].dateEnd" class="form-control" type="text" /></td>
-          <td><input [(ngModel)]="movies[i].movieStudio" class="form-control" type="text" /></td>
-          <td><input [(ngModel)]="movies[i].duration" class="form-control" type="text" /></td>
-          <td class="text-truncate" style="max-width: 200px;"><input [(ngModel)]="movies[i].actor" class="form-control" type="text" /></td>
-          <td><input [(ngModel)]="movies[i].movieType" class="form-control" type="text" /></td>
-          <td><input [(ngModel)]="movies[i].directors" class="form-control" type="text" /></td>
-          <td class="text-truncate" style="max-width: 200px;"><input [(ngModel)]="movies[i].content" class="form-control" type="text" /></td>
-          <td class="text-truncate"><input [(ngModel)]="movies[i].srcImg" class="form-control" type="text" /></td>
-          <td class="text-truncate"><input [(ngModel)]="movies[i].srcVideo" class="form-control" type="text" /></td>
-          <td><button (click)="addRow(i)" type="button" class="btn btn-info add-new" ><i class="fa fa-plus"></i></button>
-            <button (click)="onEdit(i)" type="button" class="btn btn-warning" style="margin-left: 2px"><i class="fa fa-pen"></i></button></td>
+          <!-- movieName -->
+          <td>
+            <div class="form-group" [class.has-error]="movieName?.invalid && movieName?.touched">
+            <input [disabled]="!movies[i].isEdit" [(ngModel)]="movies[i].movieName" class="form-control" type="text" #movieName="ngModel" required />
+            <span class="help-block " *ngIf="movieName?.errors?.required && movieName?.touched" style="text-align: center; color: red">
+               Không được để trống
+            </span>
+            </div>
+          </td>
+          <!-- dateStart -->
+          <td>
+            <div class="form-group" [class.has-error]="dateStart?.invalid && dateStart?.touched">
+            <input [disabled]="!movies[i].isEdit" [(ngModel)]="movies[i].dateStart" class="form-control" type="text" #dateStart="ngModel" pattern="^(2019|202[0-9]{1})\/(0[1-9]|1[0-2])\/(0[1-9]|[12][0-9]|3[01])$" required />
+            <span class="help-block " *ngIf="dateStart?.errors?.required && dateStart?.touched" style="text-align: center; color: red">
+               Không được để trống
+            </span>
+            <span class="help-block " *ngIf="dateStart.errors?.pattern  && dateStart.touched" style="text-align: center">
+      Sai định dạng 'yyyy/MM/dd'
+    </span>
+            </div>
+          </td>
+          <!-- dateEnd -->
+          <td>
+            <div class="form-group" [class.has-error]="dateEnd?.invalid && dateEnd?.touched">
+            <input [disabled]="!movies[i].isEdit" [(ngModel)]="movies[i].dateEnd" class="form-control" type="text" #dateEnd="ngModel" pattern="^(2019|202[0-9]{1})\/(0[1-9]|1[0-2])\/(0[1-9]|[12][0-9]|3[01])$" required />
+            <span class="help-block " *ngIf="dateEnd?.errors?.required && dateEnd?.touched" style="text-align: center; color: red">
+               Không được để trống
+            </span>
+            <span class="help-block " *ngIf="dateEnd.errors?.pattern  && dateEnd.touched" style="text-align: center">
+      Sai định dạng 'yyyy/MM/dd'
+    </span>
+            </div>
+          </td>
+          <!-- movieStudio -->
+          <td>
+            <div class="form-group" [class.has-error]="movieStudio?.invalid && movieStudio?.touched">
+            <input [disabled]="!movies[i].isEdit" [(ngModel)]="movies[i].movieStudio" class="form-control" type="text" #movieStudio="ngModel" required />
+            <span class="help-block " *ngIf="movieStudio?.errors?.required && movieStudio?.touched" style="text-align: center; color: red">
+               Không được để trống
+            </span>
+            </div>
+          </td>
+          <!-- duration -->
+          <td>
+            <div class="form-group" [class.has-error]="duration?.invalid && duration?.touched">
+            <input [disabled]="!movies[i].isEdit" [(ngModel)]="movies[i].duration" class="form-control" type="text" #duration="ngModel" required />
+            <span class="help-block " *ngIf="duration?.errors?.required && duration?.touched" style="text-align: center; color: red">
+               Không được để trống
+            </span>
+            </div>
+          </td>
+          <!-- actor -->
+          <td class="text-truncate" style="max-width: 200px;">
+            <div class="form-group" [class.has-error]="actor?.invalid && actor?.touched">
+            <input [disabled]="!movies[i].isEdit" [(ngModel)]="movies[i].actor" class="form-control" type="text" #actor="ngModel" required />
+            <span class="help-block " *ngIf="actor?.errors?.required && actor?.touched" style="text-align: center; color: red">
+               Không được để trống
+            </span>
+            </div>
+          </td>
+          <!-- movieType -->
+          <td>
+            <div class="form-group" [class.has-error]="movieType?.invalid && movieType?.touched">
+            <input [disabled]="!movies[i].isEdit" [(ngModel)]="movies[i].movieType" class="form-control" type="text" #movieType="ngModel" required />
+            <span class="help-block " *ngIf="movieType?.errors?.required && movieType?.touched" style="text-align: center; color: red">
+               Không được để trống
+            </span>
+            </div>
+          </td>
+          <!-- directors -->
+          <td>
+            <div class="form-group" [class.has-error]="directors?.invalid && directors?.touched">
+            <input [disabled]="!movies[i].isEdit" [(ngModel)]="movies[i].directors" class="form-control" type="text" #directors="ngModel" required />
+            <span class="help-block " *ngIf="directors?.errors?.required && directors?.touched" style="text-align: center; color: red">
+               Không được để trống
+            </span>
+            </div>
+          </td>
+          <!-- content -->
+          <td class="text-truncate" style="max-width: 200px;">
+            <div class="form-group" [class.has-error]="content?.invalid && content?.touched">
+            <input [disabled]="!movies[i].isEdit" [(ngModel)]="movies[i].content" class="form-control" type="text" #content="ngModel" required />
+            <span class="help-block " *ngIf="content?.errors?.required && content?.touched" style="text-align: center; color: red">
+               Không được để trống
+            </span>
+            </div>
+          </td>
+          <!-- srcImg -->
+          <td class="text-truncate">
+            <div class="form-group" [class.has-error]="srcImg?.invalid && srcImg?.touched">
+            <input [disabled]="!movies[i].isEdit" [(ngModel)]="movies[i].srcImg" class="form-control" type="text" #srcImg="ngModel" required />
+            <span class="help-block " *ngIf="srcImg?.errors?.required && srcImg?.touched" style="text-align: center; color: red">
+               Không được để trống
+            </span>
+            </div>
+          </td>
+          <!-- srcVideo -->
+          <td class="text-truncate">
+            <div class="form-group" [class.has-error]="srcVideo?.invalid && srcVideo?.touched">
+            <input [disabled]="!movies[i].isEdit" [(ngModel)]="movies[i].srcVideo" class="form-control" type="text" #srcVideo="ngModel" required />
+            <span class="help-block " *ngIf="srcVideo?.errors?.required && srcVideo?.touched" style="text-align: center; color: red">
+               Không được để trống
+            </span>
+            </div>
+          </td>
+          <td>
+          	<a class="edit" title="Edit" data-toggle="tooltip" (click)="edit(movies[i].id,i)"><i class="material-icons">&#xE254;</i></a>
+        </td>
         </tr>
       </tbody>
     </table>
+   <br>
+    <button (click)=save() type="button" class="btn btn-success" style="float: right">Lưu</button>
     <button [routerLink]="['/add-film']" type="button" class="btn btn-primary">Thêm mới phim</button>
   </div>
 </div>

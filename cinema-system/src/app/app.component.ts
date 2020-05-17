@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {Router} from '@angular/router';
 import {TokenStorageService} from "./Components/component-vu/service/token-storage.service";
 import {UserService} from "./Components/component-vu/service/user.service";
 import {CookieService} from "ngx-cookie-service";
@@ -11,15 +12,18 @@ import {CookieService} from "ngx-cookie-service";
 export class AppComponent {
   title = 'cinemaSystem';
 
+
   private roles: string[];
   isLoggedIn = false;
   username: string;
   id: number;
   loadPage: false;
   showAdminBoard = false;
+  end = 0;
   constructor(private tokenStorageService: TokenStorageService,
               private userService: UserService,
-              private cookieService: CookieService) {
+              private cookieService: CookieService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -53,8 +57,8 @@ export class AppComponent {
       console.log(this.id);
       this.username = user.username;
       this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
-
-
+      
+      console.log(this.showAdminBoard);
     }
   }
 

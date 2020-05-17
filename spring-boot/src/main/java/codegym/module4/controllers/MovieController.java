@@ -74,9 +74,11 @@ public class MovieController {
             method = RequestMethod.PUT)
     public ResponseEntity<Movie> updateProduct(
             @PathVariable("id") Integer id,
+
             @Valid @RequestBody Movie movie) {
         Optional<Movie> currentMovie = movieService
                 .findById(id);
+
 
         if (!currentMovie.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -97,6 +99,19 @@ public class MovieController {
             return new ResponseEntity<>(currentMovie.get(), HttpStatus.OK);
 
     }
+
+
+    @PutMapping(path = "/movies/edit")
+    public List<Movie> editAll(@RequestBody List<Movie> movies){
+        System.out.println(movies);
+        return (List<Movie>) movieService.saveAll(movies);
+    }
+    @PostMapping(path = "/movies/add")
+    public List<Movie> saveAll(@RequestBody List<Movie> movies){
+        System.out.println(movies);
+        return (List<Movie>) movieService.saveAll(movies);
+    }
+
     @RequestMapping(value = "/movies/{id}",
             method = RequestMethod.DELETE)
     public ResponseEntity<Movie> deleteProduct(
@@ -104,4 +119,5 @@ public class MovieController {
         movieService.remove(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
 }
