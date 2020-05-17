@@ -15,5 +15,4 @@ export interface User {
   username: string,
   status: boolean,
   roles: []
-
 }

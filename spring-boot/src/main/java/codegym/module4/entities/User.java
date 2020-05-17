@@ -40,7 +40,6 @@ public class User implements Serializable {
         this.username = username;
         this.roles = roles;
     }
-
     public List<Role> getRoles() {
         return roles;
     }

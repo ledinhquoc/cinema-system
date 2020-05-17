@@ -10,6 +10,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {AuthService, AuthServiceConfig, FacebookLoginProvider} from "angularx-social-login";
 import {MemberComponent} from './Components/component-vu/member/member.component';
 import {httpInteceptorProvider} from "./Services/auth-interceptor";
+import {DatePipe} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import {httpInteceptorProvider} from "./Services/auth-interceptor";
   ]
   ,
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, ReactiveFormsModule],
-  providers: [AuthService, httpInteceptorProvider,
+  providers: [AuthService, httpInteceptorProvider,DatePipe,
     {
       provide: AuthServiceConfig,
       useFactory: socialConfigs

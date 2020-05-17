@@ -27,8 +27,12 @@ export class UserService {
     return this.http.get(API_URL + 'admin', this.httpOptions);
   }
 
+  // addCustomer(post: Partial<any>): Observable<any>{
+  //   return this.http.post(API_URL + 'api/v1/auth/signup', post);
+  // }
+  //xiu sua lai de thu da.
   addCustomer(post: Partial<any>): Observable<any>{
-    return this.http.post(API_URL + 'api/v1/auth/signup', post);
+    return this.http.post(API_URL + 'api/v1/customers/new', post);
   }
 
   getListUser(): Observable<any> {

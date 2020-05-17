@@ -270,5 +270,14 @@ public class RestController
     public MovieSchedules getEmptyMovieSchedule(){
         return new MovieSchedules();
     }
+
+
+    @RequestMapping(value="customer/delete/{id}", method= RequestMethod.DELETE)
+    public void deleteCustomer(@PathVariable Integer id){
+//        Customer customer = customerService.findCustomerById(id);
+
+        customerService.deleteById(id);
+    }
+
 }
 
