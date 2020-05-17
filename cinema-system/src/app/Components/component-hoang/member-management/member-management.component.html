@@ -38,7 +38,7 @@
       <tbody>
 
       <tr
-        *ngFor="let mem of members | paginate: { itemsPerPage: 8, currentPage: p } | filter:searchText; let i = index">
+        *ngFor="let mem of members | paginate: { itemsPerPage: 15, currentPage: p } | filter:searchText; let i = index">
         <td scope="row">{{i + 1}} </td>
 
         <td ><input  #fullName="ngModel" required minlength="6"  type="text"  class="ip"  placeholder="họ tên"
@@ -47,14 +47,21 @@
             <p *ngIf="fullName?.errors?.required">Cần nhập họ tên</p>
             <p *ngIf="fullName?.errors?.minlength">Họ tên nhập vào lớn hơn 6 kí tự</p>
           </div>
+          <div style="color: red">
+            <p *ngIf="mem.checkFullName">sai dữ liệu</p>
+          </div>
+
         </td>
 
-        <td><input #dob="ngModel" required pattern="^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$" style="width: 130px" type="date" class="ip"
+        <td><input #dob="ngModel" required patern="^(0[1-9]|[12][0-9]|3[01])[- \/.](0[1-9]|1[012])[- \/.](19|20)\d\d$"  style="width: 130px" type="date" class="ip"
                    placeholder="ngày sinh" [style.border]="bodercolor?'#fdfcf0  0px':'silver solid 1px'"
                    [(ngModel)]='mem.birthday' [ngModelOptions]="{standalone: true}">
           <div *ngIf="!dob.valid && dob.touched" style="color: red">
             <p *ngIf="dob?.errors?.required">Cần nhập ngày sinh</p>
-            <p *ngIf="dob?.errors?.pattern">Nhập ngày sinh đúng định dạng dd-MM-YYY</p>
+            <p *ngIf="dob?.errors?.pattern">Nhập ngày sinh đúng định dạng dd/MM/yyyy</p>
+          </div>
+          <div style="color: red">
+            <p *ngIf="mem.CheckBirthday">sai dữ liệu</p>
           </div>
         </td>
 
@@ -65,6 +72,9 @@
             <p *ngIf="idCard?.errors?.required">Cần nhập cmnn</p>
             <p *ngIf="idCard?.errors?.pattern">Cmnn phải đúng định dạng 9 số</p>
           </div>
+          <div style="color: red">
+            <p *ngIf="mem.checkIdcard">sai dữ liệu</p>
+          </div>
         </td>
 
         <td><input  #address="ngModel" required style="width: 80px" type="text"  class="ip" placeholder="địa chỉ"
@@ -72,6 +82,9 @@
                     [(ngModel)]='mem.address' [ngModelOptions]="{standalone: true}">
           <div *ngIf="!address.valid && address.touched" style="color: red">
             <p *ngIf="address?.errors?.required">Cần nhập địa chỉ</p>
+          </div>
+          <div style="color: red">
+            <p *ngIf="mem.checkAddress">sai dữ liệu</p>
           </div>
         </td>
 
@@ -109,7 +122,7 @@
         </td>
       </tr>
       </tbody>
-      <button class="btn btn-success add-new" type="submit" ><i class="material-icons">&#xE03B;</i>
+      <button class="btn btn-success add-new" type="submit"  ><i class="material-icons">&#xE03B;</i>
       </button>
     </table>
 

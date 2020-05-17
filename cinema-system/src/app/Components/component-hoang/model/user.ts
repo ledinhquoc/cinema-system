@@ -10,6 +10,13 @@ export class Customer {
   email: string;
   phone: string;
   user: User;
+  checkFullName = true;
+  CheckBirthday = true;
+  checkIdcard = true;
+  checkGender = true;
+  checkAddress = true;
+  checkPhone =true;
+  checkEmail = true;
 }
 export class User {
   id:number;
