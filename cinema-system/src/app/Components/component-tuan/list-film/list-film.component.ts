@@ -15,7 +15,7 @@ export class ListFilmComponent implements OnInit {
   search: string;
   movieSchedule;
   ticket;
-<<<<<<< HEAD
+
   isLoggedIn = false;
   public film;
   check: boolean;
@@ -44,27 +44,7 @@ export class ListFilmComponent implements OnInit {
     this.myHttp.getAll("tickets/empty").subscribe(ticket => this.ticket = ticket);
 
     this.router.navigate(['/booking'], {state: {movieSchedule: this.movieSchedule, ticket: this.ticket}});
-=======
-
-  public film;
-
-  constructor(private filmService: FilmService,private myHttp: HttpService,private router: Router) { }
-
-  ngOnInit(): void {
-
-    this.filmService.getAllFilm().subscribe(data => {
-      this.film = data;
-    });
   }
 
-  onMovieSelect(movie:any){
-    this.myHttp.getAll('movie-schedules/empty').subscribe(movieSchedule=>{
-      this.movieSchedule=movieSchedule;
-      this.movieSchedule.movie=movie;
-    });
-    this.myHttp.getAll('tickets/empty').subscribe(ticket=>this.ticket=ticket);
 
-    this.router.navigate(['/booking'],{state:{movieSchedule:this.movieSchedule,ticket:this.ticket}});
->>>>>>> 8b122d312ab15deb493403fc776a7a376b4f6c4c
-  }
 }

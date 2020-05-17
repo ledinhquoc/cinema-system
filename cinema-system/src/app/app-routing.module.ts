@@ -37,26 +37,32 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 import {ChonGheComponent} from './Components/components-hhien/chon-ghe/chon-ghe.component';
-import { TicketConfirmmComponent } from './Components/component-son/ticket-confirm/ticket-confirm.component';
-import { TicketConfirmmInfoComponent } from './Components/component-son/ticket-confirm-info/ticket-confirm-info.component'; 
-import { CustomerComponent } from './Components/component-son/customer/customer.component';
-import { ShowtimesComponent } from './Components/component-tmt/showtimes/showtimes.component';
-import { FilmManagementComponent } from './Components/component-son/film-management/film-management.component';
+import {TicketConfirmmComponent } from './Components/component-son/ticket-confirm/ticket-confirm.component';
+import {TicketConfirmmInfoComponent } from './Components/component-son/ticket-confirm-info/ticket-confirm-info.component'; 
+import {CustomerComponent } from './Components/component-son/customer/customer.component';
+import {ShowtimesComponent } from './Components/component-tmt/showtimes/showtimes.component';
+import {FilmManagementComponent } from './Components/component-son/film-management/film-management.component';
 import {BookingTicketComponent} from "./Components/component-vu/admin-ticket/booking-ticket/booking-ticket.component";
 import {ConfirmBookingComponent} from "./Components/component-vu/admin-ticket/confirm-booking/confirm-booking.component";
 import {InformationConfirmComponent} from "./Components/component-vu/admin-ticket/information-confirm/information-confirm.component";
 import {SlideBarManageShowRoomComponent} from './Components/component-viet/ManageShowroom/slide-bar-manage-show-room/slide-bar-manage-show-room.component';
-import { ListShowRoomComponent } from './Components/component-viet/ManageShowroom/list-show-room/list-show-room.component';
-import { ShowroomDetailsComponent } from './Components/component-viet/ManageShowroom/showroom-details/showroom-details.component';
-import { AddSeatComponent } from './Components/component-viet/ManageShowroom/add-seat/add-seat.component';
-import { AddShowroomComponent } from './Components/component-viet/ManageShowroom/add-showroom/add-showroom.component';
-import { MemberComponent } from './Components/component-vu/member/member.component';
+import {ListShowRoomComponent } from './Components/component-viet/ManageShowroom/list-show-room/list-show-room.component';
+import {ShowroomDetailsComponent } from './Components/component-viet/ManageShowroom/showroom-details/showroom-details.component';
+import {AddSeatComponent } from './Components/component-viet/ManageShowroom/add-seat/add-seat.component';
+import {AddShowroomComponent } from './Components/component-viet/ManageShowroom/add-showroom/add-showroom.component';
+import {MemberComponent } from './Components/component-vu/member/member.component';
+import {AddPromotionComponent } from './Components/component-quoc/add-promotion/add-promotion.component';
+import {NgZorroAntdModule} from '../app/ng-zorro-antd/ng-zorro-antd.module';
+import { EditPromotionComponent } from './Components/component-quoc/edit-promotion/edit-promotion.component';
+
 
 
 
 
 const routes: Routes = [
   {path: '', component: ListFilmComponent},
+  {path: 'add-promotion', component: AddPromotionComponent},
+  {path: 'edit-promotion/:id', component: EditPromotionComponent},
   {path: 'film-detail/:id', component: DetailFilmComponent},
   {
     path: ':id/account', component: SlideBarComponent,
@@ -80,6 +86,7 @@ const routes: Routes = [
       }]
   },
   {path: 'resetPassword', component: ResetPasswordComponent},
+
   {path: 'ticket-prices', component: SeeTickerPricesComponent},
   {path: 'chon-ghe', component: PositionSelectorComponent},
   {path: 'thong-tin-dat-ve', component: TicketBookingInformationComponent},
@@ -102,6 +109,7 @@ const routes: Routes = [
       },
 
     ]},
+    
 ];
 
 @NgModule({
@@ -149,7 +157,9 @@ const routes: Routes = [
   ShowroomDetailsComponent,
   AddSeatComponent,
   AddShowroomComponent,
-  MemberComponent],
+  MemberComponent,
+  AddPromotionComponent,
+  EditPromotionComponent],
 
   imports: [RouterModule.forRoot(routes),
   ReactiveFormsModule,
@@ -164,9 +174,10 @@ const routes: Routes = [
   MaterialModule,
   MatFormFieldModule,
   MatDatepickerModule,
-  MatNativeDateModule],
+  MatNativeDateModule,
+  NgZorroAntdModule],
 
-  exports: [RouterModule, TopBarComponent, SlideBarComponent],
+  exports: [RouterModule, TopBarComponent, SlideBarComponent,NgZorroAntdModule],
   entryComponents: [MatConfirmDialogComponent,AddSeatComponent,AddShowroomComponent],
 
 })

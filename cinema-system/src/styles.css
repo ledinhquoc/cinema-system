@@ -1,5 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 @import "../node_modules/bootstrap/dist/css/bootstrap.css";
+@import "~ng-zorro-antd/ng-zorro-antd.min.css";
+@import "~ng-zorro-antd/style/index.min.css"; /* Import basic styles */
+@import "~ng-zorro-antd/button/style/index.min.css";  /* Import styles of the component */
  /* body {
   background-image: url('assets/images/banner.jpg');
   background-repeat: no-repeat;
@@ -11,17 +14,10 @@ html, body {
   width: 100%;
   height: 100%;
 
-<<<<<<< HEAD
-}
-
-mat-confirm-dialog
-=======
-
 }
 
 
 
->>>>>>> 8b122d312ab15deb493403fc776a7a376b4f6c4c
 .confirm-dialog-container .mat-dialog-container {
   border-radius: .25em .25em .4em .4em;
   padding: 0px;
@@ -63,7 +59,7 @@ mat-confirm-dialog
   font-size: 15px;
 }
 
-notification
+
 
 snack-bar-container.success {
   background-color: #5cb85c;
@@ -85,10 +81,7 @@ snack-bar-container.notification simple-snack-bar{
 .hide{
   display: none;
 }
-<<<<<<< HEAD
-=======
 
->>>>>>> 8b122d312ab15deb493403fc776a7a376b4f6c4c
 
 
 

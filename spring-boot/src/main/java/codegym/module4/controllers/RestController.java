@@ -21,8 +21,7 @@ import java.util.Optional;
 
 @org.springframework.web.bind.annotation.RestController
 @CrossOrigin(origins = "*")
-public class RestController
-{
+public class RestController{
     @Autowired
     private TicketService ticketService;
 
@@ -70,23 +69,21 @@ public class RestController
     private EntityManager entityManager;
 
     @GetMapping(value = "/tickets", produces = "application/json")
-    public ResponseEntity<List<Ticket>> getAllTickets()
-
-    {
-        List<Ticket> tickets=ticketService.findAll();
+    public ResponseEntity< List< Ticket > > getAllTickets(){
+        List< Ticket > tickets = ticketService.findAll();
 
         if(tickets.isEmpty()){
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-            return new ResponseEntity<>(tickets,HttpStatus.OK);
+        return new ResponseEntity<>(tickets, HttpStatus.OK);
     }
 
-    @GetMapping(value = "/tickets/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Ticket> getTicketById(
-            @PathVariable("id")Integer id){
-        Optional<Ticket> ticket =ticketService.findById(id);
+    @GetMapping(value = "/tickets/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity< Ticket > getTicketById(
+            @PathVariable("id") Integer id){
+        Optional< Ticket > ticket = ticketService.findById(id);
 
-        if (!ticket.isPresent()) {
+        if(!ticket.isPresent()){
             return new ResponseEntity<>(ticket.get(),
                     HttpStatus.NO_CONTENT);
         }
@@ -94,82 +91,69 @@ public class RestController
     }
 
     @GetMapping(path = "movie-schedules", produces = "application/json")
-    public List<MovieSchedules> getAllMovieSchedules()
-    {
+    public List< MovieSchedules > getAllMovieSchedules(){
         return movieSchedulesService.findAll();
     }
 
     @GetMapping(path = "movies", produces = "application/json")
-    public ResponseEntity<List<Movie>> getAllMovies()
-    {
+    public ResponseEntity< List< Movie > > getAllMovies(){
         return new ResponseEntity<>(movieService.findAll(), HttpStatus.OK);
     }
 
     @GetMapping(path = "employees", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Employee> getAllEmployees()
-    {
+    public List< Employee > getAllEmployees(){
         return employeeRepo.findAll();
     }
 
 
     @GetMapping(path = "users", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<User> getAllUsers()
-    {
+    public List< User > getAllUsers(){
         return userService.findAll();
 
     }
 
     @GetMapping(path = "customers", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Customer> getAllCustomers()
-    {
+    public List< Customer > getAllCustomers(){
         return customerService.findAll();
     }
 
     @GetMapping(path = "points", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Point> getAllPoints()
-    {
+    public List< Point > getAllPoints(){
         return pointService.findAll();
     }
 
     @GetMapping(path = "promotions", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Promotion> getAllPromotions()
-    {
+    public List< Promotion > getAllPromotions(){
         return promotionService.findAll();
     }
 
     @GetMapping(path = "roles", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Role> getAllRoles()
-    {
+    public List< Role > getAllRoles(){
         return roleService.findAll();
     }
 
     @GetMapping(path = "seats", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Seat> getAllSeats()
-    {
+    public List< Seat > getAllSeats(){
         return seatService.findAll();
     }
 
     @GetMapping(path = "show-rooms", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<ShowRoom> getAllShowRooms()
-    {
+    public List< ShowRoom > getAllShowRooms(){
         return showRoomService.findAll();
     }
 
     @GetMapping(path = "show-times", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<ShowTime> getAllShowTimes()
-    {
+    public List< ShowTime > getAllShowTimes(){
         return showTimeService.findAll();
     }
 
     @GetMapping(path = "ticket-prices", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<TicketPrices> getAllTicketPrices()
-    {
+    public List< TicketPrices > getAllTicketPrices(){
         return ticketPricesService.findAll();
     }
 
     @GetMapping(path = "rows", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Row> getAllRows()
-    {
+    public List< Row > getAllRows(){
         return rowService.findAll();
     }
 
@@ -181,31 +165,27 @@ public class RestController
 //    }
 
     @GetMapping(path = "show-rooms/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ShowRoom getShowRoomById(@PathVariable int id)
-    {
+    public ShowRoom getShowRoomById(@PathVariable int id){
         return this.showRoomService.findById(id);
     }
 
     @GetMapping(path = "movies/movie-schedules/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Movie> getMovieByMovieSchedules(@PathVariable int id)
-    {
+    public List< Movie > getMovieByMovieSchedules(@PathVariable int id){
         StoredProcedureQuery spQuery =
                 entityManager.createNamedStoredProcedureQuery("GetMovieByMovieScheduleId");
         spQuery.setParameter("movieScheduleId", id);
         spQuery.execute();
 
-        return new ArrayList<Movie>(spQuery.getResultList());
+        return new ArrayList< Movie >(spQuery.getResultList());
     }
 
     @GetMapping(path = "movie-schedules/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public MovieSchedules getMovieSchedulesById(@PathVariable int id)
-    {
+    public MovieSchedules getMovieSchedulesById(@PathVariable int id){
         return movieSchedulesService.findById(id);
     }
 
     @GetMapping(path = "customers/ticket/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Customer> getCustomerByTicketToan(@PathVariable int id)
-    {
+    public List< Customer > getCustomerByTicketToan(@PathVariable int id){
         StoredProcedureQuery spQuery =
                 entityManager.createNamedStoredProcedureQuery("GetCustomerByTicketId");
         spQuery.setParameter("ticketId", id);
@@ -215,8 +195,7 @@ public class RestController
     }
 
     @GetMapping(path = "rows/show-room/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Row> getRowsByShowRoomId(@PathVariable int id)
-    {
+    public List< Row > getRowsByShowRoomId(@PathVariable int id){
         String sqlQuery = "select *\n" +
                 "from _row\n" +
                 "where _row.id in (\n" +
@@ -229,8 +208,7 @@ public class RestController
     }
 
     @GetMapping(path = "seats/row/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Seat> getSeatsByRowId(@PathVariable int id)
-    {
+    public List< Seat > getSeatsByRowId(@PathVariable int id){
         String sqlQuery = "    select *\n" +
                 "    from seat\n" +
                 "    where seat.id in (\n" +
@@ -245,50 +223,50 @@ public class RestController
 
 
     @PostMapping(path = "users/new", produces = MediaType.APPLICATION_JSON_VALUE)
-    public User newUser(@RequestBody User user)
-    {
+    public User newUser(@RequestBody User user){
         Role roleAdmin = roleService.findById(1);
-        List<Role> roles = new ArrayList<>();
+        List< Role > roles = new ArrayList<>();
         roles.add(roleAdmin);
         user.setRoles(roles);
 
         return userService.save(user);
     }
+
     @GetMapping("roles")
-        public List<Role> getAllRole(){
+    public List< Role > getAllRole(){
         return roleService.findAll();
-        }
+    }
 
 
     @GetMapping(path = "/roles/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Role getRoleById(@PathVariable int id)
-    {
+    public Role getRoleById(@PathVariable int id){
         return roleService.findById(id);
     }
 
-    @GetMapping(path="tickets/empty",produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "tickets/empty", produces = MediaType.APPLICATION_JSON_VALUE)
     public Ticket getEmptyTicket(){
         return new Ticket();
     }
 
-    @GetMapping(path = "movie-schedules/empty",produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "movie-schedules/empty", produces = MediaType.APPLICATION_JSON_VALUE)
     public MovieSchedules getEmptyMovieSchedule(){
         return new MovieSchedules();
     }
 
     @GetMapping(path = "rowsByShowRoom/{id}")
-    public List<Row> getRowByShowRoom(@PathVariable ShowRoom id){
+    public List< Row > getRowByShowRoom(@PathVariable ShowRoom id){
 
         return rowService.findByShowRoom(id);
     }
+
     @PostMapping(path = "show-rooms")
     public ShowRoom CreatShowroom(@RequestBody ShowRoom showRoom){
         return showRoomService.creat(showRoom);
     }
 
     @PutMapping(path = "seats/{id}")
-    public Seat UpdateSeat(@PathVariable int id,@RequestBody Seat seat){
-        Seat seatUpdate= seatService.findById(id);
+    public Seat UpdateSeat(@PathVariable int id, @RequestBody Seat seat){
+        Seat seatUpdate = seatService.findById(id);
         seatUpdate.setVip(seat.isVip());
         return seatService.updateSeat(seatUpdate);
     }
@@ -297,10 +275,38 @@ public class RestController
     public Seat CreatSeats(@RequestBody Seat seat){
         return seatService.updateSeat(seat);
     }
+    @GetMapping(value = "/promotions/{id}",
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Promotion> getMovieById(
+            @PathVariable("id") Integer promotion_id) {
+        Optional<Promotion> promotion = promotionService.findById(promotion_id);
+
+        if (!promotion.isPresent()) {
+            return new ResponseEntity<>(promotion.get(),
+                    HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(promotion.get(), HttpStatus.OK) ;
+
+    }
 
     @PostMapping(path = "promotion/new")
     public Promotion CreatSeats(@RequestBody Promotion promotion){
         return promotionService.save(promotion);
     }
+
+    @PutMapping(path = "promotions/{id}")
+    public Promotion editPromotion(@RequestBody Promotion promotion,
+                                   @PathVariable int id){
+        Promotion promotionUpdate = promotionService.findById(id).orElse(null);
+        promotionUpdate.setPromotionTitle(promotion.getPromotionTitle());
+        promotionUpdate.setPromotionImage(promotion.getPromotionImage());
+        promotionUpdate.setPromotionDiscount(promotion.getPromotionDiscount());
+        promotionUpdate.setPromotionDescription(promotion.getPromotionDescription());
+        promotionUpdate.setPromotionBeginDate(promotion.getPromotionBeginDate());
+        promotionUpdate.setPromotionEndDate(promotion.getPromotionEndDate());
+        return promotionService.save(promotionUpdate);
+    }
 }
+
+
 

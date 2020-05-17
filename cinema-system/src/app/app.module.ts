@@ -10,6 +10,13 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {AuthService, AuthServiceConfig, FacebookLoginProvider} from "angularx-social-login";
 import {CookieService} from "ngx-cookie-service";
 import { PaypalComponent } from './Components/component-vu/admin-ticket/paypal/paypal.component';
+import { FilmService } from './services/film.service';
+import { NZ_I18N } from 'ng-zorro-antd/i18n';
+import { en_US } from 'ng-zorro-antd/i18n';
+import { registerLocaleData } from '@angular/common';
+import en from '@angular/common/locales/en';
+
+registerLocaleData(en);
 
 @NgModule({
   declarations: [
@@ -19,11 +26,15 @@ import { PaypalComponent } from './Components/component-vu/admin-ticket/paypal/p
   ]
   ,
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, ReactiveFormsModule],
-  providers: [AuthService,CookieService,
+  providers: [AuthService,CookieService,FilmService,
     {
       provide: AuthServiceConfig,
       useFactory: socialConfigs
-    }],
+    },
+  {
+    provide: NZ_I18N,useValue: en_US
+  }],
+    
   bootstrap: [AppComponent]
 
 })
