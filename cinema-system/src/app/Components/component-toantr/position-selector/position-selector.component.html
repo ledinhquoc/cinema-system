@@ -3,15 +3,15 @@
     <div class="col">
 
         <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
-            <label for="seatAmount" class="d-inline" >Chọn số lượng ghế</label>
-            <input type="number" id="seatAmount" class="form-control col-md-2 d-inline" formControlName="seatAmount" style="margin-right:10px"
-                (change)="handleSubmission()">
+            <label for="seatAmount" class="d-inline">Chọn số lượng ghế</label>
+            <input type="number" id="seatAmount" class="form-control col-md-2 d-inline" formControlName="seatAmount"
+                style="margin-right:10px" (change)="handleSubmission()" min="1">
 
-            <h4 style="text-transform: uppercase;" >{{movie.movieName}}</h4>
+            <h4 style="text-transform: uppercase;">{{movie.movieName}}</h4>
             <p style="font-weight: bold;">{{movie.dateStart|date}} {{' / '+movieSchedules.showTime.hourStart}}</p>
             <div class="row text-center" *ngIf="SeatColors">
                 <div class="col mr-3">
-                    <span  class=" py-2 px-5 mx-2 border border-dark bg-light"></span>
+                    <span class=" py-2 px-5 mx-2 border border-dark bg-light"></span>
                     <p style="margin-top:8px">Ghế trống</p>
                 </div>
                 <div class="col">
@@ -39,14 +39,15 @@
                             <span class=" border border-dark px-5 py-3 font-weight-bold" *ngIf="seat.seatNumber"
                                 [class]="seat.booked?SeatColors.BookedSeat:seat.selecting?SeatColors.SelectingSeat:seat.vip?SeatColors.VipSeat:'bg-light '"
                                 style="padding: 15px 20px;">
-                                {{seat.name+seat.seatNumber}}</span>
+                                {{seat.name}}</span>
                         </span>
                     </div>
                 </div>
             </div>
 
             <div class="alert alert-danger" *ngIf="formGroup.errors?.unequalOptions">Bạn chọn thiếu/dư ghế</div>
-            <button style="margin-left: 80%;" class="btn btn-primary" type="submit" [disabled]="formGroup.errors?.unequalOptions">Tiếp tục</button>
+            <button style="margin-left: 80%;" class="btn btn-primary" type="submit"
+                [disabled]="formGroup.errors?.unequalOptions">Tiếp tục</button>
 
         </form>
     </div>
