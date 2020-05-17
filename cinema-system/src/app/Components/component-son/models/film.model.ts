@@ -11,4 +11,6 @@ export class FilmModel {
 	movieStudio:string;
 	srcImg:string;
 	srcVideo:string;
+	isEdit:boolean;
+	isHidden:boolean;
 }

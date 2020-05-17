@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {TicketService} from "../../service/ticket.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {FormBuilder, FormGroup} from "@angular/forms";
 import {NotificationService} from "../../../../Services/notification.service";
 
 @Component({
