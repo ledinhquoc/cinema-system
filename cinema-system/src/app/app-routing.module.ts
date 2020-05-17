@@ -61,6 +61,7 @@ import {AddFilmComponent} from "./Components/component-quy/add-film/add-film.com
 import {EditFilmComponent} from "./Components/component-quy/edit-film/edit-film.component";
 
 
+
 const routes: Routes = [
   { path: "", component: ListFilmComponent },
   { path: "film-detail/:id", component: DetailFilmComponent },
@@ -200,6 +201,8 @@ const routes: Routes = [
     ResetPasswordComponent,
     UserRegistrationComponent,
     ShowtimesComponent,
+  BanVeComponent,
+    FilmManagementComponent,
     FilmManagementComponent,
   ShowtimesComponent,
   SlideBarManageShowRoomComponent,
@@ -208,6 +211,7 @@ const routes: Routes = [
   AddSeatComponent,
   AddShowroomComponent,
   MemberComponent],
+
 
   imports: [RouterModule.forRoot(routes),
   ReactiveFormsModule,
