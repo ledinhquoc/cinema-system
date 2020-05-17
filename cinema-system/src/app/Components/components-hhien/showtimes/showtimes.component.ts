@@ -11,18 +11,17 @@ import {MatDatepickerInputEvent} from '@angular/material/datepicker';
   templateUrl: './showtimes.component.html',
   styleUrls: ['./showtimes.component.css']
 })
-export class BanVeComponent implements OnInit {
+export class ShowtimesComponent implements OnInit {
   isFilter = false;
   public showtimes;
   public date = [];
-  public date1 = [];
   public listFilm: string;
   public listFilm1 = [];
   public listFilmId = [];
   public listFilmId1 = [];
   public listFilmIdHours = [];
   public showtimesFilter = [];
-  public show:boolean = false;
+  public show = false;
   public nameFilm;
   public img;
   public hourStarFilm = [];
@@ -30,8 +29,8 @@ export class BanVeComponent implements OnInit {
   public nameHourFilm1 = [];
   // date = new FormControl(new Date());
   constructor(private router: Router,
-              public showtimerService: ShowtimesService,
-              public dialog: MatDialog
+    public showtimerService: ShowtimesService,
+    public dialog: MatDialog
   ) {
   }
 
@@ -49,12 +48,11 @@ export class BanVeComponent implements OnInit {
             j = j - 1;
           }
         }
-        this.date1.push(this.date[i]);
-        this.date.splice(i, 1);
-         i= i - 1;
+        break;
       }
+
       console.log(this.showtimes);
-      console.log(this.date1);
+      console.log(this.date);
       // this.date.reset();
     });
     console.log(this.listFilm);
@@ -99,9 +97,10 @@ export class BanVeComponent implements OnInit {
         this.hourStarFilm = [];
         this.img = [];
       }
-      console.log("list phim id"+this.listFilmId1);
+      console.log(this.listFilmId1);
       console.log(this.nameHourFilm1);
       console.log("this.nameHourFilm1");
+
     });
   }
 
@@ -109,4 +108,31 @@ export class BanVeComponent implements OnInit {
     this.router.navigate(['chonGhe'] ,{state : { name:namefilm,time :time}});
   }
 
+
+  // showFilm(date) {
+  //   console.log(date);
+  // }
+  //
+  // onSearchChange(searchValue: string): void {
+  //   this.isFilter = true;
+  //   this.filterByDate(searchValue);
+  // }
+  //
+  // addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
+  //   const dtf = new Intl.DateTimeFormat('en', {year: 'numeric', month: '2-digit', day: '2-digit'});
+  //   const [{value: mo}, , {value: da}, , {value: ye}] = dtf.formatToParts(this.date.value);
+  //   this.isFilter = true;
+  //   this.filterByDate(`${mo}/${da}/${ye}`);
+  // }
+  //
+  // filterByDate(date: string) {
+  //   let d1 = new Date(date);
+  //   this.showtimesFilter = this.showtimes.filter(show => {
+  //       let d2 = new Date(show.date);
+  //       if (d1.toString() == d2.toString()) {
+  //         return show;
+  //       }
+  //     }
+  //   );
+  // }
 }

@@ -1,0 +1,74 @@
+<div class="container">
+  <div class="mt-5">
+    <div >
+      <div style="text-align: center; background-color: aqua" >
+        <h2 style="color: white">Danh sách thành viên</h2>
+      </div>
+
+    </div>
+
+    <button (click)="newRow()" style="float: right;margin-bottom: 2%" class="btn btn-success "><span
+      class="material-icons"></span>Add New Customer
+    </button>
+    <table class="table table-hover DataTable">
+      <thead>
+      <tr class="bg-info">
+        <th style="width: 3%">#</th>
+        <th style="width: 5%">Id</th>
+        <th>Name</th>
+        <th>Date</th>
+        <th style="width: 7%">Gender</th>
+        <th>ID Card</th>
+        <th>Email</th>
+        <th>Phone Number</th>
+        <th>Address</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let customer of customerArray  ; let i = index ">
+        <!--        <td>{{customer.id}} </td>-->
+        <td style="width: 3%"><p>{{i + 1}}</p></td>
+        <td style="width: 5%" disabled="true"><input disabled="true" type="text" [ngModel]="customerArray[i].id"
+                                                     class="form-control"></td>
+        <!--        <td>{{customer.fullName}}</td>-->
+        <td><input [disabled]="!customerArray[i].isEdit" type="text" [(ngModel)]="customerArray[i].fullName"
+                   class="form-control"></td>
+        <!--        <td>{{customer.birthday}}</td>-->
+        <td><input [disabled]="!customerArray[i].isEdit" type="text" [(ngModel)]="customerArray[i].birthday"
+                   class="form-control"></td>
+        <!--        <td>{{customer.gender}}</td>-->
+        <td style="width: 7%"><input [disabled]="!customerArray[i].isEdit" type="text"
+                                     [(ngModel)]="customerArray[i].gender" class="form-control"></td>
+        <!--        <td>{{customer.idCard}}</td>-->
+        <td><input [disabled]="!customerArray[i].isEdit" type="text" [(ngModel)]="customerArray[i].idCard"
+                   class="form-control"></td>
+        <!--        <td>{{customer.email}}</td>-->
+        <td><input [disabled]="!customerArray[i].isEdit" type="text" [(ngModel)]="customerArray[i].email"
+                   class="form-control"></td>
+        <!--        <td>{{customer.phone}}</td>-->
+        <td><input [disabled]="!customerArray[i].isEdit" type="text" [(ngModel)]="customerArray[i].phone"
+                   class="form-control"></td>
+        <!--        <td>{{customer.address}}</td>-->
+        <td><input [disabled]="!customerArray[i].isEdit" type="text" [(ngModel)]="customerArray[i].address"
+                   class="form-control"></td>
+        <td width="10%">
+          <a [hidden]="showAddButton" (click)="addRow(i,customer)" class="mr-2" title="Add " data-toggle="tooltip"><i
+            class="fa fa-plus fa-2x "
+            style="color: green"></i></a>
+          <a [hidden]="!showUpdateButton" (click)="editRow(customerArray[i].id,i,customer)" data-toggle="tooltip"
+             class="mr-2"><i
+            class="fa fa-pen fa-2x" style="color: yellow"></i></a>
+          <a [hidden]="showUpdateButton" (click)="editRow(customerArray[i].id,i,customer)" data-toggle="tooltip"
+             class="mr-2"><i
+            class="fa fa-check-circle fa-2x" style="color: yellowgreen"></i></a>
+          <a (click)="deleteRow(customerArray[i].id,customer)" data-toggle="tooltip"><i class="fas fa-trash fa-2x"
+                                                                                        style="color: red"></i></a>
+          <!--          <a class="delete" data-toggle="tooltip"><i class="material-icons" style="color: red">&#xE872;</i></a>-->
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <!--    <pagination-controls (pageChange)="p = $event"></pagination-controls>-->
+  </div>
+</div>

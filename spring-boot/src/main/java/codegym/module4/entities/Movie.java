@@ -1,8 +1,13 @@
 package codegym.module4.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+
 import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 
 import javax.persistence.*;
 import java.util.Date;
@@ -68,11 +73,10 @@ public class Movie
     @Column(name = "srcVideo")
     private String srcVideo;
 
+
     @OneToMany(targetEntity = MovieSchedules.class,mappedBy = "movie", cascade = CascadeType.ALL)
-
-
-
     @JsonBackReference
+
     private List<MovieSchedules> movieSchedules;
 
     /**

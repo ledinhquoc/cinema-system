@@ -26,4 +26,9 @@ public class ShowRoomServiceImpl implements ShowRoomService
     {
         return showRoomRepo.findById(id).orElse(null);
     }
+
+    @Override
+    public ShowRoom creat(ShowRoom showRoom) {
+        return showRoomRepo.save(showRoom);
+    }
 }

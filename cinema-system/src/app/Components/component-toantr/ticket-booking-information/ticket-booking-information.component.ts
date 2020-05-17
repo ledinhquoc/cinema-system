@@ -1,5 +1,6 @@
-import { HttpService } from "./../../../Services/http.service";
 import { Component, OnInit } from "@angular/core";
+import { HttpService } from "./../../../Services/http.service";
+
 
 @Component({
   selector: "app-ticket-booking-information",
@@ -24,7 +25,6 @@ export class TicketBookingInformationComponent implements OnInit {
     this.customer = this.ticket.customer;
     this.movieSchedules = this.ticket.movieSchedules;
     this.seat = this.ticket.seat;
-
 
     // this.myHttp
     //   .getById(

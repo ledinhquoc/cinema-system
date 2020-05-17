@@ -14,7 +14,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.util.List;
 import java.util.Optional;
 
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class MovieController {
     @Autowired
@@ -41,22 +41,24 @@ public class MovieController {
         }
         return new ResponseEntity<>(movie.get(), HttpStatus.OK) ;
     }
-    @PostMapping(value = "/movies")
-    public ResponseEntity<Movie> createMovie(
+    @RequestMapping(value = "/movies",
+            method = RequestMethod.POST)
+    public ResponseEntity<Movie> createProduct(
             @RequestBody Movie movie,
             UriComponentsBuilder builder) {
         movieService.save(movie);
         HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(builder.path("/movies/{id}")
+        headers.setLocation(builder.path("/products/{id}")
                 .buildAndExpand(movie.getId()).toUri());
         return new ResponseEntity<>(movie, HttpStatus.CREATED);
     }
     @RequestMapping(value = "/movies/{id}",
             method = RequestMethod.PUT)
-    public ResponseEntity<Movie> updateMovie(
+    public ResponseEntity<Movie> updateProduct(
             @PathVariable("id") Integer id,
             @RequestBody Movie movie) {
         Optional<Movie> currentMovie = movieService.findById(id);
+
 
         if (!currentMovie.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -78,6 +80,7 @@ public class MovieController {
         return new ResponseEntity<>(currentMovie.get(), HttpStatus.OK);
     }
 
+
     @PutMapping(path = "/movies/edit")
     public List<Movie> editAll(@RequestBody List<Movie> movies){
         System.out.println(movies);
@@ -87,6 +90,14 @@ public class MovieController {
     public List<Movie> saveAll(@RequestBody List<Movie> movies){
         System.out.println(movies);
         return (List<Movie>) movieService.saveAll(movies);
+    }
+
+    @RequestMapping(value = "/movies/{id}",
+            method = RequestMethod.DELETE)
+    public ResponseEntity<Movie> deleteProduct(
+            @PathVariable("id") int id) {
+        movieService.remove(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
 }

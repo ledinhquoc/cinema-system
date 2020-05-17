@@ -1,161 +1,81 @@
 /* You can add global styles to this file, and also import other style files */
 @import "../node_modules/bootstrap/dist/css/bootstrap.css";
- /* body {
+/* body {
   background-image: url('assets/images/banner.jpg');
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
   background-color: rgba(255, 243, 22, 0.07);
 } */
-html, body {
+html,
+body {
   width: 100%;
   height: 100%;
- 
+  font-family: "Fredoka One", cursive;
+  font-size: 20px;
+  color: #222;
 }
 
-mat-confirm-dialog (customised dialog) 
-.confirm-dialog-container .mat-dialog-container {
-  border-radius: .25em .25em .4em .4em;
+mat-confirm-dialog
+  (customised dialog)
+  .confirm-dialog-container
+  .mat-dialog-container {
+  border-radius: 0.25em 0.25em 0.4em 0.4em;
+
   padding: 0px;
 }
-.confirm-dialog-container .content-container{
+.confirm-dialog-container .content-container {
   margin: 5px 5px 15px 5px;
   color: #8f9cb5;
   display: flex;
 }
-.confirm-dialog-container #close-icon{
+.confirm-dialog-container #close-icon {
   margin-left: auto;
   order: 2;
   font-weight: bolder;
 }
-.confirm-dialog-container #close-icon:hover{
+.confirm-dialog-container #close-icon:hover {
   cursor: pointer;
 }
 
-.confirm-dialog-container #no-button{
+.confirm-dialog-container #no-button {
   height: 50px;
   width: 50%;
-
 }
 
-.confirm-dialog-container #yes-button{
+.confirm-dialog-container #yes-button {
   height: 50px;
   width: 50%;
-
-
 }
 
-.confirm-dialog-container span.content-span{
-  padding:  35px 16px;
+.confirm-dialog-container span.content-span {
+  padding: 35px 16px;
   text-align: center;
   font-size: 20px;
 }
-#title-dialog{
+#title-dialog {
   text-align: justify;
   font-size: 15px;
 }
 
-notification
-
-snack-bar-container.success {
+notification snack-bar-container.success {
   background-color: #5cb85c;
-  color : #fff;
-  font-family: 'Fredoka One', cursive;
+  color: #fff;
+  font-family: "Fredoka One", cursive;
 }
 
 snack-bar-container.warn {
   background-color: #f99157;
-  color : #fff;
-  font-family: 'Fredoka One', cursive;
+  color: #fff;
+  font-family: "Fredoka One", cursive;
 }
-snack-bar-container.notification simple-snack-bar{
+snack-bar-container.notification simple-snack-bar {
   font-size: 18px !important;
   font-weight: bold;
 }
 
-
-.hide{
+.hide {
   display: none;
-} 
-
-
-.table-wrapper {
-    width: 700px;
-    margin: 30px auto;
-        background: #fff;
-        padding: 20px;  
-        box-shadow: 0 1px 1px rgba(0,0,0,.05);
-    }
-    .table-title {
-        padding-bottom: 10px;
-        margin: 0 0 10px;
-    }
-    .table-title h2 {
-        margin: 6px 0 0;
-        font-size: 22px;
-    }
-    .table-title .add-new {
-        float: right;
-    height: 30px;
-    font-weight: bold;
-    font-size: 12px;
-    text-shadow: none;
-    min-width: 100px;
-    border-radius: 50px;
-    line-height: 13px;
-    }
-  .table-title .add-new i {
-    margin-right: 4px;
-  }
-    table.table {
-        table-layout: fixed;
-    }
-    table.table tr th, table.table tr td {
-        border-color: #e9e9e9;
-    }
-    table.table th i {
-        font-size: 13px;
-        margin: 0 5px;
-        cursor: pointer;
-    }
-    table.table th:last-child {
-        width: 100px;
-    }
-    table.table td a {
-    cursor: pointer;
-        display: inline-block;
-        margin: 0 5px;
-    min-width: 24px;
-    }    
-  table.table td a.add {
-        color: #27C46B;
-    }
-    table.table td a.edit {
-        color: #FFC107;
-    }
-    table.table td a.delete {
-        color: #E34724;
-    }
-    table.table td i {
-        font-size: 19px;
-    }
-  table.table td a.add i {
-        font-size: 24px;
-      margin-right: -1px;
-        position: relative;
-        top: 3px;
-    }    
-    table.table .form-control {
-        height: 32px;
-        line-height: 32px;
-        box-shadow: none;
-        border-radius: 2px;
-    }
-  table.table .form-control.error {
-    border-color: #f50000;
-  }
-  table.table td .add {
-    display: none;
-  }
+}
 
 
