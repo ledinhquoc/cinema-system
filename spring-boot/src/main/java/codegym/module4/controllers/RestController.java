@@ -79,15 +79,13 @@ public class RestController {
     @GetMapping(value = "/tickets", produces = "application/json")
     public ResponseEntity<List<Ticket>> getAllTickets() {
         List<Ticket> tickets = ticketService.findAll();
-    {
-        List<Ticket> tickets = ticketService.findAll();
-
-        if (tickets.isEmpty())
         {
+            if (tickets.isEmpty()) {
 
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+            return new ResponseEntity<>(tickets, HttpStatus.OK);
         }
-        return new ResponseEntity<>(tickets, HttpStatus.OK);
     }
 
     @GetMapping(value = "/tickets/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -97,8 +95,7 @@ public class RestController {
 
         Optional<Ticket> ticket = ticketService.findById(id);
 
-        if (!ticket.isPresent())
-        {
+        if (!ticket.isPresent()) {
             return new ResponseEntity<>(ticket.get(),
                     HttpStatus.NO_CONTENT);
         }
@@ -266,14 +263,12 @@ public class RestController {
     }
 
     @GetMapping(path = "movie-schedules/empty", produces = MediaType.APPLICATION_JSON_VALUE)
-    public MovieSchedules getEmptyMovieSchedule()
-    {
+    public MovieSchedules getEmptyMovieSchedule() {
         return new MovieSchedules();
     }
 
     @GetMapping(path = "movies/sold-tickets")
-    public List statisticMoviesBySoldTickets()
-    {
+    public List statisticMoviesBySoldTickets() {
         Query query =
                 entityManager
                         .createNativeQuery("call GetSoldTicketQuantitiesByMovie()");
@@ -282,8 +277,7 @@ public class RestController {
     }
 
     @GetMapping(path = "customers/top")
-    public List getTopCustomers()
-    {
+    public List getTopCustomers() {
         Query query =
                 entityManager.createNativeQuery("call GetTopMembers()");
 
@@ -291,8 +285,7 @@ public class RestController {
     }
 
     @GetMapping(path = "movie-genres/top-sold")
-    public List getMostWatchedMovieGenres()
-    {
+    public List getMostWatchedMovieGenres() {
         Query query =
                 entityManager.createNativeQuery("call GetMostWatchGenres");
 
@@ -300,8 +293,7 @@ public class RestController {
     }
 
     @GetMapping(path = "show-times/top")
-    public List getTopShowTimes()
-    {
+    public List getTopShowTimes() {
         Query query =
                 entityManager.createNativeQuery("call GetTopShowTimes");
 
@@ -309,8 +301,7 @@ public class RestController {
     }
 
     @GetMapping(path = "incomes/{year}")
-    public List getIncomesByYear(@PathVariable String year)
-    {
+    public List getIncomesByYear(@PathVariable String year) {
         Query query =
                 entityManager
                         .createNativeQuery("call GetIncomeStatisticsByYear(:year)")
@@ -319,28 +310,24 @@ public class RestController {
     }
 
     @GetMapping(path = "income-years")
-    public List getIncomeYears()
-    {
+    public List getIncomeYears() {
         Query query =
                 entityManager.createNativeQuery("call GetIncomeYears");
         return query.getResultList();
     }
 
     @GetMapping(path = "employees/new")
-    public Employee getNewEmployee()
-    {
+    public Employee getNewEmployee() {
         return new Employee();
     }
 
     @GetMapping(path = "employees/{id}")
-    public Employee getEmployeeById(@PathVariable int id)
-    {
+    public Employee getEmployeeById(@PathVariable int id) {
         return employeeService.findById(id);
     }
 
     @GetMapping(path = "employees/check/user-name/{user-name}")
-    public Boolean checkUniqueUsername(@PathVariable("user-name") String username)
-    {
+    public Boolean checkUniqueUsername(@PathVariable("user-name") String username) {
         Query query =
                 entityManager
                         .createNativeQuery("call CheckUniqueUsername(:username)")
@@ -349,8 +336,7 @@ public class RestController {
     }
 
     @GetMapping(path = "employees/check/email/{email}")
-    public Boolean checkUniqueEmail(@PathVariable("email") String email)
-    {
+    public Boolean checkUniqueEmail(@PathVariable("email") String email) {
         Query query =
                 entityManager
                         .createNativeQuery("call CheckUniqueEmail(:email)")
@@ -360,41 +346,36 @@ public class RestController {
     }
 
     @PostMapping(path = "employees/new/saved")
-    public ResponseEntity<String> saveNewEmployee(@RequestBody Employee employee,BindingResult result)
-    {
-        JsonConverter jsonConverter=new JsonConverter();
+    public ResponseEntity<String> saveNewEmployee(@RequestBody Employee employee, BindingResult result) {
+        JsonConverter jsonConverter = new JsonConverter();
         employeeValidator.validate(employee, result);
 
-        if (result.hasErrors())
-        {
+        if (result.hasErrors()) {
             result.getFieldErrors().forEach(fieldError -> {
-                jsonConverter.addProperty(fieldError.getField(),fieldError.getCode());
+                jsonConverter.addProperty(fieldError.getField(), fieldError.getCode());
             });
             return new ResponseEntity<>(jsonConverter.getJsonObject(), HttpStatus.NOT_ACCEPTABLE);
         }
 
         userService.save(employee.getUsers());
-        if (employeeService.save(employee) != null)
-        {
-            jsonConverter.addProperty("addOke",true);
+        if (employeeService.save(employee) != null) {
+            jsonConverter.addProperty("addOke", true);
             return new ResponseEntity<>(jsonConverter.getJsonObject(), HttpStatus.CREATED);
         }
 
-        jsonConverter.addProperty("backEndError",true);
+        jsonConverter.addProperty("backEndError", true);
         return new ResponseEntity<>(jsonConverter.getJsonObject(), HttpStatus.NOT_MODIFIED);
     }
 
     @PutMapping(path = "employees/edit/saved", produces = MediaType.APPLICATION_JSON_VALUE)
     @Transactional
-    public ResponseEntity<String> saveEditedEmployee(@RequestBody Employee employee, BindingResult result)
-    {
-        JsonConverter jsonConverter=new JsonConverter();
+    public ResponseEntity<String> saveEditedEmployee(@RequestBody Employee employee, BindingResult result) {
+        JsonConverter jsonConverter = new JsonConverter();
         employeeValidator.validate(employee, result);
 
-        if (result.hasErrors())
-        {
+        if (result.hasErrors()) {
             result.getFieldErrors().forEach(fieldError -> {
-                jsonConverter.addProperty(fieldError.getField(),fieldError.getCode());
+                jsonConverter.addProperty(fieldError.getField(), fieldError.getCode());
             });
             return new ResponseEntity<>(jsonConverter.getJsonObject(), HttpStatus.NOT_ACCEPTABLE);
         }
@@ -419,15 +400,16 @@ public class RestController {
                         .setParameter("phone", employee.getPhone())
                         .setParameter("password", employee.getUsers().getPassword())
                         .setParameter("id", employee.getId());
-        if (query.executeUpdate() > 0)
-        {
-            jsonConverter.addProperty("addOke",true);
+        if (query.executeUpdate() > 0) {
+            jsonConverter.addProperty("addOke", true);
             return new ResponseEntity<>(jsonConverter.getJsonObject(), HttpStatus.CREATED);
         }
 
+
         //Else
-        jsonConverter.addProperty("backEndError",true);
+        jsonConverter.addProperty("backEndError", true);
         return new ResponseEntity<>(jsonConverter.getJsonObject(), HttpStatus.NOT_MODIFIED);
+    }
       @GetMapping(path = "rowsByShowRoom/{id}")
     public List<Row> getRowByShowRoom(@PathVariable ShowRoom id){
 
