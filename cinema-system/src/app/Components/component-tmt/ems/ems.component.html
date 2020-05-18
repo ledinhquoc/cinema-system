@@ -1,0 +1,106 @@
+<div class="container" style="margin-top: 5%">
+  <div class="d-flex">
+    <button (click)="addNew()" class="btn btn-info add-new mx-0 " style="height: 38px;"><i class="fa fa-plus"></i> Thêm
+      mới
+    </button>
+    <div class="col-sm-6" style="margin-left: 480px">
+      <div class="search-box">
+        <div class="input-group">
+          <input type="text" id="search" class="form-control" placeholder="Search by Name">
+          <span class="input-group-addon"><i class="material-icons">&#xE8B6;</i></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <table id="father" class="table table-bordered mt-4">
+    <thead class="table-primary" style="border:1px solid black ;">
+    <tr>
+      <th>Mã nhân viên</th>
+      <th>Tên nhân viên</th>
+      <th>Số CMNN</th>
+      <th>Email</th>
+      <th>Số điện thoại</th>
+      <th>Địa chỉ</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let dynamic of dynamicArray; let i = index;">
+      <td>
+        <input [disabled]="!dynamic.isEdit" [(ngModel)]="dynamic.id" class="form-control" type="text"/>
+      </td>
+
+      <td>
+        <div class="form-group" [class.has-error]="fullName?.invalid && fullName?.touched">
+          <input [disabled]="!dynamic.isEdit" [(ngModel)]="dynamic.fullName" class="form-control"
+                 type="text" #fullName="ngModel" required/>
+          <span class="help-block" *ngIf="fullName?.errors?.required && fullName?.touched"
+                style="text-align: center; color: red; font-size: 12px">
+               Không được để trống
+            </span>
+        </div>
+      </td>
+
+      <td>
+        <div class="form-group" [class.has-error]="idCard?.invalid && idCard?.touched">
+          <input [disabled]="!dynamic.isEdit" [(ngModel)]="dynamic.idCard" class="form-control"
+                 type="text" #idCard="ngModel" required/>
+          <span class="help-block" *ngIf="idCard?.errors?.required && idCard?.touched"
+                style="text-align: center; color: red; font-size: 12px">
+               Không được để trống
+            </span>
+        </div>
+      </td>
+
+      <td>
+        <div class="form-group" [class.has-error]="email?.invalid && email?.touched">
+          <input [disabled]="!dynamic.isEdit" [(ngModel)]="dynamic.email" class="form-control"
+                 type="text" #email="ngModel" required
+                 pattern="^[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+(\.[A-Za-z0-9]+)$"/>
+          <span class="help-block" *ngIf="email?.errors?.required && email?.touched"
+                style="text-align: center; color: red; font-size: 12px">
+               Không được để trống
+            </span>
+          <span class="help-block" *ngIf="email?.errors?.pattern && email?.touched"
+                style="text-align: center; color: red; font-size: 12px">
+               email sai định dạng
+            </span>
+        </div>
+      </td>
+
+      <td>
+        <div class="form-group" [class.has-error]="phone?.invalid && phone?.touched">
+          <input [disabled]="!dynamicArray[i].isEdit" [(ngModel)]="dynamicArray[i].phone" class="form-control"
+                 type="text" #phone="ngModel" required/>
+          <span class="help-block" *ngIf="phone?.errors?.required && phone?.touched"
+                style="text-align: center; color: red; font-size: 12px">
+               Không được để trống
+            </span>
+        </div>
+      </td>
+
+      <td>
+        <div class="form-group" [class.has-error]="address?.invalid && address?.touched">
+          <input [disabled]="!dynamicArray[i].isEdit" [(ngModel)]="dynamicArray[i].address" class="form-control"
+                 type="text" #address="ngModel" required/>
+          <span class="help-block" *ngIf="address?.errors?.required && address?.touched"
+                style="text-align: center; color: red; font-size: 12px">
+               Không được để trống
+            </span>
+        </div>
+      </td>
+
+      <td class="d-flex">
+        <a class="edit" title="Edit" data-toggle="tooltip" (click)="edit(dynamicArray[i].id,i)"><i
+          class="material-icons">&#xE254;</i></a>
+        <a class="delete" title="Delete" data-toggle="tooltip" (click)="delete(dynamicArray[i].id,i)"><i
+          class="material-icons">&#xE872;</i></a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <button (click)="save()" class="btn btn-success add-new mx-0 " style="height: 38px;">Lưu
+  </button>
+</div>
