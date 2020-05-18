@@ -1,0 +1,14 @@
+alert.alert-danger.ng-star-inserted {
+  border: 1px solid red;
+}
+.required-tag {
+  font-weight: bold;
+  color: red;
+}
+.notification {
+  font-size: large;
+  /* text-align: center; */
+  font-weight: bolder;
+  border-radius: 5px;
+  height: 30px;
+}
