@@ -1,0 +1,135 @@
+
+<script src="../../../../assets/lib/js/discount.js"></script>
+<div class="container" >
+  <div class="table-wrapper">
+    <div class="table-title">
+      <div class="row">
+        <div class="col-sm-5">
+          <h2>Danh sách khuyến mãi</h2>
+        </div>
+        <div class="col-sm-3 mr-0">
+          <button type="button" class="btn btn-info addDiscount" (click)="addNew()"><i class="fa fa-plus"></i> Thêm khuyến mãi</button>
+        </div>
+        <div class="col-sm-4">
+          <div class="search-box">
+            <div class="input-group">
+              <input type="text" id="search" class="form-control" placeholder="Tìm kiếm ">
+              <span class="input-group-addon"><i class="material-icons">&#xE8B6;</i></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <table class="table table-striped table-bordered"   >
+    <thead>
+    <tr>
+      <th>Tiêu đề</th>
+      <th>Thời gian bắt đầu</th>
+      <th>Thời gian kết thúc</th>
+      <th>Mức giảm giá (%)</th>
+      <th>Chi tiết khuyến mãi</th>
+      <th>Link ảnh</th>
+      <th style="width: 8%">Trực tiếp</th>
+      <th style="width: 8%">Chi tiết</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let dynamic of discount | paginate: { itemsPerPage: 10, currentPage: page} ; let i = index;" >
+      <td>
+        <div class="form-group" [class.has-error]="title.invalid && title.touched">
+          <input id="title" [disabled]="!discount[i].isEdit"  [(ngModel)]="discount[i].promotionTitle"
+                 required
+                 #title="ngModel" class="form-control" type="text" />
+          <span class="help-block " *ngIf="title.errors?.required && title.touched" style="text-align: center">
+            Không được để trống
+          </span>
+        </div>
+      </td>
+
+      <td>
+        <div class="form-group" [class.has-error]="beginDate.invalid && beginDate.touched">
+          <input required [disabled]="!discount[i].isEdit" [(ngModel)]="discount[i].promotionBeginDate "
+                 #beginDate="ngModel" class="form-control" type="text"
+                 pattern="^(2019|202[0-9]{1})\-(0[1-9]|1[0-2])\-(0[1-9]|[12][0-9]|3[01])$"/>
+        <span class="help-block " *ngIf="beginDate.errors?.required && beginDate.touched" style="text-align: center">
+            Không được để trống
+          </span>
+          <span class="help-block " *ngIf="beginDate.errors?.pattern  && beginDate.touched" style="text-align: center">
+            Sai định dạng 'yyyy/MM/dd'
+          </span>
+        </div>
+      </td>
+
+      <td>
+        <div class="form-group" [class.has-error]="endDate.invalid && endDate.touched">
+          <input required [disabled]="!discount[i].isEdit" [(ngModel)]="discount[i].promotionEndDate "
+                 #endDate="ngModel" class="form-control" type="text"
+                 pattern="^(2019|202[0-9]{1})\-(0[1-9]|1[0-2])\-(0[1-9]|[12][0-9]|3[01])$"/>
+          <span class="help-block " *ngIf="endDate.errors?.required && endDate.touched" style="text-align: center">
+            Không được để trống
+          </span>
+          <span class="help-block " *ngIf="endDate.errors?.pattern  && endDate.touched" style="text-align: center">
+            Sai định dạng 'yyyy/MM/dd'
+          </span>
+        </div>
+      </td>
+
+      <td>
+        <div class="form-group" [class.has-error]="discountPr.invalid && discountPr.touched">
+          <input  required [disabled]="!discount[i].isEdit" [(ngModel)]="discount[i].promotionDiscount"
+                 class="form-control" type="text"  #discountPr="ngModel"
+          pattern="^([0-9]{1}|[1-9][0-9]|100)$"/>
+          <span class="help-block " *ngIf="discountPr.errors?.required && discountPr.touched" style="text-align: center">
+            Không được để trống
+          </span>
+          <span class="help-block " *ngIf="discountPr.errors?.pattern  && discountPr.touched" style="text-align: center">
+            Giảm giá từ 0-100 %
+          </span>
+        </div>
+      </td>
+
+      <td>
+        <div class="form-group" [class.has-error]="description.invalid && description.touched">
+          <input required [disabled]="!discount[i].isEdit" [(ngModel)]="discount[i].promotionDescription"
+                 class="form-control" type="text" #description="ngModel"/>
+          <span class="help-block " *ngIf="description.errors?.required && description.touched" style="text-align: center">
+            Không được để trống
+          </span>
+        </div>
+      </td>
+
+      <td>
+        <div class="form-group" [class.has-error]="description.invalid && description.touched">
+          <input required [disabled]="!discount[i].isEdit" [(ngModel)]="discount[i].promotionImage"
+                 class="form-control" type="text" #description="ngModel"/>
+          <span class="help-block " *ngIf="description.errors?.required && description.touched" style="text-align: center">
+            Không được để trống
+          </span>
+        </div>
+      </td>
+
+      <td style="width: 8%" >
+        <div class="d-flex justify-content-center mt-3">
+          <a class="edit mr-3" (click)="edit(discount[i].id,i)" type="button"><i class="material-icons">&#xE254;</i></a>
+          <a class="delete" (click)="delete(discount[i].id,i)" type="button"><i class="material-icons">&#xE872;</i></a>
+        </div>
+      </td>
+
+      <td style="width: 8%">
+        <div class="d-flex justify-content-center mt-3">
+        <a class="edit1 mr-3"  type="button" [routerLink]="['/edit-promotion/'+ discount[i].id]" routerLinkActive="router-link-active" >Sửa</a>
+        <a class="delete1" type="button" [routerLink]="['/delete-discount/'+dynamic.id]">Xóa</a>
+        </div>
+      </td>
+
+    </tr>
+    </tbody>
+  </table>
+    <div class="d-flex justify-content-between mt-3" >
+      <button type="submit" (click)="saveAll()" class="btn btn-success add-new mx-0 " style="height: 38px;"><i class="material-icons">&#xE03B;</i> Lưu lại </button>
+      <button class="btn btn-info " align = "right"  style="height: 38px;" [routerLink]="['/add-promotion']" routerLinkActive="router-link-active" ><i class="fa fa-plus"></i> Thêm mới chi tiết </button>
+    </div>
+
+</div>
+  <pagination-controls (pageChange)="page = $event" align="center"></pagination-controls>
+</div>

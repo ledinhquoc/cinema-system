@@ -2,13 +2,23 @@ package codegym.module4.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.springframework.format.annotation.DateTimeFormat;
+
+
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import java.util.Date;
 import java.util.List;
 
 
 @Entity
 @Table(name = "movie")
+@JsonIgnoreProperties("movie_schedules")
 @NamedStoredProcedureQuery(name = "GetMovieByMovieScheduleId",
         procedureName = "GetMovieByMovieScheduleId",
         resultClasses = {Movie.class},
@@ -28,41 +38,61 @@ public class Movie
     @Column(name = "id")
     private int id;
 
+
     @Column(name = "movie_name")
+    @NotEmpty(message = "Tên không được để trống")
     private String movieName;
 
     @Column(name = "movie_type")
+    @NotEmpty(message = "Thể loại phim không được để trống")
     private String movieType;
 
+    @DateTimeFormat(pattern = "yyyy/MM/dd")
+    @Temporal(value = TemporalType.DATE)
+
     @Column(name = "date_start")
+    @NotNull(message = "Ngày bắt đầu không được để trống")
     private Date dateStart;
 
+    @DateTimeFormat(pattern = "yyyy/MM/dd")
+    @Temporal(value = TemporalType.DATE)
     @Column(name = "date_end")
+    @NotNull(message = "Ngày kthúc không được để trống")
     private Date dateEnd;
 
     @Column(name = "movie_studio")
+    @NotEmpty(message = "Hãng phim không được để trống")
     private String movieStudio;
 
     @Column(name = "directors")
+    @NotEmpty(message = "Tác giả không được để trống")
     private String directors;
 
     @Column(name = "actor")
+    @NotEmpty(message = "Diễn viên không được để trống")
     private String actor;
 
     @Column(name = "duration")
-    private int duration;
+    @NotNull(message = "Thời lượng phim không được để trống")
+    @Min(value = 50,message = "Thòi lượng phim phải lớn hơn 50 phút")
+      private int duration;
 
     @Column(name = "content")
+    @NotEmpty(message = "Nội dung phim không được để trống")
     private String content;
 
     @Column(name = "srcImg")
+    @NotEmpty(message = "Hình ảnh không được để trống")
     private String srcImg;
 
     @Column(name = "srcVideo")
+    @NotEmpty(message = "Trailer phim không được để trống")
     private String srcVideo;
 
-    @OneToMany(targetEntity = MovieSchedules.class)
+
+    @OneToMany(targetEntity = MovieSchedules.class,mappedBy = "movie", cascade = CascadeType.ALL)
     @JsonBackReference
+
     private List<MovieSchedules> movieSchedules;
 
     /**

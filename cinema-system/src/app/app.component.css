@@ -4,17 +4,24 @@
 }
 
 .navbar li a {
-  color: black !important;
+  color: rgb(94, 92, 92) !important;
   font-size: 15px;
-  font-style: initial;
+  
   margin-right: 20px;
 }
 #nav-bar{
   margin-bottom: 5px;
 }
 .bg-light{
-  background-color:#ffffff !important;
+  background-color:#f0f0f0 !important;
+}
+.navbar-custome{
+  border-color: bisque;
+  background-color: #ffffff;
 }
 /*#helloAccount{*/
 /* color: black;*/
 /*}*/
+.cunteono{
+  max-width: 1500px;
+}

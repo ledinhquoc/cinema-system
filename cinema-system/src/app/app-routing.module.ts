@@ -5,7 +5,7 @@ import { RouterModule, Routes } from "@angular/router";
 
 import { TopBarComponent } from "./Components/component-viet/TopBar/top-bar/top-bar.component";
 import { SlideBarComponent } from "./Components/component-viet/SlideBar/slide-bar/slide-bar.component";
-
+import {ListCustonerComponent} from './Components/components-hhien/list-custoner/list-custoner.component'
 import { InfomationComponent } from "./Components/component-viet/InformationAccount/infomation/infomation.component";
 import { HomeAccountComponent } from "./Components/component-viet/home-account/home-account.component";
 import { HistoryTicketComponent } from "./Components/component-viet/Tickes/history-ticket/history-ticket.component";
@@ -39,14 +39,43 @@ import { UserRegistrationComponent } from "./Components/component-hoang/user-reg
 import { CarouselComponent } from "./Components/component-hoang/carousel/carousel.component";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatNativeDateModule } from "@angular/material/core";
-import { MemberComponent } from "./Components/component-vu/member/member.component";
 import { ChonGheComponent } from "./Components/components-hhien/chon-ghe/chon-ghe.component";
-import { ShowtimesComponent } from "./Components/components-hhien/showtimes/showtimes.component";
+import { ShowtimesComponent as ShowtimeComponent } from "./Components/components-hhien/showtimes/showtimes.component";
 import { MatDatepickerModule } from "@angular/material/datepicker";
+import { TicketConfirmmComponent } from './Components/component-son/ticket-confirm/ticket-confirm.component';
+import { TicketConfirmmInfoComponent } from './Components/component-son/ticket-confirm-info/ticket-confirm-info.component';
+import { CustomerComponent } from './Components/component-son/customer/customer.component';
+import { ShowtimesComponent } from './Components/component-tmt/showtimes/showtimes.component';
+import { FilmManagementComponent } from './Components/component-son/film-management/film-management.component';
+import {BookingTicketComponent} from "./Components/component-vu/admin-ticket/booking-ticket/booking-ticket.component";
+import {ConfirmBookingComponent} from "./Components/component-vu/admin-ticket/confirm-booking/confirm-booking.component";
+import {InformationConfirmComponent} from "./Components/component-vu/admin-ticket/information-confirm/information-confirm.component";
+import {SlideBarManageShowRoomComponent} from './Components/component-viet/ManageShowroom/slide-bar-manage-show-room/slide-bar-manage-show-room.component';
+import {ListShowRoomComponent } from './Components/component-viet/ManageShowroom/list-show-room/list-show-room.component';
+import {ShowroomDetailsComponent } from './Components/component-viet/ManageShowroom/showroom-details/showroom-details.component';
+import {AddSeatComponent } from './Components/component-viet/ManageShowroom/add-seat/add-seat.component';
+import {AddShowroomComponent } from './Components/component-viet/ManageShowroom/add-showroom/add-showroom.component';
+import {MemberComponent} from './Components/component-vu/member/member.component'
+import {AddPromotionComponent } from './Components/component-quoc/add-promotion/add-promotion.component';
+import {NgZorroAntdModule} from '../app/ng-zorro-antd/ng-zorro-antd.module';
+import { EditPromotionComponent } from './Components/component-quoc/edit-promotion/edit-promotion.component';
+import { AddFilmComponent } from './Components/component-quy/add-film/add-film.component';
+import { EditFilmComponent } from './Components/component-quy/edit-film/edit-film.component';
+import { ListFilmsComponent } from './Components/component-quy/list-films/list-films.component';
+import { ListDiscountComponent } from './Components/component-tuan/list-discount/list-discount.component';
+import {DeleteDiscountComponent} from "./Components/component-tuan/delete-discount/delete-discount.component";
+import { EmsComponent } from './Components/component-tmt/ems/ems.component';
+
 
 const routes: Routes = [
-  { path: "", component: ListFilmComponent },
-  { path: "film-detail/:id", component: DetailFilmComponent },
+
+  {path: '', component: ListFilmComponent},
+  {path: 'add-promotion', component: AddPromotionComponent},
+  {path: 'edit-promotion/:id', component: EditPromotionComponent},
+  {path: 'film-detail/:id', component: DetailFilmComponent},
+  {path: 'list-discount', component: ListDiscountComponent},
+  {path: 'delete-discount/:id', component: DeleteDiscountComponent},
+
   {
     path: ":id/account",
     component: SlideBarComponent,
@@ -77,23 +106,37 @@ const routes: Routes = [
       },
     ],
   },
-  { path: "resetPassword", component: ResetPasswordComponent },
+  {path: 'resetPassword', component: ResetPasswordComponent},
 
-  { path: "ticket-prices", component: SeeTickerPricesComponent },
-  { path: "see-ticker-prices", component: SeeTickerPricesComponent },
-  { path: "chon-ghe", component: PositionSelectorComponent },
-  { path: "thong-tin-dat-ve", component: TicketBookingInformationComponent },
-  {
-    path: "booking",
-    component: BookingComponent,
-  },
-  { path: "login", component: LoginComponent },
-  { path: "register", component: UserRegistrationComponent },
-  { path: "member", component: MemberComponent },
-  { path: "confirmPassword/:id", component: ConfirmPasswordComponent },
-  { path: "movieSchedules", component: ShowtimesComponent },
-  { path: "chonGhe", component: ChonGheComponent },
-  {
+  {path: 'ticket-prices', component: SeeTickerPricesComponent},
+  {path: 'chon-ghe', component: PositionSelectorComponent},
+  {path: 'thong-tin-dat-ve', component: TicketBookingInformationComponent},
+  {path: 'booking', component: BookingComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'register', component: UserRegistrationComponent},
+  {path: 'member', component: MemberComponent},
+  {path: 'confirmPassword/:id', component: ConfirmPasswordComponent},
+  {path: 'booking-ticket', component: BookingTicketComponent},
+  {path: 'confirm-booking/:id', component: ConfirmBookingComponent},
+  {path: 'information-confirm/:id', component: InformationConfirmComponent},
+  {path: 'movieSchedules', component: ShowtimeComponent},
+  {path: 'chonGhe', component: ChonGheComponent},
+  {path: 'showRoom', component: SlideBarManageShowRoomComponent,
+
+    children: [{
+      path: '', component: ListShowRoomComponent,
+    },
+      {
+        path: ':id/showroomDetails', component: ShowroomDetailsComponent,
+      },
+
+    ]},
+
+  {path: 'admin-movies', component: ListFilmsComponent},
+  {path: 'add-film', component: AddFilmComponent},
+  {path: 'edit-film/:id', component: EditFilmComponent},
+  {path:'list-customer',component: ListCustonerComponent},
+   {
     path: "thong-ke-phim",
     component: MovieStatisticComponent,
     data: { mode: "movies" },
@@ -128,11 +171,14 @@ const routes: Routes = [
     component: AddNewEditEmployeeComponent,
     data: { mode: "edit" },
   },
+  {path: 'employees', component: EmsComponent}
 ];
 
 @NgModule({
-  declarations: [
-    TopBarComponent,
+  declarations: [TopBarComponent,
+    ListCustonerComponent,
+    AddFilmComponent,
+    EditFilmComponent,
     ShowtimesComponent,
     ChonGheComponent,
     SlideBarComponent,
@@ -153,20 +199,41 @@ const routes: Routes = [
     BookingComponent,
     TicketConfirmComponent,
     TicketConfirmInfoComponent,
-
     ErrorDisplayComponent,
+    InformationConfirmComponent,
+    ConfirmBookingComponent,
+    BookingTicketComponent,
     LoginComponent,
+    CustomerComponent,
+    TicketConfirmmComponent,
+    TicketConfirmmInfoComponent,
     CarouselComponent,
     TicketCanceledComponent,
     TicketBookingComponent,
     ConfirmPasswordComponent,
     ResetPasswordComponent,
     UserRegistrationComponent,
+    ShowtimeComponent,
+    FilmManagementComponent,
+    FilmManagementComponent,
     ShowtimesComponent,
-  ],
+    SlideBarManageShowRoomComponent,
+    ListShowRoomComponent,
+    ShowroomDetailsComponent,
+    AddSeatComponent,
+    AddShowroomComponent,
+    MemberComponent,
+    AddFilmComponent,
+    EditFilmComponent,
+    ListFilmsComponent,
+    AddPromotionComponent,
+    EditPromotionComponent,
+    ListDiscountComponent,
+    DeleteDiscountComponent,
+    EmsComponent],
+  
 
-  imports: [
-    RouterModule.forRoot(routes),
+  imports: [RouterModule.forRoot(routes),
     ReactiveFormsModule,
     FormsModule,
     CommonModule,
@@ -180,8 +247,10 @@ const routes: Routes = [
     MatFormFieldModule,
     MatDatepickerModule,
     MatNativeDateModule,
-  ],
-  exports: [RouterModule, TopBarComponent, SlideBarComponent],
-  entryComponents: [MatConfirmDialogComponent],
+    NgZorroAntdModule],
+
+  exports: [RouterModule, TopBarComponent, SlideBarComponent,NgZorroAntdModule],
+  entryComponents: [MatConfirmDialogComponent,AddSeatComponent,AddShowroomComponent],
+
 })
 export class AppRoutingModule {}

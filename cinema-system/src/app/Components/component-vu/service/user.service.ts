@@ -54,5 +54,9 @@ export class UserService {
     return this.http.get(API_URL + 'api/v1/users/user',this.httpOptions);
   }
 
+  getUserByUserName(username:string):Observable<any> {
+    return this.http.get(API_URL + 'api/v1/users/find/'+ username,this.httpOptions);
+  }
+
 
 }

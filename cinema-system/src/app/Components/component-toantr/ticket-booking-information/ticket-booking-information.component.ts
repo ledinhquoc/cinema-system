@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { HttpService } from "./../../../Services/http.service";
 
+
 @Component({
   selector: "app-ticket-booking-information",
   templateUrl: "./ticket-booking-information.component.html",

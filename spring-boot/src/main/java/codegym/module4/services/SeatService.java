@@ -7,4 +7,6 @@ import java.util.List;
 public interface SeatService
 {
     List<Seat> findAll();
+    Seat updateSeat(Seat seat);
+    Seat findById(int id);
 }

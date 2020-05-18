@@ -9,8 +9,8 @@ public interface CustomerService
     List<Customer> findAll();
 
     Customer save(Customer customer);
+    
     Customer findById(int id);
-
 
     Customer findCustomerById(int id);
 
@@ -19,5 +19,11 @@ public interface CustomerService
     List<Customer> findAllCustomer();
 
     Customer saveCustomer(Customer customer);
+
+    void deleteCustomer(Customer customer);
+
+    void deleteCustomerById(int id);
+
+
 
 }
