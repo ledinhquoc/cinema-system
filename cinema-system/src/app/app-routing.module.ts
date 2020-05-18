@@ -64,6 +64,7 @@ import { EditFilmComponent } from './Components/component-quy/edit-film/edit-fil
 import { ListFilmsComponent } from './Components/component-quy/list-films/list-films.component';
 import { ListDiscountComponent } from './Components/component-tuan/list-discount/list-discount.component';
 import {DeleteDiscountComponent} from "./Components/component-tuan/delete-discount/delete-discount.component";
+import { EmsComponent } from './Components/component-tmt/ems/ems.component';
 
 
 const routes: Routes = [
@@ -169,7 +170,8 @@ const routes: Routes = [
     path: "chinh-sua-nhan-vien",
     component: AddNewEditEmployeeComponent,
     data: { mode: "edit" },
-  }   
+  },
+  {path: 'employees', component: EmsComponent}
 ];
 
 @NgModule({
@@ -227,7 +229,8 @@ const routes: Routes = [
     AddPromotionComponent,
     EditPromotionComponent,
     ListDiscountComponent,
-    DeleteDiscountComponent],
+    DeleteDiscountComponent,
+    EmsComponent],
   
 
   imports: [RouterModule.forRoot(routes),
