@@ -40,4 +40,11 @@ export class FilmService {
   editAllPromotion(promotion): Observable<any> {
     return this.http.put(this.baseUrlPromotion +'/edit' ,promotion);
   }
+
+  addNewFilm(film): Observable<any>{
+    return  this.http.post(this.baseUrlFilm,film);
+  }
+  updateFilm(film,id): Observable<any>{
+    return this.http.put(this.baseUrlFilm + '/'+ id,film);
+  }
 }

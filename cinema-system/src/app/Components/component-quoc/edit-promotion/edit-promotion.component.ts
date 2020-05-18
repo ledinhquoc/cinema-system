@@ -145,7 +145,7 @@ export class EditPromotionComponent implements OnInit {
     }
    
     this.promotionService.editPromotion(this.editValidateForm.value,this.promotionId).subscribe(data =>{
-      this.router.navigateByUrl('/')
+      this.router.navigateByUrl('/list-discount')
     })
   }
 

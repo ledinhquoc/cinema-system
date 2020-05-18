@@ -115,23 +115,31 @@ color: #222;" id="nav-bar" class="navbar navbar-expand-md navbar-custome sticky-
                 <i nz-icon nzType="smile"></i>
                 <span>Quản lý thành viên</span>
               </li>
-            <li nz-menu-item>
+            <li nz-menu-item [routerLink]="['/admin-movies']" routerLinkActive="router-link-active" >
                 <i nz-icon nzType="video-camera"></i>
                 <span>Quản lý phim </span>
               </li>
-            <li nz-menu-item [routerLink]="['/add-promotion']" routerLinkActive="router-link-active" >
+            <li nz-menu-item [routerLink]="['/list-discount']" routerLinkActive="router-link-active" >
                 <i nz-icon nzType="star"></i>
                 <span>Quản lý khuyến mãi </span>
               </li>
-            <li nz-menu-item>
+            <li nz-menu-item [routerLink]="['/showRoom']" routerLinkActive="router-link-active" >
                 <i nz-icon nzType="desktop"></i>
                 <span>Quản lý phòng chiếu </span>
               </li>
-            <li nz-menu-item>
+            <!-- <li nz-menu-item>
                 <i nz-icon nzType="bar-chart"></i>
                 <span>Thống kê</span>
-              </li>
-    
+              </li> -->
+             <li nz-submenu nzTitle="Thống kê"  nzIcon="bar-chart">
+              <ul>
+                <li nz-menu-item [routerLink]="['/thong-ke-phim']" routerLinkActive="router-link-active" >Thống kê phim</li>
+                <li nz-menu-item [routerLink]="['/thong-ke-thanh-vien']" routerLinkActive="router-link-active" >Thống kê thành viên</li>
+                <li nz-menu-item [routerLink]="['/thong-ke-thu-nhap']" routerLinkActive="router-link-active" >Thống kê thu nhập</li>
+                <li nz-menu-item [routerLink]="['/thong-ke-xuat-chieu']" routerLinkActive="router-link-active" >Thống kê xuất chiếu</li>
+                <li nz-menu-item [routerLink]="['/thong-ke-the-loai-phim']" routerLinkActive="router-link-active" >Thống kê loại phim</li>
+              </ul>
+            </li>
           </ul>
         <nz-layout>
           

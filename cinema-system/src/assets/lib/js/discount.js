@@ -15,7 +15,7 @@ $(document).ready(function(){
         $row.find("td:nth-child(6)").html().toLowerCase()+
         $row.find("td:nth-child(4)").html().toLowerCase();
       console.log(name);
-      console.log(term);
+      // console.log(term);
       if(name.search(term) < 0){
         $row.hide();
       } else{

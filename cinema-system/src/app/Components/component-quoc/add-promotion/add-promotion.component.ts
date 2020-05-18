@@ -134,7 +134,7 @@ export class AddPromotionComponent implements OnInit {
 
     this.validateForm.controls['promotionImage'].setValue(this.url);
     this.promotionService.addNewPromotion(this.validateForm.value).subscribe(data =>{
-      this.router.navigateByUrl('/')
+      this.router.navigateByUrl('/list-discount')
     })
   }
 

@@ -5,12 +5,7 @@ import { RouterModule, Routes } from "@angular/router";
 
 import { TopBarComponent } from "./Components/component-viet/TopBar/top-bar/top-bar.component";
 import { SlideBarComponent } from "./Components/component-viet/SlideBar/slide-bar/slide-bar.component";
-<<<<<<< HEAD
 import {ListCustonerComponent} from './Components/components-hhien/list-custoner/list-custoner.component'
-=======
-
-
->>>>>>> 9d261c8e731328dea96eadec9821a9579d677edd
 import { InfomationComponent } from "./Components/component-viet/InformationAccount/infomation/infomation.component";
 import { HomeAccountComponent } from "./Components/component-viet/home-account/home-account.component";
 import { HistoryTicketComponent } from "./Components/component-viet/Tickes/history-ticket/history-ticket.component";
@@ -45,10 +40,7 @@ import { CarouselComponent } from "./Components/component-hoang/carousel/carouse
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatNativeDateModule } from "@angular/material/core";
 import { ChonGheComponent } from "./Components/components-hhien/chon-ghe/chon-ghe.component";
-<<<<<<< HEAD
 import { ShowtimesComponent as ShowtimeComponent } from "./Components/components-hhien/showtimes/showtimes.component";
-=======
->>>>>>> 9d261c8e731328dea96eadec9821a9579d677edd
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { TicketConfirmmComponent } from './Components/component-son/ticket-confirm/ticket-confirm.component';
 import { TicketConfirmmInfoComponent } from './Components/component-son/ticket-confirm-info/ticket-confirm-info.component';
@@ -63,20 +55,10 @@ import {ListShowRoomComponent } from './Components/component-viet/ManageShowroom
 import {ShowroomDetailsComponent } from './Components/component-viet/ManageShowroom/showroom-details/showroom-details.component';
 import {AddSeatComponent } from './Components/component-viet/ManageShowroom/add-seat/add-seat.component';
 import {AddShowroomComponent } from './Components/component-viet/ManageShowroom/add-showroom/add-showroom.component';
-
+import {MemberComponent} from './Components/component-vu/member/member.component'
 import {AddPromotionComponent } from './Components/component-quoc/add-promotion/add-promotion.component';
 import {NgZorroAntdModule} from '../app/ng-zorro-antd/ng-zorro-antd.module';
 import { EditPromotionComponent } from './Components/component-quoc/edit-promotion/edit-promotion.component';
-<<<<<<< HEAD
-import {AddFilmComponent} from "./Components/component-quy/add-film/add-film.component";
-import {EditFilmComponent} from "./Components/component-quy/edit-film/edit-film.component";
-
-
-
-
-
-const routes: Routes = [
-=======
 import { AddFilmComponent } from './Components/component-quy/add-film/add-film.component';
 import { EditFilmComponent } from './Components/component-quy/edit-film/edit-film.component';
 import { ListFilmsComponent } from './Components/component-quy/list-films/list-films.component';
@@ -86,17 +68,13 @@ import {DeleteDiscountComponent} from "./Components/component-tuan/delete-discou
 
 const routes: Routes = [
 
->>>>>>> 9d261c8e731328dea96eadec9821a9579d677edd
   {path: '', component: ListFilmComponent},
   {path: 'add-promotion', component: AddPromotionComponent},
   {path: 'edit-promotion/:id', component: EditPromotionComponent},
   {path: 'film-detail/:id', component: DetailFilmComponent},
-<<<<<<< HEAD
-=======
   {path: 'list-discount', component: ListDiscountComponent},
   {path: 'delete-discount/:id', component: DeleteDiscountComponent},
 
->>>>>>> 9d261c8e731328dea96eadec9821a9579d677edd
   {
     path: ":id/account",
     component: SlideBarComponent,
@@ -192,10 +170,6 @@ const routes: Routes = [
     component: AddNewEditEmployeeComponent,
     data: { mode: "edit" },
   }   
-<<<<<<< HEAD
-
-=======
->>>>>>> 9d261c8e731328dea96eadec9821a9579d677edd
 ];
 
 @NgModule({
@@ -237,28 +211,16 @@ const routes: Routes = [
     ConfirmPasswordComponent,
     ResetPasswordComponent,
     UserRegistrationComponent,
-<<<<<<< HEAD
     ShowtimeComponent,
     FilmManagementComponent,
     FilmManagementComponent,
-=======
     ShowtimesComponent,
-    BanVeComponent,
-    FilmManagementComponent,
-    FilmManagementComponent,
-    ShowtimesComponent,
->>>>>>> 9d261c8e731328dea96eadec9821a9579d677edd
     SlideBarManageShowRoomComponent,
     ListShowRoomComponent,
     ShowroomDetailsComponent,
     AddSeatComponent,
     AddShowroomComponent,
     MemberComponent,
-<<<<<<< HEAD
-    AddPromotionComponent,
-    EditPromotionComponent],
-
-=======
     AddFilmComponent,
     EditFilmComponent,
     ListFilmsComponent,
@@ -267,7 +229,6 @@ const routes: Routes = [
     ListDiscountComponent,
     DeleteDiscountComponent],
   
->>>>>>> 9d261c8e731328dea96eadec9821a9579d677edd
 
   imports: [RouterModule.forRoot(routes),
     ReactiveFormsModule,

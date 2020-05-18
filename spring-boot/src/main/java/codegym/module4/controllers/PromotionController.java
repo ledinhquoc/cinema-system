@@ -27,10 +27,10 @@ public class PromotionController {
     @PersistenceContext
     private EntityManager entityManager;
 
-    @GetMapping(path = "promotions", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Promotion> getAllPromotions() {
-        return promotionService.findAll();
-    }
+//    @GetMapping(path = "promotions", produces = MediaType.APPLICATION_JSON_VALUE)
+//    public List<Promotion> getAllPromotions() {
+//        return promotionService.findAll();
+//    }
 
 
     @GetMapping(path = "promotions/{id}")
