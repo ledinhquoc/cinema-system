@@ -7,8 +7,8 @@ alert.alert-danger.ng-star-inserted {
 }
 .notification {
   font-size: large;
-  /* text-align: center; */
   font-weight: bolder;
   border-radius: 5px;
   height: 30px;
+  padding-top: 5px;
 }
