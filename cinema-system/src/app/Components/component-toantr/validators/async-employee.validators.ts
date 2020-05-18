@@ -8,12 +8,21 @@ export class AsyncEmployeeValidator {
   ): Promise<ValidationErrors | null> {
     let controlBind = this as any;
     let myHttp = controlBind.myHttp as HttpService;
+    let employee = controlBind.employee;
+    let mode = controlBind.mode;
     return new Promise((resolve) => {
       myHttp
         .getById("employees/check/user-name", username.value)
-        .subscribe((result) => {
-          if (result) {
-            resolve({ takenUsername: true });
+        .subscribe((isUniqueUsername) => {
+          if (!isUniqueUsername) {
+            if (mode === "add") {
+              resolve({ takenUsername: true });
+            } else if (
+              mode === "edit" &&
+              username.value !== employee.users.username
+            ) {
+              resolve({ takenUsername: true });
+            }
           }
           resolve(null);
         });
@@ -24,12 +33,41 @@ export class AsyncEmployeeValidator {
   ): Promise<ValidationErrors | null> {
     let controlBind = this as any;
     let myHttp = controlBind.myHttp as HttpService;
+    let employee = controlBind.employee;
+    let mode = controlBind.mode;
     return new Promise((resolve) => {
       myHttp
         .getById("employees/check/email", email.value)
-        .subscribe((result) => {
-          if (result) {
-            resolve({ takenEmail: true });
+        .subscribe((isUniqueEmail) => {
+          if (!isUniqueEmail) {
+            if (mode === "add") {
+              resolve({ takenEmail: true });
+            } else if (mode === "edit" && email.value !== employee.email) {
+              resolve({ takenEmail: true });
+            }
+          }
+          resolve(null);
+        });
+    });
+  }
+
+  static async uniqueIdCard(
+    idCard: AbstractControl
+  ): Promise<ValidationErrors | null> {
+    let controlBind = this as any;
+    let myHttp = controlBind.myHttp as HttpService;
+    let employee = controlBind.employee;
+    let mode = controlBind.mode;
+    return new Promise((resolve) => {
+      myHttp
+        .getById("employees/check-unique/id-card", idCard.value)
+        .subscribe((isUniqueIdCard) => {
+          if (!isUniqueIdCard) {
+            if (mode === "add") {
+              resolve({ takenIdCard: true });
+            } else if (mode === "edit" && idCard.value !== employee.idCard) {
+              resolve({ takenIdCard: true });
+            }
           }
           resolve(null);
         });

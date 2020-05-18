@@ -18,20 +18,20 @@ export class MovieStatisticComponent implements OnInit {
     private router: Router
   ) {}
   private backgroundColor$ = [
-    "rgb(172, 0, 230)",
-    "rgb(77, 77, 255)",
+    "rgba(187, 16, 244, 0.94)",
+    "rgba(93, 93, 229, 0.95)",
     "rgb(255, 51, 51)",
-    "rgb(187, 51, 255)",
-    "rgb(0, 204, 0)",
-    "rgb(255, 163, 26)",
+    "rgba(238, 238, 43, 0.93)",
+    "rgba(4, 220, 4, 0.95)",
+    "rgba(255, 26, 110, 0.95)",
   ];
   private borderColor$ = [
-    "rgb(134, 0, 179)",
+    "rgb(114, 8, 160)",
     "rgb(0, 0, 230)",
     "rgb(255, 0, 0)",
-    "rgb(153, 0, 230)",
+    "rgb(233, 152, 1)",
     "rgb(0, 128, 0)",
-    "rgb(204, 122, 0)",
+    "rgb(204, 0, 177)",
   ];
   ngOnInit(): void {
     this.mode = this.route.snapshot.data.mode;
