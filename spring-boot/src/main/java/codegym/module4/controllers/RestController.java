@@ -286,29 +286,40 @@ public class RestController {
 
     //hh
 
-    @RequestMapping(value = "customers",
-            method = RequestMethod.POST)
-    public ResponseEntity<Customer> createProduct(
-            @RequestBody Customer customer,
-            UriComponentsBuilder builder) {
-        customerService.save(customer);
-        HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(builder.path("/products/{id}")
-                .buildAndExpand(customer.getId()).toUri());
-        return new ResponseEntity<>(customer, HttpStatus.CREATED);
+//    @RequestMapping(value = "customers",
+//            method = RequestMethod.POST)
+//    public ResponseEntity<Customer> createProduct(
+//            @RequestBody Customer customer,
+//            UriComponentsBuilder builder) {
+//        customerService.save(customer);
+//        HttpHeaders headers = new HttpHeaders();
+//        headers.setLocation(builder.path("/products/{id}")
+//                .buildAndExpand(customer.getId()).toUri());
+//        return new ResponseEntity<>(customer, HttpStatus.CREATED);
+//    }
+
+
+    //    public Customer editCustomer(@PathVariable int id, @RequestBody Customer customeredit) {
+//        Customer customerUpdate = customerService.findCustomerById(id);
+//        customerUpdate.setFullName(customeredit.getFullName());
+//        customerUpdate.setBirthday(customeredit.getBirthday());
+//        customerUpdate.setGender(customeredit.getGender());
+//        customerUpdate.setIdCard(customeredit.getIdCard());
+//        customerUpdate.setEmail(customeredit.getEmail());
+//        customerUpdate.setPhone(customeredit.getPhone());
+//        customerUpdate.setAddress(customeredit.getAddress());
+//        return customerService.saveCustomer(customerUpdate);
+//    }
+    @PutMapping( path = "customers")
+    public List<Customer> editAllCustomer(@RequestBody List<Customer> customers) {
+        System.out.println(customers);
+        return customerService.saveAll(customers);
     }
 
-    @PutMapping("customers/{id}")
-    public Customer editCustomer(@PathVariable int id, @RequestBody Customer customeredit) {
-        Customer customerUpdate = customerService.findCustomerById(id);
-        customerUpdate.setFullName(customeredit.getFullName());
-        customerUpdate.setBirthday(customeredit.getBirthday());
-        customerUpdate.setGender(customeredit.getGender());
-        customerUpdate.setIdCard(customeredit.getIdCard());
-        customerUpdate.setEmail(customeredit.getEmail());
-        customerUpdate.setPhone(customeredit.getPhone());
-        customerUpdate.setAddress(customeredit.getAddress());
-        return customerService.saveCustomer(customerUpdate);
+    @PostMapping(path = "/customers")
+    public List<Customer> saveAllCustomer(@RequestBody List<Customer> customers) {
+        System.out.println(customers);
+        return  customerService.saveAll(customers);
     }
 
     @DeleteMapping("customers/{id}")
@@ -316,7 +327,7 @@ public class RestController {
     public void deleteCustomer(@PathVariable int id) {
 //        Customer customerToDelete = customerService.findCustomerById(id);
 //        customerService.deleteCustomer(id);
-        System.out.printf( "\n" +"Deleted id :" + id );
+        System.out.printf("\n" + "Deleted id :" + id);
 //        customerService.deleteCustomerById(id);
         Query query =
                 entityManager
@@ -325,7 +336,8 @@ public class RestController {
         query.executeUpdate();
 //        query.getResultList();
     }
-//    @RequestMapping(value = "/customers/{id}",
+
+    //    @RequestMapping(value = "/customers/{id}",
 //            method = RequestMethod.DELETE)
 //    public ResponseEntity<Customer> deleteProduct(
 //            @PathVariable("id") Integer id) {
@@ -336,6 +348,7 @@ public class RestController {
 //        customerService.deleteCustomer(customer.get());
 //        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 //    }
+
 
     //hh
 }

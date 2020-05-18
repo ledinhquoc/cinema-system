@@ -55,9 +55,13 @@ public class CustomerServiceImpl implements CustomerService
     }
 
     @Override
+    public List<Customer> saveAll(List<Customer> customers) {
+        return customerRepo.saveAll(customers);
+    }
+
+    @Override
     public Customer saveCustomer(Customer customer) {
         return customerRepo.save(customer);
-
     }
 
     @Override

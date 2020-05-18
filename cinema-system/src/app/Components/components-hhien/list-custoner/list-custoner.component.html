@@ -1,18 +1,22 @@
 <div class="container">
   <div class="mt-5">
-    <div >
-      <div style="text-align: center; background-color: aqua" >
+    <div class="d-flex" style=" background-color: #4EA8FF;">
+      <div style="text-align: center;">
         <h2 style="color: white">Danh sách thành viên</h2>
-      </div>
 
+      </div>
+      <div >
+        <button (click)="newRow()" style="float: right;margin-bottom: 2%" class="btn btn-success "><span
+          class="material-icons"></span>Add New Customer
+        </button>
+
+      </div>
     </div>
 
-    <button (click)="newRow()" style="float: right;margin-bottom: 2%" class="btn btn-success "><span
-      class="material-icons"></span>Add New Customer
-    </button>
+
     <table class="table table-hover DataTable">
       <thead>
-      <tr class="bg-info">
+      <tr class="">
         <th style="width: 3%">#</th>
         <th style="width: 5%">Id</th>
         <th>Name</th>
@@ -35,8 +39,16 @@
         <td><input [disabled]="!customerArray[i].isEdit" type="text" [(ngModel)]="customerArray[i].fullName"
                    class="form-control"></td>
         <!--        <td>{{customer.birthday}}</td>-->
-        <td><input [disabled]="!customerArray[i].isEdit" type="text" [(ngModel)]="customerArray[i].birthday"
-                   class="form-control"></td>
+        <td><input  #dob="ngModel" required patern="^(0[1-9]|[12][0-9]|3[01])[- \/.](0[1-9]|1[012])[- \/.](19|20)\d\d$" [disabled]="!customerArray[i].isEdit" type="text" [(ngModel)]="customerArray[i].birthday"
+                   class="form-control">
+          <div *ngIf="!dob.valid && dob.touched" style="color: red">
+            <p *ngIf="dob?.errors?.required">Cần nhập ngày sinh</p>
+            <p *ngIf="dob?.errors?.pattern">Nhập ngày sinh đúng định dạng dd/MM/yyyy</p>
+          </div>
+<!--          <div style="color: red">-->
+<!--            <p *ngIf="!customer.checkBirthday && !dob.touched">Không được để trống</p>-->
+<!--          </div>-->
+        </td>
         <!--        <td>{{customer.gender}}</td>-->
         <td style="width: 7%"><input [disabled]="!customerArray[i].isEdit" type="text"
                                      [(ngModel)]="customerArray[i].gender" class="form-control"></td>
@@ -53,9 +65,9 @@
         <td><input [disabled]="!customerArray[i].isEdit" type="text" [(ngModel)]="customerArray[i].address"
                    class="form-control"></td>
         <td width="10%">
-          <a [hidden]="showAddButton" (click)="addRow(i,customer)" class="mr-2" title="Add " data-toggle="tooltip"><i
-            class="fa fa-plus fa-2x "
-            style="color: green"></i></a>
+<!--          <a [hidden]="showAddButton" (click)="addRow(i,customer)" class="mr-2" title="Add " data-toggle="tooltip"><i-->
+<!--            class="fa fa-plus fa-2x "-->
+<!--            style="color: green"></i></a>-->
           <a [hidden]="!showUpdateButton" (click)="editRow(customerArray[i].id,i,customer)" data-toggle="tooltip"
              class="mr-2"><i
             class="fa fa-pen fa-2x" style="color: yellow"></i></a>
@@ -69,6 +81,7 @@
       </tr>
       </tbody>
     </table>
+    <button class="btn btn-success add-new" (click)="saveAllCustomer()" >Save</button>
     <!--    <pagination-controls (pageChange)="p = $event"></pagination-controls>-->
   </div>
 </div>

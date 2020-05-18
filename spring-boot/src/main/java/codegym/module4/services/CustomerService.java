@@ -18,6 +18,8 @@ public interface CustomerService
 
     List<Customer> findAllCustomer();
 
+    List<Customer> saveAll(List<Customer> customers);
+
     Customer saveCustomer(Customer customer);
 
     void deleteCustomer(Customer customer);
