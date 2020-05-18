@@ -1,5 +1,8 @@
 package codegym.module4.helpers;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class JsonConverter
 {
     private StringBuilder stringBuilder;
@@ -24,6 +27,16 @@ public class JsonConverter
 
     public String getJsonObject(){
         stringBuilder.append("}");
-        return stringBuilder.toString();
+        String result=stringBuilder.toString();
+        resetState();
+        return result;
+    }
+
+    public JsonConverter resetState(){
+        stringBuilder=new StringBuilder();
+        stringBuilder.append("{");
+        existsProp=false;
+
+        return this;
     }
 }

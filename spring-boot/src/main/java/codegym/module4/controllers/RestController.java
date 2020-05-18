@@ -3,14 +3,17 @@ package codegym.module4.controllers;
 import codegym.module4.entities.*;
 import codegym.module4.entities.validators.EmployeeValidator;
 import codegym.module4.helpers.JsonConverter;
+import codegym.module4.jwt.ERole;
 import codegym.module4.repositories.EmployeeRepo;
 import codegym.module4.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityManager;
@@ -18,6 +21,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.StoredProcedureQuery;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -74,6 +78,12 @@ public class RestController
 
     @PersistenceContext
     private EntityManager entityManager;
+
+    @Autowired
+    private JsonConverter jsonConverter;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @GetMapping(value = "/tickets", produces = "application/json")
     public ResponseEntity<List<Ticket>> getAllTickets()
@@ -356,7 +366,8 @@ public class RestController
                 entityManager
                         .createNativeQuery("call CheckUniqueUsername(:username)")
                         .setParameter("username", username);
-        return Integer.parseInt(query.getResultList().get(0).toString()) >= 1;
+        // stored procedure RETURN the numbers of employee have the given username
+        return Integer.parseInt(query.getResultList().get(0).toString()) == 0;
     }
 
     @GetMapping(path = "employees/check/email/{email}")
@@ -367,31 +378,49 @@ public class RestController
                         .createNativeQuery("call CheckUniqueEmail(:email)")
                         .setParameter("email", email);
 
-        return Integer.parseInt(query.getResultList().get(0).toString()) >= 1;
+        return Integer.parseInt(query.getResultList().get(0).toString()) == 0;
     }
 
     @PostMapping(path = "employees/new/saved")
-    public ResponseEntity<String> saveNewEmployee(@RequestBody Employee employee,BindingResult result)
+    public ResponseEntity<String> saveNewEmployee(@RequestBody Employee employee, BindingResult result)
     {
-        JsonConverter jsonConverter=new JsonConverter();
+        employeeValidator.mode = EmployeeValidator.Mode.ADD;
         employeeValidator.validate(employee, result);
+        User user=employee.getUsers();
 
         if (result.hasErrors())
         {
-            result.getFieldErrors().forEach(fieldError -> {
-                jsonConverter.addProperty(fieldError.getField(),fieldError.getCode());
+            result.getFieldErrors().forEach(fieldError ->
+            {
+                jsonConverter.addProperty(fieldError.getField(), fieldError.getCode());
             });
             return new ResponseEntity<>(jsonConverter.getJsonObject(), HttpStatus.NOT_ACCEPTABLE);
         }
 
-        userService.save(employee.getUsers());
+        Role roleEmp;
+        Optional<Role> roleOptional = getAllRoles().stream()
+                .filter(role -> role.getName().equals(ERole.ROLE_ADMIN)).findFirst();
+        if (roleOptional.isPresent())
+        {
+            roleEmp = roleOptional.get();
+        } else
+        {
+            Role newRoleEmp = new Role();
+            newRoleEmp.setName(ERole.ROLE_ADMIN);
+            roleEmp = roleService.save(newRoleEmp);
+        }
+
+        user.setRoles(Collections.singletonList(roleEmp));
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        userService.save(user);
+
         if (employeeService.save(employee) != null)
         {
-            jsonConverter.addProperty("addOke",true);
+            jsonConverter.addProperty("addOke", true);
             return new ResponseEntity<>(jsonConverter.getJsonObject(), HttpStatus.CREATED);
         }
 
-        jsonConverter.addProperty("backEndError",true);
+        jsonConverter.addProperty("backEndError", true);
         return new ResponseEntity<>(jsonConverter.getJsonObject(), HttpStatus.NOT_MODIFIED);
     }
 
@@ -399,17 +428,31 @@ public class RestController
     @Transactional
     public ResponseEntity<String> saveEditedEmployee(@RequestBody Employee employee, BindingResult result)
     {
-        JsonConverter jsonConverter=new JsonConverter();
+        employeeValidator.mode = EmployeeValidator.Mode.EDIT;
         employeeValidator.validate(employee, result);
+        User user = employee.getUsers();
 
         if (result.hasErrors())
         {
-            result.getFieldErrors().forEach(fieldError -> {
-                jsonConverter.addProperty(fieldError.getField(),fieldError.getCode());
-            });
+            int size = result.getFieldErrorCount();
+            List<FieldError> fieldErrors = result.getFieldErrors();
+            for (int i = 0; i < size; i++)
+            {
+                FieldError fieldError = fieldErrors.get(i);
+
+                jsonConverter.addProperty(fieldError.getField(), fieldError.getCode());
+                if (fieldError.getCode().equals("username.notAcceptable"))
+                {
+                    return new ResponseEntity<>(jsonConverter.getJsonObject(), HttpStatus.BAD_REQUEST);
+                }
+            }
             return new ResponseEntity<>(jsonConverter.getJsonObject(), HttpStatus.NOT_ACCEPTABLE);
         }
 
+        if (user.getPassword().length() <= 15)
+        {
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
+        }
         Query query =
                 entityManager
                         .createNativeQuery("update employee inner join user u on employee.user_id = u.id" +
@@ -430,15 +473,26 @@ public class RestController
                         .setParameter("phone", employee.getPhone())
                         .setParameter("password", employee.getUsers().getPassword())
                         .setParameter("id", employee.getId());
+
         if (query.executeUpdate() > 0)
         {
-            jsonConverter.addProperty("addOke",true);
+            jsonConverter.addProperty("addOke", true);
             return new ResponseEntity<>(jsonConverter.getJsonObject(), HttpStatus.CREATED);
         }
 
         //Else
-        jsonConverter.addProperty("backEndError",true);
+        jsonConverter.addProperty("backEndError", true);
         return new ResponseEntity<>(jsonConverter.getJsonObject(), HttpStatus.NOT_MODIFIED);
+    }
+
+    @GetMapping(path = "employees/check-unique/id-card/{idCard}")
+    public Boolean checkUniqueIdCard(@PathVariable String idCard)
+    {
+        Query query = entityManager
+                .createQuery("select e from Employee e where e.idCard=:idCard")
+                .setParameter("idCard", idCard);
+
+        return query.getResultList().size() == 0;
     }
 }
 
