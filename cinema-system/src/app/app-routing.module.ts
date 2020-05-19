@@ -75,6 +75,7 @@ const routes: Routes = [
   {path: 'film-detail/:id', component: DetailFilmComponent},
   {path: 'list-discount', component: ListDiscountComponent},
   {path: 'delete-discount/:id', component: DeleteDiscountComponent},
+  {path: 'quan-ly-phim', component: FilmManagementComponent},
 
   {
     path: ":id/account",

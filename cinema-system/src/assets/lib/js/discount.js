@@ -1,6 +1,6 @@
 $(document).ready(function(){
   // Activate tooltips
-  $('[data-toggle="tooltip"]').tooltip();
+  // $('[data-toggle="tooltip"]').tooltip();
   // var actions = $("table tbody td:last-child").html();
   // alert(actions);
   // Filter table rows based on searched term

@@ -1,4 +1,3 @@
-
 <script src="../../../../assets/lib/js/discount.js"></script>
 <div class="container" >
   <div class="table-wrapper">
@@ -13,7 +12,7 @@
         <div class="col-sm-4">
           <div class="search-box">
             <div class="input-group">
-              <input type="text" id="search" class="form-control" placeholder="Tìm kiếm ">
+              <input type="text" id="search" class="form-control" placeholder="Tìm kiếm">
               <span class="input-group-addon"><i class="material-icons">&#xE8B6;</i></span>
             </div>
           </div>
@@ -29,12 +28,12 @@
       <th>Mức giảm giá (%)</th>
       <th>Chi tiết khuyến mãi</th>
       <th>Link ảnh</th>
-      <th style="width: 8%">Trực tiếp</th>
+      <th style="width: 8%">Sửa | Xóa</th>
       <th style="width: 8%">Chi tiết</th>
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let dynamic of discount | paginate: { itemsPerPage: 10, currentPage: page} ; let i = index;" >
+    <tr *ngFor="let dynamic of discount |paginate: { itemsPerPage: 5, currentPage: page} ; let i = index;" >
       <td>
         <div class="form-group" [class.has-error]="title.invalid && title.touched">
           <input id="title" [disabled]="!discount[i].isEdit"  [(ngModel)]="discount[i].promotionTitle"
@@ -79,7 +78,7 @@
           <input  required [disabled]="!discount[i].isEdit" [(ngModel)]="discount[i].promotionDiscount"
                  class="form-control" type="text"  #discountPr="ngModel"
           pattern="^([0-9]{1}|[1-9][0-9]|100)$"/>
-          <span class="help-block " *ngIf="discountPr.errors?.required && discountPr.touched" style="text-align: center">
+          <span class="help-block " *ngIf="discountPr.errors?.required && discountPr.touched" style="text-align: center;">
             Không được để trống
           </span>
           <span class="help-block " *ngIf="discountPr.errors?.pattern  && discountPr.touched" style="text-align: center">
@@ -99,16 +98,16 @@
       </td>
 
       <td>
-        <div class="form-group" [class.has-error]="description.invalid && description.touched">
+        <div class="form-group" [class.has-error]="image.invalid && image.touched">
           <input required [disabled]="!discount[i].isEdit" [(ngModel)]="discount[i].promotionImage"
-                 class="form-control" type="text" #description="ngModel"/>
-          <span class="help-block " *ngIf="description.errors?.required && description.touched" style="text-align: center">
+                 class="form-control" type="text" #image="ngModel"/>
+          <span class="help-block " *ngIf="image.errors?.required && image.touched" style="text-align: center">
             Không được để trống
           </span>
         </div>
       </td>
 
-      <td style="width: 8%" >
+      <td style="width: 8%">
         <div class="d-flex justify-content-center mt-3">
           <a class="edit mr-3" (click)="edit(discount[i].id,i)" type="button"><i class="material-icons">&#xE254;</i></a>
           <a class="delete" (click)="delete(discount[i].id,i)" type="button"><i class="material-icons">&#xE872;</i></a>
@@ -121,15 +120,15 @@
         <a class="delete1" type="button" [routerLink]="['/delete-discount/'+dynamic.id]">Xóa</a>
         </div>
       </td>
-
     </tr>
     </tbody>
   </table>
     <div class="d-flex justify-content-between mt-3" >
-      <button type="submit" (click)="saveAll()" class="btn btn-success add-new mx-0 " style="height: 38px;"><i class="material-icons">&#xE03B;</i> Lưu lại </button>
-      <button class="btn btn-info " align = "right"  style="height: 38px;" [routerLink]="['/add-promotion']" routerLinkActive="router-link-active" ><i class="fa fa-plus"></i> Thêm mới chi tiết </button>
+      <button type="submit" [disabled]="!validation()" (click)="saveAll()" class="btn btn-success add-new mx-0 " style="height: 38px;"><i class="material-icons">&#xE03B;</i> Lưu lại </button>
+      <button class="btn btn-info"  style="height: 38px;" [routerLink]="['/add-promotion']" routerLinkActive="router-link-active" ><i class="fa fa-plus"></i> Thêm mới chi tiết </button>
     </div>
 
 </div>
-  <pagination-controls (pageChange)="page = $event" align="center"></pagination-controls>
+  <pagination-controls (pageChange)="page = $event" align="center" nextLabel="Trang kế"
+                       previousLabel="Trang trước"></pagination-controls>
 </div>

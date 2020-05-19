@@ -120,6 +120,9 @@ table.table td a.delete1 {
 table.table td i {
   font-size: 19px;
 }
+table.table td span {
+  font-size: 12px;
+}
  a.add {
   font-size: 24px;
   margin-right: -1px;
