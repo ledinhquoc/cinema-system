@@ -62,6 +62,7 @@ export class LoginComponent implements OnInit {
 
 
   onSubmit() {
+    
     this.checkStatus = false;
     const username = this.formLogin.get('username1').value;
     this.checkUsername = false;

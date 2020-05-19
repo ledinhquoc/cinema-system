@@ -142,10 +142,11 @@ export class EditPromotionComponent implements OnInit {
   editPromotion(){
     if(this.check1 = true){
       this.editValidateForm.controls['promotionImage'].setValue(this.url);
+    
     }
    
     this.promotionService.editPromotion(this.editValidateForm.value,this.promotionId).subscribe(data =>{
-      this.router.navigateByUrl('/list-discount')
+      this.router.navigateByUrl('list-discount')
     })
   }
 

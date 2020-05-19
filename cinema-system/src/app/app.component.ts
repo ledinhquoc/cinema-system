@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {TokenStorageService} from "./Components/component-vu/service/token-storage.service";
 import {UserService} from "./Components/component-vu/service/user.service";
 import {CookieService} from "ngx-cookie-service";
+import {AuthServices} from "./Components/component-vu/service/auth.service"
 
 @Component({
   selector: 'app-root',
@@ -22,6 +23,7 @@ export class AppComponent {
   end = 0;
   constructor(private tokenStorageService: TokenStorageService,
               private userService: UserService,
+              private authService: AuthServices,
               private cookieService: CookieService,
               private router: Router) {
   }
@@ -63,8 +65,10 @@ export class AppComponent {
   }
 
   logout() {
+    
     this.tokenStorageService.signOut();
     window.location.assign('login');
     this.cookieService.deleteAll();
+    this.authService.isAuthorized = false;
   }
 }

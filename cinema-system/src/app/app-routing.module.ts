@@ -64,6 +64,7 @@ import { EditFilmComponent } from './Components/component-quy/edit-film/edit-fil
 import { ListFilmsComponent } from './Components/component-quy/list-films/list-films.component';
 import { ListDiscountComponent } from './Components/component-tuan/list-discount/list-discount.component';
 import {DeleteDiscountComponent} from "./Components/component-tuan/delete-discount/delete-discount.component";
+import { AuthGuard } from './auth.guard';
 
 
 const routes: Routes = [
@@ -72,7 +73,9 @@ const routes: Routes = [
   {path: 'add-promotion', component: AddPromotionComponent},
   {path: 'edit-promotion/:id', component: EditPromotionComponent},
   {path: 'film-detail/:id', component: DetailFilmComponent},
-  {path: 'list-discount', component: ListDiscountComponent},
+  {path: 'list-discount', component: ListDiscountComponent,
+  //  canActivate:[AuthGuard]
+  },
   {path: 'delete-discount/:id', component: DeleteDiscountComponent},
 
   {
@@ -120,7 +123,9 @@ const routes: Routes = [
   {path: 'information-confirm/:id', component: InformationConfirmComponent},
   {path: 'movieSchedules', component: ShowtimeComponent},
   {path: 'chonGhe', component: ChonGheComponent},
+  {path: 'quan-ly-phim', component: FilmManagementComponent},
   {path: 'showRoom', component: SlideBarManageShowRoomComponent,
+
 
     children: [{
       path: '', component: ListShowRoomComponent,
@@ -212,7 +217,6 @@ const routes: Routes = [
     ResetPasswordComponent,
     UserRegistrationComponent,
     ShowtimeComponent,
-    FilmManagementComponent,
     FilmManagementComponent,
     ShowtimesComponent,
     SlideBarManageShowRoomComponent,

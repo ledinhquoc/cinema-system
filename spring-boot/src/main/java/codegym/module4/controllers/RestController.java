@@ -456,6 +456,20 @@ public class RestController{
 
     }
 
+    @PutMapping("promotions/{id}")
+    public Promotion editPromotion(@PathVariable int id, @RequestBody Promotion promotion){
+        Promotion promotion1 = promotionService.findById(id).orElse(null);
+        promotion1.setPromotionEndDate(promotion.getPromotionEndDate());
+        promotion1.setPromotionBeginDate(promotion.getPromotionBeginDate());
+        promotion1.setPromotionDescription(promotion.getPromotionDescription());
+        promotion1.setPromotionDiscount(promotion.getPromotionDiscount());
+        promotion1.setPromotionImage(promotion.getPromotionImage());
+        promotion1.setPromotionTitle(promotion.getPromotionTitle());
+        return promotionService.save(promotion1);
+    }
+
+
+
     //hh
 
     @RequestMapping(value = "customers",

@@ -50,11 +50,11 @@ public class PromotionController {
         return promotionService.saveAll(promotions);
     }
 
-    @PutMapping(path = "promotions/edit")
-    @Transactional
-    public List<Promotion> EditAllPromotion(@RequestBody List<Promotion> promotion) {
-        return (List<Promotion>) promotionService.saveAll(promotion);
-    }
+//    @PutMapping(path = "promotions/edit")
+//    @Transactional
+//    public List<Promotion> EditAllPromotion(@RequestBody List<Promotion> promotion) {
+//        return (List<Promotion>) promotionService.saveAll(promotion);
+//    }
 
 
 

@@ -29,7 +29,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of movies let i = index" style="cursor: pointer;" [routerLink]="['/edit-film,movies[i].id']">
+        <tr *ngFor="let item of movies let i = index" style="cursor: pointer;" [routerLink]="['/edit-film'+movies[i].id]">
           <td style="text-align: center;"> <a href="#">{{ i+1 }}</a> </td>
           <!-- movieName -->
           <td>
@@ -144,6 +144,7 @@
     </table>
    <br>
     <button (click)=save() type="button" class="btn btn-success" style="float: right">Lưu</button>
-    <button [routerLink]="['/add-film']" type="button" class="btn btn-primary">Thêm mới phim</button>
+    <button [routerLink]="['/add-film']" type="button" class="btn btn-primary mr-3">Thêm mới phim</button>
+    <button [routerLink]="['/admin-movies']" type="button" class="btn btn-primary">Danh sách chi tiết</button>
   </div>
 </div>
