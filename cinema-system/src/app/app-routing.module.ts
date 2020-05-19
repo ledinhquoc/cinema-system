@@ -64,7 +64,11 @@ import { EditFilmComponent } from './Components/component-quy/edit-film/edit-fil
 import { ListFilmsComponent } from './Components/component-quy/list-films/list-films.component';
 import { ListDiscountComponent } from './Components/component-tuan/list-discount/list-discount.component';
 import {DeleteDiscountComponent} from "./Components/component-tuan/delete-discount/delete-discount.component";
+<<<<<<< HEAD
 import { AuthGuard } from './auth.guard';
+=======
+import { EmsComponent } from './Components/component-tmt/ems/ems.component';
+>>>>>>> 288a19c5595084aea770a8fd2f168ecd6e1233da
 
 
 const routes: Routes = [
@@ -77,6 +81,7 @@ const routes: Routes = [
   //  canActivate:[AuthGuard]
   },
   {path: 'delete-discount/:id', component: DeleteDiscountComponent},
+  {path: 'quan-ly-phim', component: FilmManagementComponent},
 
   {
     path: ":id/account",
@@ -174,7 +179,8 @@ const routes: Routes = [
     path: "chinh-sua-nhan-vien",
     component: AddNewEditEmployeeComponent,
     data: { mode: "edit" },
-  }   
+  },
+  {path: 'employees', component: EmsComponent}
 ];
 
 @NgModule({
@@ -231,7 +237,8 @@ const routes: Routes = [
     AddPromotionComponent,
     EditPromotionComponent,
     ListDiscountComponent,
-    DeleteDiscountComponent],
+    DeleteDiscountComponent,
+    EmsComponent],
   
 
   imports: [RouterModule.forRoot(routes),

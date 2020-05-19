@@ -26,6 +26,7 @@ export class AddNewEditEmployeeComponent implements OnInit {
   employee: any;
   isInvalidPassword = true;
   taskComplete = false;
+  errorOccurred = false;
   constructor(
     private form: FormBuilder,
     private myHttp: HttpService,
@@ -75,10 +76,11 @@ export class AddNewEditEmployeeComponent implements OnInit {
       gender: new FormControl(this.employee?.gender || "", [
         Validators.required,
       ]),
-      idCard: new FormControl(this.employee?.idCard || "", [
-        Validators.required,
-        Validators.pattern(/^[\d]{9}$/),
-      ]),
+      idCard: new FormControl(
+        this.employee?.idCard || "",
+        [Validators.required, Validators.pattern(/^[\d]{9}$/)],
+        [AsyncEmployeeValidator.uniqueIdCard.bind(this)]
+      ),
       email: new FormControl(
         this.employee?.email || "",
         [
@@ -87,9 +89,7 @@ export class AddNewEditEmployeeComponent implements OnInit {
             /^[a-zA-Z]{7,20}[\d]{0,3}\@[a-zA-Z]{2,5}\.[a-zA-Z]{2,7}$/
           ),
         ],
-        this.mode === "new"
-          ? [AsyncEmployeeValidator.uniqueEmail.bind(this)]
-          : null
+        [AsyncEmployeeValidator.uniqueEmail.bind(this)]
       ),
       address: new FormControl(this.employee?.address || "", [
         Validators.required,
@@ -101,9 +101,7 @@ export class AddNewEditEmployeeComponent implements OnInit {
       username: new FormControl(
         this.employee?.users?.username || "",
         [Validators.required, Validators.pattern(/^[a-zA-Z\d]{5,15}$/)],
-        this.mode === "new"
-          ? [AsyncEmployeeValidator.uniqueUsername.bind(this)]
-          : null
+        [AsyncEmployeeValidator.uniqueUsername.bind(this)]
       ),
       password: new FormControl(
         "",
@@ -169,7 +167,9 @@ export class AddNewEditEmployeeComponent implements OnInit {
       (httpError: HttpErrorResponse) => {
         console.log("Error Occurred: ", httpError.error);
 
-        if (httpError.status === 406) {
+        if (httpError.status === 400) {
+          this.errorOccurred = true;
+        } else if (httpError.status === 406) {
           let fieldErrors = httpError.error;
           for (let prop in fieldErrors) {
             //fieldErrors[prop]->"email.pattern"

@@ -1,13 +1,7 @@
 package codegym.module4.controllers;
-
-
 import codegym.module4.entities.Promotion;
-
 import codegym.module4.services.PromotionService;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import org.springframework.http.MediaType;
-
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RestController;
 
