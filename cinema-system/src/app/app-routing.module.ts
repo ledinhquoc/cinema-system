@@ -66,16 +66,8 @@ import { EditFilmComponent } from './Components/component-quy/edit-film/edit-fil
 import { ListFilmsComponent } from './Components/component-quy/list-films/list-films.component';
 import { ListDiscountComponent } from './Components/component-tuan/list-discount/list-discount.component';
 import {DeleteDiscountComponent} from "./Components/component-tuan/delete-discount/delete-discount.component";
-<<<<<<< HEAD
-=======
-
->>>>>>> 91ff3ba43de429a3866a3b3f4a61a07b28c6a9a7
 import { AuthGuard } from './auth.guard';
 import { EmsComponent } from './Components/component-tmt/ems/ems.component';
-<<<<<<< HEAD
-=======
-
->>>>>>> 91ff3ba43de429a3866a3b3f4a61a07b28c6a9a7
 
 
 const routes: Routes = [
@@ -235,7 +227,7 @@ const routes: Routes = [
     ResetPasswordComponent,
     UserRegistrationComponent,
     MemberManagementComponent,
-    AdminSlideBarComponent
+    AdminSlideBarComponent,
     ShowtimeComponent,
     FilmManagementComponent,
     ShowtimesComponent,

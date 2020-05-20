@@ -23,8 +23,7 @@ import java.util.List;
                 )}
         )
 )
-public class Customer
-{
+public class Customer{
 
 
     @Id
@@ -57,21 +56,20 @@ public class Customer
     private String address;
 
 
-
-    @OneToMany(targetEntity = Point.class,cascade = CascadeType.ALL, mappedBy="customer")
+    @OneToMany(targetEntity = Point.class, cascade = CascadeType.ALL, mappedBy = "customer")
     @JsonIgnore
-    public List<Point> getPoints() {
-        return points;
-    }
+    private List< Point > points;
 
-    public void setPoints(List<Point> points) {
+
+    public void setPoints(List< Point > points){
         this.points = points;
     }
 
-  
 
-//    @JsonBackReference
-    private List<Point> points;
+    //    @JsonBackReference
+    public List< Point > getPoints(){
+        return points;
+    }
 
     //Vu add them Cascade
     @OneToOne(cascade = CascadeType.ALL)
@@ -81,17 +79,14 @@ public class Customer
     @OneToMany(targetEntity = Ticket.class)
 
 
-
     @JsonIgnore
-    private List<Ticket> tickets;
-
+    private List< Ticket > tickets;
 
 
     public Customer(int id, User idUser,
                     String fullName, Date birthday, String gender, String idCard,
                     String email
-            , String phone, String address)
-    {
+            , String phone, String address){
         this.id = id;
         this.user = idUser;
         this.fullName = fullName;
@@ -103,123 +98,103 @@ public class Customer
         this.address = address;
     }
 
-    public int getId()
-    {
+    public int getId(){
         return id;
     }
 
-    public void setId(int id)
-    {
+    public void setId(int id){
         this.id = id;
     }
 
-    public User getUser()
-    {
+    public User getUser(){
         return user;
     }
 
-    public void setUser(User idUser)
-    {
+    public void setUser(User idUser){
         this.user = idUser;
     }
 
-    public String getFullName()
-    {
+    public String getFullName(){
         return fullName;
     }
 
-    public void setFullName(String fullName)
-    {
+    public void setFullName(String fullName){
         this.fullName = fullName;
     }
 
-    public Date getBirthday()
-    {
+    public Date getBirthday(){
         return dateOfBirth;
     }
 
-    public void setBirthday(Date birthday)
-    {
+    public void setBirthday(Date birthday){
         this.dateOfBirth = birthday;
     }
 
-    public String getGender()
-    {
+    public String getGender(){
         return gender;
     }
 
-    public void setGender(String gender)
-    {
+    public void setGender(String gender){
         this.gender = gender;
     }
 
-    public String getIdCard()
-    {
+    public String getIdCard(){
         return idCard;
     }
 
-    public void setIdCard(String idCard)
-    {
+    public void setIdCard(String idCard){
         this.idCard = idCard;
     }
 
-    public String getEmail()
-    {
+    public String getEmail(){
         return email;
     }
 
-    public void setEmail(String email)
-    {
+    public void setEmail(String email){
         this.email = email;
     }
 
-    public String getPhone()
-    {
+    public String getPhone(){
         return phone;
     }
 
-    public void setPhone(String phone)
-    {
+    public void setPhone(String phone){
         this.phone = phone;
     }
 
-    public String getAddress()
-    {
+    public String getAddress(){
         return address;
     }
 
-    public void setAddress(String address)
-    {
+    public void setAddress(String address){
         this.address = address;
     }
 
-    public Customer()
-    {
+    public Customer(){
     }
 
 
     /**
      * @return the tickets
      */
-    public List<Ticket> getTickets() {
+    public List< Ticket > getTickets(){
         return tickets;
     }
 
     /**
      * @param tickets the tickets to set
      */
-    public void setTickets(List<Ticket> tickets) {
+    public void setTickets(List< Ticket > tickets){
         this.tickets = tickets;
     }
 
-    public Date getDateOfBirth() {
+    public Date getDateOfBirth(){
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(Date dateOfBirth){
         this.dateOfBirth = dateOfBirth;
     }
-
 
 
 }

@@ -29,10 +29,8 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {ReactiveFormsModule} from '@angular/forms';
-import {AuthService, AuthServiceConfig, FacebookLoginProvider} from "angularx-social-login";
+import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 import {MemberComponent} from './Components/component-vu/member/member.component';
-import {httpInteceptorProvider} from "./Services/auth-interceptor";
 import {DatePipe} from "@angular/common";
 
 
@@ -57,7 +55,7 @@ import {DatePipe} from "@angular/common";
     MatInputModule,
     FormsModule,
   ],
-  providers: [AuthService,CookieService,FilmService,,DatePipe
+  providers: [AuthService,CookieService,FilmService,DatePipe,
     {
       provide: AuthServiceConfig,
       useFactory: socialConfigs
