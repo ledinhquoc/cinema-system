@@ -33,10 +33,10 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let dynamic of discount |paginate: { itemsPerPage: 5, currentPage: page} ; let i = index;" >
+    <tr *ngFor="let dynamic of discount |paginate: { itemsPerPage: iteamPage, currentPage: page } ; let i = index" >
       <td>
         <div class="form-group" [class.has-error]="title.invalid && title.touched">
-          <input id="title" [disabled]="!discount[i].isEdit"  [(ngModel)]="discount[i].promotionTitle"
+          <input id="title" [disabled]="!dynamic.isEdit"  [(ngModel)]="dynamic.promotionTitle"
                  required
                  #title="ngModel" class="form-control" type="text" />
           <span class="help-block " *ngIf="title.errors?.required && title.touched" style="text-align: center">
@@ -47,7 +47,7 @@
 
       <td>
         <div class="form-group" [class.has-error]="beginDate.invalid && beginDate.touched">
-          <input required [disabled]="!discount[i].isEdit" [(ngModel)]="discount[i].promotionBeginDate "
+          <input required [disabled]="!dynamic.isEdit" [(ngModel)]="dynamic.promotionBeginDate "
                  #beginDate="ngModel" class="form-control" type="text"
                  pattern="^(2019|202[0-9]{1})\-(0[1-9]|1[0-2])\-(0[1-9]|[12][0-9]|3[01])$"/>
         <span class="help-block " *ngIf="beginDate.errors?.required && beginDate.touched" style="text-align: center">
@@ -61,7 +61,7 @@
 
       <td>
         <div class="form-group" [class.has-error]="endDate.invalid && endDate.touched">
-          <input required [disabled]="!discount[i].isEdit" [(ngModel)]="discount[i].promotionEndDate "
+          <input required [disabled]="!dynamic.isEdit" [(ngModel)]="dynamic.promotionEndDate "
                  #endDate="ngModel" class="form-control" type="text"
                  pattern="^(2019|202[0-9]{1})\-(0[1-9]|1[0-2])\-(0[1-9]|[12][0-9]|3[01])$"/>
           <span class="help-block " *ngIf="endDate.errors?.required && endDate.touched" style="text-align: center">
@@ -75,7 +75,7 @@
 
       <td>
         <div class="form-group" [class.has-error]="discountPr.invalid && discountPr.touched">
-          <input  required [disabled]="!discount[i].isEdit" [(ngModel)]="discount[i].promotionDiscount"
+          <input  required [disabled]="!dynamic.isEdit" [(ngModel)]="dynamic.promotionDiscount"
                  class="form-control" type="text"  #discountPr="ngModel"
           pattern="^([0-9]{1}|[1-9][0-9]|100)$"/>
           <span class="help-block " *ngIf="discountPr.errors?.required && discountPr.touched" style="text-align: center;">
@@ -89,7 +89,7 @@
 
       <td>
         <div class="form-group" [class.has-error]="description.invalid && description.touched">
-          <input required [disabled]="!discount[i].isEdit" [(ngModel)]="discount[i].promotionDescription"
+          <input required [disabled]="!dynamic.isEdit" [(ngModel)]="dynamic.promotionDescription"
                  class="form-control" type="text" #description="ngModel"/>
           <span class="help-block " *ngIf="description.errors?.required && description.touched" style="text-align: center">
             Không được để trống
@@ -99,7 +99,7 @@
 
       <td>
         <div class="form-group" [class.has-error]="image.invalid && image.touched">
-          <input required [disabled]="!discount[i].isEdit" [(ngModel)]="discount[i].promotionImage"
+          <input required [disabled]="!dynamic.isEdit" [(ngModel)]="dynamic.promotionImage"
                  class="form-control" type="text" #image="ngModel"/>
           <span class="help-block " *ngIf="image.errors?.required && image.touched" style="text-align: center">
             Không được để trống
@@ -109,14 +109,14 @@
 
       <td style="width: 8%">
         <div class="d-flex justify-content-center mt-3">
-          <a class="edit mr-3" (click)="edit(discount[i].id,i)" type="button"><i class="material-icons">&#xE254;</i></a>
-          <a class="delete" (click)="delete(discount[i].id,i)" type="button"><i class="material-icons">&#xE872;</i></a>
+          <a class="edit mr-3" (click)="edit(dynamic.id,(page-1)*iteamPage+i)" type="button"><i class="material-icons">&#xE254;</i></a>
+          <a class="delete" (click)="delete(dynamic.id,(page-1)*iteamPage+i)" type="button"><i class="material-icons">&#xE872;</i></a>
         </div>
       </td>
 
       <td style="width: 8%">
         <div class="d-flex justify-content-center mt-3">
-        <a class="edit1 mr-3"  type="button" [routerLink]="['/edit-promotion/'+ discount[i].id]" routerLinkActive="router-link-active" >Sửa</a>
+        <a class="edit1 mr-3"  type="button" [routerLink]="['/edit-promotion/'+ dynamic.id]" routerLinkActive="router-link-active" >Sửa</a>
         <a class="delete1" type="button" [routerLink]="['/delete-discount/'+dynamic.id]">Xóa</a>
         </div>
       </td>
