@@ -1,6 +1,9 @@
 package codegym.module4.entities;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.Cascade;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -27,6 +30,7 @@ public class Customer
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
+
     private int id;
 
     @Column(name = "full_name")
@@ -53,6 +57,9 @@ public class Customer
     private String address;
 
 
+
+    @OneToMany(targetEntity = Point.class,cascade = CascadeType.ALL, mappedBy="customer")
+    @JsonIgnore
     public List<Point> getPoints() {
         return points;
     }
@@ -61,10 +68,9 @@ public class Customer
         this.points = points;
     }
 
-    @OneToMany(targetEntity = Point.class)
-    @JsonIgnore
-//    @JsonBackReference
+  
 
+//    @JsonBackReference
     private List<Point> points;
 
     //Vu add them Cascade
@@ -75,9 +81,10 @@ public class Customer
     @OneToMany(targetEntity = Ticket.class)
 
 
-    @JsonIgnore
 
+    @JsonIgnore
     private List<Ticket> tickets;
+
 
 
     public Customer(int id, User idUser,
@@ -96,7 +103,7 @@ public class Customer
         this.address = address;
     }
 
-    public long getId()
+    public int getId()
     {
         return id;
     }

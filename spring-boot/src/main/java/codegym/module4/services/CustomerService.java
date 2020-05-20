@@ -14,15 +14,23 @@ public interface CustomerService
 
     Customer findCustomerById(int id);
 
-    Customer findByIdL(int id);
+    Customer findByIdL(Integer id);
 
     List<Customer> findAllCustomer();
 
     Customer saveCustomer(Customer customer);
 
+
+    Customer findByIdC(int id);
+//
+//    void deleteById(Long id);
+
+    void deleteById(Integer id);
+
     void deleteCustomer(Customer customer);
 
     void deleteCustomerById(int id);
+
 
 
 

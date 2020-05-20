@@ -280,6 +280,16 @@ public class RestController{
         return new MovieSchedules();
     }
 
+
+
+    @RequestMapping(value="customer/delete/{id}", method= RequestMethod.DELETE)
+    public void deleteCustomer(@PathVariable Integer id){
+//        Customer customer = customerService.findCustomerById(id);
+
+        customerService.deleteById(id);
+    }
+
+
     @GetMapping(path = "movies/sold-tickets")
     public List statisticMoviesBySoldTickets(){
         Query query =
@@ -484,6 +494,7 @@ public class RestController{
 
         return query.getResultList().size() == 0;
     }
+
 }
 
 

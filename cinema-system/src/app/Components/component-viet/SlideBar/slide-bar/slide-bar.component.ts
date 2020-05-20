@@ -55,7 +55,6 @@ export class SlideBarComponent implements OnInit {
         console.log(this.point);
         for (let i = 0; i < this.point.length ; i++) {
           this.pointSum=this.pointSum+(this.point[i].pointValue)*1;
-
         }
         console.log(this.pointSum)
       });
