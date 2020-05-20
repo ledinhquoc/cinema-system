@@ -1,15 +1,14 @@
 <div class="container">
   <div class="mt-5">
-    <div class="d-flex" style=" background-color: #4EA8FF;">
+    <div class="d-flex justify-content-around" style=" background-color: #4EA8FF;">
       <div style="text-align: center;">
         <h2 style="color: white">Danh sách thành viên</h2>
 
       </div>
-      <div >
+      <div class="mt-1">
         <button (click)="newRow()" style="float: right;margin-bottom: 2%" class="btn btn-success "><span
           class="material-icons"></span>Add New Customer
         </button>
-
       </div>
     </div>
 
@@ -21,7 +20,7 @@
         <th style="width: 5%">Id</th>
         <th>Name</th>
         <th>Date</th>
-        <th style="width: 7%">Gender</th>
+        <th style="width: 10%">Gender</th>
         <th>ID Card</th>
         <th>Email</th>
         <th>Phone Number</th>
@@ -31,57 +30,135 @@
       </thead>
       <tbody>
       <tr *ngFor="let customer of customerArray  ; let i = index ">
+
         <!--        <td>{{customer.id}} </td>-->
-        <td style="width: 3%"><p>{{i + 1}}</p></td>
-        <td style="width: 5%" disabled="true"><input disabled="true" type="text" [ngModel]="customerArray[i].id"
-                                                     class="form-control"></td>
-        <!--        <td>{{customer.fullName}}</td>-->
-        <td><input [disabled]="!customerArray[i].isEdit" type="text" [(ngModel)]="customerArray[i].fullName"
-                   class="form-control"></td>
-        <!--        <td>{{customer.birthday}}</td>-->
-        <td><input  #dob="ngModel" required patern="^(0[1-9]|[12][0-9]|3[01])[- \/.](0[1-9]|1[012])[- \/.](19|20)\d\d$" [disabled]="!customerArray[i].isEdit" type="text" [(ngModel)]="customerArray[i].birthday"
-                   class="form-control">
-          <div *ngIf="!dob.valid && dob.touched" style="color: red">
-            <p *ngIf="dob?.errors?.required">Cần nhập ngày sinh</p>
-            <p *ngIf="dob?.errors?.pattern">Nhập ngày sinh đúng định dạng dd/MM/yyyy</p>
-          </div>
-<!--          <div style="color: red">-->
-<!--            <p *ngIf="!customer.checkBirthday && !dob.touched">Không được để trống</p>-->
-<!--          </div>-->
+        <td style="width: 3%">
+          <p>{{i + 1}}</p>
         </td>
-        <!--        <td>{{customer.gender}}</td>-->
-        <td style="width: 7%"><input [disabled]="!customerArray[i].isEdit" type="text"
-                                     [(ngModel)]="customerArray[i].gender" class="form-control"></td>
-        <!--        <td>{{customer.idCard}}</td>-->
-        <td><input [disabled]="!customerArray[i].isEdit" type="text" [(ngModel)]="customerArray[i].idCard"
-                   class="form-control"></td>
+
+        <td style="width: 5%" disabled="true"><input disabled="true" type="text" [ngModel]="customerArray[i].id"
+                                                     class="form-control">
+        </td>
+
+        <!--        <td>{{customer.fullName}}</td>-->
+        <td>
+          <div class="form-group" [class.has-error]="fullName?.invalid && fullName?.touched">
+            <input [disabled]="!customerArray[i].isEdit" type="text" [(ngModel)]="customerArray[i].fullName"
+                   class="form-control" #fullName="ngModel" required
+                   pattern="[A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ\s]+">
+            <span class="help-block" *ngIf="fullName?.errors?.required && fullName?.touched"
+                  style="text-align: center; color: red; font-size: 12px">
+               Không được để trống
+            </span>
+            <span class="help-block" *ngIf="fullName?.errors?.pattern && fullName?.touched"
+                  style="text-align: center; color: red; font-size: 12px">
+               Không được có ký tự đặc biệt
+            </span>
+          </div>
+        </td>
+
+        <td>
+          <div class="form-group" [class.has-error]="date?.invalid && date?.touched">
+            <input [disabled]="!customerArray[i].isEdit" type="text" [(ngModel)]="customerArray[i].birthday"
+                   class="form-control" #date="ngModel" required
+                   patern="^(0[1-9]|[12][0-9]|3[01])[- \/.](0[1-9]|1[012])[- \/.](19|20)\d\d$">
+            <span class="help-block" *ngIf="date?.errors?.required && date?.touched"
+                  style="text-align: center; color: red; font-size: 12px">
+               Không được để trống
+           </span>
+            <span class="help-block" *ngIf="date?.errors?.pattern && date?.touched"
+                  style="text-align: center; color: red; font-size: 12px">
+              Ngày sinh phải đúng định dạng yyyy/MM/dd
+            </span>
+          </div>
+        </td>
+
+        <td style="width: 10%">
+          <!--          <input [disabled]="!customerArray[i].isEdit" type="text"-->
+          <!--                                     [(ngModel)]="customerArray[i].gender" class="form-control">-->
+          <select [disabled]="!customerArray[i].isEdit" name="name" class="form-control"
+                  [(ngModel)]="customerArray[i].gender">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Bê đê">Bê đê</option>
+            <option value="Other">Other</option>
+          </select>
+        </td>
+
+        <td>
+          <div class="form-group" [class.has-error]="idCard?.invalid && idCard?.touched">
+            <input [disabled]="!customerArray[i].isEdit" type="text" [(ngModel)]="customerArray[i].idCard"
+                   class="form-control" #idCard="ngModel" required pattern="^[0-9]{9}$">
+            <span class="help-block" *ngIf="idCard?.errors?.required && idCard?.touched"
+                  style="text-align: center; color: red; font-size: 12px">
+              Không được để trống
+            </span>
+            <span class="help-block" *ngIf="idCard?.errors?.pattern && idCard?.touched"
+                  style="text-align: center; color: red; font-size: 12px">
+              Id card phải đúng 9 chữ số.
+            </span>
+          </div>
+        </td>
+
         <!--        <td>{{customer.email}}</td>-->
-        <td><input [disabled]="!customerArray[i].isEdit" type="text" [(ngModel)]="customerArray[i].email"
-                   class="form-control"></td>
-        <!--        <td>{{customer.phone}}</td>-->
-        <td><input [disabled]="!customerArray[i].isEdit" type="text" [(ngModel)]="customerArray[i].phone"
-                   class="form-control"></td>
-        <!--        <td>{{customer.address}}</td>-->
-        <td><input [disabled]="!customerArray[i].isEdit" type="text" [(ngModel)]="customerArray[i].address"
-                   class="form-control"></td>
+        <td>
+          <div class="form-group" [class.has-error]="email?.invalid && email?.touched">
+            <input [disabled]="!customerArray[i].isEdit" type="text" [(ngModel)]="customerArray[i].email"
+                   class="form-control" #email="ngModel" required
+                   pattern="^[a-z][a-z0-9_\.]{5,32}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}$">
+            <span class="help-block" *ngIf="email?.errors?.required && email?.touched"
+                  style="text-align: center; color: red; font-size: 12px">
+              Không được để trống
+            </span>
+            <span class="help-block" *ngIf="email?.errors?.pattern && email?.touched"
+                  style="text-align: center; color: red; font-size: 12px">
+              Email phải đúng định dạng
+            </span>
+          </div>
+        </td>
+
+
+        <td>
+          <div class="form-group" [class.has-error]="phone?.invalid && phone?.touched">
+            <input [disabled]="!customerArray[i].isEdit" type="text" [(ngModel)]="customerArray[i].phone"
+                   class="form-control" #phone="ngModel" required pattern="^0[0-9]{9}$">
+              <span class="help-block" *ngIf="phone?.errors?.required && phone?.touched"  style="text-align: center; color: red; font-size: 12px">
+                Không được để trống
+              </span>
+            <span class="help-block" *ngIf="phone?.errors?.pattern && phone?.touched"  style="text-align: center; color: red; font-size: 12px">
+              Phải đủ 10 số và bắt đầu bằng số 0
+            </span>
+          </div>
+        </td>
+
+        <td>
+          <div class="form-group" [class.has-error]="address?.invalid && address?.touched">
+            <input [disabled]="!customerArray[i].isEdit" type="text" [(ngModel)]="customerArray[i].address"
+                   class="form-control" #address="ngModel" required minlength="4">
+            <span class="help-block" *ngIf="address?.errors?.required && address?.touched"  style="text-align: center; color: red; font-size: 12px">
+                Không được để trống
+              </span>
+            <span class="help-block" *ngIf="address?.errors?.minlength && address?.touched"  style="text-align: center; color: red; font-size: 12px">
+              Địa chỉ cần nhập đúng.
+            </span>
+          </div>
+
+        </td>
+
         <td width="10%">
-<!--          <a [hidden]="showAddButton" (click)="addRow(i,customer)" class="mr-2" title="Add " data-toggle="tooltip"><i-->
-<!--            class="fa fa-plus fa-2x "-->
-<!--            style="color: green"></i></a>-->
           <a [hidden]="!showUpdateButton" (click)="editRow(customerArray[i].id,i,customer)" data-toggle="tooltip"
-             class="mr-2"><i
-            class="fa fa-pen fa-2x" style="color: yellow"></i></a>
+             class="mr-2"><i class="fa fa-pen fa-2x" style="color: yellow"></i></a>
           <a [hidden]="showUpdateButton" (click)="editRow(customerArray[i].id,i,customer)" data-toggle="tooltip"
              class="mr-2"><i
             class="fa fa-check-circle fa-2x" style="color: yellowgreen"></i></a>
           <a (click)="deleteRow(customerArray[i].id,customer)" data-toggle="tooltip"><i class="fas fa-trash fa-2x"
                                                                                         style="color: red"></i></a>
-          <!--          <a class="delete" data-toggle="tooltip"><i class="material-icons" style="color: red">&#xE872;</i></a>-->
         </td>
       </tr>
+
       </tbody>
     </table>
-    <button class="btn btn-success add-new" (click)="saveAllCustomer()" >Save</button>
+    <button class="btn btn-success add-new" (click)="saveAllCustomer()">Save</button>
     <!--    <pagination-controls (pageChange)="p = $event"></pagination-controls>-->
   </div>
 </div>

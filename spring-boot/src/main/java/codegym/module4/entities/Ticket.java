@@ -137,8 +137,8 @@ public class Ticket
 
     public int getPrice()
     {
-
-        return price;
+        
+        return (int) price;
     }
 
     /**

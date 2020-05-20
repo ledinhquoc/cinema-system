@@ -17,13 +17,13 @@ import {
   FacebookLoginProvider,
 } from "angularx-social-login";
 import { MemberComponent } from "./Components/component-vu/member/member.component";
-import { httpInteceptorProvider } from "./Services/auth-interceptor";
 import { MovieStatisticComponent } from "./Components/component-toantr/movie-statistic/movie-statistic.component";
 import { AddNewEditEmployeeComponent } from "./Components/component-toantr/add-new-edit-employee/add-new-edit-employee.component";
 import { DatepickerMinMaxComponent } from "./Components/component-toantr/datepicker-min-max/datepicker-min-max.component";
 import { FullnameTrimDirective } from "./Components/component-toantr/Directives/fullname/fullname-trim.directive";
 import {CookieService} from "ngx-cookie-service";
 import { PaypalComponent } from './Components/component-vu/admin-ticket/paypal/paypal.component';
+
 
 
 @NgModule({
@@ -48,20 +48,15 @@ import { PaypalComponent } from './Components/component-vu/admin-ticket/paypal/p
     MatInputModule,
     FormsModule,
   ],
-  providers: [
-    AuthService,
-    httpInteceptorProvider,
-    CookieService,
-  ]
-  ,
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, ReactiveFormsModule],
-  providers: [AuthService,
 
+  providers: [AuthService,
     {
       provide: AuthServiceConfig,
       useFactory: socialConfigs,
     },
     HttpService,
+    // (this.httpInteceptorProvider),
+    CookieService,
   ],
   bootstrap: [AppComponent],
 })

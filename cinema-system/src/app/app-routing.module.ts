@@ -39,9 +39,7 @@ import { UserRegistrationComponent } from "./Components/component-hoang/user-reg
 import { CarouselComponent } from "./Components/component-hoang/carousel/carousel.component";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatNativeDateModule } from "@angular/material/core";
-import { MemberComponent } from "./Components/component-vu/member/member.component";
 import { ChonGheComponent } from "./Components/components-hhien/chon-ghe/chon-ghe.component";
-import { ShowtimesComponent } from "./Components/components-hhien/showtimes/showtimes.component";
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { TicketConfirmmComponent } from './Components/component-son/ticket-confirm/ticket-confirm.component';
 import { TicketConfirmmInfoComponent } from './Components/component-son/ticket-confirm-info/ticket-confirm-info.component';
@@ -57,6 +55,11 @@ import { ShowroomDetailsComponent } from './Components/component-viet/ManageShow
 import { AddSeatComponent } from './Components/component-viet/ManageShowroom/add-seat/add-seat.component';
 import { AddShowroomComponent } from './Components/component-viet/ManageShowroom/add-showroom/add-showroom.component';
 import { MemberComponent } from './Components/component-vu/member/member.component';
+import {ListCustonerComponent} from './Components/components-hhien/list-custoner/list-custoner.component';
+import {DatepickerMinMaxComponent} from './Components/component-toantr/datepicker-min-max/datepicker-min-max.component';
+import {FullnameTrimDirective} from './Components/component-toantr/Directives/fullname/fullname-trim.directive';
+import {PaypalComponent} from './Components/component-vu/admin-ticket/paypal/paypal.component';
+import {AppComponent} from './app.component';
 
 
 const routes: Routes = [
@@ -150,7 +153,7 @@ const routes: Routes = [
     path: "chinh-sua-nhan-vien",
     component: AddNewEditEmployeeComponent,
     data: { mode: "edit" },
-  }   
+  }
 ];
 
 @NgModule({
@@ -199,7 +202,13 @@ const routes: Routes = [
   ShowroomDetailsComponent,
   AddSeatComponent,
   AddShowroomComponent,
-  MemberComponent],
+    // AddNewEditEmployeeComponent,
+    // MovieStatisticComponent,
+    // DatepickerMinMaxComponent,
+    // FullnameTrimDirective,
+    // PaypalComponent,AppComponent,
+  // MemberComponent
+  ],
 
   imports: [RouterModule.forRoot(routes),
   ReactiveFormsModule,
