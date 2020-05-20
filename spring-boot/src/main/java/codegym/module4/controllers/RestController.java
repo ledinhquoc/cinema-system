@@ -476,7 +476,7 @@ public class RestController{
 
 
     @GetMapping(path = "employees/check-unique/id-card/{idCard}")
-    public Boolean checkUniqueIdCard(@PathVariable String idCard)
+    public Boolean checkUniqueIdCard(@PathVariable String idCard){
     {
         Query query = entityManager
                 .createQuery("select e from Employee e where e.idCard=:idCard")
@@ -485,6 +485,7 @@ public class RestController{
         return query.getResultList().size() == 0;
     }
 }
+
 
 
     @GetMapping(path = "rowsByShowRoom/{id}")

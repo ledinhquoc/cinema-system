@@ -24,10 +24,10 @@ public class EmployeeController {
     }
 
 
-    @GetMapping("/{id}")
-    public Employee getEmployeeByID(@PathVariable int id) {
-        return employeeService.findById(id);
-    }
+//    @GetMapping("/{id}")
+//    public Employee getEmployeeByIDTr(@PathVariable int id) {
+//        return employeeService.findById(id);
+//    }
 
     @PutMapping(path = "/edit")
     public List<Employee> editAll(@RequestBody List<Employee> employees){
