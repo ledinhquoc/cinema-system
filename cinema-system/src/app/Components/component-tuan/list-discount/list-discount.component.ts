@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FilmService} from "../service/film.service";
 import {Promotions} from "../model/Promotions";
-import {FormBuilder} from "@angular/forms";
 
 @Component({
   selector: 'app-list-discount',
@@ -13,11 +12,9 @@ export class ListDiscountComponent implements OnInit {
   public discountCreate: Array<Promotions> = [];
   public discountEdit: Array<Promotions> = [];
   public page = 1;
+  public iteamPage = 9;
   search: string;
 
-  // public editField: string;
-  // isHidden: boolean = true;
-  // public regexDiscount = /^([0-9]{1}|[1-9][0-9]|100)$/;
 
   constructor(private discountService: FilmService) {
   }
@@ -50,16 +47,15 @@ export class ListDiscountComponent implements OnInit {
         let checkTitle = patternTitle.test(String(this.discount[i].promotionTitle));
         let checkDescription = patternTitle.test(String(this.discount[i].promotionDescription));
 
+        if (!checkBegindate||!checkEnddate||!checkDiscount||!checkTitle||!checkDescription) {
+          return false;
+        }
+
         if(String(this.discount[i].promotionBeginDate).length==0||String(this.discount[i].promotionEndDate).length==0||
           String(this.discount[i].promotionDiscount).length==0||this.discount[i].promotionTitle.length==0||
           this.discount[i].promotionDescription.length==0||this.discount[i].promotionImage.length==0){
           return false;
         }
-
-        if (!checkBegindate||!checkEnddate||!checkDiscount||!checkTitle||!checkDescription) {
-          return false;
-        }
-
 
       }
     }
@@ -75,6 +71,7 @@ export class ListDiscountComponent implements OnInit {
       if(confirm("Bạn có chắc muốn xóa Khuyến mãi này không???")){
         this.discountService.deletePromotion(id).subscribe(result => {
           this.ngOnInit();
+          alert("Xóa thành công!!")
         }, error => console.error(error));
       }
     }
@@ -95,7 +92,7 @@ export class ListDiscountComponent implements OnInit {
   }
 
   edit(id,index) {
-    if (id !== null && id !== undefined){
+    if (id !== null || id !== undefined){
       this.discountEdit.push(this.discount[index]);
     }
     this.discount[index].isEdit = !this.discount[index].isEdit;

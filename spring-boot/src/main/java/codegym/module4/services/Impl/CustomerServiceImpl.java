@@ -45,7 +45,7 @@ public class CustomerServiceImpl implements CustomerService
     }
 
     @Override
-    public Customer findByIdL(int id) {
+    public Customer findByIdL(Integer id) {
         return this.customerRepo.findByIdL(id);
     }
 
@@ -61,6 +61,23 @@ public class CustomerServiceImpl implements CustomerService
     }
 
     @Override
+
+    public Customer findByIdC(int id) {
+        return customerRepo.findByIdC(id);
+    }
+
+
+//    @Override
+//    public void deleteById(Integer id) {
+//       customerRepo.deleteById(id);
+//    }
+
+    @Override
+    public void deleteById(Integer id) {
+        customerRepo.deleteById(id);
+    }
+
+
     public void deleteCustomer(Customer customer) {
         customerRepo.delete(customer);
     }
@@ -69,4 +86,5 @@ public class CustomerServiceImpl implements CustomerService
     public void deleteCustomerById(int id) {
     customerRepo.deleteById(id);
     }
+
 }

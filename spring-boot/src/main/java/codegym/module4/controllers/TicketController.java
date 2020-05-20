@@ -56,8 +56,8 @@ public class TicketController {
     public HttpStatus addTheatre(@RequestBody Ticket ticket ) {
         ticketService.Creat(ticket);
         return HttpStatus.OK;
-
     }
+
 
 
 

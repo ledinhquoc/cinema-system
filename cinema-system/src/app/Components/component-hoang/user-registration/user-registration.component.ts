@@ -44,7 +44,7 @@ export class UserRegistrationComponent implements OnInit {
           confirmPassword: ['', [Validators.required]]
         }, {validator: comparePassword}),
         fullName: ['', [Validators.required]],
-        dateOfBirth: ['',  [Validators.required]],
+        birthday: ['',  [Validators.required]],
         idCard: ['',  [Validators.required, Validators.pattern('^[0-9]{9}$')]],
         address: ['', [Validators.required]],
         gender: ['', [Validators.required]],
@@ -84,7 +84,9 @@ export class UserRegistrationComponent implements OnInit {
               }
             ]
           },
-          birthday: '1991-02-02'
+
+          birthday: this.formAddnewAccount.get('birthday').value
+
         }
         console.log(value)
         this.userRegistrationService.addCustomer(value).subscribe(data => {
