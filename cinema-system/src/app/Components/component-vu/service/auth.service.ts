@@ -10,10 +10,11 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class AuthServices {
-
+  public isAuthorized = false;
   constructor(private http: HttpClient) { }
 
   login(credentials: { username1: any; password1: any; }): Observable<any> {
+    this.isAuthorized = true;
     return this.http.post(AUTH_API + 'signin', {
       username: credentials.username1,
       password: credentials.password1

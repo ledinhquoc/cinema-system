@@ -15,9 +15,38 @@ public class EmployeeServiceImpl implements EmployeeService
 {
     @Autowired
     private EmployeeRepo employeeRepo;
+
+    @Override
+    public Employee findById(int id)
+    {
+        return employeeRepo.findById(id).orElse(null);
+    }
+
     @Override
     public List<Employee> findAll()
     {
         return employeeRepo.findAll();
+    }
+
+    @Override
+    public Employee save(Employee employee)
+    {
+        return employeeRepo.save(employee);
+    }
+
+    @Override
+    public void deleteById(int id)
+    {
+        employeeRepo.deleteById(id);
+    }
+
+    @Override
+    public void delete(Employee employee) {
+        employeeRepo.delete(employee);
+    }
+
+    @Override
+    public List<Employee> saveAll(List<Employee> employees) {
+       return employeeRepo.saveAll(employees);
     }
 }

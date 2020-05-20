@@ -1,7 +1,9 @@
 package codegym.module4.entities;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.Cascade;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -55,7 +57,19 @@ public class Customer
     private String address;
 
 
+
     @OneToMany(targetEntity = Point.class,cascade = CascadeType.ALL, mappedBy="customer")
+    @JsonIgnore
+    public List<Point> getPoints() {
+        return points;
+    }
+
+    public void setPoints(List<Point> points) {
+        this.points = points;
+    }
+
+  
+
 //    @JsonBackReference
     private List<Point> points;
 
@@ -65,7 +79,10 @@ public class Customer
     private User user;
 
     @OneToMany(targetEntity = Ticket.class)
-//    @JsonBackReference
+
+
+
+    @JsonIgnore
     private List<Ticket> tickets;
 
 
@@ -179,4 +196,30 @@ public class Customer
     public Customer()
     {
     }
+
+
+    /**
+     * @return the tickets
+     */
+    public List<Ticket> getTickets() {
+        return tickets;
+    }
+
+    /**
+     * @param tickets the tickets to set
+     */
+    public void setTickets(List<Ticket> tickets) {
+        this.tickets = tickets;
+    }
+
+    public Date getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+
+
 }

@@ -79,6 +79,7 @@ public class CustomerController {
     }
 
     @DeleteMapping(path = "/delete/{id}")
+
     @Transactional
     public void deleteCustomer(@PathVariable Integer id){
 //        customerService.deleteById(id);
@@ -101,5 +102,6 @@ public class CustomerController {
         customerDetails.setPhone(customerUpdate.getPhone());
         return customerService.saveCustomer(customerDetails);
     }
+
 
 }

@@ -6,6 +6,7 @@ import {UserService} from '../service/user.service';
 import {TokenStorageService} from "../service/token-storage.service";
 import {AuthServices} from "../service/auth.service"
 import {AuthService, FacebookLoginProvider, SocialUser} from "angularx-social-login";
+import {CookieService} from "ngx-cookie-service";
 
 @Component({
   selector: 'app-login',
@@ -27,18 +28,21 @@ export class LoginComponent implements OnInit {
   checkStatus: boolean;
   check: boolean;
   formTest: FormGroup;
+  cookie: string;
+  rememberMe: false;
 
   constructor(private authService: AuthServices, private tokenStorage: TokenStorageService,
               public OAuth: AuthService,
               private userService: UserService,
               private router: Router,
               private fb: FormBuilder,
+              private cookieService: CookieService
   ) {
   }
 
 
   ngOnInit() {
-
+      console.log(this.cookieService.getAll());
     this.formLogin = this.fb.group({
       username1: [null, Validators.required],
       password1: [null, Validators.required]
@@ -58,6 +62,7 @@ export class LoginComponent implements OnInit {
 
 
   onSubmit() {
+    
     this.checkStatus = false;
     const username = this.formLogin.get('username1').value;
     this.checkUsername = false;
@@ -92,13 +97,16 @@ export class LoginComponent implements OnInit {
             data => {
               this.tokenStorage.saveToken(data.accessToken);
               this.tokenStorage.saveUser(data);
-              this.isLoginFailed = false;
-              this.isLoggedIn = true;
+              // this.isLoginFailed = false;
+              // this.isLoggedIn = true;
               this.roles = this.tokenStorage.getUser().roles;
+              if(this.rememberMe){
+                this.cookieService.set('data-access',this.tokenStorage.getToken());
+                this.cookieService.set('username',this.tokenStorage.getUser().username);
+              }
               window.location.assign('#');
             },
             err => {
-              // this.errorMessage = err.error.message;
               this.isLoginFailed = true;
               this.count++;
               this.checkPassword = true;
@@ -111,10 +119,6 @@ export class LoginComponent implements OnInit {
     } else {
       this.validateAllFormFields(this.formLogin);
     }
-  }
-
-  reloadPage() {
-    location.reload();
   }
 
   //facebook
@@ -234,4 +238,7 @@ export class LoginComponent implements OnInit {
   }
 
 
+  checkRemember(event :any) {
+    this.rememberMe = event.checked;
+  }
 }

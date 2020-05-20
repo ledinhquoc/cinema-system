@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 public interface CustomerRepo extends JpaRepository<Customer, Integer>
 {
     @Query("select c from Customer c WHERE c.id =?1")
+
     Customer findByIdL(Integer id);
 
 //    @Query("delete from Customer c where c.id=?1")
@@ -17,4 +18,5 @@ public interface CustomerRepo extends JpaRepository<Customer, Integer>
 
     @Query("select c from Customer c where c.id =?1")
     Customer findByIdC(int id);
+
 }

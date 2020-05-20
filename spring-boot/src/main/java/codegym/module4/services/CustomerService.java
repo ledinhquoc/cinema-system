@@ -9,6 +9,7 @@ public interface CustomerService
     List<Customer> findAll();
 
     Customer save(Customer customer);
+    
     Customer findById(int id);
 
     Customer findCustomerById(int id);
@@ -19,10 +20,18 @@ public interface CustomerService
 
     Customer saveCustomer(Customer customer);
 
+
     Customer findByIdC(int id);
 //
 //    void deleteById(Long id);
 
     void deleteById(Integer id);
+
+    void deleteCustomer(Customer customer);
+
+    void deleteCustomerById(int id);
+
+
+
 
 }

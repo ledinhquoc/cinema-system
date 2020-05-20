@@ -16,7 +16,6 @@ public class CustomerServiceImpl implements CustomerService
     @Autowired
     private CustomerRepo customerRepo;
 
-
     public CustomerServiceImpl(CustomerRepo customerRepo) {
         this.customerRepo = customerRepo;
     }
@@ -62,6 +61,7 @@ public class CustomerServiceImpl implements CustomerService
     }
 
     @Override
+
     public Customer findByIdC(int id) {
         return customerRepo.findByIdC(id);
     }
@@ -77,5 +77,14 @@ public class CustomerServiceImpl implements CustomerService
         customerRepo.deleteById(id);
     }
 
+
+    public void deleteCustomer(Customer customer) {
+        customerRepo.delete(customer);
+    }
+
+    @Override
+    public void deleteCustomerById(int id) {
+    customerRepo.deleteById(id);
+    }
 
 }

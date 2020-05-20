@@ -1,0 +1,75 @@
+
+<form nz-form [formGroup]="editValidateForm"   (ngSubmit)="submitForm(editValidateForm.value)">
+    <nz-page-header class="site-page-header"   nzTitle="Sửa thông tin khuyến mãi" nzSubtitle="Chức năng dành riêng cho quản lý">
+    </nz-page-header>
+    <nz-divider id="divider"></nz-divider>
+        <nz-form-item>
+          <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="promotionImage">Hình ảnh</nz-form-label>
+          <nz-form-control  [nzSm]="14" [nzXs]="24" nzErrorTip="Vui lòng chọn hình ảnh!">
+           
+      <div class="clearfix">
+        <nz-upload 
+          class="upload-list-inline"
+          nzAction="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+          nzListType="picture"
+          [nzHeaders]="{ authorization: 'authorization-text' }"
+          (nzChange)="handleChange($event)"
+          [(nzFileList)]="fileList2" 
+        >
+          <button nz-button  (click)="getImage($event)">
+            <span><i nz-icon nzType="upload"></i> Upload</span>
+          </button>
+        </nz-upload>
+      </div>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="promotionTitle" nzRequired>Tiêu đề </nz-form-label>
+          <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Vui lòng nhập tiêu đề!">
+            <input nz-input formControlName="promotionTitle" id="promotionTitle" />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="promotionBeginDate" nzRequired>Thời gian bắt đầu</nz-form-label>
+          <nz-form-control [nzSm]="14" [nzXs]="24" [nzErrorTip]="errorTpl">
+            <nz-date-picker formControlName="promotionBeginDate"[nzFormat]="dateFormat" id="promotionBeginDate" [(ngModel)]="date_start"
+            (ngModelChange)="onStartChange($event)" (nzOnOpenChange)="handleStartOpenChange($event)" [nzDisabledDate]="disabledStartDate"></nz-date-picker>
+            <ng-template #errorTpl let-control>
+              <ng-container *ngIf="control.hasError('required')">
+                Vui lòng chọn ngày bắt đầu khuyến mãi!
+              </ng-container>
+              
+            </ng-template>
+          </nz-form-control>
+        </nz-form-item>
+        
+        <nz-form-item>
+          <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="promotionEndDate" nzRequired>Thời gian kết thúc</nz-form-label>
+          <nz-form-control
+            [nzSm]="14"
+            [nzXs]="24"
+            nzErrorTip="Vui lòng chọn ngày kết thúc khuyến mãi!">  
+              <nz-date-picker formControlName="promotionEndDate" [nzFormat]="dateFormat" id="promotionEndDate" [(ngModel)]="date_end"
+              (ngModelChange)="onEndChange($event)" (nzOnOpenChange)="handleEndOpenChange($event)" [nzDisabledDate]="disabledEndDate"></nz-date-picker>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="promotionDiscount" nzRequired>Mức giảm giá</nz-form-label>
+          <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Hãy nhập mức giảm giá!">
+            <input nz-input id="promotionDiscount" formControlName="promotionDiscount"  />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="promotionDescription" nzRequired>Chi tiết</nz-form-label>
+          <nz-form-control
+            [nzSm]="14"
+            [nzXs]="24"
+            >
+                <textarea rows="4" nz-input formControlName="promotionDescription" [(ngModel)]="inputValue"></textarea>
+            <button nz-button nzType="primary" style="margin-right:10px; margin-top:20px;width: 28%;"
+             (click)="editPromotion()">Lưu</button>
+            <button nz-button nzType="primary"style="width: 28%" [routerLink]="['/list-discount']" routerLinkActive="router-link-active" >Quay lại</button>
+          </nz-form-control>
+        </nz-form-item>
+      </form>
+   

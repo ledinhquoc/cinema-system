@@ -21,14 +21,21 @@
             "aot": true,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
+                "output": "/assets/"
+              }
             ],
             "styles": [
               "src/custom-theme.scss",
               "src/styles.css"
+              
             ],
             "scripts": [
-             "src/assets/lib/js/smtp.js"
+             "src/assets/lib/js/smtp.js",
+             "src/assets/lib/js/discount.js"
             ]
           },
           "configurations": {
