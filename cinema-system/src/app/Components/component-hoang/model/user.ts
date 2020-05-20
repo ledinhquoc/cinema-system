@@ -11,12 +11,13 @@ export class Customer {
   phone: string;
   user: User;
   checkFullName = true;
-  CheckBirthday = true;
+  checkBirthday = true;
   checkIdcard = true;
   checkGender = true;
   checkAddress = true;
   checkPhone =true;
   checkEmail = true;
+  checkHide = true;
 }
 export class User {
   id:number;
