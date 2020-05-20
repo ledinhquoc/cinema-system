@@ -123,8 +123,8 @@ const routes: Routes = [
   {path: 'member', component: MemberComponent},
   {path: 'confirmPassword/:id', component: ConfirmPasswordComponent},
 
-    {path: ':id/accountAdmin', component: AdminSlideBarComponent,
-  children: [{path: 'member-management', component: MemberManagementComponent}]},
+    
+  {path: 'member-management', component: MemberManagementComponent},
   {path: 'booking-ticket', component: BookingTicketComponent},
   {path: 'confirm-booking/:id', component: ConfirmBookingComponent},
   {path: 'information-confirm/:id', component: InformationConfirmComponent},
