@@ -1,0 +1,16 @@
+
+<div style="height: 250px;width: 450px;background-color: rgba(212,226,207,0.31); padding:0" >
+  <div style="background-color: #f3ff92">
+    <h2 mat-dialog-title align="center"><i class='fas fa-exclamation-triangle' style='font-size:30px;color:red'></i> Xóa dữ liệu nhân viên???</h2>
+  </div>
+
+  <mat-dialog-content class="mat-typography" align="center">
+    <h3 >Sau khi xóa thông tin của nhân viên này sẽ không thể hồi phục.
+      Bạn có chắc muốn xóa ???</h3>
+  </mat-dialog-content>
+  <br/>
+  <mat-dialog-actions align="center">
+    <button class="btn btn-info" mat-button [mat-dialog-close]="false">Hủy</button>
+    <button class="btn btn-danger" mat-button [mat-dialog-close]="true">Xóa</button>
+  </mat-dialog-actions>
+</div>

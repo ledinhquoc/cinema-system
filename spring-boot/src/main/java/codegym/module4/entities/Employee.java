@@ -1,12 +1,8 @@
 package codegym.module4.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-
-
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -16,9 +12,9 @@ import java.util.List;
 
 @Entity
 @Table(name = "employee")
+@JsonIgnoreProperties("tickets")
 public class Employee {
     public Employee() {
-
         // Do nothing
     }
 
@@ -50,14 +46,12 @@ public class Employee {
     private String phone;
 
     @OneToOne
+    @JsonBackReference
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToMany(targetEntity = Ticket.class)
-    @JsonIgnore
-
-//    @JsonManagedReference
-
+    @OneToMany(targetEntity = Ticket.class,mappedBy = "employee", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<Ticket> tickets;
 
     /**
@@ -121,6 +115,14 @@ public class Employee {
      */
     public String getIdCard() {
         return idCard;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     /**
