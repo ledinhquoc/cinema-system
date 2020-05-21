@@ -1,22 +1,20 @@
 <div class="container" style="margin-top: 5%">
   <div class="d-flex">
-    <button (click)="addNew()" class="btn btn-info add-new mx-0 " style="height: 38px;"><i class="fa fa-plus"></i> Thêm
-      mới
-    </button>
-    <div class="col-sm-6" style="margin-left: 480px">
+    <h3>QUẢN LÝ NHÂN VIÊN</h3>
+    <div class="col-sm-4" style="margin-left: 463px">
       <div class="search-box">
         <div class="input-group">
-          <input type="text" id="search" class="form-control" placeholder="Search by Name">
+          <input type="text" id="search" class="form-control" [(ngModel)]="search" placeholder="Search by Name">
           <span class="input-group-addon"><i class="material-icons">&#xE8B6;</i></span>
         </div>
       </div>
     </div>
   </div>
-
+  <!--  table-striped-->
   <table id="father" class="table table-bordered mt-4">
     <thead class="table-primary" style="border:1px solid black ;">
     <tr>
-      <th>Mã nhân viên</th>
+      <!--      <th>Mã nhân viên</th>-->
       <th>Tên nhân viên</th>
       <th>Số CMNN</th>
       <th>Email</th>
@@ -26,29 +24,40 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let dynamic of dynamicArray; let i = index;">
-      <td>
-        <input [disabled]="!dynamic.isEdit" [(ngModel)]="dynamic.id" class="form-control" type="text"/>
-      </td>
+    <tr
+      *ngFor="let dynamic of dynamicArray | filter:search | paginate: { itemsPerPage: 20, currentPage: page }; let i = index;">
+      <!--      <td>-->
+      <!--        <input [disabled]="!dynamic.isEdit" [(ngModel)]="dynamic.id" class="form-control" type="text"/>-->
+      <!--      </td>-->
 
       <td>
         <div class="form-group" [class.has-error]="fullName?.invalid && fullName?.touched">
-          <input [disabled]="!dynamic.isEdit" [(ngModel)]="dynamic.fullName" class="form-control"
-                 type="text" #fullName="ngModel" required/>
-          <span class="help-block" *ngIf="fullName?.errors?.required && fullName?.touched"
+          <input autofocus="autofocus" [disabled]="!dynamic.isEdit" [(ngModel)]="dynamic.fullName" class="form-control"
+                 type="text" #fullName="ngModel" required
+                 pattern="[A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ\s]+"/>
+          <span class="help-block" *ngIf="(fullName?.errors?.required && fullName?.touched)"
                 style="text-align: center; color: red; font-size: 12px">
                Không được để trống
             </span>
+          <span class="help-block" *ngIf="fullName?.errors?.pattern && fullName?.touched"
+                style="text-align: center; color: red; font-size: 12px">
+               Không được có ký tự đặc biệt
+            </span>
+
         </div>
       </td>
 
       <td>
         <div class="form-group" [class.has-error]="idCard?.invalid && idCard?.touched">
           <input [disabled]="!dynamic.isEdit" [(ngModel)]="dynamic.idCard" class="form-control"
-                 type="text" #idCard="ngModel" required/>
-          <span class="help-block" *ngIf="idCard?.errors?.required && idCard?.touched"
+                 type="text" #idCard="ngModel" required pattern="([0-9]{9})"/>
+          <span class="help-block" *ngIf="(idCard?.errors?.required && idCard?.touched)"
                 style="text-align: center; color: red; font-size: 12px">
                Không được để trống
+            </span>
+          <span class="help-block" *ngIf="idCard?.errors?.pattern && idCard?.touched"
+                style="text-align: center; color: red; font-size: 12px">
+               CMND gồm 9 số
             </span>
         </div>
       </td>
@@ -58,7 +67,7 @@
           <input [disabled]="!dynamic.isEdit" [(ngModel)]="dynamic.email" class="form-control"
                  type="text" #email="ngModel" required
                  pattern="^[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+(\.[A-Za-z0-9]+)$"/>
-          <span class="help-block" *ngIf="email?.errors?.required && email?.touched"
+          <span class="help-block" *ngIf="(email?.errors?.required && email?.touched)"
                 style="text-align: center; color: red; font-size: 12px">
                Không được để trống
             </span>
@@ -71,38 +80,56 @@
 
       <td>
         <div class="form-group" [class.has-error]="phone?.invalid && phone?.touched">
-          <input [disabled]="!dynamicArray[i].isEdit" [(ngModel)]="dynamicArray[i].phone" class="form-control"
-                 type="text" #phone="ngModel" required/>
-          <span class="help-block" *ngIf="phone?.errors?.required && phone?.touched"
+          <input [disabled]="!dynamic.isEdit" [(ngModel)]="dynamic.phone" class="form-control"
+                 type="text" #phone="ngModel" required pattern="(0[0-9]{9})"/>
+          <span class="help-block" *ngIf="(phone?.errors?.required && phone?.touched)"
                 style="text-align: center; color: red; font-size: 12px">
                Không được để trống
+            </span>
+          <span class="help-block" *ngIf="phone?.errors?.pattern && phone?.touched"
+                style="text-align: center; color: red; font-size: 12px">
+               SĐT gồm 10 số 0XXX XXX XXX
             </span>
         </div>
       </td>
 
       <td>
         <div class="form-group" [class.has-error]="address?.invalid && address?.touched">
-          <input [disabled]="!dynamicArray[i].isEdit" [(ngModel)]="dynamicArray[i].address" class="form-control"
-                 type="text" #address="ngModel" required/>
-          <span class="help-block" *ngIf="address?.errors?.required && address?.touched"
+          <input [disabled]="!dynamic.isEdit" [(ngModel)]="dynamic.address" class="form-control"
+                 type="text" #address="ngModel" required
+                 pattern="[A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ\s]+"/>
+          <span class="help-block" *ngIf="(address?.errors?.required && address?.touched)"
                 style="text-align: center; color: red; font-size: 12px">
                Không được để trống
+            </span>
+          <span class="help-block" *ngIf="address?.errors?.pattern && address?.touched"
+                style="text-align: center; color: red; font-size: 12px">
+               Sai định dạng
             </span>
         </div>
       </td>
 
       <td class="d-flex">
-        <a class="edit" title="Edit" data-toggle="tooltip" (click)="edit(dynamicArray[i].id,i)"><i
+        <a class="edit" title="Edit" data-toggle="tooltip" (click)="edit(dynamic.id,5*(page-1)+i);forcusName(fullName,5*(page-1)+i)"><i
           class="material-icons">&#xE254;</i></a>
-        <a class="delete" title="Delete" data-toggle="tooltip" (click)="delete(dynamicArray[i].id,i)"><i
+        <a class="delete" title="Delete" data-toggle="tooltip" (click)="delete(dynamic.id,5*(page-1)+i)"><i
           class="material-icons">&#xE872;</i></a>
       </td>
     </tr>
     </tbody>
   </table>
+  <div class="d-flex">
+    <div>
+      <button (click)="addNew()" class="btn btn-info add-new mx-0 " style="height: 25px;"><i class="fa fa-plus"></i> Add
+        more
+      </button>
+    </div>
+    <div style="margin-left: 909px" >
+      <button (click)="save()" class="btn btn-success add-new mx-0 "
+              style="height: 38px;">Save
+      </button>
+    </div>
 
-  <button (click)="save()" class="btn btn-success add-new mx-0 " style="height: 38px;">Lưu
-  </button>
-  <button  class="btn btn-success add-new mx-0  " style="height: 38px; margin-right: 5px;" [routerLink]="['/them-moi-nhan-vien']" routerLinkActive="router-link-active"  >Thêm mới
-  </button>
+  </div>
+  <pagination-controls (pageChange)="page = $event" align="center"></pagination-controls>
 </div>
